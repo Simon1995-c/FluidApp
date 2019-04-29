@@ -45,6 +45,7 @@
     <Compile Include="Kolonne2.cs" />
     <Compile Include="Kontrolregistrering.cs" />
     <Compile Include="KontrolSkema.cs" />
+    <Compile Include="Produktionsfølgeseddel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RengøringsKolonne.cs" />
   </ItemGroup>
