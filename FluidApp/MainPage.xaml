@@ -7,8 +7,27 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Page.DataContext>
+        <local:ViewModel/>
+    </Page.DataContext>
     <Grid>
+        <StackPanel Orientation="Vertical" Width="680" Margin="0 200 0 0">
+            <TextBlock TextAlignment="Center" FontWeight="Bold" FontSize="36">Vælg en kolonne</TextBlock>
+            <StackPanel HorizontalAlignment="Center" Margin="0 50 0 0">
+                <GridView ItemsSource="{Binding temp}" SelectionMode="None">
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="5">
+                                <Button Foreground="#212121" Background="#dddddd" Padding="76" Margin="0" Content="Kolonne"></Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </StackPanel>
+            <HyperlinkButton HorizontalAlignment="Center" FontSize="24" Margin="0 50 0 0" VerticalAlignment="Top">
+                <TextBlock Text="Log ind" />
+            </HyperlinkButton>
+        </StackPanel>
 
     </Grid>
 </Page>
