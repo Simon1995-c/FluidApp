@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Models
 {
-    public class Class1
+    public class Færdigvarekontrol
     {
     }
 }
