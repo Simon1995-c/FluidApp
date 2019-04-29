@@ -39,6 +39,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Færdigvarekontrol.cs" />
+    <Compile Include="Kolonne2.cs" />
     <Compile Include="KontrolSkema.cs" />
     <Compile Include="Produktionsfølgeseddel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
