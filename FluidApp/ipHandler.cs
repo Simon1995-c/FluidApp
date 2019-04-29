@@ -14,7 +14,7 @@ namespace FluidApp
         public ipHandler()
         {
             allowedIps = new List<string>();
-            allowedIps.Add("185.20.241.84");
+            allowedIps.Add("185.20.241.83");
         }
 
         private static string getIp()

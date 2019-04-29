@@ -38,7 +38,10 @@
     <!-- A reference to the entire .NET Framework is automatically included -->
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrator.cs" />
+    <Compile Include="Forside.cs" />
     <Compile Include="Færdigvarekontrol.cs" />
+    <Compile Include="IPrange.cs" />
     <Compile Include="KontrolSkema.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
