@@ -19,35 +19,13 @@ namespace FluidApp
 
         public ipHandler()
         {
+            IPrange i = new IPrange();
+
             allowedIps = new List<IPrange>();
 
-            HttpClientHandler handler = new HttpClientHandler();
-
-            using (HttpClient client = new HttpClient(handler))
+            foreach (var ip in i.GetAll())
             {
-                client.BaseAddress = new Uri("http://localhost:52416/");
-                client.DefaultRequestHeaders.Clear();
-
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                try
-                {
-                    var response = client.GetAsync("api/IPranges").Result;
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var ipranges = response.Content.ReadAsAsync<IEnumerable<IPrange>>().Result;
-                        foreach (var ip in ipranges)
-                        {
-                            allowedIps.Add(ip);
-                        }
-                    }
-                }
-                catch (Exception)
-                {
-                    //Hvis der er noget der fejler, af en eller anden grund -> Send til error siden.
-                    var frame = new Frame();
-                    frame.Navigate(typeof(errorPageIPrange), null);
-                    Window.Current.Content = frame;
-                }
+                allowedIps.Add(ip);
             }
         }
 
