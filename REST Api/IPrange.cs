@@ -9,8 +9,12 @@ namespace REST_Api
     [Table("IPrange")]
     public partial class IPrange
     {
-        [Key]
+        
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string IP { get; set; }
+
+        [Key]
+        public int ID { get; set; }
+
     }
 }

@@ -24,7 +24,7 @@ namespace REST_Api.Controllers
 
         // GET: api/IPranges/5
         [ResponseType(typeof(IPrange))]
-        public IHttpActionResult GetIPrange(string id)
+        public IHttpActionResult GetIPrange(int id)
         {
             IPrange iPrange = db.IPrange.Find(id);
             if (iPrange == null)
@@ -37,14 +37,14 @@ namespace REST_Api.Controllers
 
         // PUT: api/IPranges/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutIPrange(string id, IPrange iPrange)
+        public IHttpActionResult PutIPrange(int id, IPrange iPrange)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != iPrange.IP)
+            if (id != iPrange.ID)
             {
                 return BadRequest();
             }
@@ -80,29 +80,14 @@ namespace REST_Api.Controllers
             }
 
             db.IPrange.Add(iPrange);
+            db.SaveChanges();
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (IPrangeExists(iPrange.IP))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtRoute("DefaultApi", new { id = iPrange.IP }, iPrange);
+            return CreatedAtRoute("DefaultApi", new { id = iPrange.ID }, iPrange);
         }
 
         // DELETE: api/IPranges/5
         [ResponseType(typeof(IPrange))]
-        public IHttpActionResult DeleteIPrange(string id)
+        public IHttpActionResult DeleteIPrange(int id)
         {
             IPrange iPrange = db.IPrange.Find(id);
             if (iPrange == null)
@@ -125,9 +110,9 @@ namespace REST_Api.Controllers
             base.Dispose(disposing);
         }
 
-        private bool IPrangeExists(string id)
+        private bool IPrangeExists(int id)
         {
-            return db.IPrange.Count(e => e.IP == id) > 0;
+            return db.IPrange.Count(e => e.ID == id) > 0;
         }
     }
 }
