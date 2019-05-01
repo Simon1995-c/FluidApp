@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    class Forside
+    public class Forside
     {
         public int ID { get; set; }
         public int FK_Kolonne { get; set; }

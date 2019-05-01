@@ -24,7 +24,7 @@ namespace REST_Api.Controllers
 
         // GET: api/IPranges/5
         [ResponseType(typeof(IPrange))]
-        public IHttpActionResult GetIPrange(int id)
+        public IHttpActionResult GetIPrange(string id)
         {
             IPrange iPrange = db.IPrange.Find(id);
             if (iPrange == null)
@@ -37,7 +37,7 @@ namespace REST_Api.Controllers
 
         // PUT: api/IPranges/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutIPrange(int id, IPrange iPrange)
+        public IHttpActionResult PutIPrange(string id, IPrange iPrange)
         {
             if (!ModelState.IsValid)
             {
@@ -102,7 +102,7 @@ namespace REST_Api.Controllers
 
         // DELETE: api/IPranges/5
         [ResponseType(typeof(IPrange))]
-        public IHttpActionResult DeleteIPrange(int id)
+        public IHttpActionResult DeleteIPrange(string id)
         {
             IPrange iPrange = db.IPrange.Find(id);
             if (iPrange == null)
@@ -125,7 +125,7 @@ namespace REST_Api.Controllers
             base.Dispose(disposing);
         }
 
-        private bool IPrangeExists(int id)
+        private bool IPrangeExists(string id)
         {
             return db.IPrange.Count(e => e.IP == id) > 0;
         }

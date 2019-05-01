@@ -11,6 +11,6 @@ namespace REST_Api
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int IP { get; set; }
+        public string IP { get; set; }
     }
 }

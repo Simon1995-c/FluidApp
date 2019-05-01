@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    class Administrator
+    public class Administrator
     {
         public string Brugernavn { get; set; }
         public string Kodeord { get; set; }
