@@ -6,11 +6,16 @@
     xmlns:local="using:FluidApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:micro="using:Caliburn.Micro"
+    xmlns:forms="using:Xamarin.Forms"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.DataContext>
         <local:LoginViewModel/>
     </Page.DataContext>
+    <Page.Resources>
+        <micro:BooleanToVisibilityConverter x:Key="BoolToVis" />
+    </Page.Resources>
     <Grid>
 
         <TextBlock FontSize="50" Text="Log ind" Margin="650,200,669,732" SelectionChanged="TextBlock_SelectionChanged"/>

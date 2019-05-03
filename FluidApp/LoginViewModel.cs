@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.UI.Popups;
 using FluidApp.Annotations;
 using GalaSoft.MvvmLight.Command;
 
@@ -13,6 +14,8 @@ namespace FluidApp
 {
     public class LoginViewModel : INotifyPropertyChanged
     {
+        #region Propeties
+
         private bool _erGodkendt;
         public bool erGodkendt
         {
@@ -22,7 +25,7 @@ namespace FluidApp
                 if (value != _erGodkendt)
                 {
                     _erGodkendt = value;
-                    //OnPropertyChanged("erGodkendt");
+                    OnPropertyChanged(new PropertyChangedEventArgs("erGodkendt"));
                 }
             }
         }
@@ -33,7 +36,7 @@ namespace FluidApp
             set
             {
                 _brugernavn = value;
-                //OnPropertyChanged("Brugernavn");
+                OnPropertyChanged(new PropertyChangedEventArgs("Brugernavn"));
             }
         }
         private string _kodeord;
@@ -44,9 +47,11 @@ namespace FluidApp
             set
             {
                 _kodeord = value;
-                //OnPropertyChanged("Kodeord");
+                OnPropertyChanged(new PropertyChangedEventArgs("Kodeord"));
             }
         }
+
+        #endregion
 
 
         public ICommand LoginCommand
@@ -58,7 +63,8 @@ namespace FluidApp
         public void Login()
         {
             //TODO check username and password vs database here.
-            //If using membershipprovider then just call Membership.ValidateUser(UserName, Password)
+
+            
             if (!String.IsNullOrEmpty(Brugernavn) && !String.IsNullOrEmpty(Kodeord))
                 erGodkendt = true;
         }
