@@ -17,9 +17,8 @@ namespace REST_Api
 
         public double? Ludkoncentration { get; set; }
 
-        public DateTime? Vægtkontrol { get; set; }
-
-        public bool? Fustage { get; set; }
+        [StringLength(50)]
+        public string Fustage { get; set; }
 
         public int? Kvittering { get; set; }
 
