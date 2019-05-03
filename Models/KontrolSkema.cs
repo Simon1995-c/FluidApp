@@ -11,7 +11,7 @@ namespace Models
     {
         public int ID { get; set; }
         public int FK_Kolonne { get; set; }
-        public DateTime klokkeslæt { get; set; }
+        public DateTime Klokkeslæt { get; set; }
         public double Ludkoncetration { get; set; }
         public string Fustage { get; set; }
         public int Kvittering { get; set; }
@@ -93,7 +93,7 @@ namespace Models
                 string jsonStr = JsonConvert.SerializeObject(obj);
                 StringContent content = new StringContent(jsonStr, Encoding.UTF8, "application/json");
 
-                Task<HttpResponseMessage> putAsync = client.PutAsync(URI + "/" + obj, content);
+                Task<HttpResponseMessage> putAsync = client.PutAsync(URI + "/" + id, content);
 
                 HttpResponseMessage resp = putAsync.Result;
                 if (resp.IsSuccessStatusCode)

@@ -48,7 +48,7 @@ namespace Models
 
             using (HttpClient client = new HttpClient())
             {
-                Task<string> resTask = client.GetStringAsync(URI + id);
+                Task<string> resTask = client.GetStringAsync(URI + "/" + id);
                 string jsonStr = resTask.Result;
 
                 returnOne = JsonConvert.DeserializeObject<Færdigvarekontrol>(jsonStr);
@@ -57,7 +57,7 @@ namespace Models
             return returnOne;
         }
 
-        public void Delete(string id)
+        public void Delete(int id)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -95,7 +95,7 @@ namespace Models
                 string jsonStr = JsonConvert.SerializeObject(obj);
                 StringContent content = new StringContent(jsonStr, Encoding.UTF8, "application/json");
 
-                Task<HttpResponseMessage> putAsync = client.PutAsync(URI + "/" + obj, content);
+                Task<HttpResponseMessage> putAsync = client.PutAsync(URI + "/" + id, content);
 
                 HttpResponseMessage resp = putAsync.Result;
                 if (resp.IsSuccessStatusCode)
