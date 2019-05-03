@@ -1,0 +1,55 @@
+﻿<Page
+    x:Class="FluidApp.OpretKolonne"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FluidApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:interop="using:Windows.UI.Xaml.Interop"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.DataContext>
+        <local:OpretKolonneViewModel/>
+    </Page.DataContext>
+
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="221,200,275,347" HorizontalAlignment="Center">
+            <Border BorderThickness="1" BorderBrush="Black" CornerRadius="15" Padding="3 3"
+                    HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,150" Background="#FFC0B5B5">
+                <Button Content="Tilbage" BorderThickness="0" Background="#FFC0B5B5"/>
+            </Border>
+            <TextBlock TextAlignment="Center" FontWeight="Bold" FontSize="36" Height="125" HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Opret Kolonne"/></TextBlock>
+            <StackPanel Margin="0,0,10,0" Height="251">
+                <StackPanel Orientation="Horizontal"  Height="85" Width="992" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+                    <Border BorderThickness="1" BorderBrush="Black" CornerRadius="10" Padding="56 10"
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Background="#FFC0B5B5">
+                        <TextBox Text="Indsæt" BorderThickness="0" Background="#FFC0B5B5"/>
+                    </Border>
+                    <Border BorderThickness="1" BorderBrush="Black" CornerRadius="10" Padding="56 10"
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Background="#FFC0B5B5">
+                        <TextBox Text="Indsæt" BorderThickness="0" Background="#FFC0B5B5"/>
+                    </Border>
+                    <Border BorderThickness="1" BorderBrush="Black" CornerRadius="10" Padding="56 10"
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Background="#FFC0B5B5">
+                        <TextBox Text="Indsæt" BorderThickness="0" Background="#FFC0B5B5"/>
+                    </Border>
+                    <Border BorderThickness="1" BorderBrush="Black" CornerRadius="10" Padding="56 10"
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Background="#FFC0B5B5">
+                        <TextBox Text="Indsæt" BorderThickness="0" Background="#FFC0B5B5"/>
+                    </Border>
+                    <Border BorderThickness="1" BorderBrush="Black" CornerRadius="10" Padding="55 10"
+                            HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Background="#FFC0B5B5">
+                        <TextBox Text="Indsæt" BorderThickness="0" Background="#FFC0B5B5"/>
+                    </Border>
+
+
+                </StackPanel>
+                <StackPanel Margin="5,0,5,0" Height="43" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Button Foreground="#212121" Background="#dddddd" Padding="10 5" Margin="0,0,10,0" Content="Opret" HorizontalAlignment="Right" Click="Button_Click" RenderTransformOrigin="-0.16,0.576"/>
+                </StackPanel>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Page>
