@@ -24,7 +24,7 @@ namespace REST_Api.Controllers
 
         // GET: api/Administrators/5
         [ResponseType(typeof(Administrator))]
-        public IHttpActionResult GetAdministrator(string id)
+        public IHttpActionResult GetAdministrator(int id)
         {
             Administrator administrator = db.Administrator.Find(id);
             if (administrator == null)
@@ -37,14 +37,14 @@ namespace REST_Api.Controllers
 
         // PUT: api/Administrators/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutAdministrator(string id, Administrator administrator)
+        public IHttpActionResult PutAdministrator(int id, Administrator administrator)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != administrator.Brugernavn)
+            if (id != administrator.ID)
             {
                 return BadRequest();
             }
@@ -80,29 +80,14 @@ namespace REST_Api.Controllers
             }
 
             db.Administrator.Add(administrator);
+            db.SaveChanges();
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateException)
-            {
-                if (AdministratorExists(administrator.Brugernavn))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtRoute("DefaultApi", new { id = administrator.Brugernavn }, administrator);
+            return CreatedAtRoute("DefaultApi", new { id = administrator.ID }, administrator);
         }
 
         // DELETE: api/Administrators/5
         [ResponseType(typeof(Administrator))]
-        public IHttpActionResult DeleteAdministrator(string id)
+        public IHttpActionResult DeleteAdministrator(int id)
         {
             Administrator administrator = db.Administrator.Find(id);
             if (administrator == null)
@@ -125,9 +110,9 @@ namespace REST_Api.Controllers
             base.Dispose(disposing);
         }
 
-        private bool AdministratorExists(string id)
+        private bool AdministratorExists(int id)
         {
-            return db.Administrator.Count(e => e.Brugernavn == id) > 0;
+            return db.Administrator.Count(e => e.ID == id) > 0;
         }
     }
 }

@@ -10,6 +10,8 @@ namespace REST_Api
     public partial class Administrator
     {
         [Key]
+        public int ID { get; set; }
+
         [StringLength(100)]
         public string Brugernavn { get; set; }
 

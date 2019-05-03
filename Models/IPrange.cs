@@ -85,7 +85,7 @@ namespace Models
                 string jsonStr = JsonConvert.SerializeObject(obj);
                 StringContent content = new StringContent(jsonStr, Encoding.UTF8, "application/json");
 
-                Task<HttpResponseMessage> putAsync = client.PutAsync(URI + "/" + obj, content);
+                Task<HttpResponseMessage> putAsync = client.PutAsync(URI + "/" + id, content);
 
                 HttpResponseMessage resp = putAsync.Result;
                 if (resp.IsSuccessStatusCode)
