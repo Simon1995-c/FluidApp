@@ -11,6 +11,40 @@
         <local:KolonneViewModel/>
     </Page.DataContext>
     <Grid>
-
+        <StackPanel BorderBrush="Blue" CornerRadius="1,1,8,8" Orientation="Horizontal" VerticalAlignment="Top" Background="DarkCyan">
+                <Button Command="{Binding TilbageCommand}" Content="Tilbage"></Button>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Padding="50">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Grid.Row="0">
+                    <TextBlock Text="Liste over alle skemaer"></TextBlock>
+                </Grid>
+                <Grid Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right">
+                    <Border CornerRadius="10">
+                        <Button Content="Seneste uge"></Button>
+                    </Border>
+                </Grid>
+            </Grid>
+            
+            <ListView ItemsSource="{Binding KolonneListe}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0,0,10,0" Text="{Binding ProcessordreNr}"></TextBlock>
+                            <TextBlock Margin="0,0,10,0" Text="{Binding FærdigvareNr}"></TextBlock>
+                            <TextBlock Margin="0,0,10,0" Text="{Binding FærdigvareNavn}"></TextBlock>
+                            
+                            <TextBlock>
+                                <Run Text="{Binding Dato.Day}"></Run><Run Text="-"></Run><Run Text="{Binding Dato.Month}"></Run><Run Text="-"></Run><Run Text="{Binding Dato.Year}"></Run>
+                            </TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
     </Grid>
 </Page>
