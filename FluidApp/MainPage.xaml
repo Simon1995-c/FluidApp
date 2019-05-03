@@ -11,20 +11,22 @@
         <local:ViewModel/>
     </Page.DataContext>
     <Grid>
-        <StackPanel Orientation="Vertical" Width="680" Margin="0 200 0 0">
+        <StackPanel Width="600" Margin="0 150 0 0">
             <TextBlock TextAlignment="Center" FontWeight="Bold" FontSize="36">Vælg en kolonne</TextBlock>
-            <StackPanel HorizontalAlignment="Center" Margin="0 50 0 0">
-                <GridView ItemsSource="{Binding temp}" SelectionMode="None">
-                    <GridView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Margin="5">
-                                <Button Foreground="#212121" Background="#dddddd" Padding="76" Margin="0" Content="Kolonne"></Button>
-                            </StackPanel>
-                        </DataTemplate>
-                    </GridView.ItemTemplate>
-                </GridView>
-            </StackPanel>
-            <HyperlinkButton HorizontalAlignment="Center" FontSize="24" Margin="0 50 0 0" VerticalAlignment="Top">
+            <GridView Margin="0 50 0 0" HorizontalAlignment="Center" SelectionMode="None">
+                <Button Command="{Binding navigateToKolonne2}" Foreground="#212121" Background="#dddddd" Padding="35" Margin="5">
+                    <TextBlock>Kolonne 2</TextBlock>
+                </Button>
+                <Button IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Margin="5" Content="Kolonne 3"></Button>
+                <Button IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Margin="5" Content="Kolonne 4"></Button>
+                <Button IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Margin="5" Content="Kolonne 5"></Button>
+                <Button IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Margin="5" Content="Kolonne 6"></Button>
+                <Button IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Margin="5" Content="Kolonne 7"></Button>
+                <Button IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Margin="5" Content="Kolonne 8"></Button>
+                <Button IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Margin="5" Content="Kolonne 11"></Button>
+                <Button IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Margin="5" Content="Kolonne 12"></Button>
+            </GridView>
+            <HyperlinkButton HorizontalAlignment="Center" FontSize="24" Margin="0 50 0 0" VerticalAlignment="Top" Command="{Binding navigateToLogin}">
                 <TextBlock Text="Log ind" />
             </HyperlinkButton>
         </StackPanel>

@@ -10,29 +10,35 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using FluidApp.Annotations;
+using GalaSoft.MvvmLight.Command;
 using Models;
 
 namespace FluidApp
 {
     class ViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<string> temp { get; set; }
+        public RelayCommand navigateToKolonne2 { get; set; }
+        public RelayCommand navigateToLogin { get; set; }
+
         public ViewModel()
         {
-            ipHandler h = new ipHandler();
+            navigateToKolonne2 = new RelayCommand(Navigate);
+            navigateToLogin = new RelayCommand(NavigateToLogin);
+            
+        }
 
-            temp = new ObservableCollection<string>
-            {
-                "Test",
-                "Test",
-                "Test",
-                "Test",
-                "Test",
-                "Test",
-                "Test",
-                "Test",
-                "Test"
-            };
+        private void Navigate()
+        {
+            var frame = new Frame();
+            frame.Navigate(typeof(Kolonne), null);
+            Window.Current.Content = frame;
+        }
+
+        private void NavigateToLogin()
+        {
+            var frame = new Frame();
+            frame.Navigate(typeof(Login), null);
+            Window.Current.Content = frame;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
