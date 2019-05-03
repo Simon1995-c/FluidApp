@@ -123,6 +123,10 @@
       <DependentUpon>errorPageIPrange.xaml</DependentUpon>
     </Compile>
     <Compile Include="ipHandler.cs" />
+    <Compile Include="Kolonne.xaml.cs">
+      <DependentUpon>Kolonne.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KolonneViewModel.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -152,6 +156,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="errorPageIPrange.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Kolonne.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

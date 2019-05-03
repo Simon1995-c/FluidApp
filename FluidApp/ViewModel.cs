@@ -21,15 +21,6 @@ namespace FluidApp
         {
             ipHandler h = new ipHandler();
 
-            //If the IP isn't allowed -> send them to an error page
-            if (!h.isAllowedIp().Result)
-            {
-                var frame = new Frame();
-                frame.Navigate(typeof(errorPageIPrange), null);
-                Window.Current.Content = frame;
-            }
-            Administrator a = new Administrator();
-
             temp = new ObservableCollection<string>
             {
                 "Test",
