@@ -19,7 +19,8 @@ namespace REST_Api
 
         public DateTime? Vægtkontrol { get; set; }
 
-        public bool? Fustage { get; set; }
+        [StringLength(50)]
+        public string Fustage { get; set; }
 
         public int? Kvittering { get; set; }
 
