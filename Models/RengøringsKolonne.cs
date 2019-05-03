@@ -50,7 +50,7 @@ namespace Models
 
             using (HttpClient client = new HttpClient())
             {
-                Task<string> resTask = client.GetStringAsync(URI + id);
+                Task<string> resTask = client.GetStringAsync(URI + "/" + id);
                 string jsonStr = resTask.Result;
 
                 returnOne = JsonConvert.DeserializeObject<RengøringsKolonne>(jsonStr);
