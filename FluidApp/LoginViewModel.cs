@@ -7,8 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Windows.UI.Popups;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 using FluidApp.Annotations;
 using GalaSoft.MvvmLight.Command;
+using Models;
 
 namespace FluidApp
 {
@@ -63,6 +66,24 @@ namespace FluidApp
         public void Login()
         {
             //TODO check username and password vs database here.
+
+            Administrator admin = new Administrator();
+
+            // Brugernavn == "Test" && Kodeord == "Test kodeord")
+
+            foreach (var godkendt in admin.GetAll())
+            {
+                
+                if (Brugernavn == godkendt.Brugernavn && Kodeord == godkendt.Kodeord)
+                {
+
+                    erGodkendt = true;
+                    //var frame = new Frame();
+                    //frame.Navigate(typeof(Kolonne), null);
+                    //Window.Current.Content = frame;
+
+                }
+            }
 
             
             if (!String.IsNullOrEmpty(Brugernavn) && !String.IsNullOrEmpty(Kodeord))
