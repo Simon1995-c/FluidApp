@@ -1,24 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using FluidApp.Annotations;
 using GalaSoft.MvvmLight.Command;
 using Models;
 
 namespace FluidApp
 {
-    class KolonneViewModel
+    class KolonneViewModel : INotifyPropertyChanged
     {
         public RelayCommand TilbageCommand { get; set; }
-        public ObservableCollection<Forside> KolonneListe { get; set; }
+        public RelayCommand SorterCommand { get; set; }
+        public RelayCommand NavigerOpretSkemaCommand { get; set; }
+        public ObservableCollection<Forside> _kolonneListe;
+        public ObservableCollection<Forside> KolonneListe
+        {
+            get { return _kolonneListe; }
+            set
+            {
+                _kolonneListe = value;
+                OnPropertyChanged();
+            }
+        }
 
         public KolonneViewModel()
         {
             TilbageCommand = new RelayCommand(Tilbage);
+            SorterCommand = new RelayCommand(SortDatasets);
+            NavigerOpretSkemaCommand = new RelayCommand(OpretNytSkema);
             ipHandler h = new ipHandler();
 
             //If the IP isn't allowed -> send them to an error page
@@ -39,6 +56,13 @@ namespace FluidApp
             Window.Current.Content = frame;
         }
 
+        public void OpretNytSkema()
+        {
+            var frame = new Frame();
+            frame.Navigate(typeof(OpretKolonne), null);
+            Window.Current.Content = frame;
+        }
+
         public ObservableCollection<Forside> GetDatasets()
         {
             Forside tempForside = new Forside();
@@ -46,11 +70,22 @@ namespace FluidApp
 
             foreach (var att in tempForside.GetAll())
             {
-                
-                
                 data.Add(att);
             }
             return data;
+        }
+
+        public void SortDatasets()
+        {
+            KolonneListe = new ObservableCollection<Forside>(KolonneListe.OrderBy(e => e.Dato));
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

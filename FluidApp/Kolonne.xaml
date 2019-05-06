@@ -24,13 +24,13 @@
                 <TextBlock FontSize="32" Text="Kolonne 2"></TextBlock>
             </Grid>
             <Grid Grid.Column="2" HorizontalAlignment="Right">
-                <Button Content="Opret nyt skema" Visibility="{Binding}" Command="{Binding}"></Button>
+                <Button Content="Opret nyt skema" Visibility="{Binding}" Command="{Binding NavigerOpretSkemaCommand}"></Button>
             </Grid>
         </Grid>
         
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" Padding="50">
             <Grid Padding="10">
-                <!--4x4 grid-->
+                <!--2x2 grid-->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="8*"/>
                     <ColumnDefinition Width="2*"/>
@@ -44,7 +44,7 @@
                 </Grid>
                 <Grid Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right">
                     <Border CornerRadius="9">
-                        <Button Content="Seneste uge"></Button>
+                        <Button Content="Sortér" Command="{Binding SorterCommand}"></Button>
                     </Border>
                 </Grid>
                 <!--To ListViews for ellers virkede horizontalalignment ikke-->
