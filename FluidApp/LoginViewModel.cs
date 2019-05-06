@@ -17,71 +17,22 @@ namespace FluidApp
 {
     public class LoginViewModel : INotifyPropertyChanged
     {
-        #region Propeties
+        public string Brugernavn { get; set; }
+        public string Kodeord { get; set; }
+        public RelayCommand LoginCommand { get; set; }
+        public RelayCommand TilbageCommand { get; set; }
 
-        private int _rolle;
-        private string _forkertKode;
-        
-        private string _brugernavn;
-        public string Brugernavn
+        public int Rolle { get; set; }
+
+        public Visibility ForkertKode { get; set; }
+
+        public LoginViewModel()
         {
-            get { return _brugernavn; }
-            set
-            {
-                _brugernavn = value;
-                OnPropertyChanged(new PropertyChangedEventArgs("Brugernavn"));
-            }
+            ForkertKode = Visibility.Collapsed;
+
+            TilbageCommand = new RelayCommand(Tilbage);
+            LoginCommand = new RelayCommand(Login);
         }
-        private string _kodeord;
-
-        public string Kodeord
-        {
-            get { return _kodeord; }
-            set
-            {
-                _kodeord = value;
-                OnPropertyChanged(new PropertyChangedEventArgs("Kodeord"));
-            }
-        }
-
-        public int Rolle
-        {
-            get { return _rolle; }
-            set
-            {
-                _rolle = value;
-                OnPropertyChanged(new PropertyChangedEventArgs("Rolle"));
-            }
-        }
-
-
-        public string ForkertKode
-        {
-            get { return _forkertKode; }
-            set
-            {
-                _forkertKode = value;
-                OnPropertyChanged(new PropertyChangedEventArgs("ForkertKode"));
-            }
-        }
-
-        #endregion
-
-        #region ICommand Execute
-
-        public ICommand LoginCommand
-        {
-            get { return new RelayCommand(() => Login()); }
-        }
-
-        public ICommand TilbageCommand
-        {
-            get { return new RelayCommand(() => Tilbage());}
-        }
-
-        
-
-        #endregion
 
         public void Tilbage()
         {
@@ -96,45 +47,48 @@ namespace FluidApp
 
             Administrator admin = new Administrator();
 
+            int loggedIn = 0;
 
-            foreach (var godkendt in admin.GetAll())
+            foreach (var a in admin.GetAll())
             {
-                
+                if (a.Brugernavn == Brugernavn && a.Kodeord == Kodeord)
+                {
+                    loggedIn++;
 
-                if (!String.IsNullOrEmpty(Brugernavn) && !String.IsNullOrEmpty(Kodeord))
-                
-                    
-                        if (Brugernavn == godkendt.Brugernavn && Kodeord == godkendt.Kodeord && godkendt.Rolle == 2)
-                        {
-                            var frame = new Frame();
-                            frame.Navigate(typeof(Kolonne), null);
-                            Window.Current.Content = frame;
+                    if (a.Rolle == 1)
+                    {
+                        Rolle = 1;
+                    }
 
+                    if (a.Rolle == 2)
+                    {
+                        Rolle = 2;
+                    }
 
-                        }
-                        else if (Brugernavn == godkendt.Brugernavn && Kodeord == godkendt.Kodeord && godkendt.Rolle == 1)
-                        {
-                            var frame = new Frame();
-                            frame.Navigate(typeof(FluidApp.AdminPage), null);
-                            Window.Current.Content = frame;
+                    break;
+                }
+            }
 
+            if (loggedIn > 0)
+            {
+                if (Rolle == 1)
+                {
+                    var frame = new Frame();
+                    frame.Navigate(typeof(Kolonne), null);
+                    Window.Current.Content = frame;
+                }
 
-                        }
-                        else
-                        {
-                           ForkertKode = "Forkert Adgangskode! Prøv igen";
-                           Brugernavn = "";
-                           Kodeord = "";
-
-                        }
-
-
-
-
-
-
-
-
+                if (Rolle == 2)
+                {
+                    var frame = new Frame();
+                    frame.Navigate(typeof(AdminPage), null);
+                    Window.Current.Content = frame;
+                }
+            }
+            else
+            {
+                ForkertKode = Visibility.Visible;
+                OnPropertyChanged(nameof(ForkertKode));
             }
         }
 
@@ -144,8 +98,7 @@ namespace FluidApp
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged(PropertyChangedEventArgs propertyname,
-            [CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
