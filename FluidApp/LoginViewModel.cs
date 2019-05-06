@@ -62,9 +62,18 @@ namespace FluidApp
             set { _rolle = value; }
         }
 
+
+        public string ForkertKode
+        {
+            get { return _forkertKode; }
+            set
+            {
+                _forkertKode = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("ForkertKode"));
+            }
+        }
+
         #endregion
-
-
 
         #region ICommand Execute
 
@@ -78,14 +87,9 @@ namespace FluidApp
             get { return new RelayCommand(() => Tilbage());}
         }
 
-        public string ForkertKode
-        {
-            get { return _forkertKode; }
-            set { _forkertKode = value; }
-        }
+        
 
         #endregion
-
 
         public void Tilbage()
         {
@@ -94,8 +98,7 @@ namespace FluidApp
             Window.Current.Content = frame;
         }
 
-
-        public void Login()
+        public async void Login()
         {
             // checking username and password vs database here.
 
@@ -107,29 +110,39 @@ namespace FluidApp
                 Rolle = godkendt.Rolle;
 
                 if (!String.IsNullOrEmpty(Brugernavn) && !String.IsNullOrEmpty(Kodeord))
+                {
                     erGodkendt = true;
+                    {
+                        if (Brugernavn == godkendt.Brugernavn && Kodeord == godkendt.Kodeord && Rolle == 2)
+                        {
+                            var frame = new Frame();
+                            frame.Navigate(typeof(Kolonne), null);
+                            Window.Current.Content = frame;
 
-                if (Brugernavn == godkendt.Brugernavn && Kodeord == godkendt.Kodeord && Rolle == 2)
-                {
-                    var frame = new Frame();
-                    frame.Navigate(typeof(Kolonne), null);
-                    Window.Current.Content = frame;
+                        }
+                        else if (Brugernavn == godkendt.Brugernavn && Kodeord == godkendt.Kodeord && Rolle == 1)
+                        {
+                            var frame = new Frame();
+                            frame.Navigate(typeof(AdminPage), null);
+                            Window.Current.Content = frame;
+
+                        }
+                        else
+                        {
+                            ForkertKode = "Forkert Adgangskode! Prøv igen";
+                            Brugernavn = "";
+                            Kodeord = "";
+
+                        }
+
+                    }
+
 
                 }
-                else if(Brugernavn == godkendt.Brugernavn && Kodeord == godkendt.Kodeord && Rolle == 1)
-                {
-                    var frame = new Frame();
-                    frame.Navigate(typeof(AdminPage), null);
-                    Window.Current.Content = frame;
-                }
-                else
-                {
-                    ForkertKode = "Forkert Adgangskode!";
-                }
+
+
+
             }
-
-            
-            
         }
 
 
