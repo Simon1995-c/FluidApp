@@ -87,6 +87,7 @@ namespace FluidApp
             }
             else
             {
+                
                 ForkertKode = Visibility.Visible;
                 OnPropertyChanged(nameof(ForkertKode));
             }

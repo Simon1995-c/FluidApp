@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.DataContext>
-        <local:LoginViewModel/>
+        <local:AdminViewmodel/>
     </Page.DataContext>
     <Grid HorizontalAlignment="Stretch" Margin="0,0,0,10" VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
