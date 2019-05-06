@@ -46,9 +46,7 @@
             <TextBox VerticalAlignment="Top" Height="50" Margin="550,353,435,0" HorizontalAlignment="Stretch" Text="{Binding Brugernavn, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <PasswordBox VerticalAlignment="Top" Height="50" Margin="550,413,435,0" Password="{Binding Kodeord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <Button Content="Login" HorizontalAlignment="Left" Foreground="#212121" Background="#dddddd" Padding="10 5" Margin="980,0,0,0" VerticalAlignment="Center" Width="85" Height="43" Command="{Binding LoginCommand}"></Button>
-            <TextBlock Text="{Binding ForkertKode}" FontStyle="Normal" HorizontalAlignment="Left" Width="572" Margin="513,554,0,0" VerticalAlignment="Top" Height="68" FocusVisualPrimaryBrush="#FFF30B0B" FocusVisualSecondaryBrush="#99E80C0C" FontSize="30"/>
-
-
+            <TextBlock Text="{Binding ForkertKode, UpdateSourceTrigger=PropertyChanged}" FontStyle="Normal" HorizontalAlignment="Left" Width="572" Margin="740,573,0,0" VerticalAlignment="Top" Height="68" FocusVisualPrimaryBrush="#FFF30B0B" FocusVisualSecondaryBrush="#99E80C0C" FontSize="30"/>
 
         </Grid>
     </Grid>
