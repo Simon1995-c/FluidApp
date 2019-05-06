@@ -1,0 +1,54 @@
+﻿<Page
+    x:Class="FluidApp.KolonneEdit"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FluidApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.DataContext>
+        <local:KolonneEditViewModel/>
+    </Page.DataContext>
+
+    <Grid>
+        <Grid VerticalAlignment="Top" Background="DarkCyan" CornerRadius="0 0 8 8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Button Command="{Binding TilbageCommand}" Content="Tilbage"></Button>
+            </Grid>
+            <Grid Grid.Column="1" HorizontalAlignment="Center">
+                <TextBlock FontSize="32" Text="Kolonne 2"></TextBlock>
+            </Grid>
+            <Grid Grid.Column="2" HorizontalAlignment="Right">
+                <!--
+                Forside Data her
+                Afhængig af tidligere page information
+                -->
+            </Grid>
+        </Grid>
+
+        <GridView ItemsSource="{Binding}">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+
+        <Grid VerticalAlignment="Bottom">
+            <Grid VerticalAlignment="Bottom">
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Kontrolskema" FontSize="20" Command="{Binding}" Padding="20" BorderBrush="DimGray"></Button>
+                    <Button Content="Kontrolregistrering" FontSize="20" Command="{Binding}" Padding="20" BorderBrush="DimGray"></Button>
+                    <Button Content="Produktionsfølgeseddel" FontSize="20" Command="{Binding}" Padding="20" BorderBrush="DimGray"></Button>
+                    <Button Content="Færdigvarekontrol" FontSize="20" Command="{Binding}" Padding="20" BorderBrush="DimGray"></Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

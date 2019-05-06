@@ -44,9 +44,14 @@
                     <TextBlock Text="Liste over alle skemaer"></TextBlock>
                 </Grid>
                 <Grid Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right">
-                    <Border CornerRadius="9">
-                        <Button Content="Sortér" Command="{Binding SorterCommand}"></Button>
-                    </Border>
+                    <StackPanel Orientation="Horizontal">
+                        <Border CornerRadius="9">
+                            <Button Content="Sortér" Command="{Binding SorterCommand}"></Button>
+                        </Border>
+                        <Border CornerRadius="9">
+                            <Button Content="Genindlæs" Command="{Binding GenindlæsCommand}"></Button>
+                        </Border>
+                    </StackPanel>
                 </Grid>
                 <!--To ListViews for ellers virkede horizontalalignment ikke-->
                 <Grid Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Margin="0 10 0 0">

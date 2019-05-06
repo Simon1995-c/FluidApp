@@ -126,6 +126,10 @@
     <Compile Include="Kolonne.xaml.cs">
       <DependentUpon>Kolonne.xaml</DependentUpon>
     </Compile>
+    <Compile Include="KolonneEdit.xaml.cs">
+      <DependentUpon>KolonneEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KolonneEditViewModel.cs" />
     <Compile Include="KolonneViewModel.cs" />
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -168,6 +172,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Kolonne.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KolonneEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
