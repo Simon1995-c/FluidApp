@@ -13,9 +13,7 @@
     <Page.DataContext>
         <local:LoginViewModel/>
     </Page.DataContext>
-    <Page.Resources>
-        <micro:BooleanToVisibilityConverter x:Key="BoolToVis" />
-    </Page.Resources>
+    
 
 
 

@@ -20,20 +20,8 @@ namespace FluidApp
         #region Propeties
 
         private int _rolle;
-        private bool _erGodkendt;
         private string _forkertKode;
-        public bool erGodkendt
-        {
-            get { return _erGodkendt; }
-            set
-            {
-                if (value != _erGodkendt)
-                {
-                    _erGodkendt = value;
-                    OnPropertyChanged(new PropertyChangedEventArgs("erGodkendt"));
-                }
-            }
-        }
+        
         private string _brugernavn;
         public string Brugernavn
         {
@@ -59,7 +47,11 @@ namespace FluidApp
         public int Rolle
         {
             get { return _rolle; }
-            set { _rolle = value; }
+            set
+            {
+                _rolle = value;
+                OnPropertyChanged(new PropertyChangedEventArgs("Rolle"));
+            }
         }
 
 
@@ -98,7 +90,7 @@ namespace FluidApp
             Window.Current.Content = frame;
         }
 
-        public async void Login()
+        public void Login()
         {
             // checking username and password vs database here.
 
@@ -107,38 +99,39 @@ namespace FluidApp
 
             foreach (var godkendt in admin.GetAll())
             {
-                Rolle = godkendt.Rolle;
+                
 
                 if (!String.IsNullOrEmpty(Brugernavn) && !String.IsNullOrEmpty(Kodeord))
-                {
-                    erGodkendt = true;
-                    {
-                        if (Brugernavn == godkendt.Brugernavn && Kodeord == godkendt.Kodeord && Rolle == 2)
+                
+                    
+                        if (Brugernavn == godkendt.Brugernavn && Kodeord == godkendt.Kodeord && godkendt.Rolle == 2)
                         {
                             var frame = new Frame();
                             frame.Navigate(typeof(Kolonne), null);
                             Window.Current.Content = frame;
 
+
                         }
-                        else if (Brugernavn == godkendt.Brugernavn && Kodeord == godkendt.Kodeord && Rolle == 1)
+                        else if (Brugernavn == godkendt.Brugernavn && Kodeord == godkendt.Kodeord && godkendt.Rolle == 1)
                         {
                             var frame = new Frame();
-                            frame.Navigate(typeof(AdminPage), null);
+                            frame.Navigate(typeof(FluidApp.AdminPage), null);
                             Window.Current.Content = frame;
+
 
                         }
                         else
                         {
-                            ForkertKode = "Forkert Adgangskode! Prøv igen";
-                            Brugernavn = "";
-                            Kodeord = "";
+                           ForkertKode = "Forkert Adgangskode! Prøv igen";
+                           Brugernavn = "";
+                           Kodeord = "";
 
                         }
 
-                    }
 
 
-                }
+
+
 
 
 
