@@ -19,6 +19,7 @@ namespace FluidApp
     {
         #region Propeties
 
+        private int _rolle;
         private bool _erGodkendt;
         public bool erGodkendt
         {
@@ -62,6 +63,12 @@ namespace FluidApp
             get { return new RelayCommand(() => Login()); }
         }
 
+        public int Rolle
+        {
+            get { return _rolle; }
+            set { _rolle = value; }
+        }
+
 
         public void Login()
         {
@@ -73,14 +80,15 @@ namespace FluidApp
 
             foreach (var godkendt in admin.GetAll())
             {
+                Rolle = godkendt.Rolle;
                 
-                if (Brugernavn == godkendt.Brugernavn && Kodeord == godkendt.Kodeord)
+                if (Brugernavn == godkendt.Brugernavn && Kodeord == godkendt.Kodeord && Rolle > 1)
                 {
 
                     erGodkendt = true;
-                    //var frame = new Frame();
-                    //frame.Navigate(typeof(Kolonne), null);
-                    //Window.Current.Content = frame;
+                    var frame = new Frame();
+                    frame.Navigate(typeof(Kolonne), null);
+                    Window.Current.Content = frame;
 
                 }
             }
