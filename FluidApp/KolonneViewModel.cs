@@ -19,8 +19,8 @@ namespace FluidApp
     {
         public RelayCommand TilbageCommand { get; set; }
         public RelayCommand SorterCommand { get; set; }
+        public RelayCommand NavigerOpretSkemaCommand { get; set; }
         public ObservableCollection<Forside> _kolonneListe;
-
         public ObservableCollection<Forside> KolonneListe
         {
             get { return _kolonneListe; }
@@ -35,6 +35,7 @@ namespace FluidApp
         {
             TilbageCommand = new RelayCommand(Tilbage);
             SorterCommand = new RelayCommand(SortDatasets);
+            NavigerOpretSkemaCommand = new RelayCommand(OpretNytSkema);
             ipHandler h = new ipHandler();
 
             //If the IP isn't allowed -> send them to an error page
@@ -52,6 +53,13 @@ namespace FluidApp
         {
             var frame = new Frame();
             frame.Navigate(typeof(MainPage), null);
+            Window.Current.Content = frame;
+        }
+
+        public void OpretNytSkema()
+        {
+            var frame = new Frame();
+            frame.Navigate(typeof(OpretKolonne), null);
             Window.Current.Content = frame;
         }
 

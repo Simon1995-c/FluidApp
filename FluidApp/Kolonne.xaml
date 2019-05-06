@@ -24,7 +24,7 @@
                 <TextBlock FontSize="32" Text="Kolonne 2"></TextBlock>
             </Grid>
             <Grid Grid.Column="2" HorizontalAlignment="Right">
-                <Button Content="Opret nyt skema" Visibility="{Binding}" Command="{Binding}"></Button>
+                <Button Content="Opret nyt skema" Visibility="{Binding}" Command="{Binding NavigerOpretSkemaCommand}"></Button>
             </Grid>
         </Grid>
         
