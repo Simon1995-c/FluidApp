@@ -16,17 +16,40 @@
     <Page.Resources>
         <micro:BooleanToVisibilityConverter x:Key="BoolToVis" />
     </Page.Resources>
+    
+    
+
+    <Grid>
+        <Grid VerticalAlignment="Top" Background="DarkCyan" CornerRadius="0 0 8 8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Button Command="{Binding TilbageCommand}" Content="Tilbage"></Button>
+            </Grid>
+            <Grid Grid.Column="1" HorizontalAlignment="Center">
+                <TextBlock FontSize="32" Text="Kolonne 2"></TextBlock>
+            </Grid>
+            <Grid Grid.Column="2" HorizontalAlignment="Right">
+            </Grid>
+        </Grid>
+    <Grid/>
+
     <Grid>
 
-        <TextBlock FontSize="50" Text="Log ind" Margin="650,200,669,732" SelectionChanged="TextBlock_SelectionChanged"/>
-        <TextBlock Text="Operatører kan ikke login. Hvis du er en operatør, klik tilbage" Margin="550,263,538,710" FontFamily="Arial Black" Opacity="0.8" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBlock FontSize="50" Text="Log ind" Margin="650,200,669,732" SelectionChanged="TextBlock_SelectionChanged" HorizontalAlignment="Center"/>
+        <TextBlock Text="Operatører kan ikke login. Hvis du er en operatør, klik tilbage" Margin="550,263,538,710" FontFamily="Arial Black" Opacity="0.8" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
         <TextBlock Text="Brugernavn" FontSize="30" Margin="361,353,956,597" RenderTransformOrigin="0.472,0.585"/>
         <TextBlock Text="Kodeord" FontSize="30" Margin="361,423,956,527" RenderTransformOrigin="0.472,0.585" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         <TextBox VerticalAlignment="Top" Height="50" Margin="550,353,435,0" HorizontalAlignment="Stretch" Text="{Binding Brugernavn, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <TextBox VerticalAlignment="Top" Height="50" Margin="550,413,435,0" Text="{Binding Kodeord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <Button Content="Login" HorizontalAlignment="Left" Margin="980,500,0,0" VerticalAlignment="Top" Width="85" Height="43" Command="{Binding LoginCommand}"></Button>
+        
 
 
+    </Grid></Grid>
 
-    </Grid>
+
 </Page>
