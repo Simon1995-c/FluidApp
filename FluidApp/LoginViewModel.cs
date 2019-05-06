@@ -21,6 +21,7 @@ namespace FluidApp
 
         private int _rolle;
         private bool _erGodkendt;
+        private string _forkertKode;
         public bool erGodkendt
         {
             get { return _erGodkendt; }
@@ -77,6 +78,12 @@ namespace FluidApp
             get { return new RelayCommand(() => Tilbage());}
         }
 
+        public string ForkertKode
+        {
+            get { return _forkertKode; }
+            set { _forkertKode = value; }
+        }
+
         #endregion
 
 
@@ -90,7 +97,7 @@ namespace FluidApp
 
         public void Login()
         {
-            //TODO check username and password vs database here.
+            // checking username and password vs database here.
 
             Administrator admin = new Administrator();
 
@@ -108,6 +115,16 @@ namespace FluidApp
                     frame.Navigate(typeof(Kolonne), null);
                     Window.Current.Content = frame;
 
+                }
+                else if(Brugernavn == godkendt.Brugernavn && Kodeord == godkendt.Kodeord && Rolle == 1)
+                {
+                    var frame = new Frame();
+                    frame.Navigate(typeof(AdminPage), null);
+                    Window.Current.Content = frame;
+                }
+                else
+                {
+                    ForkertKode = "Forkert Adgangskode!";
                 }
             }
 
