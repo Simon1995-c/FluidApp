@@ -14,7 +14,7 @@ using Models;
 
 namespace FluidApp
 {
-    class OpretKolonneViewModel
+    class OpretKolonneViewModel : INotifyPropertyChanged
     {
         public int FærdigvareNr { get; set; }
         public int ProcessordreNr { get; set; }
@@ -24,10 +24,14 @@ namespace FluidApp
         public RelayCommand Tilbage { get; set; }
         public RelayCommand Opret { get; set; }
 
+        public Visibility ErrorVisibility { get; set; }
+
         public OpretKolonneViewModel()
         {
             Tilbage = new RelayCommand(TilbageFunc);
             Opret = new RelayCommand(OpretFunc);
+
+            ErrorVisibility = Visibility.Collapsed;
         }
 
         private void TilbageFunc()
@@ -45,20 +49,36 @@ namespace FluidApp
             List<Kolonne2> allk2 = k2.GetAll();
             int lastK2Id = allk2[allk2.Count - 1].ID;
 
-            //Opret forside med ID fra kolonne 2 der lige er blevet oprettet
-            Forside fors = new Forside()
+            //Tjekker om de er tal og at de ikke er = 0
+            if (Int32.TryParse(FærdigvareNr.ToString(), out int val1) &&
+                Int32.TryParse(ProcessordreNr.ToString(), out int val2) && FærdigvareNr != 0 && ProcessordreNr != 0)
             {
-                FK_Kolonne = lastK2Id,
-                FærdigvareNr = FærdigvareNr,
-                FærdigvareNavn = Færdigvarenavn,
-                ProcessordreNr = ProcessordreNr,
-                Produktionsinitialer = Produktionsinitialer,
-                Dato = DateTime.Now
-            };
+                //Opret forside med ID fra kolonne 2 der lige er blevet oprettet
+                Forside fors = new Forside()
+                {
+                    FK_Kolonne = lastK2Id,
+                    FærdigvareNr = FærdigvareNr,
+                    FærdigvareNavn = Færdigvarenavn,
+                    ProcessordreNr = ProcessordreNr,
+                    Produktionsinitialer = Produktionsinitialer,
+                    Dato = DateTime.Now
+                };
+                fors.Post(fors);
+                TilbageFunc();
+            }
+            else
+            {
+                ErrorVisibility = Visibility.Visible;
+                OnPropertyChanged(nameof(ErrorVisibility));
+            }
+        }
 
-            fors.Post(fors);
+        public event PropertyChangedEventHandler PropertyChanged;
 
-            TilbageFunc();
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

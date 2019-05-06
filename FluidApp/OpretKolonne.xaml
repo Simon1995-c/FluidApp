@@ -41,6 +41,7 @@
                 </StackPanel>
                 <StackPanel Margin="0 40 0 0">
                     <Button Command="{Binding Opret}" Foreground="#ffffff" Background="DarkCyan" Padding="10 5" Content="Opret Skema" HorizontalAlignment="Right"/>
+                    <TextBlock Foreground="Red" Visibility="{Binding ErrorVisibility}">Fejl. Du har indtastet forkert information.</TextBlock>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
