@@ -55,18 +55,36 @@ namespace FluidApp
             }
         }
 
+        public int Rolle
+        {
+            get { return _rolle; }
+            set { _rolle = value; }
+        }
+
         #endregion
 
+
+
+        #region ICommand Execute
 
         public ICommand LoginCommand
         {
             get { return new RelayCommand(() => Login()); }
         }
 
-        public int Rolle
+        public ICommand TilbageCommand
         {
-            get { return _rolle; }
-            set { _rolle = value; }
+            get { return new RelayCommand(() => Tilbage());}
+        }
+
+        #endregion
+
+
+        public void Tilbage()
+        {
+            var frame = new Frame();
+            frame.Navigate(typeof(MainPage), null);
+            Window.Current.Content = frame;
         }
 
 
@@ -76,16 +94,16 @@ namespace FluidApp
 
             Administrator admin = new Administrator();
 
-            // Brugernavn == "Test" && Kodeord == "Test kodeord")
 
             foreach (var godkendt in admin.GetAll())
             {
                 Rolle = godkendt.Rolle;
-                
-                if (Brugernavn == godkendt.Brugernavn && Kodeord == godkendt.Kodeord && Rolle > 1)
-                {
 
+                if (!String.IsNullOrEmpty(Brugernavn) && !String.IsNullOrEmpty(Kodeord))
                     erGodkendt = true;
+
+                if (Brugernavn == godkendt.Brugernavn && Kodeord == godkendt.Kodeord && Rolle == 2)
+                {
                     var frame = new Frame();
                     frame.Navigate(typeof(Kolonne), null);
                     Window.Current.Content = frame;
@@ -94,13 +112,11 @@ namespace FluidApp
             }
 
             
-            if (!String.IsNullOrEmpty(Brugernavn) && !String.IsNullOrEmpty(Kodeord))
-                erGodkendt = true;
+            
         }
 
-        
 
-        #region MyRegion
+        #region PropertyChangedEventHandler
 
         public event PropertyChangedEventHandler PropertyChanged;
 
