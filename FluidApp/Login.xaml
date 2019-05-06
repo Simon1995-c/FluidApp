@@ -16,8 +16,8 @@
     <Page.Resources>
         <micro:BooleanToVisibilityConverter x:Key="BoolToVis" />
     </Page.Resources>
-    
-    
+
+
 
     <Grid>
         <Grid VerticalAlignment="Top" Background="DarkCyan" CornerRadius="0 0 8 8">
@@ -35,21 +35,23 @@
             <Grid Grid.Column="2" HorizontalAlignment="Right">
             </Grid>
         </Grid>
-    <Grid/>
+        <Grid/>
 
-    <Grid>
+        <Grid>
 
-        <TextBlock FontSize="50" Text="Log ind" Margin="650,200,669,732" SelectionChanged="TextBlock_SelectionChanged" HorizontalAlignment="Center"/>
-        <TextBlock Text="Operatører kan ikke login. Hvis du er en operatør, klik tilbage" Margin="550,263,538,710" FontFamily="Arial Black" Opacity="0.8" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
-        <TextBlock Text="Brugernavn" FontSize="30" Margin="361,353,956,597" RenderTransformOrigin="0.472,0.585"/>
-        <TextBlock Text="Kodeord" FontSize="30" Margin="361,423,956,527" RenderTransformOrigin="0.472,0.585" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <TextBox VerticalAlignment="Top" Height="50" Margin="550,353,435,0" HorizontalAlignment="Stretch" Text="{Binding Brugernavn, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox VerticalAlignment="Top" Height="50" Margin="550,413,435,0" Text="{Binding Kodeord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-        <Button Content="Login" HorizontalAlignment="Left" Margin="980,500,0,0" VerticalAlignment="Top" Width="85" Height="43" Command="{Binding LoginCommand}"></Button>
-        
+            <TextBlock FontSize="50" Text="Log ind" Margin="650,200,669,732" SelectionChanged="TextBlock_SelectionChanged" HorizontalAlignment="Center"/>
+            <TextBlock Text="Operatører kan ikke login. Hvis du er en operatør, klik tilbage" Margin="550,263,538,710" FontFamily="Arial Black" Opacity="0.8" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
+            <TextBlock Text="Brugernavn" FontSize="30" Margin="361,353,956,597" RenderTransformOrigin="0.472,0.585"/>
+            <TextBlock Text="Kodeord" FontSize="30" Margin="361,423,956,527" RenderTransformOrigin="0.472,0.585" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <TextBox VerticalAlignment="Top" Height="50" Margin="550,353,435,0" HorizontalAlignment="Stretch" Text="{Binding Brugernavn, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <PasswordBox VerticalAlignment="Top" Height="50" Margin="550,413,435,0" Password="{Binding Kodeord, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Content="Login" HorizontalAlignment="Left" Foreground="#212121" Background="#dddddd" Padding="10 5" Margin="980,0,0,0" VerticalAlignment="Center" Width="85" Height="43" Command="{Binding LoginCommand}"></Button>
+            <TextBlock Text="{Binding ForkertKode}" FontStyle="Normal" HorizontalAlignment="Left" Width="572" Margin="513,554,0,0" VerticalAlignment="Top" Height="68" FocusVisualPrimaryBrush="#FFF30B0B" FocusVisualSecondaryBrush="#99E80C0C" FontSize="30"/>
 
 
-    </Grid></Grid>
+
+        </Grid>
+    </Grid>
 
 
 </Page>
