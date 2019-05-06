@@ -11,45 +11,38 @@
     <Page.DataContext>
         <local:OpretKolonneViewModel/>
     </Page.DataContext>
-
     <Grid>
-        <StackPanel Orientation="Vertical" Margin="221,200,275,347" HorizontalAlignment="Center">
-            <Border BorderThickness="1" BorderBrush="Black" CornerRadius="15" Padding="3 3"
-                    HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,150" Background="#FFC0B5B5">
-                <Button Content="Tilbage" BorderThickness="0" Background="#FFC0B5B5"/>
-            </Border>
-            <TextBlock TextAlignment="Center" FontWeight="Bold" FontSize="36" Height="125" HorizontalAlignment="Center" VerticalAlignment="Center"><Run Text="Opret Kolonne"/></TextBlock>
-            <StackPanel Margin="0,0,10,0" Height="251">
-                <StackPanel Orientation="Horizontal"  Height="85" Width="992" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-
-                    <Border BorderThickness="1" BorderBrush="Black" CornerRadius="10" Padding="56 10"
-                            HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Background="#FFC0B5B5">
-                        <TextBox Text="Indsæt" BorderThickness="0" Background="#FFC0B5B5"/>
-                    </Border>
-                    <Border BorderThickness="1" BorderBrush="Black" CornerRadius="10" Padding="56 10"
-                            HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Background="#FFC0B5B5">
-                        <TextBox Text="Indsæt" BorderThickness="0" Background="#FFC0B5B5"/>
-                    </Border>
-                    <Border BorderThickness="1" BorderBrush="Black" CornerRadius="10" Padding="56 10"
-                            HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Background="#FFC0B5B5">
-                        <TextBox Text="Indsæt" BorderThickness="0" Background="#FFC0B5B5"/>
-                    </Border>
-                    <Border BorderThickness="1" BorderBrush="Black" CornerRadius="10" Padding="56 10"
-                            HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Background="#FFC0B5B5">
-                        <TextBox Text="Indsæt" BorderThickness="0" Background="#FFC0B5B5"/>
-                    </Border>
-                    <Border BorderThickness="1" BorderBrush="Black" CornerRadius="10" Padding="55 10"
-                            HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Background="#FFC0B5B5">
-                        <TextBox Text="Indsæt" BorderThickness="0" Background="#FFC0B5B5"/>
-                    </Border>
-
-
+        <Grid VerticalAlignment="Top" Background="DarkCyan" Padding="15 25">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Button Command="{Binding Tilbage}" Content="Tilbage" Foreground="White"></Button>
+            </Grid>
+            <Grid Grid.Column="1" HorizontalAlignment="Center">
+                <TextBlock Foreground="White" FontSize="26" Text="Opret Skema"></TextBlock>
+            </Grid>
+        </Grid>
+        <StackPanel Margin="0 150 0 0">
+            <StackPanel Width="990">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Width="240" Margin="5">Færdigvare nummer</TextBlock>
+                    <TextBlock Width="240" Margin="5">Færdigvare navn</TextBlock>
+                    <TextBlock Width="240" Margin="5">Processordre Nummer</TextBlock>
+                    <TextBlock Width="240" Margin="5">Produktionsinitialer</TextBlock>
                 </StackPanel>
-                <StackPanel Margin="5,0,5,0" Height="43" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    <Button Foreground="#212121" Background="#dddddd" Padding="10 5" Margin="0,0,10,0" Content="Opret" HorizontalAlignment="Right" Click="Button_Click" RenderTransformOrigin="-0.16,0.576"/>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBox Text="{Binding FærdigvareNr, Mode=TwoWay}" Background="#dfdfdf" Width="240" Margin="5" Padding="10"/>
+                    <TextBox Text="{Binding Færdigvarenavn, Mode=TwoWay}" Background="#dfdfdf" Width="240" Margin="5" Padding="10"/>
+                    <TextBox Text="{Binding ProcessordreNr, Mode=TwoWay}" Background="#dfdfdf" Width="240" Margin="5" Padding="10"/>
+                    <TextBox Text="{Binding Produktionsinitialer, Mode=TwoWay}" Background="#dfdfdf" Width="240" Margin="5" Padding="10"/>
+                </StackPanel>
+                <StackPanel Margin="0 40 0 0">
+                    <Button Command="{Binding Opret}" Foreground="#ffffff" Background="DarkCyan" Padding="10 5" Content="Opret Skema" HorizontalAlignment="Right"/>
                 </StackPanel>
             </StackPanel>
-
         </StackPanel>
     </Grid>
 </Page>
