@@ -30,7 +30,7 @@
         
         <StackPanel Orientation="Vertical" VerticalAlignment="Center" Padding="50">
             <Grid Padding="10">
-                <!--2x2 grid-->
+                <!--4x4 grid-->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="8*"/>
                     <ColumnDefinition Width="2*"/>
@@ -44,7 +44,7 @@
                 </Grid>
                 <Grid Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right">
                     <Border CornerRadius="9">
-                        <Button Content="Sortér" Command="{Binding SorterCommand}"></Button>
+                        <Button Content="Seneste uge"></Button>
                     </Border>
                 </Grid>
                 <!--To ListViews for ellers virkede horizontalalignment ikke-->
