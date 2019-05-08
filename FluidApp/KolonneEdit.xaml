@@ -126,7 +126,10 @@
                     </GridView>
                 </ListView>
             </Grid>
-            <Grid Row="1" Margin="0 50 0 0">
+
+
+
+            <Grid Row="1"  Margin="0 50 0 0">
                 <GridView Width="1030" Header="Indtast ny data:" SelectionMode="None">
                     <StackPanel Orientation="Vertical" Width="190" Height="85" Margin="5">
                         <TextBlock Text="Klokkeslæt}"></TextBlock>
@@ -182,12 +185,141 @@
             </Grid>
         </Grid>
 
-        <GridView Name="Kontrolregistrering" Visibility="{Binding RegVis}">
-            <StackPanel Orientation="Vertical" Width="190">
-                <TextBlock Text="Sign. operatør" ></TextBlock>
-                <TextBox Text="{Binding Skema.Signatur}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
-            </StackPanel>
-        </GridView>
+       
+
+        <Grid Name="KontrolRegistrering" Visibility="{Binding RegVis}" VerticalAlignment="Top" Margin="0 100 0 0" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Row="0" Background="Gray">
+                <ListView SelectionMode="None">
+                    <GridView Height="70" Width="1200" SelectionMode="None">
+                        <StackPanel Width="115" Height="55" BorderBrush="Black" BorderThickness="1">
+                            <TextBlock Text="Klokkeslæt" Margin="0 15 0 0" HorizontalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                        <StackPanel  Width="115" Height="55" BorderBrush="Black" BorderThickness="1">
+                            <TextBlock Text="Færdigvarer Nr" Margin="0 15 0 0" HorizontalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                        <StackPanel  Width="115" Height="55" BorderBrush="Black" BorderThickness="1">
+                            <TextBlock Text="Produktionsdato" Margin="0 15 0 0" HorizontalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Width="115" Height="55" BorderBrush="Black" BorderThickness="1">
+                            <TextBlock Text="Holdbarhedsdato" Margin="0 15 0 0" HorizontalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Width="115" Height="55" BorderBrush="Black" BorderThickness="1">
+                            <TextBlock Text="Kommentar" Margin="0 15 0 0" HorizontalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Width="115" Height="55" BorderBrush="Black" BorderThickness="1">
+                            <TextBlock Text="Sprit Kontrol" Margin="0 15 0 0" HorizontalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Width="115" Height="55" BorderBrush="Black" BorderThickness="1">
+                            <TextBlock Text="Hættenummer" Margin="0 15 0 0" HorizontalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                        <StackPanel  Width="115" Height="55" BorderBrush="Black" BorderThickness="1">
+                            <TextBlock Text="Etiketenummer" Margin="0 15 0 0" HorizontalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                        <StackPanel  Width="115" Height="55" BorderBrush="Black" BorderThickness="1">
+                            <TextBlock Text="Fustage" Margin="0 15 0 0" HorizontalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                        <StackPanel  Width="115" Height="55" BorderBrush="Black" BorderThickness="1">
+                            <TextBlock Text="Sign. Operatør" Margin="0 15 0 0" HorizontalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                    </GridView>
+                    <GridView Width="1200" SelectionMode="None" HorizontalAlignment="Center">
+                        <TextBlock Text="{Binding Udsnit1[0].Klokkeslæt}" Width="115" Padding="30 0 0 0"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[0].FærdigvareNr}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[0].Produktionsdato}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[0].Holdbarhedsdato}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[0].Kommentar}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[0].Spritkontrol}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[0].HætteNr}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[0].EtiketNr}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[0].Fustage}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[0].Signatur}"></TextBlock>
+                    </GridView>
+                    <GridView Width="1200" SelectionMode="None" HorizontalAlignment="Center">
+                        <TextBlock Text="{Binding Udsnit1[1].Klokkeslæt}" Width="115" Padding="30 0 0 0"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[1].FærdigvareNr}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[1].Produktionsdato}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[1].Holdbarhedsdato}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[1].Kommentar}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[0].Spritkontrol}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[1].HætteNr}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[1].EtiketNr}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[1].Fustage}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[1].Signatur}"></TextBlock>
+                    </GridView>
+                    <GridView  Width="1200" SelectionMode="None" HorizontalAlignment="Center">
+                        <TextBlock Text="{Binding Udsnit1[2].Klokkeslæt}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[2].FærdigvareNr}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[2].Produktionsdato}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[2].Holdbarhedsdato}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[2].Kommentar}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[2].Spritkontrol}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[2].HætteNr}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[2].EtiketNr}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[2].Fustage}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit1[2].Signatur}"></TextBlock>
+                    </GridView>
+                </ListView>
+            </Grid>
+            <Grid Row="1" Margin="0 0 0 0">
+                <GridView Width="1030" SelectionMode="None">
+                    <StackPanel Orientation="Vertical" Width="190">
+                        <TextBlock Text="Klokkeslæt"></TextBlock>
+                        <TextBlock Text="Skriv Klokkeslæt" FontSize="8"></TextBlock>
+                        <TextBox Text="{Binding Skema1.Klokkeslæt, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Indsæt her" Margin="0 0 0 0"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="190" >
+                        <TextBlock Text="Færdigevarenummer"></TextBlock>
+                        <TextBlock Text="Skriv Færdigvarenummer" FontSize="8"></TextBlock>
+                        <TextBox Text="{Binding Skema1.FærdigevareNr}" PlaceholderText="Indsæt her" Margin="0 0 0 0"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="190">
+                        <TextBlock Text="Produktionsdato" ></TextBlock>
+                        <TextBlock Text="Skriv Dato For Produktion" FontSize="8"></TextBlock>
+                        <TextBox Text="{Binding Skema1.Produktionsdato}" PlaceholderText="Indsæt her" Margin="0 0 0 0"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="190">
+                        <TextBlock Text="Holdbarhedsdato" ></TextBlock>
+                        <TextBlock Text="Skriv Dato For Holbarhed" FontSize="8"></TextBlock>
+                        <TextBox Text="{Binding Skema1.Holdbarhedsdato}" PlaceholderText="Indsæt her" Margin="0 0 0 0"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="190">
+                        <TextBlock Text="Kommentar"></TextBlock>
+                        <TextBlock Text="Evt. Kommentarer" FontSize="8"></TextBlock>
+                        <TextBox Text="{Binding Skema1.Kommentar}" PlaceholderText="Indsæt her" Margin="0 0 0 0"></TextBox>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Width="190">
+                        <TextBlock Text="Hættenummer"></TextBlock>
+                        <TextBlock Text="Skriv Hættenummer" FontSize="8"></TextBlock>
+                        <TextBox Text="{Binding Skema1.HætteNr}" PlaceholderText="Indsæt her" Margin="0 0 0 0"></TextBox>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Width="190">
+                        <TextBlock Text="Etiketenummer" ></TextBlock>
+                        <TextBlock Text="Skriv Etiketenummer" FontSize="8"></TextBlock>
+                        <TextBox Text="{Binding Skema1.EtikeNr}" PlaceholderText="Indsæt her" Margin="0 0 0 0"></TextBox>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="190">
+                        <TextBlock Text="Fustage"></TextBlock>
+                        <TextBlock Text="25L / 30L" FontSize="8"></TextBlock>
+                        <TextBox Text="{Binding Skema1.Fustage}" PlaceholderText="Indsæt her" Margin="0 0 0 0"></TextBox>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="190">
+                        <TextBlock Text="Signatur"></TextBlock>
+                        <TextBlock Text="Underskriv Med Inititialer" FontSize="8"></TextBlock>
+                        <TextBox Text="{Binding Skema1.Signatur}" PlaceholderText="Indsæt her" Margin="0 0 0 0"></TextBox>
+                    </StackPanel>
+                </GridView>
+            </Grid>
+        </Grid>
+
+
 
         <Grid VerticalAlignment="Bottom">
             <Grid VerticalAlignment="Bottom">
