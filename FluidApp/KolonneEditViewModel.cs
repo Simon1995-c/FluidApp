@@ -28,6 +28,7 @@ namespace FluidApp
         private bool _skemaVis;
         private bool _regVis;
         private bool _seddelVis;
+        public ObservableCollection<Kontrolregistrering> Udsnit1 { get; set; }
 
         public bool SkemaVis
         {
@@ -106,7 +107,10 @@ namespace FluidApp
             TilbageCommand = new RelayCommand(Tilbage);
             ArkCommand = new RelayCommand<string>(VisArk);
             GemCommand = new RelayCommand(GemData);
+            Registrering = new Kontrolregistrering();
             NytSkema = new KontrolSkema()
+
+
             {
                 FK_Kolonne = 8,
                 Klokkeslæt = DateTime.Now,
@@ -120,6 +124,7 @@ namespace FluidApp
             };
 
             Udsnit = GetUdsnit();
+            Udsnit1 = GetUdsnit1();
             VisArk("0");
         }
 
@@ -185,6 +190,25 @@ namespace FluidApp
             }
             Debug.WriteLine(udsnit.Count);
             return udsnit;
+        }
+
+        public ObservableCollection<Kontrolregistrering> GetUdsnit1()
+        {
+            ObservableCollection<Kontrolregistrering> udsnit1 = new ObservableCollection<Kontrolregistrering>();
+            Kontrolregistrering tempSkema1 = new Kontrolregistrering();
+
+            foreach (var skema1 in tempSkema1.GetAll())
+            {
+                udsnit1.Add(skema1);
+            }
+
+            udsnit1 = new ObservableCollection<Kontrolregistrering>(udsnit1.OrderByDescending(e => e.ID));
+
+            for (int i = 0; i < udsnit1.Count; i++)
+            {
+                if (i > 2) udsnit1.RemoveAt(i);
+            }
+            return udsnit1;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
