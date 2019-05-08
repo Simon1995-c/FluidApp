@@ -1,5 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml;
@@ -14,10 +16,15 @@ namespace FluidApp
     {
         public RelayCommand TilbageCommand { get; set; }
         public RelayCommand<string> ArkCommand { get; set; }
-        public KontrolSkema NytSkema { get; set; }
+        public RelayCommand GemCommand { get; set; }
+        private KontrolSkema _nytSkema;
         public Kontrolregistrering Registrering { get; set; }
         public Produktionsfølgeseddel Seddel { get; set; }
-        public ObservableCollection<KontrolSkema> Udsnit { get; set; }
+        private ObservableCollection<KontrolSkema> _udsnit;
+        private string _msKontrol;
+        private string _ludKontrol;
+        public bool BoolMS { get; set; }
+        public bool BoolLud { get; set; }
         private bool _skemaVis;
         private bool _regVis;
         private bool _seddelVis;
@@ -52,11 +59,65 @@ namespace FluidApp
             }
         }
 
+        public KontrolSkema NytSkema
+        {
+            get { return _nytSkema; }
+            set
+            {
+                _nytSkema = value; 
+                OnPropertyChanged();
+            }
+        }
+
+        public ObservableCollection<KontrolSkema> Udsnit
+        {
+            get { return _udsnit; }
+            set
+            {
+                _udsnit = value; 
+                OnPropertyChanged();
+            }
+        }
+
+        public string MSKontrol
+        {
+            get { return _msKontrol; }
+            set
+            {
+                _msKontrol = value;
+                if (_msKontrol == "OK") BoolMS = true;
+                else BoolMS = false;
+            }
+        }
+
+        public string LudKontrol
+        {
+            get { return _ludKontrol; }
+            set
+            {
+                _ludKontrol = value;
+                if (_ludKontrol == "OK") BoolLud = true;
+                else BoolLud = false;
+            }
+        }
+
         public KolonneEditViewModel()
         {
             TilbageCommand = new RelayCommand(Tilbage);
             ArkCommand = new RelayCommand<string>(VisArk);
-            NytSkema = new KontrolSkema();
+            GemCommand = new RelayCommand(GemData);
+            NytSkema = new KontrolSkema()
+            {
+                FK_Kolonne = 8,
+                Klokkeslæt = DateTime.Now,
+                Ludkoncetration = 1.5,
+                Fustage = "Test",
+                Kvittering = 1,
+                mS = 1.5,
+                LudKontrol = true,
+                Signatur = "Test",
+                mSKontrol = true,
+            };
 
             Udsnit = GetUdsnit();
             VisArk("0");
@@ -96,6 +157,15 @@ namespace FluidApp
             }
         }
 
+        public void GemData()
+        {
+            NytSkema.LudKontrol = BoolLud;
+            NytSkema.mSKontrol = BoolMS;
+            NytSkema.Post(NytSkema);
+            NytSkema = new KontrolSkema() {FK_Kolonne = 8};
+            Udsnit = GetUdsnit();
+        }
+
         public ObservableCollection<KontrolSkema> GetUdsnit()
         {
             ObservableCollection<KontrolSkema> udsnit = new ObservableCollection<KontrolSkema>();
@@ -107,11 +177,13 @@ namespace FluidApp
             }
 
             udsnit = new ObservableCollection<KontrolSkema>(udsnit.OrderByDescending(e => e.ID));
+            int udsnitSize = udsnit.Count;
 
-            for (int i = 0; i < udsnit.Count; i++)
+            for (int i = 0; i < udsnitSize; i++)
             {
-                if (i > 2) udsnit.RemoveAt(i);
+                if (i > 2) udsnit.RemoveAt(3);
             }
+            Debug.WriteLine(udsnit.Count);
             return udsnit;
         }
 

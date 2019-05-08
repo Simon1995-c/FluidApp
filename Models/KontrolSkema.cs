@@ -11,19 +11,52 @@ namespace Models
     {
         public int ID { get; set; }
         public int FK_Kolonne { get; set; }
-        public DateTime Klokkeslæt { get; set; }
+        private DateTime _klokkeslæt;
         public double Ludkoncetration { get; set; }
         public string Fustage { get; set; }
         public int Kvittering { get; set; }
         public double mS { get; set; }
-        public bool LudKontrol { get; set; }
+        private bool _ludKontrol;
         public string Signatur { get; set; }
-        public bool mSKontrol { get; set; }
+        private bool _mSKontrol;
         public double Vægt { get; set; }
+        public string FormattedTime { get; set; }
+        public string FormattedLud { get; set; }
+        public string FormattedmS { get; set; }
 
+        public DateTime Klokkeslæt
+        {
+            get { return _klokkeslæt; }
+            set
+            {
+                _klokkeslæt = value;
+                FormattedTime = Klokkeslæt.TimeOfDay.ToString("hh\\:mm");
+            }
+        }
+
+        public bool LudKontrol
+        {
+            get { return _ludKontrol; }
+            set
+            {
+                _ludKontrol = value;
+                if (_ludKontrol) FormattedLud = "OK";
+                else FormattedLud = "IKKE OK";
+            }
+        }
+
+        public bool mSKontrol
+        {
+            get { return _mSKontrol; }
+            set
+            {
+                _mSKontrol = value;
+                if (_mSKontrol) FormattedmS = "OK";
+                else FormattedmS = "IKKE OK";
+            }
+        }
 
         public const string URI = "https://restapi20190501124159.azurewebsites.net/api/Kontrolskemas";
-
 
         public List<KontrolSkema> GetAll()
         {
