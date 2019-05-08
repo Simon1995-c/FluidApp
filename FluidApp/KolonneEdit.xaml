@@ -1,4 +1,5 @@
 ﻿<Page
+    Name="kolonneEdit"
     x:Class="FluidApp.KolonneEdit"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -49,7 +50,7 @@
                             <ColumnDefinition Width="125"></ColumnDefinition>
                             <ColumnDefinition Width="125"></ColumnDefinition>
                             <ColumnDefinition Width="125"></ColumnDefinition>
-                            <ColumnDefinition Width="125"></ColumnDefinition>
+                            <ColumnDefinition Width="110"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid Column="0" BorderBrush="Black" BorderThickness="1" Padding="5 0 0 0">
                             <TextBlock Text="Klokkeslæt" Margin="0 15 0 0"></TextBlock>
@@ -107,85 +108,84 @@
                             </StackPanel>
                         </Grid>
                     </Grid>
-                    <GridView ItemsSource="{Binding Udsnit}" Width="1200" SelectionMode="None" HorizontalAlignment="Center">
-                        <GridView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Text="{Binding FormattedTime}" Width="125"></TextBlock>
-                                    <TextBlock Text="{Binding Vægt}" Width="125"></TextBlock>
-                                    <TextBlock Text="{Binding Kvittering}" Width="125"></TextBlock>
-                                    <TextBlock Text="{Binding Fustage}" Width="125"></TextBlock>
-                                    <TextBlock Text="{Binding Ludkoncetration}" Width="125"></TextBlock>
-                                    <TextBlock Text="{Binding FormattedLud}" Width="125"></TextBlock>
-                                    <TextBlock Text="{Binding mS}" Width="125"></TextBlock>
-                                    <TextBlock Text="{Binding FormattedmS}" Width="125"></TextBlock>
-                                    <TextBlock Text="{Binding Signatur}" Width="125"></TextBlock>
-                                </StackPanel>
-                            </DataTemplate>
-                        </GridView.ItemTemplate>
-                    </GridView>
+                    <ScrollViewer Height="150" VerticalScrollBarVisibility="Visible">
+                        <ListView ItemsSource="{Binding SkemaUdsnit}" Width="1200" HorizontalAlignment="Center">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" >
+                                        <TextBlock Text="{Binding FormattedTime}" Width="125"></TextBlock>
+                                        <TextBlock Text="{Binding Vægt}" Width="125"></TextBlock>
+                                        <TextBlock Text="{Binding Kvittering}" Width="125"></TextBlock>
+                                        <TextBlock Text="{Binding Fustage}" Width="125"></TextBlock>
+                                        <TextBlock Text="{Binding Ludkoncetration}" Width="125"></TextBlock>
+                                        <TextBlock Text="{Binding FormattedLud}" Width="125"></TextBlock>
+                                        <TextBlock Text="{Binding mS}" Width="125"></TextBlock>
+                                        <TextBlock Text="{Binding FormattedmS}" Width="125"></TextBlock>
+                                        <TextBlock Text="{Binding Signatur}" Width="110"></TextBlock>
+                                        <Button Content="Rediger" FontSize="12" Command="{Binding ElementName=kolonneEdit, Path=DataContext.RedigerCommand}" CommandParameter="{Binding ID}"></Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </ScrollViewer>
                 </ListView>
             </Grid>
-
-
 
             <Grid Row="1"  Margin="0 50 0 0">
                 <GridView Width="1030" Header="Indtast ny data:" SelectionMode="None">
                     <StackPanel Orientation="Vertical" Width="190" Height="85" Margin="5">
-                        <TextBlock Text="Klokkeslæt}"></TextBlock>
-                        <TextBox Text="{Binding NytSkema.Klokkeslæt}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                        <TextBlock Text="Klokkeslæt"></TextBlock>
+                        <TextBox Text="{Binding Klokkeslæt, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Width="190">
                         <TextBlock Text="Vægt"></TextBlock>
                         <TextBlock Text="30L Fust. Min. 38,5kg." FontSize="12"></TextBlock>
                         <TextBlock Text="25L Fust. Min. 37,0kg." FontSize="12"></TextBlock>
-                        <TextBox Text="{Binding NytSkema.Vægt}" PlaceholderText="Indsæt her"></TextBox>
+                        <TextBox Text="{Binding Vægt, Mode=TwoWay}" PlaceholderText="Indsæt her"></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Width="190">
                         <TextBlock Text="Kvittering for udtaget prøve" ></TextBlock>
-                        <TextBox Text="{Binding NytSkema.Kvittering}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                        <TextBox Text="{Binding Kvittering, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Width="190">
                         <TextBlock Text="Kontrol af testfustage" ></TextBlock>
-                        <TextBox Text="{Binding NytSkema.Fustage}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                        <TextBox Text="{Binding Fustage, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Width="190">
                         <TextBlock Text="Ludkoncentration"></TextBlock>
                         <TextBlock Text="Min. 1%" FontSize="12"></TextBlock>
                         <TextBlock Text="Max. 2%" FontSize="12"></TextBlock>
-                        <TextBox  Text="{Binding NytSkema.Ludkoncetration, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Indsæt her"></TextBox>
+                        <TextBox  Text="{Binding Ludkoncetration, Mode=TwoWay}" PlaceholderText="Indsæt her"></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Width="190">
                         <TextBlock Text="Ludkoncentration" ></TextBlock>
                         <TextBlock Text="OK/IKKE OK" FontSize="12"></TextBlock>
-                        <ComboBox SelectedItem="{Binding LudKontrol}" PlaceholderText="Vælg" Margin="0 17 0 0" Width="190">
-                            <ComboBoxItem Content="OK"/>
-                            <ComboBoxItem Content="IKKE OK"></ComboBoxItem>
+                        <ComboBox SelectedItem="{Binding LudKontrol, Mode=TwoWay}" PlaceholderText="Vælg" Margin="0 17 0 0" Width="190">
+                            <ComboBoxItem Content="true"/>
+                            <ComboBoxItem Content="false"></ComboBoxItem>
                         </ComboBox>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Width="190">
                         <TextBlock Text="Mip MA"></TextBlock>
                         <TextBlock Text="Min. 24 mS" FontSize="12"></TextBlock>
                         <TextBlock Text="Max. 26,5 mS" FontSize="12"></TextBlock>
-                        <TextBox Text="{Binding NytSkema.mS}" PlaceholderText="Indsæt her"></TextBox>
+                        <TextBox Text="{Binding MS, Mode=TwoWay}" PlaceholderText="Indsæt her"></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Width="190">
                         <TextBlock Text="Mip MA" ></TextBlock>
                         <TextBlock Text="OK/IKKE OK" FontSize="12"></TextBlock>
-                        <ComboBox SelectedItem="{Binding MSKontrol}" PlaceholderText="Vælg" Margin="0 17 0 0" Width="190">
-                            <ComboBoxItem Content="OK"/>
-                            <ComboBoxItem Content="IKKE OK"></ComboBoxItem>
+                        <ComboBox SelectedItem="{Binding MSKontrol, Mode=TwoWay}" PlaceholderText="Vælg" Margin="0 17 0 0" Width="190">
+                            <ComboBoxItem Content="true"/>
+                            <ComboBoxItem Content="false"></ComboBoxItem>
                         </ComboBox>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Width="190">
                         <TextBlock Text="Sign. operatør" ></TextBlock>
-                        <TextBox Text="{Binding NytSkema.Signatur}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                        <TextBox Text="{Binding Signatur, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
                     </StackPanel>
                 </GridView>
             </Grid>
         </Grid>
-
-       
 
         <Grid Name="KontrolRegistrering" Visibility="{Binding RegVis}" VerticalAlignment="Top" Margin="0 100 0 0" HorizontalAlignment="Center">
             <Grid.RowDefinitions>
@@ -227,40 +227,40 @@
                         </StackPanel>
                     </GridView>
                     <GridView Width="1200" SelectionMode="None" HorizontalAlignment="Center">
-                        <TextBlock Text="{Binding Udsnit1[0].Klokkeslæt}" Width="115" Padding="30 0 0 0"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[0].FærdigvareNr}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[0].Produktionsdato}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[0].Holdbarhedsdato}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[0].Kommentar}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[0].Spritkontrol}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[0].HætteNr}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[0].EtiketNr}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[0].Fustage}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[0].Signatur}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[0].Klokkeslæt}" Width="115" Padding="30 0 0 0"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[0].FærdigvareNr}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[0].Produktionsdato}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[0].Holdbarhedsdato}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[0].Kommentar}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[0].Spritkontrol}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[0].HætteNr}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[0].EtiketNr}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[0].Fustage}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[0].Signatur}"></TextBlock>
                     </GridView>
                     <GridView Width="1200" SelectionMode="None" HorizontalAlignment="Center">
-                        <TextBlock Text="{Binding Udsnit1[1].Klokkeslæt}" Width="115" Padding="30 0 0 0"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[1].FærdigvareNr}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[1].Produktionsdato}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[1].Holdbarhedsdato}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[1].Kommentar}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[0].Spritkontrol}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[1].HætteNr}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[1].EtiketNr}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[1].Fustage}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[1].Signatur}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[1].Klokkeslæt}" Width="115" Padding="30 0 0 0"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[1].FærdigvareNr}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[1].Produktionsdato}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[1].Holdbarhedsdato}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[1].Kommentar}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[0].Spritkontrol}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[1].HætteNr}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[1].EtiketNr}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[1].Fustage}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[1].Signatur}"></TextBlock>
                     </GridView>
                     <GridView  Width="1200" SelectionMode="None" HorizontalAlignment="Center">
-                        <TextBlock Text="{Binding Udsnit1[2].Klokkeslæt}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[2].FærdigvareNr}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[2].Produktionsdato}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[2].Holdbarhedsdato}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[2].Kommentar}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[2].Spritkontrol}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[2].HætteNr}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[2].EtiketNr}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[2].Fustage}"></TextBlock>
-                        <TextBlock Text="{Binding Udsnit1[2].Signatur}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[2].Klokkeslæt}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[2].FærdigvareNr}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[2].Produktionsdato}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[2].Holdbarhedsdato}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[2].Kommentar}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[2].Spritkontrol}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[2].HætteNr}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[2].EtiketNr}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[2].Fustage}"></TextBlock>
+                        <TextBlock Text="{Binding RegUdsnit[2].Signatur}"></TextBlock>
                     </GridView>
                 </ListView>
             </Grid>
@@ -330,7 +330,8 @@
                     <Button Content="Færdigvarekontrol" FontSize="20" Command="{Binding ArkCommand}" CommandParameter="3" Padding="20" BorderBrush="DimGray"></Button>
                 </StackPanel>
             </Grid>
-            <Button Command="{Binding GemCommand}" HorizontalAlignment="Right" Content="Gem" Margin="0 0 20 0"></Button>
+            <Button Command="{Binding GemCommand}" Visibility="{Binding GemVis}" HorizontalAlignment="Right" Content="Gem" Margin="0 0 20 0"></Button>
+            <Button Command="{Binding OpdaterCommand}" Visibility="{Binding UpdateVis}" HorizontalAlignment="Right" Content="Opdater" Margin="0 0 20 0"></Button>
         </Grid>
     </Grid>
 </Page>

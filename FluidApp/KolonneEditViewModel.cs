@@ -2,7 +2,9 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -17,25 +19,36 @@ namespace FluidApp
         public RelayCommand TilbageCommand { get; set; }
         public RelayCommand<string> ArkCommand { get; set; }
         public RelayCommand GemCommand { get; set; }
-        private KontrolSkema _nytSkema;
+        public RelayCommand<int> RedigerCommand { get; set; }
+        public RelayCommand OpdaterCommand { get; set; }
+        public KontrolSkema NytSkema { get; set; }
         public Kontrolregistrering Registrering { get; set; }
         public Produktionsfølgeseddel Seddel { get; set; }
-        private ObservableCollection<KontrolSkema> _udsnit;
-        private string _msKontrol;
-        private string _ludKontrol;
-        public bool BoolMS { get; set; }
-        public bool BoolLud { get; set; }
+        public ObservableCollection<KontrolSkema> SkemaUdsnit { get; set; }
+        public ObservableCollection<Kontrolregistrering> RegUdsnit { get; set; }
         private bool _skemaVis;
         private bool _regVis;
         private bool _seddelVis;
-        public ObservableCollection<Kontrolregistrering> Udsnit1 { get; set; }
+        private bool _updateVis;
+        private bool _gemVis;
 
+        private string _klokkeslæt;
+        private double _ludkoncetration;
+        private string _fustage;
+        private int _kvittering;
+        private double _mS;
+        private bool _ludKontrol;
+        private string _signatur;
+        private bool _mSKontrol;
+        private double _vægt;
+
+        #region PropertyChanged
         public bool SkemaVis
         {
             get { return _skemaVis; }
             set
             {
-                _skemaVis = value; 
+                _skemaVis = value;
                 OnPropertyChanged();
             }
         }
@@ -45,7 +58,7 @@ namespace FluidApp
             get { return _regVis; }
             set
             {
-                _regVis = value; 
+                _regVis = value;
                 OnPropertyChanged();
             }
         }
@@ -55,77 +68,177 @@ namespace FluidApp
             get { return _seddelVis; }
             set
             {
-                _seddelVis = value; 
+                _seddelVis = value;
                 OnPropertyChanged();
             }
         }
 
-        public KontrolSkema NytSkema
+        public string Klokkeslæt
         {
-            get { return _nytSkema; }
+            get { return _klokkeslæt; }
             set
             {
-                _nytSkema = value; 
+                _klokkeslæt = value;
                 OnPropertyChanged();
             }
         }
 
-        public ObservableCollection<KontrolSkema> Udsnit
+        public double Ludkoncetration
         {
-            get { return _udsnit; }
+            get { return _ludkoncetration; }
             set
             {
-                _udsnit = value; 
+                _ludkoncetration = value; 
                 OnPropertyChanged();
             }
         }
 
-        public string MSKontrol
+        public string Fustage
         {
-            get { return _msKontrol; }
+            get { return _fustage; }
             set
             {
-                _msKontrol = value;
-                if (_msKontrol == "OK") BoolMS = true;
-                else BoolMS = false;
+                _fustage = value; 
+                OnPropertyChanged();
             }
         }
 
-        public string LudKontrol
+        public int Kvittering
+        {
+            get { return _kvittering; }
+            set
+            {
+                _kvittering = value; 
+                OnPropertyChanged();
+            }
+        }
+
+        public double MS
+        {
+            get { return _mS; }
+            set
+            {
+                _mS = value; 
+                OnPropertyChanged();
+            }
+        }
+
+        public bool LudKontrol
         {
             get { return _ludKontrol; }
             set
             {
-                _ludKontrol = value;
-                if (_ludKontrol == "OK") BoolLud = true;
-                else BoolLud = false;
+                _ludKontrol = value; 
+                OnPropertyChanged();
             }
         }
+
+        public string Signatur
+        {
+            get { return _signatur; }
+            set
+            {
+                _signatur = value; 
+                OnPropertyChanged();
+            }
+        }
+
+        public bool MSKontrol
+        {
+            get { return _mSKontrol; }
+            set
+            {
+                _mSKontrol = value; 
+                OnPropertyChanged();
+            }
+        }
+
+        public double Vægt
+        {
+            get { return _vægt; }
+            set
+            {
+                _vægt = value; 
+                OnPropertyChanged();
+            }
+        }
+
+        public bool UpdateVis
+        {
+            get { return _updateVis; }
+            set
+            {
+                _updateVis = value; 
+                OnPropertyChanged();
+            }
+        }
+
+        public bool GemVis
+        {
+            get { return _gemVis; }
+            set
+            {
+                _gemVis = value; 
+                OnPropertyChanged();
+            }
+        }
+
+        #endregion
 
         public KolonneEditViewModel()
         {
             TilbageCommand = new RelayCommand(Tilbage);
             ArkCommand = new RelayCommand<string>(VisArk);
             GemCommand = new RelayCommand(GemData);
+            RedigerCommand = new RelayCommand<int>(Rediger);
+            OpdaterCommand = new RelayCommand(Opdater);
             Registrering = new Kontrolregistrering();
-            NytSkema = new KontrolSkema()
+            NytSkema = new KontrolSkema();
 
-
-            {
-                FK_Kolonne = 8,
-                Klokkeslæt = DateTime.Now,
-                Ludkoncetration = 1.5,
-                Fustage = "Test",
-                Kvittering = 1,
-                mS = 1.5,
-                LudKontrol = true,
-                Signatur = "Test",
-                mSKontrol = true,
-            };
-
-            Udsnit = GetUdsnit();
-            Udsnit1 = GetUdsnit1();
+            GemVis = true;
+            SkemaUdsnit = GetSkemaUdsnit();
+            RegUdsnit = GetRegUdsnit();
             VisArk("0");
+        }
+
+        public void Opdater()
+        {
+            NytSkema.Klokkeslæt = DateTime.Parse(Klokkeslæt, new DateTimeFormatInfo());
+            NytSkema.Ludkoncetration = Ludkoncetration;
+            NytSkema.mSKontrol = MSKontrol;
+            NytSkema.Fustage = Fustage;
+            NytSkema.Kvittering = Kvittering;
+            NytSkema.Signatur = Signatur;
+            NytSkema.Vægt = Vægt;
+            NytSkema.mS = MS;
+            NytSkema.LudKontrol = LudKontrol;
+            NytSkema.FK_Kolonne = 8;
+
+            NytSkema.Put(NytSkema.ID, NytSkema);
+            NytSkema = new KontrolSkema();
+            SkemaUdsnit = GetSkemaUdsnit();
+            OnPropertyChanged(nameof(SkemaUdsnit));
+
+            GemVis = true;
+            UpdateVis = false;
+        }
+
+        public void Rediger(int id)
+        {
+            NytSkema = NytSkema.GetOne(id);
+
+            Klokkeslæt = NytSkema.Klokkeslæt.TimeOfDay.ToString("hh\\:mm");
+            Ludkoncetration = NytSkema.Ludkoncetration;
+            LudKontrol = NytSkema.LudKontrol;
+            MS = NytSkema.mS;
+            Fustage = NytSkema.Fustage;
+            Kvittering = NytSkema.Kvittering;
+            Signatur = NytSkema.Signatur;
+            Vægt = NytSkema.Vægt;
+            MSKontrol = NytSkema.mSKontrol;
+
+            UpdateVis = true;
+            GemVis = false;
         }
 
         public void Tilbage()
@@ -164,51 +277,50 @@ namespace FluidApp
 
         public void GemData()
         {
-            NytSkema.LudKontrol = BoolLud;
-            NytSkema.mSKontrol = BoolMS;
-            NytSkema.Post(NytSkema);
-            NytSkema = new KontrolSkema() {FK_Kolonne = 8};
-            Udsnit = GetUdsnit();
+            if (SkemaVis)
+            {
+                SkemaUdsnit = GetSkemaUdsnit();
+                OnPropertyChanged(nameof(SkemaUdsnit));
+            }
+            else if (RegVis)
+            {
+                RegUdsnit = GetRegUdsnit();
+                OnPropertyChanged(nameof(RegUdsnit));
+            }
         }
 
-        public ObservableCollection<KontrolSkema> GetUdsnit()
+        public ObservableCollection<KontrolSkema> GetSkemaUdsnit()
         {
+            KontrolSkema tempData = new KontrolSkema();
+            //Skal inkludere tjek af FK_kolonne (lige nu bare valgt nr 8)
             ObservableCollection<KontrolSkema> udsnit = new ObservableCollection<KontrolSkema>();
-            KontrolSkema tempSkema = new KontrolSkema();
+            foreach (var data in tempData.GetAll())
+            {
+                if (data.FK_Kolonne == 8) udsnit.Add(data);
+            }
+            udsnit = new ObservableCollection<KontrolSkema>(udsnit.OrderByDescending(e => e.ID));
 
-            foreach (var skema in tempSkema.GetAll())
+            return udsnit;
+        }
+
+        public ObservableCollection<Kontrolregistrering> GetRegUdsnit()
+        {
+            ObservableCollection<Kontrolregistrering> udsnit = new ObservableCollection<Kontrolregistrering>();
+            Kontrolregistrering tempData = new Kontrolregistrering();
+
+            foreach (var skema in tempData.GetAll())
             {
                 udsnit.Add(skema);
             }
 
-            udsnit = new ObservableCollection<KontrolSkema>(udsnit.OrderByDescending(e => e.ID));
+            udsnit = new ObservableCollection<Kontrolregistrering>(udsnit.OrderByDescending(e => e.ID));
             int udsnitSize = udsnit.Count;
 
             for (int i = 0; i < udsnitSize; i++)
             {
                 if (i > 2) udsnit.RemoveAt(3);
             }
-            Debug.WriteLine(udsnit.Count);
             return udsnit;
-        }
-
-        public ObservableCollection<Kontrolregistrering> GetUdsnit1()
-        {
-            ObservableCollection<Kontrolregistrering> udsnit1 = new ObservableCollection<Kontrolregistrering>();
-            Kontrolregistrering tempSkema1 = new Kontrolregistrering();
-
-            foreach (var skema1 in tempSkema1.GetAll())
-            {
-                udsnit1.Add(skema1);
-            }
-
-            udsnit1 = new ObservableCollection<Kontrolregistrering>(udsnit1.OrderByDescending(e => e.ID));
-
-            for (int i = 0; i < udsnit1.Count; i++)
-            {
-                if (i > 2) udsnit1.RemoveAt(i);
-            }
-            return udsnit1;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
