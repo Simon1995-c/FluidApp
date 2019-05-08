@@ -13,40 +13,32 @@
     <Page.DataContext>
         <local:LoginViewModel/>
     </Page.DataContext>
-    
-
-
-
     <Grid>
-        <Grid VerticalAlignment="Top" Background="DarkCyan" CornerRadius="0 0 8 8">
+        <Grid VerticalAlignment="Top" Background="DarkCyan" Padding="15 25">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="4*"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <Button Command="{Binding TilbageCommand}" Content="Tilbage"></Button>
+                <Button Command="{Binding TilbageCommand}" Content="Tilbage" Foreground="White"></Button>
             </Grid>
             <Grid Grid.Column="1" HorizontalAlignment="Center">
-                <TextBlock FontSize="32" Text="Kolonne 2"></TextBlock>
+                <TextBlock FontSize="26" Foreground="White" Text="Log ind"></TextBlock>
             </Grid>
             <Grid Grid.Column="2" HorizontalAlignment="Right">
             </Grid>
         </Grid>
         <Grid/>
 
-        <Grid>
-
-            <TextBlock FontSize="50" Text="Log ind" Margin="650,200,669,732" SelectionChanged="TextBlock_SelectionChanged" HorizontalAlignment="Center"/>
-            <TextBlock Text="Operatører kan ikke login. Hvis du er en operatør, klik tilbage" Margin="550,263,538,710" FontFamily="Arial Black" Opacity="0.8" HorizontalAlignment="Center" VerticalAlignment="Stretch"/>
-            <TextBlock Text="Brugernavn" FontSize="30" Margin="361,353,956,597" RenderTransformOrigin="0.472,0.585"/>
-            <TextBlock Text="Kodeord" FontSize="30" Margin="361,423,956,527" RenderTransformOrigin="0.472,0.585" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-            <TextBox VerticalAlignment="Top" Height="50" Margin="550,353,435,0" HorizontalAlignment="Stretch" Text="{Binding Brugernavn, Mode=TwoWay}"/>
-            <PasswordBox VerticalAlignment="Top" Height="50" Margin="550,413,435,0" Password="{Binding Kodeord, Mode=TwoWay}"/>
-            <Button Content="Login" HorizontalAlignment="Left" Foreground="#212121" Background="#dddddd" Padding="10 5" Margin="980,0,0,0" VerticalAlignment="Center" Width="85" Height="43" Command="{Binding LoginCommand}"></Button>
-            <TextBlock Text="Forkert brugernavn eller kodeord" Visibility="{Binding ForkertKode}" FontStyle="Normal" HorizontalAlignment="Left" Width="572" Margin="740,573,0,0" VerticalAlignment="Top" Height="68" Foreground="Red" FontSize="30"/>
-        </Grid>
+        <StackPanel Margin="0 200 0 0" Width="600" HorizontalAlignment="Center">
+            <TextBlock Margin="0 0 0 50" Text="Operatører kan ikke login. Hvis du er en operatør, klik tilbage" FontFamily="Arial Black" HorizontalAlignment="Center"/>
+            <TextBlock Margin="0 0 0 4" Text="Brugernavn" FontSize="16"/>
+            <TextBox Padding="5" Text="{Binding Brugernavn, Mode=TwoWay}"/>
+            <TextBlock Margin="0 10 0 4" Text="Kodeord" FontSize="16"/>
+            <PasswordBox Padding="5" VerticalAlignment="Top" Password="{Binding Kodeord, Mode=TwoWay}"/>
+            <Button Margin="0 20 0 0" Content="Login" HorizontalAlignment="Right" Foreground="#212121" Background="#dddddd" Padding="10 5" Command="{Binding LoginCommand}"></Button>
+            <TextBlock Text="Forkert brugernavn eller kodeord" Visibility="{Binding ForkertKode}" Foreground="Red" FontSize="18"/>
+        </StackPanel>
     </Grid>
-
-
 </Page>

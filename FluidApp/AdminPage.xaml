@@ -26,10 +26,10 @@
                 <TextBlock FontSize="26" Foreground="White" Text="Administrator panel"></TextBlock>
             </Grid>
         </Grid>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="DarkCyan" Width="250" Margin="0 80 0 0">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="DarkCyan" Width="250" Margin="0 85 0 0">
             <StackPanel VerticalAlignment="Top">
-                <HyperlinkButton Foreground="White" HorizontalAlignment="Stretch" Command="{Binding ManageIpRangeRelayCommand}">IP ranges</HyperlinkButton>
-                <HyperlinkButton Foreground="White" HorizontalAlignment="Stretch" Command="{Binding ManageAdminsRelayCommand}">Brugere</HyperlinkButton>
+                <Button Foreground="White" Background="#00a5a5" Width="250" HorizontalAlignment="Stretch" Command="{Binding ManageIpRangeRelayCommand}">IP ranges</Button>
+                <Button Foreground="White" Background="#00a5a5" Margin="0 3 0 0" Width="250" HorizontalAlignment="Stretch" Command="{Binding ManageAdminsRelayCommand}">Brugere</Button>
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="290 120 0 0" Width="600" HorizontalAlignment="Left">
