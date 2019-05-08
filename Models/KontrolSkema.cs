@@ -22,7 +22,7 @@ namespace Models
         public double Vægt { get; set; }
 
 
-        public const string URI = "http://localhost:52416/api/KontrolSkemas/";
+        public const string URI = "https://restapi20190501124159.azurewebsites.net/api/Kontrolskemas";
 
 
         public List<KontrolSkema> GetAll()

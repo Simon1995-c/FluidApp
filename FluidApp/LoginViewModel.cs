@@ -22,6 +22,7 @@ namespace FluidApp
         public RelayCommand LoginCommand { get; set; }
         public RelayCommand TilbageCommand { get; set; }
 
+
         public int Rolle { get; set; }
 
         public Visibility ForkertKode { get; set; }
@@ -51,18 +52,24 @@ namespace FluidApp
 
             foreach (var a in admin.GetAll())
             {
-                if (a.Brugernavn == Brugernavn && a.Kodeord == Kodeord)
+                Application.Current.Resources["Administrator"] = a;
+
+            if (a.Brugernavn == Brugernavn && a.Kodeord == Kodeord)
                 {
                     loggedIn++;
 
                     if (a.Rolle == 1)
                     {
                         Rolle = 1;
+                        var adminInfo = (Administrator) Application.Current.Resources["Administrator"];
+
                     }
 
                     if (a.Rolle == 2)
                     {
                         Rolle = 2;
+                        var adminInfo = (Administrator) Application.Current.Resources["Administrator"];
+
                     }
 
                     break;

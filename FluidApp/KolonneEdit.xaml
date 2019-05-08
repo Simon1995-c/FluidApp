@@ -32,21 +32,159 @@
             </Grid>
         </Grid>
 
-        <GridView ItemsSource="{Binding}">
-            <GridView.ItemTemplate>
-                <DataTemplate>
+        <Grid Name="Kontrolskema" Visibility="{Binding SkemaVis}" VerticalAlignment="Top" Margin="0 100 0 0" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Row="0">
+                <ListView SelectionMode="None">
+                    <GridView Height="70" Width="1200" SelectionMode="None">
+                        <StackPanel Width="115" Height="55">
+                            <TextBlock Text="Klokkeslæt" Margin="0 15 0 0" HorizontalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                            <TextBlock Text="Vægt" HorizontalAlignment="Center"></TextBlock>
+                            <TextBlock Text="30L Fust. Min. 38,5kg." FontSize="12" HorizontalAlignment="Center"></TextBlock>
+                            <TextBlock Text="25L Fust. Min. 37,0kg." FontSize="12" HorizontalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                            <TextBlock Text="Kvittering for" HorizontalAlignment="Center"></TextBlock>
+                            <TextBlock Text="udtaget prøve" HorizontalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                            <TextBlock Text="Kontrol af" HorizontalAlignment="Center"></TextBlock>
+                            <TextBlock Text="testfustage" HorizontalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                            <TextBlock Text="Ludkoncentration" HorizontalAlignment="Center"></TextBlock>
+                            <TextBlock Text="Min. 1%" FontSize="12" HorizontalAlignment="Center"></TextBlock>
+                            <TextBlock Text="Max. 2%" FontSize="12" HorizontalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                            <TextBlock Text="OK" HorizontalAlignment="Center"></TextBlock>
+                            <TextBlock Text="Eller" FontSize="12" HorizontalAlignment="Center"></TextBlock>
+                            <TextBlock Text="IKKE OK" HorizontalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                            <TextBlock Text="Mip MA" HorizontalAlignment="Center"></TextBlock>
+                            <TextBlock Text="Min. 24 mS" FontSize="12" HorizontalAlignment="Center"></TextBlock>
+                            <TextBlock Text="Max. 26,5 mS" FontSize="12" HorizontalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                            <TextBlock Text="OK" HorizontalAlignment="Center"></TextBlock>
+                            <TextBlock Text="Eller" FontSize="12" HorizontalAlignment="Center"></TextBlock>
+                            <TextBlock Text="IKKE OK" HorizontalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                        <StackPanel>
+                            <TextBlock Text="Sign. operatør" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                    </GridView>
+                    <GridView Width="1200" SelectionMode="None" HorizontalAlignment="Center">
+                        <TextBlock Text="{Binding Udsnit[0].Klokkeslæt.TimeOfDay}" Width="115" Padding="30 0 0 0"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[0].Vægt}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[0].Kvittering}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[0].Fustage}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[0].Ludkoncetration}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[0].LudKontrol}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[0].mS}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[0].mSKontrol}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[0].Signatur}"></TextBlock>
+                    </GridView>
+                    <GridView Width="1200" SelectionMode="None" HorizontalAlignment="Center">
+                        <TextBlock Text="{Binding Udsnit[1].Klokkeslæt.Date.TimeOfDay}" Width="115" Padding="30 0 0 0"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[1].Vægt}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[1].Kvittering}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[1].Fustage}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[1].Ludkoncetration}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[1].LudKontrol}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[1].mS}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[1].mSKontrol}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[1].Signatur}"></TextBlock>
+                    </GridView>
+                    <GridView  Width="1200" SelectionMode="None" HorizontalAlignment="Center">
+                        <TextBlock Text="{Binding Udsnit[2].Klokkeslæt.Date.TimeOfDay}" Width="115" Padding="30 0 0 0"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[2].Vægt}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[2].Kvittering}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[2].Fustage}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[2].Ludkoncetration}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[2].LudKontrol}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[2].mS}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[2].mSKontrol}"></TextBlock>
+                        <TextBlock Text="{Binding Udsnit[2].Signatur}"></TextBlock>
+                    </GridView>
+                </ListView>
+            </Grid>
+            <Grid Row="1" Margin="0 0 0 0">
+                <GridView Width="1030" Header="Indtast ny data:" SelectionMode="None">
+                    <StackPanel Orientation="Vertical" Width="190" Height="85" Margin="5">
+                        <TextBlock Text="Klokkeslæt"></TextBlock>
+                        <TextBox Text="{Binding Skema.Klokkeslæt, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="190">
+                        <TextBlock Text="Vægt"></TextBlock>
+                        <TextBlock Text="30L Fust. Min. 38,5kg." FontSize="12"></TextBlock>
+                        <TextBlock Text="25L Fust. Min. 37,0kg." FontSize="12"></TextBlock>
+                        <TextBox Text="{Binding Skema.Vægt}" PlaceholderText="Indsæt her"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="190">
+                        <TextBlock Text="Kvittering for udtaget prøve" ></TextBlock>
+                        <TextBox Text="{Binding Skema.Kvittering}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="190">
+                        <TextBlock Text="Kontrol af testfustage" ></TextBlock>
+                        <TextBox Text="{Binding Skema.Fustage}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="190">
+                        <TextBlock Text="Ludkoncentration"></TextBlock>
+                        <TextBlock Text="Min. 1%" FontSize="12"></TextBlock>
+                        <TextBlock Text="Max. 2%" FontSize="12"></TextBlock>
+                        <TextBox Text="{Binding Skema.Ludkoncetration}" PlaceholderText="Indsæt her"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="190">
+                        <TextBlock Text="Ludkoncentration" ></TextBlock>
+                        <TextBlock Text="OK/IKKE OK" FontSize="12"></TextBlock>
+                        <ComboBox PlaceholderText="Vælg" Margin="0 17 0 0" Width="190">
+                            <ComboBoxItem Content="OK"/>
+                            <ComboBoxItem Content="IKKE OK"></ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="190">
+                        <TextBlock Text="Mip MA"></TextBlock>
+                        <TextBlock Text="Min. 24 mS" FontSize="12"></TextBlock>
+                        <TextBlock Text="Max. 26,5 mS" FontSize="12"></TextBlock>
+                        <TextBox Text="{Binding Skema.mS}" PlaceholderText="Indsæt her"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="190">
+                        <TextBlock Text="Mip MA" ></TextBlock>
+                        <TextBlock Text="OK/IKKE OK" FontSize="12"></TextBlock>
+                        <ComboBox PlaceholderText="Vælg" Margin="0 17 0 0" Width="190">
+                            <ComboBoxItem Content="OK"/>
+                            <ComboBoxItem Content="IKKE OK"></ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Width="190">
+                        <TextBlock Text="Sign. operatør" ></TextBlock>
+                        <TextBox Text="{Binding Skema.Signatur}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                    </StackPanel>
+                </GridView>
+            </Grid>
+        </Grid>
 
-                </DataTemplate>
-            </GridView.ItemTemplate>
+        <GridView Name="Kontrolregistrering" Visibility="{Binding RegVis}">
+            <StackPanel Orientation="Vertical" Width="190">
+                <TextBlock Text="Sign. operatør" ></TextBlock>
+                <TextBox Text="{Binding Skema.Signatur}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+            </StackPanel>
         </GridView>
 
         <Grid VerticalAlignment="Bottom">
             <Grid VerticalAlignment="Bottom">
                 <StackPanel Orientation="Horizontal">
-                    <Button Content="Kontrolskema" FontSize="20" Command="{Binding}" Padding="20" BorderBrush="DimGray"></Button>
-                    <Button Content="Kontrolregistrering" FontSize="20" Command="{Binding}" Padding="20" BorderBrush="DimGray"></Button>
-                    <Button Content="Produktionsfølgeseddel" FontSize="20" Command="{Binding}" Padding="20" BorderBrush="DimGray"></Button>
-                    <Button Content="Færdigvarekontrol" FontSize="20" Command="{Binding}" Padding="20" BorderBrush="DimGray"></Button>
+                    <Button Content="Kontrolskema" FontSize="20" Command="{Binding ArkCommand}" CommandParameter="0" Padding="20" BorderBrush="DimGray"></Button>
+                    <Button Content="Kontrolregistrering" FontSize="20" Command="{Binding ArkCommand}" CommandParameter="1" Padding="20" BorderBrush="DimGray"></Button>
+                    <Button Content="Produktionsfølgeseddel" FontSize="20" Command="{Binding ArkCommand}" CommandParameter="2" Padding="20" BorderBrush="DimGray"></Button>
+                    <Button Content="Færdigvarekontrol" FontSize="20" Command="{Binding ArkCommand}" CommandParameter="3" Padding="20" BorderBrush="DimGray"></Button>
                 </StackPanel>
             </Grid>
         </Grid>
