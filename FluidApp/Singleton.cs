@@ -19,8 +19,6 @@ namespace FluidApp
     {
         //logger ind, find rollen og gem rollen.
         private static Singleton _instance = new Singleton();
-        private Administrator admin;
-        public LoginViewModel ROLLE { get; set; }
         public static Singleton Instance
         {
             get { return _instance; }
@@ -29,7 +27,6 @@ namespace FluidApp
 
         private Singleton()
         {
-            ROLLE = new LoginViewModel();
         }
 
 
