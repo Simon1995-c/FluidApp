@@ -52,23 +52,22 @@ namespace FluidApp
 
             foreach (var a in admin.GetAll())
             {
-                Application.Current.Resources["Administrator"] = a;
+                
 
-            if (a.Brugernavn == Brugernavn && a.Kodeord == Kodeord)
+                if (a.Brugernavn == Brugernavn && a.Kodeord == Kodeord)
                 {
                     loggedIn++;
 
                     if (a.Rolle == 1)
                     {
                         Rolle = 1;
-                        var adminInfo = (Administrator) Application.Current.Resources["Administrator"];
+                        
 
                     }
 
                     if (a.Rolle == 2)
                     {
                         Rolle = 2;
-                        var adminInfo = (Administrator) Application.Current.Resources["Administrator"];
 
                     }
 
@@ -76,10 +75,17 @@ namespace FluidApp
                 }
             }
 
+
+
             if (loggedIn > 0)
             {
+
+               
+                
                 if (Rolle == 1)
                 {
+                    //Gemmer rollen i den ene session brugeren kører. Informationen slettes når programmet afsluttes.
+                    Application.Current.Resources["Administrator"] = 1;
                     var frame = new Frame();
                     frame.Navigate(typeof(Kolonne), null);
                     Window.Current.Content = frame;
@@ -87,6 +93,8 @@ namespace FluidApp
 
                 if (Rolle == 2)
                 {
+                    //Gemmer rollen i den ene session brugeren kører. Informationen slettes når programmet afsluttes.
+                    Application.Current.Resources["Administrator"] = 2;
                     var frame = new Frame();
                     frame.Navigate(typeof(AdminPage), null);
                     Window.Current.Content = frame;
