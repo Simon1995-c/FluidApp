@@ -298,6 +298,7 @@ namespace FluidApp
             Application.Current.Resources["Administrator"] = 0;
 
             LogUdVisibility = Visibility.Collapsed;
+            OnPropertyChanged(nameof(LogUdVisibility));
 
         }
 
