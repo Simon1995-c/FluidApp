@@ -21,6 +21,7 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <Button Command="{Binding TilbageCommandRelayCommand}" Content="Tilbage" Foreground="white"></Button>
+                <Button HorizontalAlignment="Right" Content="Log ud" Margin="0,11,-1020,0" VerticalAlignment="Top" Command="{Binding LogUdRelayCommand}" Visibility="{Binding LogUdVisibility}"></Button>
             </Grid>
             <Grid Grid.Column="1" HorizontalAlignment="Center">
                 <TextBlock FontSize="26" Foreground="White" Text="Administrator panel"></TextBlock>

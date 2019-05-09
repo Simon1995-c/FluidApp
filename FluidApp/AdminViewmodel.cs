@@ -32,6 +32,9 @@ namespace FluidApp
         public RelayCommand UpdateAdminRelayCommand { get; set; }
         public RelayCommand SletAdminRelayCommand { get; set; }
         public RelayCommand OpretAdminRelayCommand { get; set; }
+        public RelayCommand LogUdRelayCommand { get; set; }
+
+
 
 
 
@@ -49,6 +52,7 @@ namespace FluidApp
         public Visibility UpdateAdminsVisiblity { get; set; }
         public Visibility OpretAdminsVisiblity { get; set; }
         public Visibility AdminKodeordErrorVisiblity { get; set; }
+        public Visibility LogUdVisibility { get; set; }
 
 
 
@@ -80,6 +84,8 @@ namespace FluidApp
             UpdateAdminRelayCommand = new RelayCommand(UpdateAdmin);
             SletAdminRelayCommand = new RelayCommand(SletAdmin);
             OpretAdminRelayCommand = new RelayCommand(OpretAdmin);
+            LogUdRelayCommand = new RelayCommand(Logud);
+
 
             //Udfyld lister
             IpRange = UpdateIPrange();
@@ -280,6 +286,19 @@ namespace FluidApp
             var frame = new Frame();
             frame.Navigate(typeof(MainPage), null);
             Window.Current.Content = frame;
+        }
+
+
+        public void Logud()
+        {
+            var frame = new Frame();
+            frame.Navigate(typeof(Login), null);
+            Window.Current.Content = frame;
+
+            Application.Current.Resources["Administrator"] = 0;
+
+            LogUdVisibility = Visibility.Collapsed;
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
