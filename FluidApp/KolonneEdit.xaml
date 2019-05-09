@@ -70,12 +70,12 @@
             </Grid.RowDefinitions>
             <Grid Row="0">
                 <StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="0 0 0 5">
-                        <TextBlock FontSize="18" FontWeight="Bold" Text="Tidligere indtastet data" Margin="0 0 0 10"></TextBlock>
-                        <Button Command="{Binding UdvidCommand}" Margin="1000 0 0 0" Content="Udvid"></Button>
-                    </StackPanel>
-                    <ListView Background="Gray" SelectionMode="None" Padding="0 10 0 0" BorderBrush="Black" BorderThickness="1">
-                        <Grid>
+                    <TextBlock FontSize="18" FontWeight="Bold" Text="Tidligere indtastet data" Margin="0 0 0 10"></TextBlock>
+                    <ListView Background="LightGray" SelectionMode="None" Padding="0 10 0 0" BorderBrush="Black" BorderThickness="1">
+                        <HyperlinkButton Command="{Binding UdvidCommand}" Padding="-2 0" Margin="1193 -30 0 0">
+                            <Image Height="30" Width="30" Source="{Binding UdvidIkon}"></Image>
+                        </HyperlinkButton>
+                        <Grid Margin="0 -30 0 0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="125"></ColumnDefinition>
                                 <ColumnDefinition Width="125"></ColumnDefinition>
@@ -173,7 +173,7 @@
                 </StackPanel>
             </Grid>
 
-            <Grid Row="1"  Margin="0 30 0 0">
+            <Grid Row="1" Margin="0 30 0 0" Visibility="{Binding NyDataVis}">
                 <StackPanel Width="1030">
                     <TextBlock FontSize="22" FontWeight="Bold" Text="Indtast ny data" Margin="0 0 0 10"></TextBlock>
                     <GridView SelectionMode="None">
@@ -204,7 +204,7 @@
                         <StackPanel Orientation="Vertical" Width="190">
                             <TextBlock Text="Ludkoncentration" ></TextBlock>
                             <TextBlock Text="OK/IKKE OK" FontSize="12"></TextBlock>
-                            <ComboBox ItemsSource="{Binding vælgMuligheder}" SelectedItem="{Binding LudKontrol, Mode=TwoWay}" PlaceholderText="Vælg" Margin="0 17 0 0" Width="190"></ComboBox>
+                            <ComboBox ItemsSource="{Binding VælgMuligheder}" SelectedItem="{Binding LudKontrol, Mode=TwoWay}" PlaceholderText="Vælg" Margin="0 17 0 0" Width="190"></ComboBox>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Width="190">
                             <TextBlock Text="Mip MA"></TextBlock>
@@ -215,7 +215,7 @@
                         <StackPanel Orientation="Vertical" Width="190">
                             <TextBlock Text="Mip MA" ></TextBlock>
                             <TextBlock Text="OK/IKKE OK" FontSize="12"></TextBlock>
-                            <ComboBox ItemsSource="{Binding vælgMuligheder}" SelectedItem="{Binding MSKontrol, Mode=TwoWay}" PlaceholderText="Vælg" Margin="0 17 0 0" Width="190"></ComboBox>
+                            <ComboBox ItemsSource="{Binding VælgMuligheder}" SelectedItem="{Binding MSKontrol, Mode=TwoWay}" PlaceholderText="Vælg" Margin="0 17 0 0" Width="190"></ComboBox>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Width="190">
                             <TextBlock Text="Sign. operatør" ></TextBlock>

@@ -26,16 +26,12 @@ namespace FluidApp
         public RelayCommand OpdaterCommand { get; set; }
         public RelayCommand UdvidCommand { get; set; }
         public KontrolSkema NytSkema { get; set; }
-        public Kontrolregistrering Registrering { get; set; }
-        public Produktionsfølgeseddel Seddel { get; set; }
         public ObservableCollection<KontrolSkema> SkemaUdsnit { get; set; }
-        public ObservableCollection<Kontrolregistrering> RegUdsnit { get; set; }
-        public List<string> vælgMuligheder { get; set; }
+        public List<string> VælgMuligheder { get; set; }
         public Forside Info { get; set; }
+        private string udvidIkon;
         private string _udvidelse;
-        private bool _skemaVis;
-        private bool _regVis;
-        private bool _seddelVis;
+        private bool _nyDataVis;
         private bool _updateVis;
         private bool _gemVis;
 
@@ -50,36 +46,6 @@ namespace FluidApp
         private double? _vægt;
 
         #region PropertyChanged
-        public bool SkemaVis
-        {
-            get { return _skemaVis; }
-            set
-            {
-                _skemaVis = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public bool RegVis
-        {
-            get { return _regVis; }
-            set
-            {
-                _regVis = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public bool SeddelVis
-        {
-            get { return _seddelVis; }
-            set
-            {
-                _seddelVis = value;
-                OnPropertyChanged();
-            }
-        }
-
         public string Klokkeslæt
         {
             get { return _klokkeslæt; }
@@ -200,6 +166,26 @@ namespace FluidApp
             }
         }
 
+        public bool NyDataVis
+        {
+            get { return _nyDataVis; }
+            set
+            {
+                _nyDataVis = value; 
+                OnPropertyChanged();
+            }
+        }
+
+        public string UdvidIkon
+        {
+            get { return udvidIkon; }
+            set
+            {
+                udvidIkon = value; 
+                OnPropertyChanged();
+            }
+        }
+
         #endregion
 
         public KolonneEditViewModel()
@@ -212,31 +198,44 @@ namespace FluidApp
             RedigerCommand = new RelayCommand<int>(Rediger);
             OpdaterCommand = new RelayCommand(Opdater);
             UdvidCommand = new RelayCommand(UdvidUdsnit);
-            Registrering = new Kontrolregistrering();
             NytSkema = new KontrolSkema();
-            vælgMuligheder = new List<string>();
             Info = new Forside();
-
-            Udvidelse = "150";
-            vælgMuligheder.Add("OK");
-            vælgMuligheder.Add("IKKE OK");
-
+            VælgMuligheder = new List<string>();
+            VælgMuligheder.Add("OK");
+            VælgMuligheder.Add("IKKE OK");
+            
             GemVis = true;
+            NyDataVis = true;
+
             if (Application.Current.Resources.ContainsKey("forside"))
             {
                 Forside f = (Forside)Application.Current.Resources["forside"];
                 Info = f;
-
-                Debug.Write("FORSIDE INFO: " + f.ProcessordreNr+ " FK:" + f.FK_Kolonne);
             }
+
+            UdvidIkon = "https://visualpharm.com/assets/833/Expand-595b40b75ba036ed117d6f8f.svg";
+            Udvidelse = "170";
             SkemaUdsnit = GetSkemaUdsnit();
         }
 
         public void UdvidUdsnit()
         {
-            double ScreenHeight = ((Frame) Window.Current.Content).ActualHeight;
-            double udvid = ScreenHeight - 300.0;
-            Udvidelse = udvid.ToString();
+            if (NyDataVis)
+            {
+                //Maksimer
+                double ScreenHeight = ((Frame)Window.Current.Content).ActualHeight;
+                double udvid = ScreenHeight - 300.0;
+                Udvidelse = udvid.ToString();
+                UdvidIkon = "https://visualpharm.com/assets/113/Collapse-595b40b75ba036ed117d6f0a.svg";
+                NyDataVis = false;
+            }
+            else
+            {
+                //Minimer
+                Udvidelse = "170";
+                UdvidIkon = "https://visualpharm.com/assets/833/Expand-595b40b75ba036ed117d6f8f.svg";
+                NyDataVis = true;
+            }
         }
 
         public void Opdater()
