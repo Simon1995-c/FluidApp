@@ -18,7 +18,9 @@ namespace FluidApp
     public class KolonneEditViewModel : INotifyPropertyChanged
     {
         public RelayCommand TilbageCommand { get; set; }
-        public RelayCommand<string> ArkCommand { get; set; }
+        public RelayCommand NavProdCommand { get; set; }
+        public RelayCommand NavRegCommand { get; set; }
+        public RelayCommand NavFærdigCommand { get; set; }
         public RelayCommand GemCommand { get; set; }
         public RelayCommand<int> RedigerCommand { get; set; }
         public RelayCommand OpdaterCommand { get; set; }
@@ -190,7 +192,9 @@ namespace FluidApp
         public KolonneEditViewModel()
         {
             TilbageCommand = new RelayCommand(Tilbage);
-            ArkCommand = new RelayCommand<string>(VisArk);
+            NavProdCommand = new RelayCommand(NavProduktionsfølgeseddel);
+            NavRegCommand = new RelayCommand(NavKontrolregistrering);
+            NavFærdigCommand = new RelayCommand(NavFærdigvarekontrol);
             GemCommand = new RelayCommand(GemData);
             RedigerCommand = new RelayCommand<int>(Rediger);
             OpdaterCommand = new RelayCommand(Opdater);
@@ -202,8 +206,6 @@ namespace FluidApp
 
             GemVis = true;
             SkemaUdsnit = GetSkemaUdsnit();
-            RegUdsnit = GetRegUdsnit();
-            VisArk("0");
         }
 
         public void Opdater()
@@ -254,6 +256,27 @@ namespace FluidApp
             Window.Current.Content = frame;
         }
 
+        public void NavKontrolregistrering()
+        {
+            var frame = new Frame();
+            frame.Navigate(typeof(KontrolregistreringEdit), null);
+            Window.Current.Content = frame;
+        }
+
+        public void NavProduktionsfølgeseddel()
+        {
+            var frame = new Frame();
+            frame.Navigate(typeof(Produktionsfølgeseddel), null);
+            Window.Current.Content = frame;
+        }
+
+        public void NavFærdigvarekontrol()
+        {
+            var frame = new Frame();
+            frame.Navigate(typeof(Færdigvarekontrol), null);
+            Window.Current.Content = frame;
+        }
+
         public string ToString(bool svar)
         {
             string strSvar;
@@ -270,60 +293,25 @@ namespace FluidApp
             return boolSvar;
         }
 
-        public void VisArk(string parameter)
-        {
-            switch (parameter)
-            {
-                case "0":
-                    SkemaVis = true;
-                    RegVis = false;
-                    SeddelVis = false;
-                    return;
-                case "1":
-                    SkemaVis = false;
-                    RegVis = true;
-                    SeddelVis = false;
-                    return;
-                case "2":
-                    SkemaVis = false;
-                    RegVis = false;
-                    SeddelVis = true;
-                    return;
-                case "3":
-                    SkemaVis = false;
-                    RegVis = false;
-                    SeddelVis = false;
-                    return;
-            }
-        }
-
         public void GemData()
         {
-            if (SkemaVis)
-            {
-                NytSkema.Klokkeslæt = DateTime.Parse(Klokkeslæt, new DateTimeFormatInfo());
-                NytSkema.Ludkoncetration = Ludkoncetration;
-                NytSkema.mSKontrol = ToBool(MSKontrol);
-                NytSkema.Fustage = Fustage;
-                NytSkema.Kvittering = Kvittering;
-                NytSkema.Signatur = Signatur;
-                NytSkema.Vægt = Vægt;
-                NytSkema.mS = MS;
-                NytSkema.LudKontrol = ToBool(LudKontrol);
-                //Skal hentes fra Kolonne
-                NytSkema.FK_Kolonne = 8;
+            NytSkema.Klokkeslæt = DateTime.Parse(Klokkeslæt, new DateTimeFormatInfo());
+            NytSkema.Ludkoncetration = Ludkoncetration;
+            NytSkema.mSKontrol = ToBool(MSKontrol);
+            NytSkema.Fustage = Fustage;
+            NytSkema.Kvittering = Kvittering;
+            NytSkema.Signatur = Signatur;
+            NytSkema.Vægt = Vægt;
+            NytSkema.mS = MS;
+            NytSkema.LudKontrol = ToBool(LudKontrol);
+            //Skal hentes fra Kolonne
+            NytSkema.FK_Kolonne = 8;
 
-                NytSkema.Post(NytSkema);
-                NytSkema = new KontrolSkema();
+            NytSkema.Post(NytSkema);
+            NytSkema = new KontrolSkema();
 
-                SkemaUdsnit = GetSkemaUdsnit();
-                OnPropertyChanged(nameof(SkemaUdsnit));
-            }
-            else if (RegVis)
-            {
-                RegUdsnit = GetRegUdsnit();
-                OnPropertyChanged(nameof(RegUdsnit));
-            }
+            SkemaUdsnit = GetSkemaUdsnit();
+            OnPropertyChanged(nameof(SkemaUdsnit));
         }
 
         public ObservableCollection<KontrolSkema> GetSkemaUdsnit()
@@ -337,26 +325,6 @@ namespace FluidApp
             }
             udsnit = new ObservableCollection<KontrolSkema>(udsnit.OrderByDescending(e => e.ID));
 
-            return udsnit;
-        }
-
-        public ObservableCollection<Kontrolregistrering> GetRegUdsnit()
-        {
-            ObservableCollection<Kontrolregistrering> udsnit = new ObservableCollection<Kontrolregistrering>();
-            Kontrolregistrering tempData = new Kontrolregistrering();
-
-            foreach (var skema in tempData.GetAll())
-            {
-                udsnit.Add(skema);
-            }
-
-            udsnit = new ObservableCollection<Kontrolregistrering>(udsnit.OrderByDescending(e => e.ID));
-            int udsnitSize = udsnit.Count;
-
-            for (int i = 0; i < udsnitSize; i++)
-            {
-                if (i > 2) udsnit.RemoveAt(3);
-            }
             return udsnit;
         }
 
