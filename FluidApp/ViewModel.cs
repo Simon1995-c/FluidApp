@@ -15,16 +15,55 @@ using Models;
 
 namespace FluidApp
 {
-    class ViewModel : INotifyPropertyChanged
+    public class ViewModel : INotifyPropertyChanged
     {
         public RelayCommand navigateToKolonne2 { get; set; }
         public RelayCommand navigateToLogin { get; set; }
+        public RelayCommand navigatetoAdmin { get; set; }
+        public Visibility hideLogin { get; set; }
+        public Visibility hideAdminPanel { get; set; }
 
         public ViewModel()
         {
+            hideAdminPanel = Visibility.Collapsed;
+
             navigateToKolonne2 = new RelayCommand(Navigate);
             navigateToLogin = new RelayCommand(NavigateToLogin);
+            navigatetoAdmin = new RelayCommand(navigateToAdminPanel);
+
+            if (Application.Current.Resources.Count > 0)
+            {
+                if ((int)Application.Current.Resources["Administrator"] == 2)
+                {
+                    hideAdminPanel = Visibility.Visible;
+                    hideLogin = Visibility.Collapsed;
+                }
+                else if ((int)Application.Current.Resources["Administrator"] == 0)
+                {
+                    hideLogin = Visibility.Visible;
+                    hideAdminPanel = Visibility.Collapsed;
+                }
+                else
+                {
+                    hideAdminPanel = Visibility.Collapsed;
+                }
+            }
+           
             
+            
+
+            
+            
+           
+            
+        }
+
+
+        public void navigateToAdminPanel()
+        {
+            var frame = new Frame();
+            frame.Navigate(typeof(AdminPage), null);
+            Window.Current.Content = frame;
         }
 
         private void Navigate()

@@ -22,6 +22,7 @@ namespace FluidApp
         public RelayCommand NavigerOpretSkemaCommand { get; set; }
         public RelayCommand GenindlæsCommand { get; set; }
         public RelayCommand SeMere { get; set; }
+        public Visibility OpretSkemaVisibility { get; set; }
 
         public ObservableCollection<Forside> _kolonneListe;
         public ObservableCollection<Forside> KolonneListe
@@ -53,6 +54,21 @@ namespace FluidApp
             }
 
             UpdateList();
+
+            OpretSkemaVisibility = Visibility.Collapsed;
+
+            if (Application.Current.Resources.Count > 0)
+            {
+                if ((int)Application.Current.Resources["Administrator"] == 1 || (int)Application.Current.Resources["Administrator"] == 2)
+                {
+                    OpretSkemaVisibility = Visibility.Visible;
+                }
+                else
+                {
+                    OpretSkemaVisibility = Visibility.Collapsed;
+                }
+
+            }
         }
 
         private void SeMereFunc()

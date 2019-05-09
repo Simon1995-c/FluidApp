@@ -26,7 +26,7 @@
             </Grid>
             <Grid Grid.Column="2" HorizontalAlignment="Right">
                 <!--Afhængig af admin rolle-->
-                <Button Content="Opret nyt skema" Visibility="{Binding}" Command="{Binding NavigerOpretSkemaCommand}" Foreground="White"></Button>
+                <Button Content="Opret nyt skema" Visibility="{Binding OpretSkemaVisibility}" Command="{Binding NavigerOpretSkemaCommand}" Foreground="White"></Button>
             </Grid>
         </Grid>
         

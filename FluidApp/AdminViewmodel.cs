@@ -286,7 +286,10 @@ namespace FluidApp
             var frame = new Frame();
             frame.Navigate(typeof(MainPage), null);
             Window.Current.Content = frame;
+
         }
+
+
 
 
         public void Logud()
@@ -294,7 +297,7 @@ namespace FluidApp
             var frame = new Frame();
             frame.Navigate(typeof(Login), null);
             Window.Current.Content = frame;
-
+           
             Application.Current.Resources["Administrator"] = 0;
 
             LogUdVisibility = Visibility.Collapsed;
