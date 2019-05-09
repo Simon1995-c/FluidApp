@@ -12,72 +12,66 @@
         <local:KolonneViewModel/>
     </Page.DataContext>
     <Grid>
-        <Grid VerticalAlignment="Top" Background="DarkCyan" Padding="15 25">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="3*"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <Button Command="{Binding TilbageCommand}" Content="Tilbage" Foreground="white"></Button>
-            </Grid>
-            <Grid Grid.Column="1" HorizontalAlignment="Center">
-                <TextBlock FontSize="26" Foreground="White" Text="Kolonne 2"></TextBlock>
-            </Grid>
-            <Grid Grid.Column="2" HorizontalAlignment="Right">
-                <!--Afhængig af admin rolle-->
-                <Button Content="Opret nyt skema" Visibility="{Binding OpretSkemaVisibility}" Command="{Binding NavigerOpretSkemaCommand}" Foreground="White"></Button>
-            </Grid>
-        </Grid>
-        
-        <StackPanel Orientation="Vertical" VerticalAlignment="Top" Padding="50" Margin="0 50 0 0">
-            <Grid Padding="10">
-                <!--2x2 grid-->
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="8*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid Grid.Column="0" Grid.Row="0">
-                    <TextBlock Text="Alle skemaer" FontWeight="Bold"></TextBlock>
-                </Grid>
-                <Grid Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right">
-                    <StackPanel Orientation="Horizontal">
-                        <!--<Button Content="Sortér" Command="{Binding SorterCommand}"></Button>-->
-                        <ComboBox Margin="0 0 20 0" PlaceholderText="Sortér efter antal dage" ItemsSource="{Binding SorteringsMuligheder}" SelectedItem="{Binding SorteringsValg, Mode=TwoWay}"></ComboBox>
-                        <Button Content="Genindlæs" Command="{Binding GenindlæsCommand}"></Button>
-                    </StackPanel>
-                </Grid>
-                <!--To ListViews for ellers virkede horizontalalignment ikke-->
-                <Grid Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Margin="0 10 0 0">
-                    <ListView ItemsSource="{Binding KolonneListe}" SelectionMode="None">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <TextBlock Margin="10" Text="{Binding ProcessordreNr}"></TextBlock>
-                                    <TextBlock Margin="10" Text="{Binding FærdigvareNr}"></TextBlock>
-                                    <TextBlock Margin="10" Text="{Binding FærdigvareNavn}"></TextBlock>
-                                    <TextBlock Margin="10" Text="{Binding FormatedDate}"></TextBlock>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
-                <Grid Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Margin="0 10 0 0">
-                    <ListView ItemsSource="{Binding KolonneListe}" SelectionMode="None">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Border Margin="0 5 0 0">
-                                    <Button Content="Se mere" CommandParameter="{Binding ID}" Command="{Binding ElementName=thisPage, Path=DataContext.SeMere}"></Button>
-                                </Border>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
-            </Grid>
+        <StackPanel Visibility="{Binding ErrorVisibility}" Padding="50">
+            <TextBlock>Fejl. Du har ikke adgang til at bruge programmet.</TextBlock>
+            <Button Command="{Binding TilbageCommand}" Margin="0 20 0 0">Tilbage</Button>
         </StackPanel>
+        <Grid Visibility="{Binding PageContentVisibility}">
+            <Grid VerticalAlignment="Top" Background="DarkCyan" Padding="15 25">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Button Command="{Binding TilbageCommand}" Content="Tilbage" Foreground="white"></Button>
+                </Grid>
+                <Grid Grid.Column="1" HorizontalAlignment="Center">
+                    <TextBlock FontSize="26" Foreground="White" Text="Kolonne 2"></TextBlock>
+                </Grid>
+                <Grid Grid.Column="2" HorizontalAlignment="Right">
+                    <!--Afhængig af admin rolle-->
+                    <Button Content="Opret nyt skema" Visibility="{Binding OpretSkemaVisibility}" Command="{Binding NavigerOpretSkemaCommand}" Foreground="White"></Button>
+                </Grid>
+            </Grid>
+
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" Padding="50" Margin="0 50 0 0">
+                <Grid Padding="10">
+                    <!--2x2 grid-->
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Column="0" Grid.Row="0">
+                        <TextBlock Text="Alle skemaer" FontWeight="Bold"></TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="0" HorizontalAlignment="Right">
+                        <StackPanel Orientation="Horizontal">
+                            <!--<Button Content="Sortér" Command="{Binding SorterCommand}"></Button>-->
+                            <ComboBox Margin="0 0 20 0" PlaceholderText="Sortér efter antal dage" ItemsSource="{Binding SorteringsMuligheder}" SelectedItem="{Binding SorteringsValg, Mode=TwoWay}"></ComboBox>
+                            <Button Content="Genindlæs" Command="{Binding GenindlæsCommand}"></Button>
+                        </StackPanel>
+                    </Grid>
+                    <!--To ListViews for ellers virkede horizontalalignment ikke-->
+                    <Grid Grid.Column="0" Grid.Row="1" Margin="0 60 0 0">
+                        <ListView ItemsSource="{Binding KolonneListe}" Width="1200" Padding="0" Margin="0">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid HorizontalAlignment="Stretch" Width="1170" Padding="10">
+                                        <TextBlock VerticalAlignment="Center">
+                                        <Run Text="{Binding ProcessordreNr}"></Run>
+                                        <Run Text="{Binding FærdigvareNr}"></Run>
+                                        <Run Text="{Binding FærdigvareNavn}"></Run>
+                                        <Run Text="{Binding FormatedDate}"></Run>
+                                        </TextBlock>
+                                        <Button VerticalAlignment="Center" HorizontalAlignment="Right" Content="Se mere" CommandParameter="{Binding ID}" Command="{Binding ElementName=thisPage, Path=DataContext.SeMere}"></Button>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

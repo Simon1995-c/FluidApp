@@ -123,9 +123,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="errorPageIPrange.xaml.cs">
-      <DependentUpon>errorPageIPrange.xaml</DependentUpon>
-    </Compile>
     <Compile Include="FærdigvarekontrolEdit.xaml.cs">
       <DependentUpon>FærdigvarekontrolEdit.xaml</DependentUpon>
     </Compile>
@@ -186,10 +183,6 @@
     <Page Include="AdminPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="errorPageIPrange.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FærdigvarekontrolEdit.xaml">
       <SubType>Designer</SubType>
