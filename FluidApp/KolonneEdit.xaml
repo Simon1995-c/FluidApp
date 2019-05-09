@@ -37,26 +37,26 @@
                     </Grid.RowDefinitions>
                     <Grid Row="0" Column="0" Margin="0 0 30 0">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Procesordrenummer:" Margin="0 0 5 0"></TextBlock>
-                            <TextBlock Text="{Binding Info.ProcessordreNr}"></TextBlock>
+                            <TextBlock Text="Procesordrenummer:" Margin="0 0 5 0" Foreground="White"></TextBlock>
+                            <TextBlock Text="{Binding Info.ProcessordreNr}" Foreground="White"></TextBlock>
                         </StackPanel>
                     </Grid>
                     <Grid Row="0" Column="1">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Dato:" Margin="0 0 5 0"></TextBlock>
-                            <TextBlock Text="{Binding Info.FormatedDate}"></TextBlock>
+                            <TextBlock Text="Dato:" Margin="0 0 5 0" Foreground="White"></TextBlock>
+                            <TextBlock Text="{Binding Info.FormatedDate}" Foreground="White"></TextBlock>
                         </StackPanel>
                     </Grid>
                     <Grid Row="1" Column="0" Margin="0 0 30 0">
                          <StackPanel Orientation="Horizontal">
-                             <TextBlock Text="Færdigvarenummer:" Margin="0 0 5 0"></TextBlock>
-                             <TextBlock Text="{Binding Info.FærdigvareNr}"></TextBlock>
+                            <TextBlock Text="Færdigvarenummer:" Margin="0 0 5 0" Foreground="White"></TextBlock>
+                            <TextBlock Text="{Binding Info.FærdigvareNr}" Foreground="White"></TextBlock>
                         </StackPanel>
                     </Grid>
                     <Grid Row="1" Column="1">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Færdigvarenavn:" Margin="0 0 5 0"></TextBlock>
-                            <TextBlock Text="{Binding Info.FærdigvareNavn}"></TextBlock>
+                            <TextBlock Text="Færdigvarenavn:" Margin="0 0 5 0" Foreground="White"></TextBlock>
+                            <TextBlock Text="{Binding Info.FærdigvareNavn}" Foreground="White"></TextBlock>
                         </StackPanel>
                     </Grid>
                 </Grid>
@@ -70,7 +70,10 @@
             </Grid.RowDefinitions>
             <Grid Row="0">
                 <StackPanel>
-                    <TextBlock FontSize="18" FontWeight="Bold" Text="Tidligere indtastet data" Margin="0 0 0 10"></TextBlock>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="0 0 0 5">
+                        <TextBlock FontSize="18" FontWeight="Bold" Text="Tidligere indtastet data" Margin="0 0 0 10"></TextBlock>
+                        <Button Command="{Binding UdvidCommand}" Margin="1000 0 0 0" Content="Udvid"></Button>
+                    </StackPanel>
                     <ListView Background="Gray" SelectionMode="None" Padding="0 10 0 0" BorderBrush="Black" BorderThickness="1">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -146,7 +149,7 @@
                                 </StackPanel>
                             </Grid>
                         </Grid>
-                        <ScrollViewer Height="150" VerticalScrollBarVisibility="Visible">
+                        <ScrollViewer Height="{Binding Udvidelse}" VerticalScrollBarVisibility="Visible">
                             <ListView SelectedItem="{Binding RedigerCommand}" ItemsSource="{Binding SkemaUdsnit}" Width="1200" HorizontalAlignment="Center">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>

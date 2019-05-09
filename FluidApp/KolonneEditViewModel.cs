@@ -24,6 +24,7 @@ namespace FluidApp
         public RelayCommand GemCommand { get; set; }
         public RelayCommand<int> RedigerCommand { get; set; }
         public RelayCommand OpdaterCommand { get; set; }
+        public RelayCommand UdvidCommand { get; set; }
         public KontrolSkema NytSkema { get; set; }
         public Kontrolregistrering Registrering { get; set; }
         public Produktionsfølgeseddel Seddel { get; set; }
@@ -31,6 +32,7 @@ namespace FluidApp
         public ObservableCollection<Kontrolregistrering> RegUdsnit { get; set; }
         public List<string> vælgMuligheder { get; set; }
         public Forside Info { get; set; }
+        private string _udvidelse;
         private bool _skemaVis;
         private bool _regVis;
         private bool _seddelVis;
@@ -188,6 +190,16 @@ namespace FluidApp
             }
         }
 
+        public string Udvidelse
+        {
+            get { return _udvidelse; }
+            set
+            {
+                _udvidelse = value; 
+                OnPropertyChanged();
+            }
+        }
+
         #endregion
 
         public KolonneEditViewModel()
@@ -199,10 +211,13 @@ namespace FluidApp
             GemCommand = new RelayCommand(GemData);
             RedigerCommand = new RelayCommand<int>(Rediger);
             OpdaterCommand = new RelayCommand(Opdater);
+            UdvidCommand = new RelayCommand(UdvidUdsnit);
             Registrering = new Kontrolregistrering();
             NytSkema = new KontrolSkema();
             vælgMuligheder = new List<string>();
             Info = new Forside();
+
+            Udvidelse = "150";
             vælgMuligheder.Add("OK");
             vælgMuligheder.Add("IKKE OK");
 
@@ -215,6 +230,13 @@ namespace FluidApp
                 Debug.Write("FORSIDE INFO: " + f.ProcessordreNr+ " FK:" + f.FK_Kolonne);
             }
             SkemaUdsnit = GetSkemaUdsnit();
+        }
+
+        public void UdvidUdsnit()
+        {
+            double ScreenHeight = ((Frame) Window.Current.Content).ActualHeight;
+            double udvid = ScreenHeight - 300.0;
+            Udvidelse = udvid.ToString();
         }
 
         public void Opdater()
