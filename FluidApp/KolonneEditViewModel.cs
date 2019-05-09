@@ -259,7 +259,7 @@ namespace FluidApp
         public void NavKontrolregistrering()
         {
             var frame = new Frame();
-            frame.Navigate(typeof(Kontrolregistrering), null);
+            frame.Navigate(typeof(KontrolregistreringEdit), null);
             Window.Current.Content = frame;
         }
 
