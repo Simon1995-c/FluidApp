@@ -135,6 +135,10 @@
     </Compile>
     <Compile Include="KolonneEditViewModel.cs" />
     <Compile Include="KolonneViewModel.cs" />
+    <Compile Include="KontrolregistreringEdit.xaml.cs">
+      <DependentUpon>KontrolregistreringEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KontrolregistreringEditViewModel.cs" />
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
@@ -184,6 +188,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="KolonneEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KontrolregistreringEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
