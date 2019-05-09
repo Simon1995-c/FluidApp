@@ -60,9 +60,7 @@
                                     <TextBlock Margin="10" Text="{Binding ProcessordreNr}"></TextBlock>
                                     <TextBlock Margin="10" Text="{Binding FærdigvareNr}"></TextBlock>
                                     <TextBlock Margin="10" Text="{Binding FærdigvareNavn}"></TextBlock>
-                                    <TextBlock Margin="10">
-                                        <Run Text="{Binding Dato.Day}"></Run><Run Text="-"></Run><Run Text="{Binding Dato.Month}"></Run><Run Text="-"></Run><Run Text="{Binding Dato.Year}"></Run>
-                                    </TextBlock>
+                                    <TextBlock Margin="10" Text="{Binding FormatedDate}"></TextBlock>
                                 </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>

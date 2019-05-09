@@ -16,7 +16,18 @@ namespace Models
         public string FærdigvareNavn { get; set; }
         public int ProcessordreNr { get; set; }
         public string Produktionsinitialer { get; set; }
-        public DateTime Dato { get; set; }
+        public DateTime _dato;
+        public string FormatedDate { get; set; }
+
+        public DateTime Dato
+        {
+            get { return _dato; }
+            set
+            {
+                _dato = value;
+                FormatedDate = _dato.Date.ToString("dd-MM-yyyy");
+            }
+        }
 
         public const string URI = "https://restapi20190501124159.azurewebsites.net/api/Forsides";
 
