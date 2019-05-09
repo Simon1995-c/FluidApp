@@ -24,6 +24,8 @@ namespace FluidApp
         public Visibility OpretSkemaVisibility { get; set; }
         public List<string> SorteringsMuligheder { get; set; }
         public string _sorteringsValg;
+        public Visibility PageContentVisibility { get; set; }
+        public Visibility ErrorVisibility { get; set; }
 
         public ObservableCollection<Forside> _kolonneListe;
         public ObservableCollection<Forside> KolonneListe
@@ -92,15 +94,19 @@ namespace FluidApp
 
             ipHandler h = new ipHandler();
 
+            ErrorVisibility = Visibility.Collapsed;
+
             //If the IP isn't allowed -> send them to an error page
             if (!Application.Current.Resources.ContainsKey("allowedIP"))
             {
                 if (!h.isAllowedIp().Result)
                 {
+                    PageContentVisibility = Visibility.Collapsed;
+                    ErrorVisibility = Visibility.Visible;
+                }
+                else
+                {
                     Application.Current.Resources["allowedIP"] = true;
-                    var frame = new Frame();
-                    frame.Navigate(typeof(errorPageIPrange), null);
-                    Window.Current.Content = frame;
                 }
             }
 

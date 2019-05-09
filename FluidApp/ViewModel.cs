@@ -48,14 +48,6 @@ namespace FluidApp
                     hideAdminPanel = Visibility.Collapsed;
                 }
             }
-           
-            
-            
-
-            
-            
-           
-            
         }
 
 
