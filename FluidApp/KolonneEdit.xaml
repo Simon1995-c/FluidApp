@@ -26,10 +26,40 @@
                 <TextBlock FontSize="26" Foreground="White" Text="Kolonne 2"></TextBlock>
             </Grid>
             <Grid Grid.Column="2" HorizontalAlignment="Right">
-                <!--
-                Forside Data her
-                Afhængig af tidligere page information
-                -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Row="0" Column="0" Margin="0 0 30 0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Procesordrenummer:" Margin="0 0 5 0"></TextBlock>
+                            <TextBlock Text="{Binding Info.ProcessordreNr}"></TextBlock>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Row="0" Column="1">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Dato:" Margin="0 0 5 0"></TextBlock>
+                            <TextBlock Text="{Binding Info.FormatedDate}"></TextBlock>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Row="1" Column="0" Margin="0 0 30 0">
+                         <StackPanel Orientation="Horizontal">
+                             <TextBlock Text="Færdigvarenummer:" Margin="0 0 5 0"></TextBlock>
+                             <TextBlock Text="{Binding Info.FærdigvareNr}"></TextBlock>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Row="1" Column="1">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Færdigvarenavn:" Margin="0 0 5 0"></TextBlock>
+                            <TextBlock Text="{Binding Info.FærdigvareNavn}"></TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
             </Grid>
         </Grid>
 

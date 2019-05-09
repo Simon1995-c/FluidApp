@@ -30,6 +30,7 @@ namespace FluidApp
         public ObservableCollection<KontrolSkema> SkemaUdsnit { get; set; }
         public ObservableCollection<Kontrolregistrering> RegUdsnit { get; set; }
         public List<string> vælgMuligheder { get; set; }
+        public Forside Info { get; set; }
         private bool _skemaVis;
         private bool _regVis;
         private bool _seddelVis;
@@ -201,18 +202,19 @@ namespace FluidApp
             Registrering = new Kontrolregistrering();
             NytSkema = new KontrolSkema();
             vælgMuligheder = new List<string>();
+            Info = new Forside();
             vælgMuligheder.Add("OK");
             vælgMuligheder.Add("IKKE OK");
 
             GemVis = true;
-            SkemaUdsnit = GetSkemaUdsnit();
-
             if (Application.Current.Resources.ContainsKey("forside"))
             {
                 Forside f = (Forside)Application.Current.Resources["forside"];
+                Info = f;
 
-                Debug.Write("FORSIDE INFO: " + f.ProcessordreNr);
+                Debug.Write("FORSIDE INFO: " + f.ProcessordreNr+ " FK:" + f.FK_Kolonne);
             }
+            SkemaUdsnit = GetSkemaUdsnit();
         }
 
         public void Opdater()
@@ -227,8 +229,8 @@ namespace FluidApp
             NytSkema.mS = MS;
             NytSkema.LudKontrol = ToBool(LudKontrol);
             //Skal hentes fra Kolonne
-            NytSkema.FK_Kolonne = 8;
-
+            NytSkema.FK_Kolonne = Info.FK_Kolonne;
+            
             NytSkema.Put(NytSkema.ID, NytSkema);
             NytSkema = new KontrolSkema();
             SkemaUdsnit = GetSkemaUdsnit();
@@ -312,7 +314,7 @@ namespace FluidApp
             NytSkema.mS = MS;
             NytSkema.LudKontrol = ToBool(LudKontrol);
             //Skal hentes fra Kolonne
-            NytSkema.FK_Kolonne = 8;
+            NytSkema.FK_Kolonne = Info.FK_Kolonne;
 
             NytSkema.Post(NytSkema);
             NytSkema = new KontrolSkema();
@@ -328,7 +330,7 @@ namespace FluidApp
             ObservableCollection<KontrolSkema> udsnit = new ObservableCollection<KontrolSkema>();
             foreach (var data in tempData.GetAll())
             {
-                if (data.FK_Kolonne == 8) udsnit.Add(data);
+                if (data.FK_Kolonne == Info.FK_Kolonne) udsnit.Add(data);
             }
             udsnit = new ObservableCollection<KontrolSkema>(udsnit.OrderByDescending(e => e.ID));
 
