@@ -15,9 +15,9 @@
     <Grid>
         <Grid VerticalAlignment="Top" Background="DarkCyan" Padding="15 25">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="6*"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <Button Command="{Binding TilbageCommand}" Content="Tilbage" Foreground="white"></Button>
@@ -150,19 +150,24 @@
                             </Grid>
                         </Grid>
                         <ScrollViewer Height="{Binding Udvidelse}" VerticalScrollBarVisibility="Visible">
-                            <ListView SelectedItem="{Binding RedigerCommand}" ItemsSource="{Binding SkemaUdsnit}" Width="1200" HorizontalAlignment="Center">
+                            <ListView TabNavigation="Cycle" ItemsSource="{Binding SkemaUdsnit}" Width="1220">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="FocusVisualPrimaryThickness" Value="0"></Setter>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
                                 <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal" >
-                                            <TextBlock Text="{Binding FormattedTime}" Width="125"></TextBlock>
-                                            <TextBlock Text="{Binding Vægt}" Width="125"></TextBlock>
-                                            <TextBlock Text="{Binding Kvittering}" Width="125"></TextBlock>
-                                            <TextBlock Text="{Binding Fustage}" Width="125"></TextBlock>
+                                    <DataTemplate >
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding FormattedTime}" Width="125" Margin="0 3 0 0"></TextBlock>
+                                            <TextBlock Text="{Binding Vægt}" Width="125" Margin="0 3 0 0"></TextBlock>
+                                            <TextBlock Text="{Binding Kvittering}" Width="125" Margin="0 3 0 0"></TextBlock>
+                                            <TextBlock Text="{Binding Fustage}" Width="125" Margin="0 3 0 0"></TextBlock>
                                             <TextBlock Text="{Binding Ludkoncetration}" Width="125"></TextBlock>
-                                            <TextBlock Text="{Binding FormattedLud}" Width="125"></TextBlock>
-                                            <TextBlock Text="{Binding mS}" Width="125"></TextBlock>
-                                            <TextBlock Text="{Binding FormattedmS}" Width="125"></TextBlock>
-                                            <TextBlock Text="{Binding Signatur}" Width="110"></TextBlock>
+                                            <TextBlock Text="{Binding FormattedLud}" Width="125" Margin="0 3 0 0"></TextBlock>
+                                            <TextBlock Text="{Binding mS}" Width="125" Margin="0 3 0 0"></TextBlock>
+                                            <TextBlock Text="{Binding FormattedmS}" Width="125" Margin="0 3 0 0"></TextBlock>
+                                            <TextBlock Text="{Binding Signatur}" Width="110" Margin="0 3 0 0"></TextBlock>
                                             <Button Content="Rediger" FontSize="12" Command="{Binding ElementName=kolonneEdit, Path=DataContext.RedigerCommand}" CommandParameter="{Binding ID}"></Button>
                                         </StackPanel>
                                     </DataTemplate>
@@ -176,7 +181,11 @@
             <Grid Row="1" Margin="0 30 0 0" Visibility="{Binding NyDataVis}">
                 <StackPanel Width="1030">
                     <TextBlock FontSize="22" FontWeight="Bold" Text="Indtast ny data" Margin="0 0 0 10"></TextBlock>
-                    <GridView SelectionMode="None">
+                    <GridView SelectionMode="None" TabNavigation="Local">
+                        <GridView.ItemContainerTransitions>
+                            <ContentThemeTransition HorizontalOffset="200">
+                            </ContentThemeTransition>
+                        </GridView.ItemContainerTransitions>
                         <StackPanel Orientation="Vertical" Width="190" Height="85" Margin="5">
                             <TextBlock Text="Klokkeslæt"></TextBlock>
                             <TextBox Text="{Binding Klokkeslæt, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
