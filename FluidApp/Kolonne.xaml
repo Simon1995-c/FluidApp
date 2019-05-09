@@ -76,7 +76,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Border CornerRadius="9" Margin="0 5 0 0">
-                                    <Button Content="Se mere" Command="{Binding ElementName=thisPage, Path=DataContext.SeMere}"></Button>
+                                    <Button Content="Se mere" CommandParameter="{Binding ID}" Command="{Binding ElementName=thisPage, Path=DataContext.SeMere}"></Button>
                                 </Border>
                             </DataTemplate>
                         </ListView.ItemTemplate>

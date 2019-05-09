@@ -31,7 +31,7 @@ namespace FluidApp
             navigateToLogin = new RelayCommand(NavigateToLogin);
             navigatetoAdmin = new RelayCommand(navigateToAdminPanel);
 
-            if (Application.Current.Resources.Count > 0)
+            if (Application.Current.Resources.ContainsKey("Administrator"))
             {
                 if ((int)Application.Current.Resources["Administrator"] == 2)
                 {

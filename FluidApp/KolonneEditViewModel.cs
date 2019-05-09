@@ -206,6 +206,13 @@ namespace FluidApp
 
             GemVis = true;
             SkemaUdsnit = GetSkemaUdsnit();
+
+            if (Application.Current.Resources.ContainsKey("forside"))
+            {
+                Forside f = (Forside)Application.Current.Resources["forside"];
+
+                Debug.Write("FORSIDE INFO: " + f.ProcessordreNr);
+            }
         }
 
         public void Opdater()

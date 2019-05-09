@@ -21,7 +21,7 @@ namespace FluidApp
         public RelayCommand SorterCommand { get; set; }
         public RelayCommand NavigerOpretSkemaCommand { get; set; }
         public RelayCommand GenindlæsCommand { get; set; }
-        public RelayCommand SeMere { get; set; }
+        public RelayCommand<int> SeMere { get; set; }
         public Visibility OpretSkemaVisibility { get; set; }
 
         public ObservableCollection<Forside> _kolonneListe;
@@ -41,7 +41,7 @@ namespace FluidApp
             SorterCommand = new RelayCommand(SortDatasets);
             NavigerOpretSkemaCommand = new RelayCommand(OpretNytSkema);
             GenindlæsCommand = new RelayCommand(UpdateList);
-            SeMere = new RelayCommand(SeMereFunc);
+            SeMere = new RelayCommand<int>(SeMereFunc);
 
             ipHandler h = new ipHandler();
 
@@ -57,7 +57,7 @@ namespace FluidApp
 
             OpretSkemaVisibility = Visibility.Collapsed;
 
-            if (Application.Current.Resources.Count > 0)
+            if (Application.Current.Resources.ContainsKey("Administrator"))
             {
                 if ((int)Application.Current.Resources["Administrator"] == 1 || (int)Application.Current.Resources["Administrator"] == 2)
                 {
@@ -71,10 +71,13 @@ namespace FluidApp
             }
         }
 
-        private void SeMereFunc()
+        private void SeMereFunc(int id)
         {
+            Forside f = new Forside();
+            Application.Current.Resources["forside"] = f.GetOne(id);
+
             var frame = new Frame();
-            frame.Navigate(typeof(KolonneEdit), null);
+            frame.Navigate(typeof(KolonneEdit), f.GetOne(id));
             Window.Current.Content = frame;
         }
 
