@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -26,6 +27,7 @@ namespace FluidApp
         public Produktionsfølgeseddel Seddel { get; set; }
         public ObservableCollection<KontrolSkema> SkemaUdsnit { get; set; }
         public ObservableCollection<Kontrolregistrering> RegUdsnit { get; set; }
+        public List<string> vælgMuligheder { get; set; }
         private bool _skemaVis;
         private bool _regVis;
         private bool _seddelVis;
@@ -33,14 +35,14 @@ namespace FluidApp
         private bool _gemVis;
 
         private string _klokkeslæt;
-        private double _ludkoncetration;
+        private double? _ludkoncetration;
         private string _fustage;
-        private int _kvittering;
-        private double _mS;
-        private bool _ludKontrol;
+        private int? _kvittering;
+        private double? _mS;
+        private string _ludKontrol;
         private string _signatur;
-        private bool _mSKontrol;
-        private double _vægt;
+        private string _mSKontrol;
+        private double? _vægt;
 
         #region PropertyChanged
         public bool SkemaVis
@@ -83,7 +85,7 @@ namespace FluidApp
             }
         }
 
-        public double Ludkoncetration
+        public double? Ludkoncetration
         {
             get { return _ludkoncetration; }
             set
@@ -103,7 +105,7 @@ namespace FluidApp
             }
         }
 
-        public int Kvittering
+        public int? Kvittering
         {
             get { return _kvittering; }
             set
@@ -113,7 +115,7 @@ namespace FluidApp
             }
         }
 
-        public double MS
+        public double? MS
         {
             get { return _mS; }
             set
@@ -123,7 +125,7 @@ namespace FluidApp
             }
         }
 
-        public bool LudKontrol
+        public string LudKontrol
         {
             get { return _ludKontrol; }
             set
@@ -143,7 +145,7 @@ namespace FluidApp
             }
         }
 
-        public bool MSKontrol
+        public string MSKontrol
         {
             get { return _mSKontrol; }
             set
@@ -153,7 +155,7 @@ namespace FluidApp
             }
         }
 
-        public double Vægt
+        public double? Vægt
         {
             get { return _vægt; }
             set
@@ -194,6 +196,9 @@ namespace FluidApp
             OpdaterCommand = new RelayCommand(Opdater);
             Registrering = new Kontrolregistrering();
             NytSkema = new KontrolSkema();
+            vælgMuligheder = new List<string>();
+            vælgMuligheder.Add("OK");
+            vælgMuligheder.Add("IKKE OK");
 
             GemVis = true;
             SkemaUdsnit = GetSkemaUdsnit();
@@ -205,13 +210,14 @@ namespace FluidApp
         {
             NytSkema.Klokkeslæt = DateTime.Parse(Klokkeslæt, new DateTimeFormatInfo());
             NytSkema.Ludkoncetration = Ludkoncetration;
-            NytSkema.mSKontrol = MSKontrol;
+            NytSkema.mSKontrol = ToBool(MSKontrol);
             NytSkema.Fustage = Fustage;
             NytSkema.Kvittering = Kvittering;
             NytSkema.Signatur = Signatur;
             NytSkema.Vægt = Vægt;
             NytSkema.mS = MS;
-            NytSkema.LudKontrol = LudKontrol;
+            NytSkema.LudKontrol = ToBool(LudKontrol);
+            //Skal hentes fra Kolonne
             NytSkema.FK_Kolonne = 8;
 
             NytSkema.Put(NytSkema.ID, NytSkema);
@@ -229,13 +235,13 @@ namespace FluidApp
 
             Klokkeslæt = NytSkema.Klokkeslæt.TimeOfDay.ToString("hh\\:mm");
             Ludkoncetration = NytSkema.Ludkoncetration;
-            LudKontrol = NytSkema.LudKontrol;
             MS = NytSkema.mS;
             Fustage = NytSkema.Fustage;
             Kvittering = NytSkema.Kvittering;
             Signatur = NytSkema.Signatur;
             Vægt = NytSkema.Vægt;
-            MSKontrol = NytSkema.mSKontrol;
+            MSKontrol = ToString(NytSkema.mSKontrol);
+            LudKontrol = ToString(NytSkema.LudKontrol);
 
             UpdateVis = true;
             GemVis = false;
@@ -246,6 +252,22 @@ namespace FluidApp
             var frame = new Frame();
             frame.Navigate(typeof(Kolonne), null);
             Window.Current.Content = frame;
+        }
+
+        public string ToString(bool svar)
+        {
+            string strSvar;
+            if (svar) strSvar = "OK";
+            else strSvar = "IKKE OK";
+
+            return strSvar;
+        }
+
+        public bool ToBool(string svar)
+        {
+            bool boolSvar = false;
+            if (svar == "OK") return boolSvar = true;
+            return boolSvar;
         }
 
         public void VisArk(string parameter)
@@ -279,6 +301,21 @@ namespace FluidApp
         {
             if (SkemaVis)
             {
+                NytSkema.Klokkeslæt = DateTime.Parse(Klokkeslæt, new DateTimeFormatInfo());
+                NytSkema.Ludkoncetration = Ludkoncetration;
+                NytSkema.mSKontrol = ToBool(MSKontrol);
+                NytSkema.Fustage = Fustage;
+                NytSkema.Kvittering = Kvittering;
+                NytSkema.Signatur = Signatur;
+                NytSkema.Vægt = Vægt;
+                NytSkema.mS = MS;
+                NytSkema.LudKontrol = ToBool(LudKontrol);
+                //Skal hentes fra Kolonne
+                NytSkema.FK_Kolonne = 8;
+
+                NytSkema.Post(NytSkema);
+                NytSkema = new KontrolSkema();
+
                 SkemaUdsnit = GetSkemaUdsnit();
                 OnPropertyChanged(nameof(SkemaUdsnit));
             }

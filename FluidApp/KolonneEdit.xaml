@@ -51,6 +51,7 @@
                             <ColumnDefinition Width="125"></ColumnDefinition>
                             <ColumnDefinition Width="125"></ColumnDefinition>
                             <ColumnDefinition Width="110"></ColumnDefinition>
+                            <ColumnDefinition Width="110"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Grid Column="0" BorderBrush="Black" BorderThickness="1" Padding="5 0 0 0">
                             <TextBlock Text="Klokkeslæt" Margin="0 15 0 0"></TextBlock>
@@ -104,7 +105,12 @@
                         </Grid>
                         <Grid Column="8" BorderBrush="Black" BorderThickness="1" Padding="5 0 0 0">
                             <StackPanel>
-                                <TextBlock Text="Sign. operatør"></TextBlock>
+                                <TextBlock Text="Sign. operatør" Margin="0 15 0 0"></TextBlock>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Column="9" BorderBrush="Black" BorderThickness="1" Padding="5 0 0 0">
+                            <StackPanel>
+                                <TextBlock Text="Handling" Margin="0 15 0 0"></TextBlock>
                             </StackPanel>
                         </Grid>
                     </Grid>
@@ -132,58 +138,55 @@
             </Grid>
 
             <Grid Row="1"  Margin="0 50 0 0">
-                <GridView Width="1030" Header="Indtast ny data:" SelectionMode="None">
-                    <StackPanel Orientation="Vertical" Width="190" Height="85" Margin="5">
-                        <TextBlock Text="Klokkeslæt"></TextBlock>
-                        <TextBox Text="{Binding Klokkeslæt, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" Width="190">
-                        <TextBlock Text="Vægt"></TextBlock>
-                        <TextBlock Text="30L Fust. Min. 38,5kg." FontSize="12"></TextBlock>
-                        <TextBlock Text="25L Fust. Min. 37,0kg." FontSize="12"></TextBlock>
-                        <TextBox Text="{Binding Vægt, Mode=TwoWay}" PlaceholderText="Indsæt her"></TextBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" Width="190">
-                        <TextBlock Text="Kvittering for udtaget prøve" ></TextBlock>
-                        <TextBox Text="{Binding Kvittering, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" Width="190">
-                        <TextBlock Text="Kontrol af testfustage" ></TextBlock>
-                        <TextBox Text="{Binding Fustage, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" Width="190">
-                        <TextBlock Text="Ludkoncentration"></TextBlock>
-                        <TextBlock Text="Min. 1%" FontSize="12"></TextBlock>
-                        <TextBlock Text="Max. 2%" FontSize="12"></TextBlock>
-                        <TextBox  Text="{Binding Ludkoncetration, Mode=TwoWay}" PlaceholderText="Indsæt her"></TextBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" Width="190">
-                        <TextBlock Text="Ludkoncentration" ></TextBlock>
-                        <TextBlock Text="OK/IKKE OK" FontSize="12"></TextBlock>
-                        <ComboBox SelectedItem="{Binding LudKontrol, Mode=TwoWay}" PlaceholderText="Vælg" Margin="0 17 0 0" Width="190">
-                            <ComboBoxItem Content="true"/>
-                            <ComboBoxItem Content="false"></ComboBoxItem>
-                        </ComboBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" Width="190">
-                        <TextBlock Text="Mip MA"></TextBlock>
-                        <TextBlock Text="Min. 24 mS" FontSize="12"></TextBlock>
-                        <TextBlock Text="Max. 26,5 mS" FontSize="12"></TextBlock>
-                        <TextBox Text="{Binding MS, Mode=TwoWay}" PlaceholderText="Indsæt her"></TextBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" Width="190">
-                        <TextBlock Text="Mip MA" ></TextBlock>
-                        <TextBlock Text="OK/IKKE OK" FontSize="12"></TextBlock>
-                        <ComboBox SelectedItem="{Binding MSKontrol, Mode=TwoWay}" PlaceholderText="Vælg" Margin="0 17 0 0" Width="190">
-                            <ComboBoxItem Content="true"/>
-                            <ComboBoxItem Content="false"></ComboBoxItem>
-                        </ComboBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" Width="190">
-                        <TextBlock Text="Sign. operatør" ></TextBlock>
-                        <TextBox Text="{Binding Signatur, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
-                    </StackPanel>
-                </GridView>
+                <StackPanel Width="1030">
+                    <TextBlock FontSize="22" FontWeight="Bold" Text="Indtast ny data"></TextBlock>
+                    <GridView Width="1030" SelectionMode="None">
+                        <StackPanel Orientation="Vertical" Width="190" Height="85" Margin="5">
+                            <TextBlock Text="Klokkeslæt"></TextBlock>
+                            <TextBox Text="{Binding Klokkeslæt, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="190">
+                            <TextBlock Text="Vægt"></TextBlock>
+                            <TextBlock Text="30L Fust. Min. 38,5kg." FontSize="12"></TextBlock>
+                            <TextBlock Text="25L Fust. Min. 37,0kg." FontSize="12"></TextBlock>
+                            <TextBox Text="{Binding Vægt, Mode=TwoWay}" PlaceholderText="Indsæt her"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="190">
+                            <TextBlock Text="Kvittering for udtaget prøve" ></TextBlock>
+                            <TextBox Text="{Binding Kvittering, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="190">
+                            <TextBlock Text="Kontrol af testfustage" ></TextBlock>
+                            <TextBox Text="{Binding Fustage, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="190">
+                            <TextBlock Text="Ludkoncentration"></TextBlock>
+                            <TextBlock Text="Min. 1%" FontSize="12"></TextBlock>
+                            <TextBlock Text="Max. 2%" FontSize="12"></TextBlock>
+                            <TextBox  Text="{Binding Ludkoncetration, Mode=TwoWay}" PlaceholderText="Indsæt her"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="190">
+                            <TextBlock Text="Ludkoncentration" ></TextBlock>
+                            <TextBlock Text="OK/IKKE OK" FontSize="12"></TextBlock>
+                            <ComboBox ItemsSource="{Binding vælgMuligheder}" SelectedItem="{Binding LudKontrol, Mode=TwoWay}" PlaceholderText="Vælg" Margin="0 17 0 0" Width="190"></ComboBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="190">
+                            <TextBlock Text="Mip MA"></TextBlock>
+                            <TextBlock Text="Min. 24 mS" FontSize="12"></TextBlock>
+                            <TextBlock Text="Max. 26,5 mS" FontSize="12"></TextBlock>
+                            <TextBox Text="{Binding MS, Mode=TwoWay}" PlaceholderText="Indsæt her"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="190">
+                            <TextBlock Text="Mip MA" ></TextBlock>
+                            <TextBlock Text="OK/IKKE OK" FontSize="12"></TextBlock>
+                            <ComboBox ItemsSource="{Binding vælgMuligheder}" SelectedItem="{Binding MSKontrol, Mode=TwoWay}" PlaceholderText="Vælg" Margin="0 17 0 0" Width="190"></ComboBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="190">
+                            <TextBlock Text="Sign. operatør" ></TextBlock>
+                            <TextBox Text="{Binding Signatur, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                        </StackPanel>
+                    </GridView>
+                </StackPanel>
             </Grid>
         </Grid>
 

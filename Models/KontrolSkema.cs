@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+
 using Newtonsoft.Json;
 
 namespace Models
@@ -12,14 +16,14 @@ namespace Models
         public int ID { get; set; }
         public int FK_Kolonne { get; set; }
         private DateTime _klokkeslæt;
-        public double Ludkoncetration { get; set; }
+        public double? Ludkoncetration { get; set; }
         public string Fustage { get; set; }
-        public int Kvittering { get; set; }
-        public double mS { get; set; }
+        public int? Kvittering { get; set; }
+        public double? mS { get; set; }
         private bool _ludKontrol;
         public string Signatur { get; set; }
         private bool _mSKontrol;
-        public double Vægt { get; set; }
+        public double? Vægt { get; set; }
         public string FormattedTime { get; set; }
         public string FormattedLud { get; set; }
         public string FormattedmS { get; set; }
