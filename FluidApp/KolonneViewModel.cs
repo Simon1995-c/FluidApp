@@ -93,11 +93,15 @@ namespace FluidApp
             ipHandler h = new ipHandler();
 
             //If the IP isn't allowed -> send them to an error page
-            if (!h.isAllowedIp().Result)
+            if (!Application.Current.Resources.ContainsKey("allowedIP"))
             {
-                var frame = new Frame();
-                frame.Navigate(typeof(errorPageIPrange), null);
-                Window.Current.Content = frame;
+                if (!h.isAllowedIp().Result)
+                {
+                    Application.Current.Resources["allowedIP"] = true;
+                    var frame = new Frame();
+                    frame.Navigate(typeof(errorPageIPrange), null);
+                    Window.Current.Content = frame;
+                }
             }
 
             UpdateList();
