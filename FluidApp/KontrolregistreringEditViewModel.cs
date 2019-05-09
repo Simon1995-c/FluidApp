@@ -21,6 +21,9 @@ namespace FluidApp
         private bool _gemVis;
 
         public RelayCommand TilbageCommand { get; set; }
+        public RelayCommand NavFærdigCommand { get; set; }
+        public RelayCommand NavProdCommand { get; set; }
+        public RelayCommand NavSkemaCommand { get; set; }
         public RelayCommand<string> ArkCommand { get; set; }
         public RelayCommand GemCommand { get; set; }
         public RelayCommand<int> RedigerCommand { get; set; }
@@ -202,6 +205,9 @@ namespace FluidApp
         public KontrolregistreringEditViewModel()
         {
             TilbageCommand = new RelayCommand(Tilbage);
+            NavFærdigCommand = new RelayCommand(NavFærdigvarekontrol);
+            NavProdCommand = new RelayCommand(NavProduktionsfølgeseddel);
+            NavSkemaCommand = new RelayCommand(NavSkema);
             ArkCommand = new RelayCommand<string>(VisArk);
             GemCommand = new RelayCommand(GemData);
             RedigerCommand = new RelayCommand<int>(Rediger);
@@ -217,6 +223,25 @@ namespace FluidApp
         {
             var frame = new Frame();
             frame.Navigate(typeof(Kolonne), null);
+            Window.Current.Content = frame;
+        }
+        public void NavProduktionsfølgeseddel()
+        {
+            var frame = new Frame();
+            frame.Navigate(typeof(ProduktionsfølgeseddelEdit), null);
+            Window.Current.Content = frame;
+        }
+
+        public void NavFærdigvarekontrol()
+        {
+            var frame = new Frame();
+            frame.Navigate(typeof(FærdigvarekontrolEdit), null);
+            Window.Current.Content = frame;
+        }
+        public void NavSkema()
+        {
+            var frame = new Frame();
+            frame.Navigate(typeof(KolonneEdit), null);
             Window.Current.Content = frame;
         }
 
@@ -342,8 +367,6 @@ namespace FluidApp
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
-        
         }
     }
 }

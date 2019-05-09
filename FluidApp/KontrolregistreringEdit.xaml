@@ -7,6 +7,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.DataContext>
+        <local:KontrolregistreringEditViewModel></local:KontrolregistreringEditViewModel>
+    </Page.DataContext>
     <Grid>
         <Grid>
             <Grid VerticalAlignment="Top" Background="DarkCyan" CornerRadius="0 0 8 8">
@@ -31,7 +34,7 @@
         </Grid>
 
         <Grid>
-            <Grid Name="KontrolRegistrering" Visibility="{Binding RegVis}" VerticalAlignment="Top" Margin="0 100 0 0" HorizontalAlignment="Center">
+            <Grid Name="KontrolRegistrering" VerticalAlignment="Top" Margin="0 100 0 0" HorizontalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -163,15 +166,21 @@
                 </Grid>
             </Grid>
 
-
-
             <Grid VerticalAlignment="Bottom">
                 <Grid VerticalAlignment="Bottom">
                     <StackPanel Orientation="Horizontal">
-                        <Button Content="Kontrolskema" FontSize="20" Command="{Binding ArkCommand}" CommandParameter="0" Padding="20" BorderBrush="DimGray"></Button>
-                        <Button Content="Kontrolregistrering" FontSize="20" Command="{Binding ArkCommand}" CommandParameter="1" Padding="20" BorderBrush="DimGray"></Button>
-                        <Button Content="Produktionsfølgeseddel" FontSize="20" Command="{Binding ArkCommand}" CommandParameter="2" Padding="20" BorderBrush="DimGray"></Button>
-                        <Button Content="Færdigvarekontrol" FontSize="20" Command="{Binding ArkCommand}" CommandParameter="3" Padding="20" BorderBrush="DimGray"></Button>
+                        <HyperlinkButton Command="{Binding NavSkemaCommand}" FontSize="15" Padding="15" Background="DarkCyan" Foreground="Black" BorderBrush="Black" BorderThickness="1">
+                            <TextBlock Text="Kontrolskema"></TextBlock>
+                        </HyperlinkButton>
+                        <HyperlinkButton FontSize="15" Padding="15" Foreground="Black" FontWeight="Bold">
+                            <TextBlock Text="Kontrolregistrering"></TextBlock>
+                        </HyperlinkButton>
+                        <HyperlinkButton FontSize="15" Command="{Binding NavProdCommand}" Padding="15" Background="DarkCyan" Foreground="Black" BorderBrush="Black" BorderThickness="1">
+                            <TextBlock Text="Produktionsfølgeseddel"></TextBlock>
+                        </HyperlinkButton>
+                        <HyperlinkButton FontSize="15" Command="{Binding NavFærdigCommand}" Padding="15" Background="DarkCyan" Foreground="Black" BorderBrush="Black" BorderThickness="1">
+                            <TextBlock Text="Færdigvarekontrol"></TextBlock>
+                        </HyperlinkButton>
                     </StackPanel>
                 </Grid>
                 <Button Command="{Binding GemCommand}" Visibility="{Binding GemVis}" HorizontalAlignment="Right" Content="Gem" Margin="0 0 20 0"></Button>

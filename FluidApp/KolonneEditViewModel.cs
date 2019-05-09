@@ -266,14 +266,14 @@ namespace FluidApp
         public void NavProduktionsfølgeseddel()
         {
             var frame = new Frame();
-            frame.Navigate(typeof(Produktionsfølgeseddel), null);
+            frame.Navigate(typeof(ProduktionsfølgeseddelEdit), null);
             Window.Current.Content = frame;
         }
 
         public void NavFærdigvarekontrol()
         {
             var frame = new Frame();
-            frame.Navigate(typeof(Færdigvarekontrol), null);
+            frame.Navigate(typeof(FærdigvarekontrolEdit), null);
             Window.Current.Content = frame;
         }
 
