@@ -20,34 +20,55 @@ namespace FluidApp
         public RelayCommand navigateToKolonne2 { get; set; }
         public RelayCommand navigateToLogin { get; set; }
         public RelayCommand navigatetoAdmin { get; set; }
+        public RelayCommand logUdRelayCommand { get; set; }
         public Visibility hideLogin { get; set; }
         public Visibility hideAdminPanel { get; set; }
+        public Visibility LogudVisibility { get; set; }
 
         public ViewModel()
         {
             hideAdminPanel = Visibility.Collapsed;
-
+            LogudVisibility = Visibility.Collapsed;
             navigateToKolonne2 = new RelayCommand(Navigate);
             navigateToLogin = new RelayCommand(NavigateToLogin);
             navigatetoAdmin = new RelayCommand(navigateToAdminPanel);
+            logUdRelayCommand = new RelayCommand(logUd);
+
+            
+
 
             if (Application.Current.Resources.ContainsKey("Administrator"))
             {
                 if ((int)Application.Current.Resources["Administrator"] == 2)
                 {
                     hideAdminPanel = Visibility.Visible;
+                    LogudVisibility = Visibility.Visible;
                     hideLogin = Visibility.Collapsed;
                 }
                 else if ((int)Application.Current.Resources["Administrator"] == 0)
                 {
                     hideLogin = Visibility.Visible;
                     hideAdminPanel = Visibility.Collapsed;
+                    LogudVisibility = Visibility.Collapsed;
                 }
                 else
                 {
                     hideAdminPanel = Visibility.Collapsed;
                 }
             }
+        }
+
+
+        public void logUd()
+        {
+            LogudVisibility = Visibility.Collapsed;
+            hideAdminPanel = Visibility.Collapsed;
+            hideLogin = Visibility.Visible;
+            OnPropertyChanged(nameof(LogudVisibility));
+            OnPropertyChanged(nameof(hideAdminPanel));
+            OnPropertyChanged(nameof(hideLogin));
+            Application.Current.Resources["Administrator"] = 0;
+
         }
 
 

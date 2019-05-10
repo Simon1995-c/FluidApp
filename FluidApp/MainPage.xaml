@@ -34,5 +34,24 @@
             </HyperlinkButton>
         </StackPanel>
 
+        <Grid>
+            <Grid VerticalAlignment="Top" Background="DarkCyan" Padding="15 25">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1" HorizontalAlignment="Center">
+                    <TextBlock FontSize="26" Foreground="White" Text="Administrator panel"></TextBlock>
+                </Grid>
+                <Grid Grid.Column="2" HorizontalAlignment="Right">
+                        <Button HorizontalAlignment="Right" Content="Log ud" VerticalAlignment="Top" Command="{Binding logUdRelayCommand}" Visibility="{Binding LogudVisibility}" Foreground="White"></Button>
+                </Grid>
+            </Grid>
+        </Grid>
+
     </Grid>
+
+    
+
 </Page>
