@@ -74,10 +74,10 @@
                             </StackPanel>
                         </GridView>
                         <GridView Width="1200" SelectionMode="None" HorizontalAlignment="Center">
-                            <TextBlock Text="{Binding RegUdsnit[0].Klokkeslæt}" Width="115" Padding="30 0 0 0"></TextBlock>
+                            <TextBlock Text="{Binding RegUdsnit[0].FormattedTime}" Width="115" Padding="30 0 0 0"></TextBlock>
                             <TextBlock Text="{Binding RegUdsnit[0].FærdigvareNr}"></TextBlock>
-                            <TextBlock Text="{Binding RegUdsnit[0].FormattedProd}"></TextBlock>
-                            <TextBlock Text="{Binding RegUdsnit[0].Holdbarhedsdato}"></TextBlock>
+                            <TextBlock Text="{Binding RegUdsnit[0].FormattedPro}"></TextBlock>
+                            <TextBlock Text="{Binding RegUdsnit[0].FormattedHo}"></TextBlock>
                             <TextBlock Text="{Binding RegUdsnit[0].Kommentar}"></TextBlock>
                             <TextBlock Text="{Binding RegUdsnit[0].Spritkontrol}"></TextBlock>
                             <TextBlock Text="{Binding RegUdsnit[0].HætteNr}"></TextBlock>
@@ -86,10 +86,10 @@
                             <TextBlock Text="{Binding RegUdsnit[0].Signatur}"></TextBlock>
                         </GridView>
                         <GridView Width="1200" SelectionMode="None" HorizontalAlignment="Center">
-                            <TextBlock Text="{Binding RegUdsnit[1].Klokkeslæt}" Width="115" Padding="30 0 0 0"></TextBlock>
+                            <TextBlock Text="{Binding RegUdsnit[1].FormattedTime}" Width="115" Padding="30 0 0 0"></TextBlock>
                             <TextBlock Text="{Binding RegUdsnit[1].FærdigvareNr}"></TextBlock>
-                            <TextBlock Text="{Binding RegUdsnit[1].FormattedProd}"></TextBlock>
-                            <TextBlock Text="{Binding RegUdsnit[1].Holdbarhedsdato}"></TextBlock>
+                            <TextBlock Text="{Binding RegUdsnit[1].FormattedPro}"></TextBlock>
+                            <TextBlock Text="{Binding RegUdsnit[1].FormattedHo}"></TextBlock>
                             <TextBlock Text="{Binding RegUdsnit[1].Kommentar}"></TextBlock>
                             <TextBlock Text="{Binding RegUdsnit[0].Spritkontrol}"></TextBlock>
                             <TextBlock Text="{Binding RegUdsnit[1].HætteNr}"></TextBlock>
@@ -98,10 +98,10 @@
                             <TextBlock Text="{Binding RegUdsnit[1].Signatur}"></TextBlock>
                         </GridView>
                         <GridView  Width="1200" SelectionMode="None" HorizontalAlignment="Center">
-                            <TextBlock Text="{Binding RegUdsnit[2].Klokkeslæt}"></TextBlock>
+                            <TextBlock Text="{Binding RegUdsnit[2].FormattedTime}" Width="115" Padding="30 0 0 0"></TextBlock>
                             <TextBlock Text="{Binding RegUdsnit[2].FærdigvareNr}"></TextBlock>
-                            <TextBlock Text="{Binding RegUdsnit[2].FormattedProd}"></TextBlock>
-                            <TextBlock Text="{Binding RegUdsnit[2].Holdbarhedsdato}"></TextBlock>
+                            <TextBlock Text="{Binding RegUdsnit[2].FormattedPro}"></TextBlock>
+                            <TextBlock Text="{Binding RegUdsnit[2].FormattedHo}"></TextBlock>
                             <TextBlock Text="{Binding RegUdsnit[2].Kommentar}"></TextBlock>
                             <TextBlock Text="{Binding RegUdsnit[2].Spritkontrol}"></TextBlock>
                             <TextBlock Text="{Binding RegUdsnit[2].HætteNr}"></TextBlock>

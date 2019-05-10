@@ -12,9 +12,9 @@ namespace Models
     {
         public int ID { get; set; }
         public int FK_Kolonne { get; set; }
-        public DateTime Klokkeslæt { get; set; }
-        public DateTime Holdbarhedsdato { get; set; }
-        public DateTime Produktionsdato { get; set; }
+        private DateTime _klokkeslæt { get; set; }
+        private DateTime _holdbarhedsdato { get; set; }
+        public DateTime _produktionsdato { get; set; }
         public int FærdigvareNr { get; set; }
         public string Kommentar { get; set; }
         public bool Spritkontrol { get; set; }
@@ -22,6 +22,49 @@ namespace Models
         public int EtiketNr { get; set; }
         public string Fustage { get; set; }
         public string Signatur { get; set; }
+
+        public string FormattedTime { get; set; }
+        public string FormattedHo { get; set; }
+        public string FormattedPro { get; set; }
+
+
+
+        public DateTime Produktionsdato
+        {
+            get { return _produktionsdato; }
+            set
+            {
+                _produktionsdato = value;
+                FormattedPro = Produktionsdato.Date.ToString("dd-MM-yyyy");
+            }
+        }
+
+
+
+
+        public DateTime Holdbarhedsdato
+        {
+            get { return _holdbarhedsdato; }
+            set
+            {
+                _holdbarhedsdato = value;
+                FormattedHo = Holdbarhedsdato.Date.ToString("dd_MM-yyyy");
+            }
+        }
+
+
+        public DateTime Klokkeslæt
+        {
+            get { return _klokkeslæt; }
+            set
+            {
+                _klokkeslæt = value;
+                FormattedTime = Klokkeslæt.TimeOfDay.ToString("hh\\:mm");
+            }
+        }
+
+
+
 
         public const string URI = "https://restapi20190501124159.azurewebsites.net/api/Kontrolregistrerings";
 
