@@ -17,7 +17,7 @@
             <Button Command="{Binding TilbageCommand}" Margin="0 20 0 0">Tilbage</Button>
         </StackPanel>
         <Grid Visibility="{Binding PageContentVisibility}">
-            <Grid VerticalAlignment="Top" Background="DarkCyan" Padding="15 25">
+            <Grid VerticalAlignment="Top" Background="#16503f" Padding="15 25">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="4*"/>
@@ -54,7 +54,7 @@
                     </Grid>
                     <!--To ListViews for ellers virkede horizontalalignment ikke-->
                     <Grid Grid.Column="0" Grid.Row="1" Margin="0 60 0 0">
-                        <ScrollViewer Height="600" Width="1200">
+                        <ScrollViewer Height="500" Width="1200">
                         <ListView ItemsSource="{Binding KolonneListe}" Width="1200" Padding="0" Margin="0">
                             <ListView.ItemTemplate>
                                 <DataTemplate>

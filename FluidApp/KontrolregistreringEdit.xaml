@@ -12,17 +12,17 @@
     </Page.DataContext>
     <Grid>
         <Grid>
-            <Grid VerticalAlignment="Top" Background="DarkCyan" CornerRadius="0 0 8 8">
+            <Grid VerticalAlignment="Top" Background="#16503f" Padding="15 25">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="4*"/>
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
-                    <Button Command="{Binding TilbageCommand}" Content="Tilbage"></Button>
+                    <Button Command="{Binding TilbageCommand}" Content="Tilbage" Foreground="White"></Button>
                 </Grid>
                 <Grid Grid.Column="1" HorizontalAlignment="Center">
-                    <TextBlock FontSize="32" Text="Kolonne 2"></TextBlock>
+                    <TextBlock FontSize="32" Text="Kolonne 2" Foreground="White"></TextBlock>
                 </Grid>
                 <Grid Grid.Column="2" HorizontalAlignment="Right">
                     <!--
@@ -169,16 +169,16 @@
             <Grid VerticalAlignment="Bottom">
                 <Grid VerticalAlignment="Bottom">
                     <StackPanel Orientation="Horizontal">
-                        <HyperlinkButton Command="{Binding NavSkemaCommand}" FontSize="15" Padding="15" Background="DarkCyan" Foreground="Black" BorderBrush="Black" BorderThickness="1">
+                        <HyperlinkButton Command="{Binding NavSkemaCommand}" FontSize="15" Padding="15" Background="#16503f" Foreground="Black" BorderBrush="Black" BorderThickness="1">
                             <TextBlock Text="Kontrolskema"></TextBlock>
                         </HyperlinkButton>
                         <HyperlinkButton FontSize="15" Padding="15" Foreground="Black" FontWeight="Bold">
                             <TextBlock Text="Kontrolregistrering"></TextBlock>
                         </HyperlinkButton>
-                        <HyperlinkButton FontSize="15" Command="{Binding NavProdCommand}" Padding="15" Background="DarkCyan" Foreground="Black" BorderBrush="Black" BorderThickness="1">
+                        <HyperlinkButton FontSize="15" Command="{Binding NavProdCommand}" Padding="15" Background="#16503f" Foreground="Black" BorderBrush="Black" BorderThickness="1">
                             <TextBlock Text="Produktionsfølgeseddel"></TextBlock>
                         </HyperlinkButton>
-                        <HyperlinkButton FontSize="15" Command="{Binding NavFærdigCommand}" Padding="15" Background="DarkCyan" Foreground="Black" BorderBrush="Black" BorderThickness="1">
+                        <HyperlinkButton FontSize="15" Command="{Binding NavFærdigCommand}" Padding="15" Background="#16503f" Foreground="Black" BorderBrush="Black" BorderThickness="1">
                             <TextBlock Text="Færdigvarekontrol"></TextBlock>
                         </HyperlinkButton>
                     </StackPanel>

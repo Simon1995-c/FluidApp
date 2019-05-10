@@ -13,7 +13,7 @@
     </Page.DataContext>
 
     <Grid>
-        <Grid VerticalAlignment="Top" Background="DarkCyan" Padding="15 25">
+        <Grid VerticalAlignment="Top" Background="#16503f" Padding="15 25">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="6*"/>
                 <ColumnDefinition Width="2*"/>
@@ -232,13 +232,13 @@
                     <HyperlinkButton FontSize="15" Padding="15" FontWeight="ExtraBold" Foreground="Black">
                         <TextBlock Text="Kontrolskema"></TextBlock>
                     </HyperlinkButton>
-                    <HyperlinkButton FontSize="15" Command="{Binding NavRegCommand}" Padding="15" Background="DarkCyan" Foreground="Black" BorderBrush="Black" BorderThickness="1">
+                    <HyperlinkButton FontSize="15" Command="{Binding NavRegCommand}" Padding="15" Background="#16503f" Foreground="Black" BorderBrush="Black" BorderThickness="1">
                         <TextBlock Text="Kontrolregistrering"></TextBlock>
                     </HyperlinkButton>
-                    <HyperlinkButton FontSize="15" Command="{Binding NavProdCommand}" Padding="15" Background="DarkCyan" Foreground="Black" BorderBrush="Black" BorderThickness="1">
+                    <HyperlinkButton FontSize="15" Command="{Binding NavProdCommand}" Padding="15" Background="#16503f" Foreground="Black" BorderBrush="Black" BorderThickness="1">
                         <TextBlock Text="Produktionsfølgeseddel"></TextBlock>
                     </HyperlinkButton>
-                    <HyperlinkButton FontSize="15" Command="{Binding NavFærdigCommand}" Padding="15" Background="DarkCyan" Foreground="Black" BorderBrush="Black" BorderThickness="1">
+                    <HyperlinkButton FontSize="15" Command="{Binding NavFærdigCommand}" Padding="15" Background="#16503f" Foreground="Black" BorderBrush="Black" BorderThickness="1">
                         <TextBlock Text="Færdigvarekontrol"></TextBlock>
                     </HyperlinkButton>
                 </StackPanel>

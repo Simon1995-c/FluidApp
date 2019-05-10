@@ -12,7 +12,7 @@
         <local:OpretKolonneViewModel/>
     </Page.DataContext>
     <Grid>
-        <Grid VerticalAlignment="Top" Background="DarkCyan" Padding="15 25">
+        <Grid VerticalAlignment="Top" Background="#16503f" Padding="15 25">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="4*"/>
@@ -40,7 +40,7 @@
                     <TextBox Text="{Binding Produktionsinitialer, Mode=TwoWay}" Background="#dfdfdf" Width="240" Margin="5" Padding="10"/>
                 </StackPanel>
                 <StackPanel Margin="0 40 0 0">
-                    <Button Command="{Binding Opret}" Foreground="#ffffff" Background="DarkCyan" Padding="10 5" Content="Opret Skema" HorizontalAlignment="Right"/>
+                    <Button Command="{Binding Opret}" Foreground="#ffffff" Background="#16503f" Padding="10 5" Content="Opret Skema" HorizontalAlignment="Right"/>
                     <TextBlock Foreground="Red" Visibility="{Binding ErrorVisibility}">Fejl. Du har indtastet forkert information.</TextBlock>
                 </StackPanel>
             </StackPanel>

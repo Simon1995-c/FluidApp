@@ -14,7 +14,7 @@
         <local:LoginViewModel/>
     </Page.DataContext>
     <Grid>
-        <Grid VerticalAlignment="Top" Background="DarkCyan" Padding="15 25">
+        <Grid VerticalAlignment="Top" Background="#16503f" Padding="15 25">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="4*"/>

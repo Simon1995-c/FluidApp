@@ -13,7 +13,7 @@
     </Page.DataContext>
 
     <Grid>
-        <Grid VerticalAlignment="Top" Background="DarkCyan" Padding="15 25">
+        <Grid VerticalAlignment="Top" Background="#16503f" Padding="15 25">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="4*"/>
@@ -29,7 +29,7 @@
                 <Button HorizontalAlignment="Right" Content="Log ud" VerticalAlignment="Top" Command="{Binding LogUdRelayCommand}" Visibility="{Binding LogUdVisibility}" Foreground="White"></Button>
             </Grid>
         </Grid>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="DarkCyan" Width="250" Margin="0 85 0 0">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="#16503f" Width="250" Margin="0 85 0 0">
             <StackPanel VerticalAlignment="Top">
                 <Button Foreground="White" Background="#00a5a5" Width="250" HorizontalAlignment="Stretch" Command="{Binding ManageIpRangeRelayCommand}">IP ranges</Button>
                 <Button Foreground="White" Background="#00a5a5" Margin="0 3 0 0" Width="250" HorizontalAlignment="Stretch" Command="{Binding ManageAdminsRelayCommand}">Brugere</Button>
