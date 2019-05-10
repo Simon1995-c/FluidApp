@@ -54,6 +54,7 @@
                     </Grid>
                     <!--To ListViews for ellers virkede horizontalalignment ikke-->
                     <Grid Grid.Column="0" Grid.Row="1" Margin="0 60 0 0">
+                        <ScrollViewer Height="600" Width="1200">
                         <ListView ItemsSource="{Binding KolonneListe}" Width="1200" Padding="0" Margin="0">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -69,6 +70,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                        </ScrollViewer>
                     </Grid>
                 </Grid>
             </StackPanel>
