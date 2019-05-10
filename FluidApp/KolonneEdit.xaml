@@ -151,11 +151,6 @@
                         </Grid>
                         <ScrollViewer Height="{Binding Udvidelse}" VerticalScrollBarVisibility="Visible">
                             <ListView TabNavigation="Cycle" ItemsSource="{Binding SkemaUdsnit}" Width="1220">
-                                <ListView.ItemContainerStyle>
-                                    <Style TargetType="ListViewItem">
-                                        <Setter Property="FocusVisualPrimaryThickness" Value="0"></Setter>
-                                    </Style>
-                                </ListView.ItemContainerStyle>
                                 <ListView.ItemTemplate>
                                     <DataTemplate >
                                         <StackPanel Orientation="Horizontal">
@@ -181,11 +176,7 @@
             <Grid Row="1" Margin="0 30 0 0" Visibility="{Binding NyDataVis}">
                 <StackPanel Width="1030">
                     <TextBlock FontSize="22" FontWeight="Bold" Text="Indtast ny data" Margin="0 0 0 10"></TextBlock>
-                    <GridView SelectionMode="None" TabNavigation="Local">
-                        <GridView.ItemContainerTransitions>
-                            <ContentThemeTransition HorizontalOffset="200">
-                            </ContentThemeTransition>
-                        </GridView.ItemContainerTransitions>
+                    <GridView SelectionMode="None">
                         <StackPanel Orientation="Vertical" Width="190" Height="85" Margin="5">
                             <TextBlock Text="Klokkeslæt"></TextBlock>
                             <TextBox Text="{Binding Klokkeslæt, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
