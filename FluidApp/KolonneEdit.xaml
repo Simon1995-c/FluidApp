@@ -229,16 +229,16 @@
         <Grid VerticalAlignment="Bottom">
             <Grid VerticalAlignment="Bottom">
                 <StackPanel Orientation="Horizontal">
-                    <HyperlinkButton FontSize="15" Padding="15" FontWeight="ExtraBold" Foreground="Black">
+                    <HyperlinkButton Padding="15" Background="#16503f" Foreground="White" BorderBrush="Black" BorderThickness="1">
                         <TextBlock Text="Kontrolskema"></TextBlock>
                     </HyperlinkButton>
-                    <HyperlinkButton FontSize="15" Command="{Binding NavRegCommand}" Padding="15" Background="#16503f" Foreground="Black" BorderBrush="Black" BorderThickness="1">
+                    <HyperlinkButton FontSize="15" Command="{Binding NavRegCommand}" Padding="15" Background="#16503f" Foreground="White" BorderBrush="Black" BorderThickness="1">
                         <TextBlock Text="Kontrolregistrering"></TextBlock>
                     </HyperlinkButton>
-                    <HyperlinkButton FontSize="15" Command="{Binding NavProdCommand}" Padding="15" Background="#16503f" Foreground="Black" BorderBrush="Black" BorderThickness="1">
+                    <HyperlinkButton FontSize="15" Command="{Binding NavProdCommand}" Padding="15" Background="#16503f" Foreground="White" BorderBrush="Black" BorderThickness="1">
                         <TextBlock Text="Produktionsfølgeseddel"></TextBlock>
                     </HyperlinkButton>
-                    <HyperlinkButton FontSize="15" Command="{Binding NavFærdigCommand}" Padding="15" Background="#16503f" Foreground="Black" BorderBrush="Black" BorderThickness="1">
+                    <HyperlinkButton  FontSize="15" Command="{Binding NavFærdigCommand}" Padding="15" Background="#16503f" Foreground="White" BorderBrush="Black" BorderThickness="1">
                         <TextBlock Text="Færdigvarekontrol"></TextBlock>
                     </HyperlinkButton>
                 </StackPanel>
