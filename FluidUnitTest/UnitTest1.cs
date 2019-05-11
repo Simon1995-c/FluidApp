@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Models;
 
@@ -18,7 +20,7 @@ namespace FluidUnitTest
             Assert.AreEqual(6, f.GetOne(6).ProcessordreNr);
 
             Forside fo = new Forside();
-            Assert.AreEqual("Test", fo.GetOne(4).FærdigvareNavn);
+            Assert.AreEqual("test", fo.GetOne(12).FærdigvareNavn);
 
             IPrange ip = new IPrange();
             Assert.AreEqual(1, ip.GetOne(1).ID);
@@ -30,7 +32,7 @@ namespace FluidUnitTest
             Assert.AreEqual(1, kr.GetOne(1).ID);
 
             KontrolSkema ks = new KontrolSkema();
-            Assert.AreEqual(1, ks.GetOne(1).ID);
+            Assert.AreEqual(12, ks.GetOne(12).ID);
 
             Produktionsfølgeseddel pf = new Produktionsfølgeseddel();
             Assert.AreEqual(1, pf.GetOne(1).ID);
@@ -233,27 +235,28 @@ namespace FluidUnitTest
             List<KontrolSkema> all = a.GetAll();
 
             int orgNum = all.Count;
-
-            a.Post(new KontrolSkema()
+            KontrolSkema test = new KontrolSkema()
             {
                 FK_Kolonne = 8,
                 Klokkeslæt = DateTime.Now,
-                Ludkoncetration = 1.5,
+                Ludkoncentration = 1.5,
                 Fustage = "Test",
                 Kvittering = 1,
-                mS = 1.5,
+                MS = 1.5,
                 LudKontrol = true,
                 Signatur = "Test",
                 mSKontrol = true,
                 Vægt = 5.0
-            });
+            };
+
+            a.Post(test);
 
             List<KontrolSkema> allPlusOne = a.GetAll();
 
             int newNum = allPlusOne.Count;
 
             Assert.AreEqual(newNum, orgNum + 1);
-
+            
 
             //Update
             KontrolSkema lastItem = allPlusOne[allPlusOne.Count - 1];
@@ -263,10 +266,10 @@ namespace FluidUnitTest
                 ID = lastItem.ID,
                 FK_Kolonne = 8,
                 Klokkeslæt = DateTime.Now,
-                Ludkoncetration = 1.5,
+                Ludkoncentration = 1.5,
                 Fustage = "Opdateret",
                 Kvittering = 1,
-                mS = 1.5,
+                MS = 1.5,
                 LudKontrol = true,
                 Signatur = "Test",
                 mSKontrol = true,
@@ -296,7 +299,7 @@ namespace FluidUnitTest
 
             int orgNum = all.Count;
 
-            a.Post(new Produktionsfølgeseddel()
+            Produktionsfølgeseddel test = new Produktionsfølgeseddel()
             {
                 FK_Kolonne = 8,
                 Slut = DateTime.Now,
@@ -305,7 +308,9 @@ namespace FluidUnitTest
                 Timer = 5,
                 Signatur = "Test",
                 Pause = 5
-            });
+            };
+
+            a.Post(test);
 
             List<Produktionsfølgeseddel> allPlusOne = a.GetAll();
 

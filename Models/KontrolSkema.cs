@@ -16,17 +16,17 @@ namespace Models
         public int ID { get; set; }
         public int FK_Kolonne { get; set; }
         private DateTime _klokkeslæt;
-        public double? Ludkoncetration { get; set; }
+        public double? Ludkoncentration { get; set; }
         public string Fustage { get; set; }
         public int? Kvittering { get; set; }
-        public double? mS { get; set; }
-        private bool _ludKontrol;
+        public double? MS { get; set; }
+        private bool? _ludKontrol;
         public string Signatur { get; set; }
-        private bool _mSKontrol;
+        private bool? _mSKontrol;
         public double? Vægt { get; set; }
         public string FormattedTime { get; set; }
-        public string FormattedLud { get; set; }
-        public string FormattedmS { get; set; }
+        public string FormattedLudkontrol { get; set; }
+        public string FormattedmSkontrol { get; set; }
 
         public DateTime Klokkeslæt
         {
@@ -38,25 +38,27 @@ namespace Models
             }
         }
 
-        public bool LudKontrol
+        public bool? LudKontrol
         {
             get { return _ludKontrol; }
             set
             {
                 _ludKontrol = value;
-                if (_ludKontrol) FormattedLud = "OK";
-                else FormattedLud = "IKKE OK";
+                if (_ludKontrol == true) FormattedLudkontrol = "OK";
+                else if (_ludKontrol == false) FormattedLudkontrol = "IKKE OK";
+                else FormattedLudkontrol = "";
             }
         }
 
-        public bool mSKontrol
+        public bool? mSKontrol
         {
             get { return _mSKontrol; }
             set
             {
                 _mSKontrol = value;
-                if (_mSKontrol) FormattedmS = "OK";
-                else FormattedmS = "IKKE OK";
+                if (_mSKontrol == true) FormattedmSkontrol = "OK";
+                else if (_ludKontrol == false) FormattedmSkontrol = "IKKE OK";
+                else FormattedmSkontrol = "";
             }
         }
 

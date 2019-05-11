@@ -36,14 +36,14 @@ namespace FluidApp
         private bool _gemVis;
 
         private string _klokkeslæt;
-        private double? _ludkoncetration;
+        private string _ludkoncentration;
         private string _fustage;
-        private int? _kvittering;
-        private double? _mS;
+        private string _kvittering;
+        private string _mS;
         private string _ludKontrol;
         private string _signatur;
         private string _mSKontrol;
-        private double? _vægt;
+        private string _vægt;
 
         #region PropertyChanged
         public string Klokkeslæt
@@ -56,12 +56,12 @@ namespace FluidApp
             }
         }
 
-        public double? Ludkoncetration
+        public string Ludkoncetration
         {
-            get { return _ludkoncetration; }
+            get { return _ludkoncentration; }
             set
             {
-                _ludkoncetration = value; 
+                _ludkoncentration = value; 
                 OnPropertyChanged();
             }
         }
@@ -76,7 +76,7 @@ namespace FluidApp
             }
         }
 
-        public int? Kvittering
+        public string Kvittering
         {
             get { return _kvittering; }
             set
@@ -86,7 +86,7 @@ namespace FluidApp
             }
         }
 
-        public double? MS
+        public string MS
         {
             get { return _mS; }
             set
@@ -126,7 +126,7 @@ namespace FluidApp
             }
         }
 
-        public double? Vægt
+        public string Vægt
         {
             get { return _vægt; }
             set
@@ -203,6 +203,7 @@ namespace FluidApp
             VælgMuligheder = new List<string>();
             VælgMuligheder.Add("OK");
             VælgMuligheder.Add("IKKE OK");
+            VælgMuligheder.Add("(Blank)");
             
             GemVis = true;
             NyDataVis = true;
@@ -241,13 +242,17 @@ namespace FluidApp
         public void Opdater()
         {
             NytSkema.Klokkeslæt = DateTime.Parse(Klokkeslæt, new DateTimeFormatInfo());
-            NytSkema.Ludkoncetration = Ludkoncetration;
+            if (Ludkoncetration != "") NytSkema.Ludkoncentration = double.Parse(Ludkoncetration);
+            else NytSkema.Ludkoncentration = null;
             NytSkema.mSKontrol = ToBool(MSKontrol);
             NytSkema.Fustage = Fustage;
-            NytSkema.Kvittering = Kvittering;
+            if (Kvittering != "") NytSkema.Kvittering = int.Parse(Kvittering);
+            else NytSkema.Kvittering = null;
             NytSkema.Signatur = Signatur;
-            NytSkema.Vægt = Vægt;
-            NytSkema.mS = MS;
+            if (Vægt != "") NytSkema.Vægt = double.Parse(Vægt);
+            else NytSkema.Vægt = null;
+            if (MS != "") NytSkema.MS = double.Parse(MS);
+            else NytSkema.MS = null;
             NytSkema.LudKontrol = ToBool(LudKontrol);
             //Skal hentes fra Kolonne
             NytSkema.FK_Kolonne = Info.FK_Kolonne;
@@ -266,14 +271,17 @@ namespace FluidApp
             NytSkema = NytSkema.GetOne(id);
 
             Klokkeslæt = NytSkema.Klokkeslæt.TimeOfDay.ToString("hh\\:mm");
-            Ludkoncetration = NytSkema.Ludkoncetration;
-            MS = NytSkema.mS;
+            Ludkoncetration = NytSkema.Ludkoncentration.ToString();
+            MS = NytSkema.MS.ToString();
             Fustage = NytSkema.Fustage;
-            Kvittering = NytSkema.Kvittering;
+            Kvittering = NytSkema.Kvittering.ToString();
             Signatur = NytSkema.Signatur;
-            Vægt = NytSkema.Vægt;
+            Vægt = NytSkema.Vægt.ToString();
             MSKontrol = ToString(NytSkema.mSKontrol);
             LudKontrol = ToString(NytSkema.LudKontrol);
+            
+            NytSkema = new KontrolSkema();
+            NytSkema.ID = id;
 
             UpdateVis = true;
             GemVis = false;
@@ -307,38 +315,45 @@ namespace FluidApp
             Window.Current.Content = frame;
         }
 
-        public string ToString(bool svar)
+        public string ToString(bool? svar)
         {
             string strSvar;
-            if (svar) strSvar = "OK";
-            else strSvar = "IKKE OK";
+            if (svar == true) strSvar = "OK";
+            else if (svar == false) strSvar = "IKKE OK";
+            else strSvar = "";
 
             return strSvar;
         }
 
-        public bool ToBool(string svar)
+        public bool? ToBool(string svar)
         {
-            bool boolSvar = false;
+            bool? boolSvar = null;
             if (svar == "OK") return boolSvar = true;
-            return boolSvar;
+            else if (svar == "IKKE OK") return boolSvar = false;
+            else return boolSvar;
         }
 
         public void GemData()
         {
             NytSkema.Klokkeslæt = DateTime.Parse(Klokkeslæt, new DateTimeFormatInfo());
-            NytSkema.Ludkoncetration = Ludkoncetration;
+            if (Ludkoncetration != "") NytSkema.Ludkoncentration = double.Parse(Ludkoncetration);
+            else NytSkema.Ludkoncentration = null;
             NytSkema.mSKontrol = ToBool(MSKontrol);
             NytSkema.Fustage = Fustage;
-            NytSkema.Kvittering = Kvittering;
+            if (Kvittering != "") NytSkema.Kvittering = int.Parse(Kvittering);
+            else NytSkema.Kvittering = null;
             NytSkema.Signatur = Signatur;
-            NytSkema.Vægt = Vægt;
-            NytSkema.mS = MS;
+            if (Vægt != "") NytSkema.Vægt = double.Parse(Vægt);
+            else NytSkema.Vægt = null;
+            if (MS != "") NytSkema.MS = double.Parse(MS);
+            else NytSkema.MS = null;
             NytSkema.LudKontrol = ToBool(LudKontrol);
             //Skal hentes fra Kolonne
             NytSkema.FK_Kolonne = Info.FK_Kolonne;
 
             NytSkema.Post(NytSkema);
             NytSkema = new KontrolSkema();
+            OnPropertyChanged(nameof(NytSkema));
 
             SkemaUdsnit = GetSkemaUdsnit();
             OnPropertyChanged(nameof(SkemaUdsnit));
@@ -347,7 +362,6 @@ namespace FluidApp
         public ObservableCollection<KontrolSkema> GetSkemaUdsnit()
         {
             KontrolSkema tempData = new KontrolSkema();
-            //Skal inkludere tjek af FK_kolonne (lige nu bare valgt nr 8)
             ObservableCollection<KontrolSkema> udsnit = new ObservableCollection<KontrolSkema>();
             foreach (var data in tempData.GetAll())
             {
