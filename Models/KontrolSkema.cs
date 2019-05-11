@@ -50,14 +50,14 @@ namespace Models
             }
         }
 
-        public bool? mSKontrol
+        public bool? MSKontrol
         {
             get { return _mSKontrol; }
             set
             {
                 _mSKontrol = value;
                 if (_mSKontrol == true) FormattedmSkontrol = "OK";
-                else if (_ludKontrol == false) FormattedmSkontrol = "IKKE OK";
+                else if (_mSKontrol == false) FormattedmSkontrol = "IKKE OK";
                 else FormattedmSkontrol = "";
             }
         }

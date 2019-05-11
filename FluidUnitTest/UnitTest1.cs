@@ -245,7 +245,7 @@ namespace FluidUnitTest
                 MS = 1.5,
                 LudKontrol = true,
                 Signatur = "Test",
-                mSKontrol = true,
+                MSKontrol = true,
                 Vægt = 5.0
             };
 
@@ -272,7 +272,7 @@ namespace FluidUnitTest
                 MS = 1.5,
                 LudKontrol = true,
                 Signatur = "Test",
-                mSKontrol = true,
+                MSKontrol = true,
                 Vægt = 5.0
             });
 

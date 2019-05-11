@@ -88,57 +88,57 @@
                                 <ColumnDefinition Width="110"></ColumnDefinition>
                                 <ColumnDefinition Width="110"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Grid Column="0" BorderBrush="Black" BorderThickness="1" Padding="5 0 0 0">
+                            <Grid Column="0" BorderBrush="Black" BorderThickness="1 1 0 1" Padding="5 0 0 0">
                                 <TextBlock Text="Klokkeslæt" Margin="0 15 0 0"></TextBlock>
                             </Grid>
-                            <Grid Column="1" BorderBrush="Black" BorderThickness="1">
+                            <Grid Column="1" BorderBrush="Black" BorderThickness="1 1 0 1">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" Padding="5 0 0 0">
                                     <TextBlock Text="Vægt"></TextBlock>
                                     <TextBlock Text="30L Fust. Min. 38,5kg." FontSize="12"></TextBlock>
                                     <TextBlock Text="25L Fust. Min. 37,0kg." FontSize="12"></TextBlock>
                                 </StackPanel>
                             </Grid>
-                            <Grid Column="2" BorderBrush="Black" BorderThickness="1" Padding="5 0 0 0">
+                            <Grid Column="2" BorderBrush="Black" BorderThickness="1 1 0 1" Padding="5 0 0 0">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                     <TextBlock Text="Kvittering for"></TextBlock>
                                     <TextBlock Text="udtaget prøve"></TextBlock>
                                 </StackPanel>
                             </Grid>
-                            <Grid Column="3" BorderBrush="Black" BorderThickness="1" Padding="5 0 0 0">
+                            <Grid Column="3" BorderBrush="Black" BorderThickness="1 1 0 1" Padding="5 0 0 0">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                     <TextBlock Text="Kontrol af"></TextBlock>
                                     <TextBlock Text="testfustage"></TextBlock>
                                 </StackPanel>
                             </Grid>
-                            <Grid Column="4" BorderBrush="Black" BorderThickness="1" Padding="5 0 0 0">
+                            <Grid Column="4" BorderBrush="Black" BorderThickness="1 1 0 1" Padding="5 0 0 0">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                     <TextBlock Text="Ludkoncentration"></TextBlock>
                                     <TextBlock Text="Min. 1%" FontSize="12"></TextBlock>
                                     <TextBlock Text="Max. 2%" FontSize="12"></TextBlock>
                                 </StackPanel>
                             </Grid>
-                            <Grid Column="5" BorderBrush="Black" BorderThickness="1" Padding="5 0 0 0">
+                            <Grid Column="5" BorderBrush="Black" BorderThickness="1 1 0 1" Padding="5 0 0 0">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                     <TextBlock Text="OK"></TextBlock>
                                     <TextBlock Text="Eller" FontSize="12"></TextBlock>
                                     <TextBlock Text="IKKE OK"></TextBlock>
                                 </StackPanel>
                             </Grid>
-                            <Grid Column="6" BorderBrush="Black" BorderThickness="1" Padding="5 0 0 0">
+                            <Grid Column="6" BorderBrush="Black" BorderThickness="1 1 0 1" Padding="5 0 0 0">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                     <TextBlock Text="Mip MA"></TextBlock>
                                     <TextBlock Text="Min. 24 mS" FontSize="12"></TextBlock>
                                     <TextBlock Text="Max. 26,5 mS" FontSize="12"></TextBlock>
                                 </StackPanel>
                             </Grid>
-                            <Grid Column="7" BorderBrush="Black" BorderThickness="1" Padding="5 0 0 0">
+                            <Grid Column="7" BorderBrush="Black" BorderThickness="1 1 0 1" Padding="5 0 0 0">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                     <TextBlock Text="OK"></TextBlock>
                                     <TextBlock Text="Eller" FontSize="12"></TextBlock>
                                     <TextBlock Text="IKKE OK"></TextBlock>
                                 </StackPanel>
                             </Grid>
-                            <Grid Column="8" BorderBrush="Black" BorderThickness="1" Padding="5 0 0 0">
+                            <Grid Column="8" BorderBrush="Black" BorderThickness="1 1 0 1" Padding="5 0 0 0">
                                 <StackPanel>
                                     <TextBlock Text="Sign. operatør" Margin="0 15 0 0"></TextBlock>
                                 </StackPanel>
@@ -162,8 +162,11 @@
                                             <TextBlock Text="{Binding FormattedLudkontrol}" Width="125" Margin="0 3 0 0"></TextBlock>
                                             <TextBlock Text="{Binding MS}" Width="125" Margin="0 3 0 0"></TextBlock>
                                             <TextBlock Text="{Binding FormattedmSkontrol}" Width="125" Margin="0 3 0 0"></TextBlock>
-                                            <TextBlock Text="{Binding Signatur}" Width="110" Margin="0 3 0 0"></TextBlock>
+                                            <TextBlock Text="{Binding Signatur}" Width="100" Margin="0 3 0 0"></TextBlock>
                                             <Button Content="Rediger" FontSize="12" Command="{Binding ElementName=kolonneEdit, Path=DataContext.RedigerCommand}" CommandParameter="{Binding ID}"></Button>
+                                            <Button Command="{Binding ElementName=kolonneEdit, Path=DataContext.SletCommand}" CommandParameter="{Binding ID}" Background="Red">
+                                                <Image Source="{Binding ElementName=kolonneEdit, Path=DataContext.SletIkon}" Width="16" Height="16"></Image>
+                                            </Button>
                                         </StackPanel>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
@@ -244,6 +247,7 @@
                 </StackPanel>
             </Grid>
             <Button Command="{Binding GemCommand}" Visibility="{Binding GemVis}" HorizontalAlignment="Right" Content="Gem" Margin="0 0 20 0"></Button>
+            <Button Command="{Binding FortrydCommand}" Visibility="{Binding UpdateVis}" HorizontalAlignment="Right" Content="Fortryd" Margin="0 0 100 0"></Button>
             <Button Command="{Binding OpdaterCommand}" Visibility="{Binding UpdateVis}" HorizontalAlignment="Right" Content="Opdater" Margin="0 0 20 0"></Button>
         </Grid>
     </Grid>

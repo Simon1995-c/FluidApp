@@ -25,11 +25,15 @@ namespace FluidApp
         public RelayCommand<int> RedigerCommand { get; set; }
         public RelayCommand OpdaterCommand { get; set; }
         public RelayCommand UdvidCommand { get; set; }
+        public RelayCommand FortrydCommand { get; set; }
+        public RelayCommand<int> SletCommand { get; set; }
+
         public KontrolSkema NytSkema { get; set; }
         public ObservableCollection<KontrolSkema> SkemaUdsnit { get; set; }
         public List<string> VælgMuligheder { get; set; }
         public Forside Info { get; set; }
-        private string udvidIkon;
+        private string _udvidIkon;
+        private string _sletIkon;
         private string _udvidelse;
         private bool _nyDataVis;
         private bool _updateVis;
@@ -178,12 +182,18 @@ namespace FluidApp
 
         public string UdvidIkon
         {
-            get { return udvidIkon; }
+            get { return _udvidIkon; }
             set
             {
-                udvidIkon = value; 
+                _udvidIkon = value; 
                 OnPropertyChanged();
             }
+        }
+
+        public string SletIkon
+        {
+            get { return _sletIkon; }
+            set { _sletIkon = value; }
         }
 
         #endregion
@@ -198,6 +208,9 @@ namespace FluidApp
             RedigerCommand = new RelayCommand<int>(Rediger);
             OpdaterCommand = new RelayCommand(Opdater);
             UdvidCommand = new RelayCommand(UdvidUdsnit);
+            FortrydCommand = new RelayCommand(Fortryd);
+            SletCommand = new RelayCommand<int>(Slet);
+
             NytSkema = new KontrolSkema();
             Info = new Forside();
             VælgMuligheder = new List<string>();
@@ -207,6 +220,7 @@ namespace FluidApp
             
             GemVis = true;
             NyDataVis = true;
+            ResetValues();
 
             if (Application.Current.Resources.ContainsKey("forside"))
             {
@@ -214,9 +228,23 @@ namespace FluidApp
                 Info = f;
             }
 
+            SletIkon = "https://visualpharm.com/assets/591/Delete-595b40b75ba036ed117d7c27.svg";
             UdvidIkon = "https://visualpharm.com/assets/833/Expand-595b40b75ba036ed117d6f8f.svg";
             Udvidelse = "170";
             SkemaUdsnit = GetSkemaUdsnit();
+        }
+
+        public void ResetValues()
+        {
+            Klokkeslæt = null;
+            Ludkoncetration = "";
+            MSKontrol = "(Blank)";
+            LudKontrol = "(Blank)";
+            MS = "";
+            Fustage = "";
+            Kvittering = "";
+            Vægt = "";
+            Signatur = "";
         }
 
         public void UdvidUdsnit()
@@ -239,12 +267,26 @@ namespace FluidApp
             }
         }
 
+        public void Slet(int id)
+        {
+            NytSkema.Delete(id);
+            SkemaUdsnit = GetSkemaUdsnit();
+            OnPropertyChanged(nameof(SkemaUdsnit));
+        }
+
+        public void Fortryd()
+        {
+            ResetValues();
+            GemVis = true;
+            UpdateVis = false;
+        }
+
         public void Opdater()
         {
             NytSkema.Klokkeslæt = DateTime.Parse(Klokkeslæt, new DateTimeFormatInfo());
             if (Ludkoncetration != "") NytSkema.Ludkoncentration = double.Parse(Ludkoncetration);
             else NytSkema.Ludkoncentration = null;
-            NytSkema.mSKontrol = ToBool(MSKontrol);
+            NytSkema.MSKontrol = ToBool(MSKontrol);
             NytSkema.Fustage = Fustage;
             if (Kvittering != "") NytSkema.Kvittering = int.Parse(Kvittering);
             else NytSkema.Kvittering = null;
@@ -264,6 +306,7 @@ namespace FluidApp
 
             GemVis = true;
             UpdateVis = false;
+            ResetValues();
         }
 
         public void Rediger(int id)
@@ -277,7 +320,7 @@ namespace FluidApp
             Kvittering = NytSkema.Kvittering.ToString();
             Signatur = NytSkema.Signatur;
             Vægt = NytSkema.Vægt.ToString();
-            MSKontrol = ToString(NytSkema.mSKontrol);
+            MSKontrol = ToString(NytSkema.MSKontrol);
             LudKontrol = ToString(NytSkema.LudKontrol);
             
             NytSkema = new KontrolSkema();
@@ -338,7 +381,7 @@ namespace FluidApp
             NytSkema.Klokkeslæt = DateTime.Parse(Klokkeslæt, new DateTimeFormatInfo());
             if (Ludkoncetration != "") NytSkema.Ludkoncentration = double.Parse(Ludkoncetration);
             else NytSkema.Ludkoncentration = null;
-            NytSkema.mSKontrol = ToBool(MSKontrol);
+            NytSkema.MSKontrol = ToBool(MSKontrol);
             NytSkema.Fustage = Fustage;
             if (Kvittering != "") NytSkema.Kvittering = int.Parse(Kvittering);
             else NytSkema.Kvittering = null;
@@ -357,6 +400,7 @@ namespace FluidApp
 
             SkemaUdsnit = GetSkemaUdsnit();
             OnPropertyChanged(nameof(SkemaUdsnit));
+            ResetValues();
         }
 
         public ObservableCollection<KontrolSkema> GetSkemaUdsnit()
