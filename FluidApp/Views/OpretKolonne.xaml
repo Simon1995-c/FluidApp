@@ -1,15 +1,16 @@
 ﻿<Page
-    x:Class="FluidApp.OpretKolonne"
+    x:Class="FluidApp.Views.OpretKolonne"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:FluidApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:interop="using:Windows.UI.Xaml.Interop"
+    xmlns:viewModels="using:FluidApp.ViewModels"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.DataContext>
-        <local:OpretKolonneViewModel/>
+        <viewModels:OpretKolonneViewModel/>
     </Page.DataContext>
     <Grid>
         <Grid VerticalAlignment="Top" Background="#16503f" Padding="15 25">

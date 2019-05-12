@@ -5,7 +5,6 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -13,7 +12,7 @@ using FluidApp.Annotations;
 using GalaSoft.MvvmLight.Command;
 using Models;
 
-namespace FluidApp
+namespace FluidApp.ViewModels
 {
     public class KolonneEditViewModel : INotifyPropertyChanged
     {
@@ -319,21 +318,7 @@ namespace FluidApp
 
         public void Opdater()
         {
-            NytSkema.Klokkeslæt = DateTime.Parse(Klokkeslæt, new DateTimeFormatInfo());
-            if (Ludkoncetration != "") NytSkema.Ludkoncentration = double.Parse(Ludkoncetration);
-            else NytSkema.Ludkoncentration = null;
-            NytSkema.MSKontrol = ToBool(MSKontrol);
-            NytSkema.Fustage = Fustage;
-            if (Kvittering != "") NytSkema.Kvittering = int.Parse(Kvittering);
-            else NytSkema.Kvittering = null;
-            NytSkema.Signatur = Signatur;
-            if (Vægt != "") NytSkema.Vægt = double.Parse(Vægt);
-            else NytSkema.Vægt = null;
-            if (MS != "") NytSkema.MS = double.Parse(MS);
-            else NytSkema.MS = null;
-            NytSkema.LudKontrol = ToBool(LudKontrol);
-            //Skal hentes fra Kolonne
-            NytSkema.FK_Kolonne = Info.FK_Kolonne;
+            SetValues();
             
             NytSkema.Put(NytSkema.ID, NytSkema);
             NytSkema = new KontrolSkema();
@@ -413,23 +398,36 @@ namespace FluidApp
             else return boolSvar;
         }
 
-        public void GemData()
+        public void SetValues()
         {
-            NytSkema.Klokkeslæt = DateTime.Parse(Klokkeslæt, new DateTimeFormatInfo());
+            //double + int værdier skal parses
             if (Ludkoncetration != "") NytSkema.Ludkoncentration = double.Parse(Ludkoncetration);
             else NytSkema.Ludkoncentration = null;
-            NytSkema.MSKontrol = ToBool(MSKontrol);
-            NytSkema.Fustage = Fustage;
             if (Kvittering != "") NytSkema.Kvittering = int.Parse(Kvittering);
             else NytSkema.Kvittering = null;
-            NytSkema.Signatur = Signatur;
             if (Vægt != "") NytSkema.Vægt = double.Parse(Vægt);
             else NytSkema.Vægt = null;
             if (MS != "") NytSkema.MS = double.Parse(MS);
             else NytSkema.MS = null;
+
+            //datetime skal også parses men med specifikt format
+            NytSkema.Klokkeslæt = DateTime.Parse(Klokkeslæt, new DateTimeFormatInfo());
+            
+            //strings er guds gave til dovenskab
+            NytSkema.Fustage = Fustage;
+            NytSkema.Signatur = Signatur;
+
+            //bools skal omdannes til enten "OK" eller "IKKE OK"
             NytSkema.LudKontrol = ToBool(LudKontrol);
-            //Skal hentes fra Kolonne
+            NytSkema.MSKontrol = ToBool(MSKontrol);
+
+            //FK_kolonne skal hentes fra tilsvarende Forside
             NytSkema.FK_Kolonne = Info.FK_Kolonne;
+        }
+
+        public void GemData()
+        {
+            SetValues();
 
             NytSkema.Post(NytSkema);
             NytSkema = new KontrolSkema();

@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using FluidApp.Annotations;
+using FluidApp.Views;
 using GalaSoft.MvvmLight.Command;
 using Models;
 
-namespace FluidApp
+namespace FluidApp.ViewModels
 {
     public class LoginViewModel : INotifyPropertyChanged
     {

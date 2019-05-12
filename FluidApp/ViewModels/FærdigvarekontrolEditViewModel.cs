@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using FluidApp.Annotations;
 
-namespace FluidApp
+namespace FluidApp.ViewModels
 {
     public class FærdigvarekontrolEditViewModel : INotifyPropertyChanged
     {
