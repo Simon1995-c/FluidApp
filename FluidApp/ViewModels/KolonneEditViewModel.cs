@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using FluidApp.Annotations;
+using FluidApp.Views;
 using GalaSoft.MvvmLight.Command;
 using Models;
 

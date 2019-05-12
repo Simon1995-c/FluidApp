@@ -116,48 +116,48 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AdminPage.xaml.cs">
+    <Compile Include="Views\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminViewmodel.cs" />
+    <Compile Include="ViewModels\AdminViewmodel.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FærdigvarekontrolEdit.xaml.cs">
+    <Compile Include="Views\FærdigvarekontrolEdit.xaml.cs">
       <DependentUpon>FærdigvarekontrolEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FærdigvarekontrolEditViewModel.cs" />
+    <Compile Include="ViewModels\FærdigvarekontrolEditViewModel.cs" />
     <Compile Include="ipHandler.cs" />
-    <Compile Include="Kolonne.xaml.cs">
+    <Compile Include="Views\Kolonne.xaml.cs">
       <DependentUpon>Kolonne.xaml</DependentUpon>
     </Compile>
-    <Compile Include="KolonneEdit.xaml.cs">
+    <Compile Include="Views\KolonneEdit.xaml.cs">
       <DependentUpon>KolonneEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="KolonneEditViewModel.cs" />
-    <Compile Include="KolonneViewModel.cs" />
-    <Compile Include="KontrolregistreringEdit.xaml.cs">
+    <Compile Include="ViewModels\KolonneEditViewModel.cs" />
+    <Compile Include="ViewModels\KolonneViewModel.cs" />
+    <Compile Include="Views\KontrolregistreringEdit.xaml.cs">
       <DependentUpon>KontrolregistreringEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="KontrolregistreringEditViewModel.cs" />
-    <Compile Include="Login.xaml.cs">
+    <Compile Include="ViewModels\KontrolregistreringEditViewModel.cs" />
+    <Compile Include="Views\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LoginViewModel.cs" />
-    <Compile Include="MainPage.xaml.cs">
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OpretKolonne.xaml.cs">
+    <Compile Include="Views\OpretKolonne.xaml.cs">
       <DependentUpon>OpretKolonne.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OpretKolonneViewModel.cs" />
-    <Compile Include="ProduktionsfølgeseddelEdit.xaml.cs">
+    <Compile Include="ViewModels\OpretKolonneViewModel.cs" />
+    <Compile Include="Views\ProduktionsfølgeseddelEdit.xaml.cs">
       <DependentUpon>ProduktionsfølgeseddelEdit.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ProduktionsfølgeseddelEditViewModel.cs" />
+    <Compile Include="ViewModels\ProduktionsfølgeseddelEditViewModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel.cs" />
+    <Compile Include="ViewModels\ViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -181,39 +181,39 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="AdminPage.xaml">
+    <Page Include="Views\AdminPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="FærdigvarekontrolEdit.xaml">
+    <Page Include="Views\FærdigvarekontrolEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Kolonne.xaml">
+    <Page Include="Views\Kolonne.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="KolonneEdit.xaml">
+    <Page Include="Views\KolonneEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="KontrolregistreringEdit.xaml">
+    <Page Include="Views\KontrolregistreringEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Login.xaml">
+    <Page Include="Views\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainPage.xaml">
+    <Page Include="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="OpretKolonne.xaml">
+    <Page Include="Views\OpretKolonne.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="ProduktionsfølgeseddelEdit.xaml">
+    <Page Include="Views\ProduktionsfølgeseddelEdit.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
