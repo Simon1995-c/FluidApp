@@ -28,10 +28,12 @@ namespace FluidApp
         public RelayCommand FortrydCommand { get; set; }
         public RelayCommand<int> SletCommand { get; set; }
 
+        public KontrolSkema testSkema;
         public KontrolSkema NytSkema { get; set; }
         public ObservableCollection<KontrolSkema> SkemaUdsnit { get; set; }
         public List<string> VælgMuligheder { get; set; }
         public Forside Info { get; set; }
+        private string _title;
         private string _udvidIkon;
         private string _sletIkon;
         private string _udvidelse;
@@ -196,6 +198,35 @@ namespace FluidApp
             set { _sletIkon = value; }
         }
 
+        public string Title
+        {
+            get { return _title; }
+            set
+            {
+                _title = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public KontrolSkema TestSkema
+        {
+            get { return testSkema; }
+            set
+            {
+                testSkema = value; 
+                OnPropertyChanged();
+                try
+                {
+                    if (testSkema.ID != 0) Rediger(testSkema.ID);
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e);
+                }
+                
+            }
+        }
+
         #endregion
 
         public KolonneEditViewModel()
@@ -211,6 +242,7 @@ namespace FluidApp
             FortrydCommand = new RelayCommand(Fortryd);
             SletCommand = new RelayCommand<int>(Slet);
 
+            TestSkema = new KontrolSkema();
             NytSkema = new KontrolSkema();
             Info = new Forside();
             VælgMuligheder = new List<string>();
@@ -245,6 +277,8 @@ namespace FluidApp
             Kvittering = "";
             Vægt = "";
             Signatur = "";
+
+            Title = "Indtast ny data";
         }
 
         public void UdvidUdsnit()
@@ -276,6 +310,8 @@ namespace FluidApp
 
         public void Fortryd()
         {
+            SkemaUdsnit = GetSkemaUdsnit();
+            OnPropertyChanged(nameof(SkemaUdsnit));
             ResetValues();
             GemVis = true;
             UpdateVis = false;
@@ -328,6 +364,7 @@ namespace FluidApp
 
             UpdateVis = true;
             GemVis = false;
+            Title = "Rediger data";
         }
 
         public void Tilbage()
