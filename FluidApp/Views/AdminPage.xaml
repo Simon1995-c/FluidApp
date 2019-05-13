@@ -32,8 +32,8 @@
         </Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Stretch" Background="#16503f" Width="250" Margin="0 85 0 0">
             <StackPanel VerticalAlignment="Top">
-                <Button Foreground="White" Background="#00a5a5" Width="250" HorizontalAlignment="Stretch" Command="{Binding ManageIpRangeRelayCommand}">IP ranges</Button>
-                <Button Foreground="White" Background="#00a5a5" Margin="0 3 0 0" Width="250" HorizontalAlignment="Stretch" Command="{Binding ManageAdminsRelayCommand}">Brugere</Button>
+                <Button Foreground="White" Background="#0f3a2e" Width="250" HorizontalAlignment="Stretch" Command="{Binding ManageIpRangeRelayCommand}">IP ranges</Button>
+                <Button Foreground="White" Background="#0f3a2e" Margin="0 3 0 0" Width="250" HorizontalAlignment="Stretch" Command="{Binding ManageAdminsRelayCommand}">Administratorer</Button>
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="290 120 0 0" Width="600" HorizontalAlignment="Left">
