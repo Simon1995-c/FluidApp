@@ -138,7 +138,7 @@ namespace FluidApp.ViewModels
             Application.Current.Resources["forside"] = f.GetOne(id);
 
             var frame = new Frame();
-            frame.Navigate(typeof(KolonneEdit), f.GetOne(id));
+            frame.Navigate(typeof(KolonneEdit), null);
             Window.Current.Content = frame;
         }
 
