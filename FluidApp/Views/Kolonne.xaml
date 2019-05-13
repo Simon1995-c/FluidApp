@@ -55,22 +55,29 @@
                     </Grid>
                     <!--To ListViews for ellers virkede horizontalalignment ikke-->
                     <Grid Grid.Column="0" Grid.Row="1" Margin="0 60 0 0">
-                        <ScrollViewer Height="500" Width="1200">
-                        <ListView ItemsSource="{Binding KolonneListe}" Width="1200" Padding="0" Margin="0">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid HorizontalAlignment="Stretch" Width="1170" Padding="10">
-                                        <TextBlock VerticalAlignment="Center">
-                                        <Run Text="{Binding ProcessordreNr}"></Run>
-                                        <Run Text="{Binding FærdigvareNr}"></Run>
-                                        <Run Text="{Binding FærdigvareNavn}"></Run>
-                                        <Run Text="{Binding FormatedDate}"></Run>
-                                        </TextBlock>
-                                        <Button VerticalAlignment="Center" HorizontalAlignment="Right" Content="Se mere" CommandParameter="{Binding ID}" Command="{Binding ElementName=thisPage, Path=DataContext.SeMere}"></Button>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                        <ScrollViewer Height="500">
+                            <GridView ItemsSource="{Binding KolonneListe}" SelectionMode="None" HorizontalAlignment="Center" Padding="0" Margin="0">
+                                <GridView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Margin="10" Width="300" Padding="10" BorderThickness="1" BorderBrush="#ddd">
+                                            <StackPanel VerticalAlignment="Top">
+                                                <Image Margin="0 0 0 30" Width="24" HorizontalAlignment="left" Source="../Assets/sheet.png"></Image>
+                                                <StackPanel MinHeight="50">
+                                                    <TextBlock HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="WrapWholeWords">
+                                                    <Run Text="{Binding ProcessordreNr}"></Run>
+                                                    <Run Text="{Binding FærdigvareNr}"></Run>
+                                                    <Run Text="{Binding FærdigvareNavn}"></Run>
+                                                    <Run Text="{Binding FormatedDate}"></Run>
+                                                    </TextBlock>
+                                                </StackPanel>
+                                            </StackPanel>
+                                            <StackPanel Height="60" VerticalAlignment=" Bottom">
+                                                <Button VerticalAlignment="Bottom" Margin="0 20 0 0" HorizontalAlignment="Right" Content="Se mere" CommandParameter="{Binding ID}" Command="{Binding ElementName=thisPage, Path=DataContext.SeMere}"></Button>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridView.ItemTemplate>
+                            </GridView>
                         </ScrollViewer>
                     </Grid>
                 </Grid>
