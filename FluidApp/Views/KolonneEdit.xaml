@@ -192,27 +192,66 @@
                     <GridView SelectionMode="None">
                         <StackPanel Orientation="Vertical" Width="190" Height="85" Margin="5">
                             <TextBlock Text="Klokkeslæt"></TextBlock>
-                            <TextBox Text="{Binding Klokkeslæt, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                            <TextBox Text="{Binding Klokkeslæt, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0">
+                                <ToolTipService.ToolTip>
+                                    <ToolTip Content="Skriv klokkeslæt"></ToolTip>
+                                </ToolTipService.ToolTip>
+                            </TextBox>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Width="190">
                             <TextBlock Text="Vægt"></TextBlock>
                             <TextBlock Text="30L Fust. Min. 38,5kg." FontSize="12"></TextBlock>
                             <TextBlock Text="25L Fust. Min. 37,0kg." FontSize="12"></TextBlock>
-                            <TextBox Text="{Binding Vægt, Mode=TwoWay}" PlaceholderText="Indsæt her"></TextBox>
+                            <TextBox Text="{Binding Vægt, Mode=TwoWay}" PlaceholderText="Indsæt her">
+                                <ToolTipService.ToolTip>
+                                    <ToolTip>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock Text="Skriv den målte vægt 1 gang/skift."></TextBlock>
+                                            <TextBlock Text="---------------------------------------------------------------"></TextBlock>
+                                            <TextBlock Text="Hvis vægten af testfustagen afviger mere end +/- 500gr."></TextBlock>
+                                            <TextBlock Text="Kontaktes kalibreringsafdelingen (30763)"></TextBlock>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </ToolTipService.ToolTip>
+                            </TextBox>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Width="190">
                             <TextBlock Text="Kvittering for udtaget prøve" ></TextBlock>
-                            <TextBox Text="{Binding Kvittering, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                            <TextBox Text="{Binding Kvittering, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0">
+                                <ToolTipService.ToolTip>
+                                    <ToolTip Content="Notér her når der udtaget prøve til laboratoriet"></ToolTip>
+                                </ToolTipService.ToolTip>
+                            </TextBox>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Width="190">
                             <TextBlock Text="Kontrol af testfustage" ></TextBlock>
-                            <TextBox Text="{Binding Fustage, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                            <TextBox Text="{Binding Fustage, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0">
+                                <ToolTipService.ToolTip>
+                                    <ToolTip>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock Text="Der kvitteres for godkendt funktion iflg." FontWeight="Bold"></TextBlock>
+                                            <TextBlock Text="IN-12.061.300.260" FontWeight="Bold"></TextBlock>
+                                            <TextBlock Text="Test udføres 1 gang pr. døgn."></TextBlock>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </ToolTipService.ToolTip>
+                            </TextBox>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Width="190">
                             <TextBlock Text="Ludkoncentration"></TextBlock>
                             <TextBlock Text="Min. 1%" FontSize="12"></TextBlock>
                             <TextBlock Text="Max. 2%" FontSize="12"></TextBlock>
-                            <TextBox  Text="{Binding Ludkoncetration, Mode=TwoWay}" PlaceholderText="Indsæt her"></TextBox>
+                            <TextBox  Text="{Binding Ludkoncetration, Mode=TwoWay}" PlaceholderText="Indsæt her">
+                                <ToolTipService.ToolTip>
+                                    <ToolTip>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock Text="Skriv koncentrationen."></TextBlock>
+                                            <TextBlock Text="Måles senest 1 time efter opstart"></TextBlock>
+                                            <TextBlock Text="og derefter 1 gang pr. skift"></TextBlock>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </ToolTipService.ToolTip>
+                            </TextBox>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Width="190">
                             <TextBlock Text="Ludkoncentration" ></TextBlock>
@@ -223,7 +262,16 @@
                             <TextBlock Text="Mip MA"></TextBlock>
                             <TextBlock Text="Min. 24 mS" FontSize="12"></TextBlock>
                             <TextBlock Text="Max. 26,5 mS" FontSize="12"></TextBlock>
-                            <TextBox Text="{Binding MS, Mode=TwoWay}" PlaceholderText="Indsæt her"></TextBox>
+                            <TextBox Text="{Binding MS, Mode=TwoWay}" PlaceholderText="Indsæt her">
+                                <ToolTipService.ToolTip>
+                                    <ToolTip>
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock Text="Skriv millisiemens (mS)"></TextBlock>
+                                            <TextBlock Text="Styretal: 25"></TextBlock>
+                                        </StackPanel>
+                                    </ToolTip>
+                                </ToolTipService.ToolTip>
+                            </TextBox>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Width="190">
                             <TextBlock Text="Mip MA" ></TextBlock>

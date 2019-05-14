@@ -147,9 +147,13 @@
                     <GridView SelectionMode="None">
                         <StackPanel Orientation="Vertical" Width="190" Height="85" Margin="5">
                             <TextBlock Text="Start"></TextBlock>
-                            <TextBox Text="{Binding Start, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                            <TextBox Text="{Binding Start, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0">
+                                <ToolTipService.ToolTip>
+                                    <ToolTip Content="Skriv tiden som ex. 12:00"></ToolTip>
+                                </ToolTipService.ToolTip>
+                            </TextBox>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" Width="190" Height="85">
+                        <StackPanel TabFocusNavigation="Local" Orientation="Vertical" Width="190" Height="85">
                             <TextBlock Text="Slut"></TextBlock>
                             <TextBox Text="{Binding Slut, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
                         </StackPanel>
