@@ -272,25 +272,26 @@ namespace FluidApp.ViewModels
 
         public double? UdregnTimer()
         {
-            double? timer;
+            double timer;
             //udregner timer
             if (Bemanding != "" && Pause != "")
             {
+                
                 TimeSpan span = NyProd.Slut.Subtract(NyProd.Start);
-                timer = (span.TotalMinutes - NyProd.Pauser) * NyProd.Bemanding;
+                timer = (span.TotalMinutes - (double)NyProd.Pauser) * (double)NyProd.Bemanding;
                 timer /= 60;
             }
             else if (Bemanding != "" && Pause == "")
             {
                 TimeSpan span = NyProd.Slut.Subtract(NyProd.Start);
-                timer = span.TotalHours * NyProd.Bemanding;
+                timer = span.TotalHours * (double)NyProd.Bemanding;
             }
             else
             {
-                timer = null;
+                return null;
             }
 
-            return timer;
+            return Math.Round(timer, 2);
         }
 
         public void SetValues()
@@ -402,10 +403,12 @@ namespace FluidApp.ViewModels
             double tempSum = 0;
             foreach (var prod in ProdUdsnit)
             {
-                tempSum += double.Parse(prod.Timer.ToString());
+                if (prod.Timer != null) tempSum += double.Parse(prod.Timer.ToString());
             }
             sumTime.Add((int)Math.Floor(tempSum));
-            double rest = tempSum % sumTime[0];
+
+            double rest = 0;
+            if (sumTime[0] != 0) rest += tempSum % sumTime[0];
 
             sumTime.Add(Convert.ToInt32(rest*60));
 
@@ -446,7 +449,6 @@ namespace FluidApp.ViewModels
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
         }
     }
 }
