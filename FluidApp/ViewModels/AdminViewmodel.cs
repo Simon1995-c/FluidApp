@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml;
@@ -29,14 +30,17 @@ namespace FluidApp.ViewModels
         public RelayCommand SletAdminRelayCommand { get; set; }
         public RelayCommand OpretAdminRelayCommand { get; set; }
         public RelayCommand LogUdRelayCommand { get; set; }
-
-
-
-
+        public RelayCommand NavigateGraferRelayCommand { get; set; }
+        public RelayCommand NavigateVægtGrafRelayCommand { get; set; }
+        public RelayCommand NavigateMsRelayCommand { get; set; }
 
         //Lister
         public List<IPrange> IpRange { get; set; }
         public List<Administrator> Administratorer { get; set; }
+        public List<string> SorteringsMuligheder { get; set; }
+
+        //Grafer
+        private List<Record> _graf;
 
         //Visiblities
         public Visibility IpRangeContainerVisiblity { get; set; }
@@ -50,7 +54,9 @@ namespace FluidApp.ViewModels
         public Visibility AdminKodeordErrorVisiblity { get; set; }
         public Visibility LogUdVisibility { get; set; }
 
-
+        public Visibility LudkoncentrationVisibility { get; set; }
+        public Visibility VægtVisibility { get; set; }
+        public Visibility MsVisiblity { get; set; }
 
         //Holders
         public IPrange CurrentIp { get; set; } //Holder den IP der er i gang med at blive redigeret
@@ -62,6 +68,117 @@ namespace FluidApp.ViewModels
         public string OpretAdminBrugernavn { get; set; }
         public int OpretAdminRolle { get; set; }
         public string OpretAdminKodeord { get; set; }
+
+        public string GraphHolder { get; set; }
+
+        private string _sorteringsValg;
+        public string SorteringsValg
+        {
+            get { return _sorteringsValg; }
+            set
+            {
+                _sorteringsValg = value;
+
+                GraphHandler g = new GraphHandler();
+                switch (SorteringsValg)
+                {
+                    case "2 dage":
+                        if (GraphHolder == "LK")
+                        {
+                            Graf = g.DrawLudKoncentration(2);
+                        }
+                        if (GraphHolder == "VA")
+                        {
+                            Graf = g.DrawVægt(2);
+                        }
+                        if (GraphHolder == "MS")
+                        {
+                            Graf = g.DrawMs(2);
+                        }
+                        break;
+                    case "7 dage":
+                        if (GraphHolder == "LK")
+                        {
+                            Graf = g.DrawLudKoncentration(7);
+                        }
+                        if (GraphHolder == "VA")
+                        {
+                            Graf = g.DrawVægt(7);
+                        }
+                        if (GraphHolder == "MS")
+                        {
+                            Graf = g.DrawMs(7);
+                        }
+                        break;
+                    case "14 dage":
+                        if (GraphHolder == "LK")
+                        {
+                            Graf = g.DrawLudKoncentration(14);
+                        }
+                        if (GraphHolder == "VA")
+                        {
+                            Graf = g.DrawVægt(14);
+                        }
+                        if (GraphHolder == "MS")
+                        {
+                            Graf = g.DrawMs(14);
+                        }
+                        break;
+                    case "30 dage":
+                        if (GraphHolder == "LK")
+                        {
+                            Graf = g.DrawLudKoncentration(30);
+                        }
+                        if (GraphHolder == "VA")
+                        {
+                            Graf = g.DrawVægt(30);
+                        }
+                        if (GraphHolder == "MS")
+                        {
+                            Graf = g.DrawMs(30);
+                        }
+                        break;
+                    case "365 dage":
+                        if (GraphHolder == "LK")
+                        {
+                            Graf = g.DrawLudKoncentration(365);
+                        }
+                        if (GraphHolder == "VA")
+                        {
+                            Graf = g.DrawVægt(365);
+                        }
+                        if (GraphHolder == "MS")
+                        {
+                            Graf = g.DrawMs(365);
+                        }
+                        break;
+                    default:
+                        if (GraphHolder == "VA")
+                        {
+                            Graf = g.DrawVægt(0);
+                        }
+                        if (GraphHolder == "LK")
+                        {
+                            Graf = g.DrawLudKoncentration(0);
+                        }
+                        if (GraphHolder == "MS")
+                        {
+                            Graf = g.DrawMs(0);
+                        }
+                        break;
+                }
+            }
+        }
+
+        public List<Record> Graf
+        {
+            get { return _graf; }
+            set
+            {
+                _graf = value;
+                OnPropertyChanged();
+            }
+        }
 
         public AdminViewmodel()
         {
@@ -81,6 +198,9 @@ namespace FluidApp.ViewModels
             SletAdminRelayCommand = new RelayCommand(SletAdmin);
             OpretAdminRelayCommand = new RelayCommand(OpretAdmin);
             LogUdRelayCommand = new RelayCommand(Logud);
+            NavigateGraferRelayCommand = new RelayCommand(NavigateLudkoncentration);
+            NavigateVægtGrafRelayCommand = new RelayCommand(NavigateVægt);
+            NavigateMsRelayCommand = new RelayCommand(NavigateMs);
 
 
             //Udfyld lister
@@ -96,6 +216,58 @@ namespace FluidApp.ViewModels
             UpdateAdminsVisiblity = Visibility.Collapsed;
             OpretAdminsVisiblity = Visibility.Collapsed;
             AdminKodeordErrorVisiblity = Visibility.Collapsed;
+
+            //Grafer
+            LudkoncentrationVisibility = Visibility.Collapsed;
+            VægtVisibility = Visibility.Collapsed;
+            MsVisiblity = Visibility.Collapsed;
+
+            SorteringsMuligheder = new List<string>();
+            SorteringsMuligheder.Add("Alle");
+            SorteringsMuligheder.Add("2 dage");
+            SorteringsMuligheder.Add("7 dage");
+            SorteringsMuligheder.Add("14 dage");
+            SorteringsMuligheder.Add("30 dage");
+            SorteringsMuligheder.Add("365 dage");
+        }
+
+        private void NavigateMs()
+        {
+            ResetMange();
+
+            MsVisiblity = Visibility.Visible;
+            OnPropertyChanged(nameof(MsVisiblity));
+
+            GraphHandler g = new GraphHandler();
+            Graf = g.DrawMs(0);
+
+            GraphHolder = "MS";
+        }
+
+        private void NavigateVægt()
+        {
+            ResetMange();
+
+            VægtVisibility = Visibility.Visible;
+            OnPropertyChanged(nameof(VægtVisibility));
+
+            GraphHandler g = new GraphHandler();
+            Graf = g.DrawVægt(0);
+
+            GraphHolder = "VA";
+        }
+
+        private void NavigateLudkoncentration()
+        {
+            ResetMange();
+
+            LudkoncentrationVisibility = Visibility.Visible;
+            OnPropertyChanged(nameof(LudkoncentrationVisibility));
+            
+            GraphHandler g = new GraphHandler();
+            Graf = g.DrawLudKoncentration(0);
+
+            GraphHolder = "LK";
         }
 
         private void OpretAdmin()
@@ -190,8 +362,14 @@ namespace FluidApp.ViewModels
         {
             IpRangeContainerVisiblity = Visibility.Collapsed;
             AdminsContainerVisiblity = Visibility.Collapsed;
+            LudkoncentrationVisibility = Visibility.Collapsed;
+            VægtVisibility = Visibility.Collapsed;
+            MsVisiblity = Visibility.Collapsed;
             OnPropertyChanged(nameof(IpRangeContainerVisiblity));
             OnPropertyChanged(nameof(AdminsContainerVisiblity));
+            OnPropertyChanged(nameof(LudkoncentrationVisibility));
+            OnPropertyChanged(nameof(VægtVisibility));
+            OnPropertyChanged(nameof(MsVisiblity));
         }
 
         private void NavigateOpretIp()
