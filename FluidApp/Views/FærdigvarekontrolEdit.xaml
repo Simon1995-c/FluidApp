@@ -108,7 +108,7 @@
                             </Grid>
                             <Grid Column="2" BorderBrush="Black" BorderThickness="1 1 0 1" Padding="5 0 0 0">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                    <TextBlock Text="Initialer" HorizontalAlignment="Center"></TextBlock>
+                                    <TextBlock Text="Initialer" ></TextBlock>
                                 </StackPanel>
                             </Grid>
 
@@ -203,7 +203,7 @@
                     <TextBlock FontSize="22" FontWeight="Bold" Text="{Binding Title}" Margin="0 0 0 10"></TextBlock>
                     <GridView SelectionMode="None">
                         <StackPanel Orientation="Vertical" Width="190">
-                            <TextBlock Text="Dåse Nr" SelectionChanged="TextBlock_SelectionChanged"></TextBlock>
+                            <TextBlock Text="Dåse Nr" />
                             <TextBox Text="{Binding DåseNr, Mode=TwoWay}" PlaceholderText="Indsæt her" HorizontalAlignment="Stretch" Margin="0,33,0,0" VerticalAlignment="Stretch"/>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Width="190">
