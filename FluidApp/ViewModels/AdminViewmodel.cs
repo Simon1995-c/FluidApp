@@ -201,8 +201,7 @@ namespace FluidApp.ViewModels
             NavigateGraferRelayCommand = new RelayCommand(NavigateLudkoncentration);
             NavigateVægtGrafRelayCommand = new RelayCommand(NavigateVægt);
             NavigateMsRelayCommand = new RelayCommand(NavigateMs);
-
-
+            
             //Udfyld lister
             IpRange = UpdateIPrange();
 

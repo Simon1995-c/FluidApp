@@ -255,6 +255,7 @@ namespace FluidApp.ViewModels
             GemVis = true;
             NyDataVis = true;
             ResetValues();
+            
 
             if (Application.Current.Resources.ContainsKey("forside"))
             {
@@ -407,8 +408,17 @@ namespace FluidApp.ViewModels
             else return boolSvar;
         }
 
-        public void SetValues()
+        public bool SetValues()
         {
+            //Errorhandling til klokkeslæt så det altid er rigtig format
+            if (DateTime.TryParse(Klokkeslæt, out DateTime dDate) == false)
+            {
+                var dialog = new Windows.UI.Popups.MessageDialog("Fejl. Du har indtastet klokkeslættet forkert");
+                dialog.ShowAsync();
+                return false;
+            }
+
+
             //double + int værdier skal parses
             if (Ludkoncetration != "") NytSkema.Ludkoncentration = double.Parse(Ludkoncetration);
             else NytSkema.Ludkoncentration = null;
@@ -432,19 +442,23 @@ namespace FluidApp.ViewModels
 
             //FK_kolonne skal hentes fra tilsvarende Forside
             NytSkema.FK_Kolonne = Info.FK_Kolonne;
+
+            return true;
         }
 
         public void GemData()
         {
-            SetValues();
+            if (SetValues())
+            {
 
-            NytSkema.Post(NytSkema);
-            NytSkema = new KontrolSkema();
-            OnPropertyChanged(nameof(NytSkema));
+                NytSkema.Post(NytSkema);
+                NytSkema = new KontrolSkema();
+                OnPropertyChanged(nameof(NytSkema));
 
-            SkemaUdsnit = GetSkemaUdsnit();
-            OnPropertyChanged(nameof(SkemaUdsnit));
-            ResetValues();
+                SkemaUdsnit = GetSkemaUdsnit();
+                OnPropertyChanged(nameof(SkemaUdsnit));
+                ResetValues();
+            }
         }
 
         public ObservableCollection<KontrolSkema> GetSkemaUdsnit()
