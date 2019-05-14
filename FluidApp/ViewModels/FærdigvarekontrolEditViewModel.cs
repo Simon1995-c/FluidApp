@@ -463,7 +463,7 @@ namespace FluidApp.ViewModels
         public void NavKontrolSkema()
         {
             var frame = new Frame();
-            frame.Navigate(typeof(KontrolSkema), null);
+            frame.Navigate(typeof(KolonneEdit), null);
             Window.Current.Content = frame;
         }
 
