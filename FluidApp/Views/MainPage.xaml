@@ -43,7 +43,7 @@
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="1" HorizontalAlignment="Center">
-                    <Image Source="Assets/fluid-hvid.png" Height="40"></Image>
+                    <Image Source="../Assets/fluid-hvid.png" Height="40"></Image>
                 </Grid>
                 <Grid Grid.Column="2" HorizontalAlignment="Right">
                         <Button HorizontalAlignment="Right" Content="Log ud" VerticalAlignment="Top" Command="{Binding logUdRelayCommand}" Visibility="{Binding LogudVisibility}" Foreground="White"></Button>

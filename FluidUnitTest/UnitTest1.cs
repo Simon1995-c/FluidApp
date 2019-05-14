@@ -307,7 +307,7 @@ namespace FluidUnitTest
                 Bemanding = 5,
                 Timer = 5,
                 Signatur = "Test",
-                Pause = 5
+                Pauser = 5
             };
 
             a.Post(test);
@@ -331,7 +331,7 @@ namespace FluidUnitTest
                 Bemanding = 5,
                 Timer = 5,
                 Signatur = "Opdateret",
-                Pause = 5
+                Pauser = 5
             });
 
             List<Produktionsfølgeseddel> allAFterEdit = a.GetAll();
