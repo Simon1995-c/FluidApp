@@ -12,12 +12,35 @@ namespace Models
     {
         public int ID { get; set; }
         public int FK_Kolonne { get; set; }
-        public DateTime Slut { get; set; }
-        public DateTime Start { get; set; }
-        public int Bemanding { get; set; }
-        public float Timer { get; set; }
+        public DateTime _slut;
+        public DateTime _start;
+        public int? Bemanding { get; set; }
+        public double? Timer { get; set; }
         public string Signatur { get; set; }
-        public int Pause { get; set; }
+        public int? Pauser { get; set; }
+        public string FormattedStart { get; set; }
+        public string FormattedSlut { get; set; }
+
+        public DateTime Slut
+        {
+            get { return _slut; }
+            set
+            {
+                _slut = value;
+                FormattedSlut = _slut.TimeOfDay.ToString("hh\\:mm");
+            }
+        }
+
+        public DateTime Start
+        {
+            get { return _start; }
+            set
+            {
+                _start = value;
+                FormattedStart = _start.TimeOfDay.ToString("hh\\:mm");
+            }
+        }
+
 
         public const string URI = "https://restapi20190501124159.azurewebsites.net/api/Produktionsfølgeseddel";
 

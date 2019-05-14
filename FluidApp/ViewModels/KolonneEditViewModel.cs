@@ -27,6 +27,7 @@ namespace FluidApp.ViewModels
         public RelayCommand UdvidCommand { get; set; }
         public RelayCommand FortrydCommand { get; set; }
         public RelayCommand<int> SletCommand { get; set; }
+        public RelayCommand RefreshCommand { get; set; }
 
         public KontrolSkema testSkema;
         public KontrolSkema NytSkema { get; set; }
@@ -241,6 +242,7 @@ namespace FluidApp.ViewModels
             UdvidCommand = new RelayCommand(UdvidUdsnit);
             FortrydCommand = new RelayCommand(Fortryd);
             SletCommand = new RelayCommand<int>(Slet);
+            RefreshCommand = new RelayCommand(Indlæs);
 
             TestSkema = new KontrolSkema();
             NytSkema = new KontrolSkema();
@@ -263,7 +265,13 @@ namespace FluidApp.ViewModels
             SletIkon = "https://visualpharm.com/assets/591/Delete-595b40b75ba036ed117d7c27.svg";
             UdvidIkon = "https://visualpharm.com/assets/833/Expand-595b40b75ba036ed117d6f8f.svg";
             Udvidelse = "170";
+            Indlæs();
+        }
+
+        public void Indlæs()
+        {
             SkemaUdsnit = GetSkemaUdsnit();
+            OnPropertyChanged(nameof(SkemaUdsnit));
         }
 
         public void ResetValues()
