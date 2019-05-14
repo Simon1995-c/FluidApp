@@ -78,7 +78,7 @@ namespace FluidApp.ViewModels
             set
             {
                 _sorteringsValg = value;
-
+                OnPropertyChanged();
                 GraphHandler g = new GraphHandler();
                 switch (SorteringsValg)
                 {
@@ -242,6 +242,8 @@ namespace FluidApp.ViewModels
             Graf = g.DrawMs(0);
 
             GraphHolder = "MS";
+
+            SorteringsValg = "Alle";
         }
 
         private void NavigateVægt()
@@ -255,6 +257,8 @@ namespace FluidApp.ViewModels
             Graf = g.DrawVægt(0);
 
             GraphHolder = "VA";
+
+            SorteringsValg = "Alle";
         }
 
         private void NavigateLudkoncentration()
@@ -268,6 +272,8 @@ namespace FluidApp.ViewModels
             Graf = g.DrawLudKoncentration(0);
 
             GraphHolder = "LK";
+
+            SorteringsValg = "Alle";
         }
 
         private void OpretAdmin()
