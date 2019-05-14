@@ -118,24 +118,40 @@
                             </Grid>
                         </Grid>
                         <ScrollViewer Height="{Binding Udvidelse}" VerticalScrollBarVisibility="Visible">
-                            <ListView TabNavigation="Cycle" ItemsSource="{Binding ProdUdsnit}" Width="845" SelectedItem="{Binding TestProd, Mode=TwoWay}">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{Binding FormattedStart}" Width="125" Margin="0 3 0 0"></TextBlock>
-                                            <TextBlock Text="{Binding FormattedSlut}" Width="125" Margin="0 3 0 0"></TextBlock>
-                                            <TextBlock Text="{Binding Bemanding}" Width="125" Margin="0 3 0 0"></TextBlock>
-                                            <TextBlock Text="{Binding Timer}" Width="125" Margin="0 3 0 0"></TextBlock>
-                                            <TextBlock Text="{Binding Pauser}" Width="125" Margin="0 3 0 0"></TextBlock>
-                                            <TextBlock Text="{Binding Signatur}" Width="100"></TextBlock>
-                                            <Button Content="Rediger" FontSize="12" Command="{Binding ElementName=prodEdit, Path=DataContext.RedigerCommand}" CommandParameter="{Binding ID}"></Button>
-                                            <Button Command="{Binding ElementName=prodEdit, Path=DataContext.SletCommand}" CommandParameter="{Binding ID}" Background="Red">
-                                                <Image Source="{Binding ElementName=prodEdit, Path=DataContext.SletIkon}" Width="16" Height="16"></Image>
-                                            </Button>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
+                            <StackPanel>
+                                <ListView TabNavigation="Cycle" ItemsSource="{Binding ProdUdsnit}" Width="845" SelectedItem="{Binding TestProd, Mode=TwoWay}">
+                                    <!--For at få borders imellem listviewitems-->
+                                    <ListView.ItemContainerStyle>
+                                        <Style TargetType="ListViewItem">
+                                            <Setter Property="BorderBrush" Value="Black"></Setter>
+                                            <Setter Property="BorderThickness" Value="0 0 0 1"></Setter>
+                                        </Style>
+                                    </ListView.ItemContainerStyle>
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding FormattedStart}" Width="125" Margin="0 3 0 0"></TextBlock>
+                                                <TextBlock Text="{Binding FormattedSlut}" Width="125" Margin="0 3 0 0"></TextBlock>
+                                                <TextBlock Text="{Binding Bemanding}" Width="125" Margin="0 3 0 0"></TextBlock>
+                                                <TextBlock Text="{Binding Timer}" Width="125" Margin="0 3 0 0"></TextBlock>
+                                                <TextBlock Text="{Binding Pauser}" Width="125" Margin="0 3 0 0"></TextBlock>
+                                                <TextBlock Text="{Binding Signatur}" Width="100"></TextBlock>
+                                                <Button Content="Rediger" FontSize="12" Command="{Binding ElementName=prodEdit, Path=DataContext.RedigerCommand}" CommandParameter="{Binding ID}"></Button>
+                                                <Button Command="{Binding ElementName=prodEdit, Path=DataContext.SletCommand}" CommandParameter="{Binding ID}" Background="Red">
+                                                    <Image Source="{Binding ElementName=prodEdit, Path=DataContext.SletIkon}" Width="16" Height="16"></Image>
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                                <StackPanel Orientation="Horizontal" Margin="5">
+                                    <TextBlock Text="Sluttilbagemeldt på dette procesordrenummer" Margin="0 0 70 0"></TextBlock>
+                                    <TextBlock Text="Timer i alt:" Margin="0 0 5 0"></TextBlock>
+                                    <TextBlock Text="{Binding SumTimer}" Margin="0 0 10 0"></TextBlock>
+                                    <TextBlock Text="Min:" Margin="0 0 5 0"></TextBlock>
+                                    <TextBlock Text="{Binding SumMin}"></TextBlock>
+                                </StackPanel>
+                            </StackPanel>
                         </ScrollViewer>
                     </ListView>
                 </StackPanel>

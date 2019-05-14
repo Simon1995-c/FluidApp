@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -44,6 +45,8 @@ namespace FluidApp.ViewModels
         private string _bemanding;
         private string _signatur;
         private string _pause;
+        private string _sumTimer;
+        private string _sumMin;
 
         #region Get/Set
 
@@ -185,6 +188,26 @@ namespace FluidApp.ViewModels
             }
         }
 
+        public string SumTimer
+        {
+            get { return _sumTimer; }
+            set
+            {
+                _sumTimer = value; 
+                OnPropertyChanged();
+            }
+        }
+
+        public string SumMin
+        {
+            get { return _sumMin; }
+            set
+            {
+                _sumMin = value; 
+                OnPropertyChanged();
+            }
+        }
+
         #endregion
 
         public ProduktionsfølgeseddelEditViewModel()
@@ -222,6 +245,9 @@ namespace FluidApp.ViewModels
         {
             ProdUdsnit = GetProdUdsnit();
             OnPropertyChanged(nameof(ProdUdsnit));
+
+            SumTimer = SumHours()[0].ToString();
+            SumMin = SumHours()[1].ToString();
         }
 
         public void UdvidUdsnit()
@@ -302,8 +328,7 @@ namespace FluidApp.ViewModels
 
         public void Fortryd()
         {
-            ProdUdsnit = GetProdUdsnit();
-            OnPropertyChanged(nameof(ProdUdsnit));
+            Indlæs();
             ResetValues();
             GemVis = true;
             UpdateVis = false;
@@ -317,8 +342,7 @@ namespace FluidApp.ViewModels
             NyProd = new Produktionsfølgeseddel();
             OnPropertyChanged(nameof(NyProd));
 
-            ProdUdsnit = GetProdUdsnit();
-            OnPropertyChanged(nameof(ProdUdsnit));
+            Indlæs();
             ResetValues();
         }
 
@@ -328,8 +352,7 @@ namespace FluidApp.ViewModels
 
             NyProd.Put(NyProd.ID, NyProd);
             NyProd = new Produktionsfølgeseddel();
-            ProdUdsnit = GetProdUdsnit();
-            OnPropertyChanged(nameof(ProdUdsnit));
+            Indlæs();
 
             GemVis = true;
             UpdateVis = false;
@@ -357,8 +380,7 @@ namespace FluidApp.ViewModels
         public void Slet(int id)
         {
             NyProd.Delete(id);
-            ProdUdsnit = GetProdUdsnit();
-            OnPropertyChanged(nameof(ProdUdsnit));
+            Indlæs();
         }
 
         public ObservableCollection<Produktionsfølgeseddel> GetProdUdsnit()
@@ -372,6 +394,22 @@ namespace FluidApp.ViewModels
             udsnit = new ObservableCollection<Produktionsfølgeseddel>(udsnit.OrderByDescending(e => e.ID));
 
             return udsnit;
+        }
+
+        public List<int> SumHours()
+        {
+            List<int> sumTime = new List<int>();
+            double tempSum = 0;
+            foreach (var prod in ProdUdsnit)
+            {
+                tempSum += double.Parse(prod.Timer.ToString());
+            }
+            sumTime.Add((int)Math.Floor(tempSum));
+            double rest = tempSum % sumTime[0];
+
+            sumTime.Add(Convert.ToInt32(rest*60));
+
+            return sumTime;
         }
 
         public void Tilbage()
