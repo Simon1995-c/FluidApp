@@ -1,4 +1,5 @@
 ﻿<Page
+    Name="færdigvarekontrolEdit"
     x:Class="FluidApp.Views.FærdigvarekontrolEdit"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -9,10 +10,268 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.DataContext>
-        <viewModels:FærdigvarekontrolEditViewModel></viewModels:FærdigvarekontrolEditViewModel>
+        <viewModels:FærdigvarekontrolEditViewModel/>
     </Page.DataContext>
 
     <Grid>
+        <Grid VerticalAlignment="Top" Background="#16503f" Padding="15 25">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="6*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Button Command="{Binding TilbageCommand}" Content="Tilbage" Foreground="white"></Button>
+            </Grid>
+            <Grid Grid.Column="1" HorizontalAlignment="Center">
+                <TextBlock FontSize="26" Foreground="White" Text="Kolonne 2"></TextBlock>
+            </Grid>
+            <Grid Grid.Column="2" HorizontalAlignment="Right">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid Row="0" Column="0" Margin="0 0 30 0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Procesordrenummer:" Margin="0 0 5 0" Foreground="White"></TextBlock>
+                            <TextBlock Text="{Binding info.ProcessordreNr}" Foreground="White"></TextBlock>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Row="0" Column="1">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Dato:" Margin="0 0 5 0" Foreground="White"></TextBlock>
+                            <TextBlock Text="{Binding info.FormatedDate}" Foreground="White"></TextBlock>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Row="1" Column="0" Margin="0 0 30 0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Færdigvarenummer:" Margin="0 0 5 0" Foreground="White"></TextBlock>
+                            <TextBlock Text="{Binding info.FærdigvareNr}" Foreground="White"></TextBlock>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Row="1" Column="1">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Færdigvarenavn:" Margin="0 0 5 0" Foreground="White"></TextBlock>
+                            <TextBlock Text="{Binding info.FærdigvareNavn}" Foreground="White"></TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
 
+        <Grid Name="Kontrolskema" VerticalAlignment="Top" Margin="0 95 0 0" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Row="0">
+                <StackPanel Margin="0,10,10,41">
+                    <TextBlock FontSize="18" FontWeight="Bold" Text="Tidligere indtastet data" Margin="0 0 0 10"></TextBlock>
+                    <ListView Background="LightGray" SelectionMode="None" Padding="0 10 0 0" BorderBrush="Black" BorderThickness="1"  Margin="0,0,-14,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <HyperlinkButton Command="{Binding UdvidCommand}" Padding="-2 0" Margin="1210,-25,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="48">
+                            <Image Height="30" Width="30" Source="{Binding UdvidIkon}"></Image>
+                        </HyperlinkButton>
+                        <Grid Margin="0 -30 0 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="90"></ColumnDefinition>
+                                <ColumnDefinition Width="105"></ColumnDefinition>
+                                <ColumnDefinition Width="110"></ColumnDefinition>
+                                <ColumnDefinition Width="115"></ColumnDefinition>
+                                <ColumnDefinition Width="110"></ColumnDefinition>
+                                <ColumnDefinition Width="110"></ColumnDefinition>
+                                <ColumnDefinition Width="110"></ColumnDefinition>
+                                <ColumnDefinition Width="120"></ColumnDefinition>
+
+
+
+
+
+
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Column="1" BorderBrush="Black" BorderThickness="1 1 0 1">
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Padding="5 0 0 0">
+                                    <TextBlock Text="DåseNr"></TextBlock>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Column="2" BorderBrush="Black" BorderThickness="1 1 0 1" Padding="5 0 0 0">
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                    <TextBlock Text="Initialer" HorizontalAlignment="Center"></TextBlock>
+                                </StackPanel>
+                            </Grid>
+
+                            <Grid Column="4" BorderBrush="Black" BorderThickness="1 1 0 1" Padding="5 0 0 0">
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                    <TextBlock Text="Låg Nr"></TextBlock>
+                                </StackPanel>
+                            </Grid>
+
+                            <Grid Column="6" BorderBrush="Black" BorderThickness="1 1 0 1" Padding="5 0 0 0">
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <TextBlock Text="Låg Farve"></TextBlock>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Column="7" BorderBrush="Black" BorderThickness="1 1 0 1" Padding="5 0 0 0">
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                    <TextBlock Text="Ring Farve"></TextBlock>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Column="8" BorderBrush="Black" BorderThickness="1 1 0 1" Padding="5 0 0 0">
+                                <StackPanel>
+                                    <TextBlock Text="Enheder" Margin="0 15 0 12"></TextBlock>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Column="9" BorderBrush="Black" BorderThickness="1" Padding="5 0 0 0">
+                                <StackPanel>
+                                    <TextBlock Text="Parametre" Margin="0,15,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="103"/>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Column="10" BorderBrush="Black" BorderThickness="1" Padding="5 0 0 0">
+                                <StackPanel>
+                                    <TextBlock Text="Multipack"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="103" RenderTransformOrigin="0.5,0.5" Height="29" Margin="0,15,0,0" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                                        <TextBlock.RenderTransform>
+                                            <CompositeTransform SkewX="5.668" TranslateX="0.992"/>
+                                        </TextBlock.RenderTransform>
+                                    </TextBlock>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Column="11" BorderBrush="Black" BorderThickness="1" Padding="5 0 0 0">
+                                <StackPanel>
+                                    <TextBlock Text="FolieNr"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="103" Margin="0 15 0 0 "/>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Column="12" BorderBrush="Black" BorderThickness="1" Padding="5 0 0 0">
+                                <StackPanel>
+                                    <TextBlock Text="KartonNr"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="103" Margin="0 15 0 0"/>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Column="13" BorderBrush="Black" BorderThickness="1" Padding="5 0 0 0">
+                                <StackPanel>
+                                    <TextBlock Text="Palle Nr"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="103" Margin="0 15 0 0 "/>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Column="14" BorderBrush="Black" BorderThickness="1" Padding="5 0 0 0">
+                                <StackPanel>
+                                    <TextBlock Text="Handling"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="103" Margin="0 15 0 0 "/>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                        <ScrollViewer Height="{Binding Udvidelse}" VerticalScrollBarVisibility="Visible">
+                            <ListView TabNavigation="Cycle" ItemsSource="{Binding SkemaUdsnit, UpdateSourceTrigger=PropertyChanged}" Width="1290" SelectedItem="{Binding TestSkema, Mode=TwoWay}" Margin="0,0,0,0">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding DåseNr}" Width="100" Margin="0 3 0 0"></TextBlock>
+                                            <TextBlock Text="{Binding Initialer}" Width="100" Margin="0 3 0 0"></TextBlock>
+                                            <TextBlock Text="{Binding LågNr}" Width="100" Margin="0 3 0 0"></TextBlock>
+                                            <TextBlock Text="{Binding LågFarve}" Width="100" Margin="0 3 0 0" ></TextBlock>
+                                            <TextBlock Text="{Binding RingFarve}" Width="90" Margin="0 3 0 0"></TextBlock>
+                                            <TextBlock Text="{Binding Enheder}" Width="105" Margin="0 3 0 0" ></TextBlock>
+                                            <TextBlock Text="{Binding Parametre}" Width="110" Margin="0 3 0 0"></TextBlock>
+                                            <TextBlock Text="{Binding Multipack}" Width="115" Margin="0 3 0 0"></TextBlock>
+                                            <TextBlock Text="{Binding FolieNr}" Width="110" Margin="0 3 0 0"></TextBlock>
+                                            <TextBlock Text="{Binding KartonNr}" Width="110" Margin="0 3 0 0"></TextBlock>
+                                            <TextBlock Text="{Binding PalleNr}" Width="110" Margin="0 3 0 0"></TextBlock>
+
+                                            <Button Content="Rediger" FontSize="12" Command="{Binding ElementName=færdigvarekontrolEdit, Path=DataContext.RedigerCommand}" CommandParameter="{Binding ProcessordreNr}"></Button>
+                                            <Button Command="{Binding ElementName=færdigvarekontrolEdit, Path=DataContext.SletCommand}" CommandParameter="{Binding ProcessordreNr}" Background="Red">
+                                                <Image Source="{Binding ElementName=færdigvarekontrolEdit, Path=DataContext.SletIkon}" Width="16" Height="16"></Image>
+                                            </Button>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </ScrollViewer>
+                    </ListView>
+                </StackPanel>
+            </Grid>
+
+            <Grid Row="1" Margin="0 30 0 0" Visibility="{Binding NytDataVis}">
+                <StackPanel Width="1030">
+                    <TextBlock FontSize="22" FontWeight="Bold" Text="{Binding Title}" Margin="0 0 0 10"></TextBlock>
+                    <GridView SelectionMode="None">
+                        <StackPanel Orientation="Vertical" Width="190">
+                            <TextBlock Text="Dåse Nr" SelectionChanged="TextBlock_SelectionChanged"></TextBlock>
+                            <TextBox Text="{Binding DåseNr, Mode=TwoWay}" PlaceholderText="Indsæt her" HorizontalAlignment="Stretch" Margin="0,33,0,0" VerticalAlignment="Stretch"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="190">
+                            <TextBlock Text="Låge Nr" ></TextBlock>
+                            <TextBox Text="{Binding LågNr, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Vertical" Width="190">
+                            <TextBlock Text="Låg Farve"></TextBlock>
+                            <ComboBox ItemsSource="{Binding VælgMuligheder}" SelectedItem="{Binding LågFarve, Mode=TwoWay}" PlaceholderText="Vælg" Margin="0 33 0 0" Width="190"></ComboBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="190">
+                            <TextBlock Text="Ring Farve" ></TextBlock>
+                            <ComboBox ItemsSource="{Binding VælgMuligheder}" SelectedItem="{Binding RingFarve, Mode=TwoWay}" PlaceholderText="Vælg" Margin="0 33 0 0" Width="190"></ComboBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="190">
+                            <TextBlock Text="Enheder"></TextBlock>
+                            <TextBox Text="{Binding Enheder, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="190">
+                            <TextBlock Text="Parametre" ></TextBlock>
+                            <TextBox Text="{Binding Parametre, Mode=TwoWay}" PlaceholderText="Vælg" Margin="0 33 0 0" Width="190"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="190">
+                            <TextBlock Text="Multipack" ></TextBlock>
+                            <TextBox Text="{Binding Multipack, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="190">
+                            <TextBlock Text="Folie Nr" ></TextBlock>
+                            <TextBox Text="{Binding FolieNr, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="190">
+                            <TextBlock Text="Karton Nr" ></TextBlock>
+                            <TextBox Text="{Binding KartonNr, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="190">
+                            <TextBlock Text="Palle Nr" ></TextBlock>
+                            <TextBox Text="{Binding PalleNr, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Width="190">
+                            <TextBlock Text="Sign. operatør" ></TextBlock>
+                            <TextBox Text="{Binding Initialer, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                        </StackPanel>
+                    </GridView>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <Grid VerticalAlignment="Bottom">
+            <Grid VerticalAlignment="Bottom">
+                <StackPanel Orientation="Horizontal">
+                    <HyperlinkButton Padding="15" Background="#16503f" Command="{Binding NavTilKontrolSkema}" Foreground="White" BorderBrush="Black" BorderThickness="1">
+                        <TextBlock Text="Kontrolskema"></TextBlock>
+                    </HyperlinkButton>
+                    <HyperlinkButton FontSize="15" Command="{Binding NavTilKontrolRegistreringCommand}" Padding="15" Background="#16503f" Foreground="White" BorderBrush="Black" BorderThickness="1">
+                        <TextBlock Text="Kontrolregistrering"></TextBlock>
+                    </HyperlinkButton>
+                    <HyperlinkButton FontSize="15" Command="{Binding NavtilProdCommand}" Padding="15" Background="#16503f" Foreground="White" BorderBrush="Black" BorderThickness="1">
+                        <TextBlock Text="Produktionsfølgeseddel"></TextBlock>
+                    </HyperlinkButton>
+                    <HyperlinkButton  FontSize="15" Command="{Binding NavTilFærdigvareCommand}" Padding="15" Background="#16503f" Foreground="White" BorderBrush="Black" BorderThickness="1">
+                        <TextBlock Text="Færdigvarekontrol"></TextBlock>
+                    </HyperlinkButton>
+                </StackPanel>
+            </Grid>
+            <Button Command="{Binding GemCommand}" Visibility="{Binding GemVis}" HorizontalAlignment="Right" Content="Gem" Margin="0 0 20 0"></Button>
+            <Button Command="{Binding FortrydCommand}" Visibility="{Binding UpdateVis}" HorizontalAlignment="Right" Content="Fortryd" Margin="0 0 100 0"></Button>
+            <Button Command="{Binding OpdaterCommand}" Visibility="{Binding UpdateVis}" HorizontalAlignment="Right" Content="Opdater" Margin="0 0 20 0"></Button>
+        </Grid>
     </Grid>
 </Page>
