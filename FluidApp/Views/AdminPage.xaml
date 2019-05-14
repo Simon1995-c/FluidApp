@@ -47,12 +47,18 @@
             <!-- Grafer -->
 
             <!-- Lud koncentration -->
+
             <StackPanel Visibility="{Binding LudkoncentrationVisibility}">
                 <TextBlock FontSize="24" FontWeight="Bold" Margin="0 0 0 35">Lud koncentration</TextBlock>
                 <ComboBox PlaceholderText="Sortér efter dage" SelectedItem="{Binding SorteringsValg, Mode=TwoWay}" ItemsSource="{Binding SorteringsMuligheder}"></ComboBox>
                 <StackPanel Height="460">
                     <Charting:Chart Width="1100" Height="500" VerticalAlignment="Top">
-                        <Charting:LineSeries ItemsSource="{Binding Graf}" Title="Ludkoncentration" IndependentValuePath="Name" DependentValuePath="Amount" Margin="0" IsSelectionEnabled="True"/>
+                        <Charting:LineSeries ItemsSource="{Binding Graf}"
+                                             Title="Ludkoncentration"
+                                             IndependentValuePath="Name"
+                                             DependentValuePath="Amount"
+                                             Margin="0"
+                                             IsSelectionEnabled="True"/>
                     </Charting:Chart>
                 </StackPanel>
             </StackPanel>
