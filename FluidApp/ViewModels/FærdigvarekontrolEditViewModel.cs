@@ -29,6 +29,7 @@ namespace FluidApp.ViewModels
         public RelayCommand <int>RedigerCommand { get; set; }
         public RelayCommand <int>SletCommand { get; set; }
         public RelayCommand UdvidCommand { get; set; }
+        public RelayCommand RefreshCommand { get; set; }
 
 
         public Færdigvarekontrol testSkema;
@@ -241,10 +242,43 @@ namespace FluidApp.ViewModels
             }
         }
 
+        public string TipFortryd
+        {
+            get { return _toolTipFortryd; }
+            set
+            {
+                _toolTipFortryd = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ToolTipOpdater
+        {
+            get { return _toolTipOpdater; }
+            set
+            {
+                _toolTipOpdater = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ToolTipUdvid
+        {
+            get { return _toolTipUdvid; }
+            set
+            {
+                _toolTipUdvid = value;
+                OnPropertyChanged();
+            }
+        }
+
         #endregion
 
         #region Private properties
 
+        private string _toolTipUdvid;
+        private string _toolTipOpdater;
+        private string _toolTipFortryd;
         private string _title;
         private bool _updateVis;
         private bool _gemVis;
@@ -276,8 +310,10 @@ namespace FluidApp.ViewModels
             VælgMuligheder.Add("Hvid");
             VælgMuligheder.Add("Sort");
             Title = "Indsæt ny data";
-            
 
+            TipFortryd = "Fortryd";
+            ToolTipOpdater = "Opdater";
+            ToolTipUdvid = "Udvid";
 
             TestSkema = new Færdigvarekontrol();
             NytSkema = new Færdigvarekontrol();
@@ -311,6 +347,7 @@ namespace FluidApp.ViewModels
             GemCommand = new RelayCommand(GemData);
             NavTilKontrolSkema = new RelayCommand(NavKontrolSkema);
             FortrydCommand = new RelayCommand(Fortryd);
+            RefreshCommand = new RelayCommand(Indlæs);
 
             #endregion
 
@@ -373,6 +410,12 @@ namespace FluidApp.ViewModels
         public void Slet(int id)
         {
             NytSkema.Delete(id);
+            SkemaUdsnit = GetSkemaUdsnit();
+            OnPropertyChanged(nameof(SkemaUdsnit));
+        }
+
+        public void Indlæs()
+        {
             SkemaUdsnit = GetSkemaUdsnit();
             OnPropertyChanged(nameof(SkemaUdsnit));
         }
