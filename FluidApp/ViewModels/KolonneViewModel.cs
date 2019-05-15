@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using FluidApp.Annotations;
+using FluidApp.Handlers;
 using FluidApp.Views;
 using GalaSoft.MvvmLight.Command;
 using Models;

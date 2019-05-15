@@ -116,8 +116,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="GraphHandler.cs" />
-    <Compile Include="Record.cs" />
+    <Compile Include="Handlers\GraphHandler.cs" />
     <Compile Include="Views\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
@@ -129,7 +128,7 @@
       <DependentUpon>FærdigvarekontrolEdit.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\FærdigvarekontrolEditViewModel.cs" />
-    <Compile Include="ipHandler.cs" />
+    <Compile Include="Handlers\ipHandler.cs" />
     <Compile Include="Views\Kolonne.xaml.cs">
       <DependentUpon>Kolonne.xaml</DependentUpon>
     </Compile>
