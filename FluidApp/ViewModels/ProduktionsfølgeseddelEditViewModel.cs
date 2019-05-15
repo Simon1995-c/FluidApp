@@ -276,7 +276,10 @@ namespace FluidApp.ViewModels
             //udregner timer
             if (Bemanding != "" && Pause != "")
             {
-                
+                if (NyProd.Start > NyProd.Slut)
+                {
+                    NyProd.Slut = NyProd.Slut.AddDays(1);
+                }
                 TimeSpan span = NyProd.Slut.Subtract(NyProd.Start);
                 timer = (span.TotalMinutes - (double)NyProd.Pauser) * (double)NyProd.Bemanding;
                 timer /= 60;
