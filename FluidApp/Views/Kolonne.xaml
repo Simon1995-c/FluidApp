@@ -9,6 +9,29 @@
     xmlns:viewModels="using:FluidApp.ViewModels"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <Style x:Key="GridViewItemRevealStyle" TargetType="GridViewItem">
+            <Setter Property="Background" Value="{ThemeResource GridViewItemBackground}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GridViewItem">
+                        <ListViewItemPresenter x:Name="Root" PointerOverBackground="Transparent">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="PointerOver">
+                                        <VisualState.Setters>
+                                            <Setter Target="Root.(RevealBrush.State)" Value="PointerOver"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </ListViewItemPresenter>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="GridViewItemContainerStyle1" BasedOn="{StaticResource GridViewItemRevealStyle}" TargetType="GridViewItem"/>
+    </Page.Resources>
     <Page.DataContext>
         <viewModels:KolonneViewModel/>
     </Page.DataContext>
@@ -56,7 +79,7 @@
                     <!--To ListViews for ellers virkede horizontalalignment ikke-->
                     <Grid Grid.Column="0" Grid.Row="1" Margin="0 60 0 0">
                         <ScrollViewer Height="500">
-                            <GridView ItemsSource="{Binding KolonneListe}" SelectionMode="None" HorizontalAlignment="Center" Padding="0" Margin="0">
+                            <GridView ItemContainerStyle="{StaticResource GridViewItemContainerStyle1}"  ItemsSource="{Binding KolonneListe}" SelectionMode="None" HorizontalAlignment="Center" Padding="0" Margin="0">
                                 <GridView.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Margin="10" Width="300" Padding="10" BorderThickness="1" BorderBrush="#ddd">

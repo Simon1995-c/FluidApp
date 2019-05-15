@@ -9,6 +9,29 @@
     xmlns:viewModels="using:FluidApp.ViewModels"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <Style x:Key="GridViewItemRevealStyle" TargetType="GridViewItem">
+            <Setter Property="Background" Value="{ThemeResource GridViewItemBackground}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GridViewItem">
+                        <ListViewItemPresenter x:Name="Root" PointerOverBackground="Transparent">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="PointerOver">
+                                        <VisualState.Setters>
+                                            <Setter Target="Root.(RevealBrush.State)" Value="PointerOver"/>
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </ListViewItemPresenter>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="GridViewItemContainerStyle1" BasedOn="{StaticResource GridViewItemRevealStyle}" TargetType="GridViewItem"/>
+    </Page.Resources>
     <Page.DataContext>
         <viewModels:FærdigvarekontrolEditViewModel/>
     </Page.DataContext>
@@ -201,7 +224,7 @@
             <Grid Row="1" Margin="0 30 0 0" Visibility="{Binding NytDataVis}">
                 <StackPanel Width="1030">
                     <TextBlock FontSize="22" FontWeight="Bold" Text="{Binding Title}" Margin="0 0 0 10"></TextBlock>
-                    <GridView SelectionMode="None">
+                    <GridView SelectionMode="None" ItemContainerStyle="{StaticResource GridViewItemContainerStyle1}">
                         <StackPanel Orientation="Vertical" Width="190">
                             <TextBlock Text="Dåse Nr" />
                             <TextBox Text="{Binding DåseNr, Mode=TwoWay}" PlaceholderText="Indsæt her" HorizontalAlignment="Stretch" Margin="0,33,0,0" VerticalAlignment="Stretch"/>
