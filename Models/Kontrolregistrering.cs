@@ -17,7 +17,7 @@ namespace Models
         public DateTime _produktionsdato { get; set; }
         public int FærdigvareNr { get; set; }
         public string Kommentar { get; set; }
-        public bool Spritkontrol { get; set; }
+        public bool? _spritkontrol { get; set; }
         public int HætteNr { get; set; }
         public int EtiketNr { get; set; }
         public string Fustage { get; set; }
@@ -26,8 +26,21 @@ namespace Models
         public string FormattedTime { get; set; }
         public string FormattedHo { get; set; }
         public string FormattedPro { get; set; }
+        public string FormattedSprit { get; set; }
 
 
+        public bool? Spritkontrol
+        {
+            get { return _spritkontrol; }
+            set
+            {
+                _spritkontrol = value;
+                if (_spritkontrol == true) FormattedSprit = "OK";
+                else if (_spritkontrol == false) FormattedSprit = "IKKE OK";
+                else FormattedSprit = "";
+                
+            }
+        }
 
         public DateTime Produktionsdato
         {
@@ -48,7 +61,7 @@ namespace Models
             set
             {
                 _holdbarhedsdato = value;
-                FormattedHo = Holdbarhedsdato.Date.ToString("dd_MM-yyyy");
+                FormattedHo = Holdbarhedsdato.Date.ToString("dd-MM-yyyy");
             }
         }
 
