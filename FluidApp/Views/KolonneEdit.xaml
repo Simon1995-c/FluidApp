@@ -72,7 +72,7 @@
             </Grid.RowDefinitions>
             <Grid Row="0">
                 <StackPanel>
-                    
+
                     <ListView Margin="0 5 0 0" Width="1270" Background="#dfdfdf" SelectionMode="None" Padding="10" BorderBrush="#ccc" BorderThickness="1">
                         <Grid Margin="0 0 0 30" VerticalAlignment="Top" Width="1220" HorizontalAlignment="Center">
                             <TextBlock Foreground="#212121" FontSize="24" HorizontalAlignment="Center" FontWeight="Bold" Text="Tidligere indtastet data" Margin="0 0 0 10"></TextBlock>
@@ -103,7 +103,7 @@
                                 <StackPanel VerticalAlignment="Center">
                                     <TextBlock Text="Klokkeslæt"></TextBlock>
                                 </StackPanel>
-                                
+
                             </Grid>
                             <Grid Column="1" BorderBrush="#ccc" BorderThickness="1 1 0 1">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" Padding="5 0 0 0">
