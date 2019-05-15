@@ -8,36 +8,13 @@
     xmlns:viewModels="using:FluidApp.ViewModels"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <Page.Resources>
-        <Style x:Key="GridViewItemRevealStyle" TargetType="GridViewItem">
-            <Setter Property="Background" Value="{ThemeResource GridViewItemBackground}"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="GridViewItem">
-                        <ListViewItemPresenter x:Name="Root" PointerOverBackground="Transparent">
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup x:Name="CommonStates">
-                                    <VisualState x:Name="PointerOver">
-                                        <VisualState.Setters>
-                                            <Setter Target="Root.(RevealBrush.State)" Value="PointerOver"/>
-                                        </VisualState.Setters>
-                                    </VisualState>
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
-                        </ListViewItemPresenter>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <Style x:Key="GridViewItemContainerStyle1" BasedOn="{StaticResource GridViewItemRevealStyle}" TargetType="GridViewItem"/>
-    </Page.Resources>
     <Page.DataContext>
         <viewModels:ViewModel/>
     </Page.DataContext>
     <Grid>
         <StackPanel Width="600" Margin="0 150 0 0">
             <TextBlock TextAlignment="Center" FontWeight="Bold" FontSize="36">Vælg en kolonne</TextBlock>
-            <GridView ItemContainerStyle="{StaticResource GridViewItemContainerStyle1}" Margin="0 50 0 0" HorizontalAlignment="Center" SelectionMode="None">
+            <GridView Margin="0 50 0 0" HorizontalAlignment="Center" SelectionMode="None">
                 <Button Command="{Binding navigateToKolonne2}" Foreground="#212121" Background="#dddddd" Padding="35" Margin="5">
                     <TextBlock>Kolonne 2</TextBlock>
                 </Button>
