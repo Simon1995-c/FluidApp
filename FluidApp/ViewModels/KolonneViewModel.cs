@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using FluidApp.Annotations;
@@ -19,6 +20,9 @@ namespace FluidApp.ViewModels
         public RelayCommand NavigerOpretSkemaCommand { get; set; }
         public RelayCommand GenindlæsCommand { get; set; }
         public RelayCommand<int> SeMere { get; set; }
+        public RelayCommand<int> SletSkemaRelayCommand { get; set; }
+
+
         public Visibility OpretSkemaVisibility { get; set; }
         public List<string> SorteringsMuligheder { get; set; }
         public string _sorteringsValg;
@@ -90,6 +94,8 @@ namespace FluidApp.ViewModels
             GenindlæsCommand = new RelayCommand(UpdateList);
             SeMere = new RelayCommand<int>(SeMereFunc);
 
+            SletSkemaRelayCommand = new RelayCommand<int>(SletSkema);
+
             ipHandler h = new ipHandler();
 
             ErrorVisibility = Visibility.Collapsed;
@@ -131,6 +137,33 @@ namespace FluidApp.ViewModels
             SorteringsMuligheder.Add("14 dage");
             SorteringsMuligheder.Add("30 dage");
             SorteringsMuligheder.Add("365 dage");
+        }
+
+
+        private async void SletSkema(int id)
+        {
+            Kolonne2 k = new Kolonne2();
+            ContentDialog deleteDialog = new ContentDialog
+            {
+                Title = "Vil du slette dette skema permanent?",
+                Content = "Dette kan ikke fortrydes.",
+                CloseButtonText = "Ikke nu",
+                PrimaryButtonText = "Slet",
+            };
+
+            ContentDialogResult result = await deleteDialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                k.Delete(id);
+                var dialog = new MessageDialog("Skemaet er blevet slettet");
+
+                UICommand okBtn = new UICommand("Luk");
+                dialog.Commands.Add(okBtn);
+
+                dialog.ShowAsync();
+
+                UpdateList();
+            }  
         }
 
         private void SeMereFunc(int id)

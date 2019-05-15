@@ -12,20 +12,17 @@
         <viewModels:ViewModel/>
     </Page.DataContext>
     <Grid>
-        <StackPanel Width="600" Margin="0 150 0 0">
+        <StackPanel Width="500" Margin="0 150 0 0">
             <TextBlock TextAlignment="Center" FontWeight="Bold" FontSize="36">Vælg en kolonne</TextBlock>
             <GridView Margin="0 50 0 0" HorizontalAlignment="Center" SelectionMode="None">
-                <Button Command="{Binding navigateToKolonne2}" Foreground="#212121" Background="#dddddd" Padding="35" Margin="5">
+                <Button Margin="0 0 5 5" Command="{Binding navigateToKolonne2}" Foreground="#212121" Background="#dddddd" Padding="35">
                     <TextBlock>Kolonne 2</TextBlock>
                 </Button>
-                <Button IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="32" Margin="5" Content="Kolonne 3"></Button>
-                <Button IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="32" Margin="5" Content="Kolonne 4"></Button>
-                <Button IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="32" Margin="5" Content="Kolonne 5"></Button>
-                <Button IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="32" Margin="5" Content="Kolonne 6"></Button>
-                <Button IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="32" Margin="5" Content="Kolonne 7"></Button>
-                <Button IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="32" Margin="5" Content="Kolonne 8"></Button>
-                <Button IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="32" Margin="5" Content="Kolonne 11"></Button>
-                <Button IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="32" Margin="5" Content="Kolonne 12"></Button>
+                <Button Margin="0 0 5 5"  IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Content="Kolonne 3"></Button>
+                <Button Margin="0 0 5 5"  IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Content="Kolonne 4"></Button>
+                <Button Margin="0 0 5 5"  IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Content="Kolonne 5"></Button>
+                <Button Margin="0 0 5 5"  IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Content="Kolonne 6"></Button>
+                <Button Margin="0 0 5 5"  IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Content="Kolonne 7"></Button>
             </GridView>
             <HyperlinkButton Foreground="#16503f" HorizontalAlignment="Center" FontSize="24" Margin="0 50 0 0" VerticalAlignment="Top" Command="{Binding navigateToLogin}">
                 <TextBlock Text="Log ind" Visibility="{Binding hideLogin}"/>
@@ -46,13 +43,9 @@
                     <Image Source="../Assets/fluid-hvid.png" Height="40"></Image>
                 </Grid>
                 <Grid Grid.Column="2" HorizontalAlignment="Right">
-                        <Button HorizontalAlignment="Right" Content="Log ud" VerticalAlignment="Top" Command="{Binding logUdRelayCommand}" Visibility="{Binding LogudVisibility}" Foreground="White"></Button>
+                    <Button HorizontalAlignment="Right" Content="Log ud" VerticalAlignment="Top" Command="{Binding logUdRelayCommand}" Visibility="{Binding LogudVisibility}" Foreground="White"></Button>
                 </Grid>
             </Grid>
         </Grid>
-
     </Grid>
-
-    
-
 </Page>

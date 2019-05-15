@@ -71,8 +71,9 @@
                                                     </TextBlock>
                                                 </StackPanel>
                                             </StackPanel>
-                                            <StackPanel Height="60" VerticalAlignment=" Bottom">
-                                                <Button VerticalAlignment="Bottom" Margin="0 20 0 0" HorizontalAlignment="Right" Content="Se mere" CommandParameter="{Binding ID}" Command="{Binding ElementName=thisPage, Path=DataContext.SeMere}"></Button>
+                                            <StackPanel Height="60" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 20 0 0" Orientation="Horizontal">
+                                                <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="White" Background="OrangeRed" Command="{Binding ElementName=thisPage, Path=DataContext.SletSkemaRelayCommand}" CommandParameter="{Binding FK_Kolonne}">Slet</Button>
+                                                <Button Margin="5 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Se mere" CommandParameter="{Binding ID}" Command="{Binding ElementName=thisPage, Path=DataContext.SeMere}"></Button>
                                             </StackPanel>
                                         </StackPanel>
                                     </DataTemplate>

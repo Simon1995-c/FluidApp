@@ -29,6 +29,7 @@ namespace FluidApp.ViewModels
         public RelayCommand<int> SletCommand { get; set; }
         public RelayCommand RefreshCommand { get; set; }
 
+
         public KontrolSkema testSkema;
         public KontrolSkema NytSkema { get; set; }
         public ObservableCollection<KontrolSkema> SkemaUdsnit { get; set; }
