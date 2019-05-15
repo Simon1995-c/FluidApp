@@ -6,7 +6,7 @@
     <Application.Resources>
         
         <Style TargetType="TextBlock">
-            <Setter Property="Foreground" Value="Red"></Setter>
+            <Setter Property="Foreground" Value="#212121"></Setter>
         </Style>
         <Style TargetType="PasswordBox">
             <Setter Property="MinWidth" Value="{ThemeResource TextControlThemeMinWidth}"/>

@@ -24,11 +24,11 @@
                 <Button Margin="0 0 5 5"  IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Content="Kolonne 6"></Button>
                 <Button Margin="0 0 5 5"  IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Content="Kolonne 7"></Button>
             </GridView>
-            <HyperlinkButton Foreground="#16503f" HorizontalAlignment="Center" FontSize="24" Margin="0 50 0 0" VerticalAlignment="Top" Command="{Binding navigateToLogin}">
-                <TextBlock Text="Log ind" Visibility="{Binding hideLogin}"/>
+            <HyperlinkButton HorizontalAlignment="Center" FontSize="24" Margin="0 50 0 0" VerticalAlignment="Top" Command="{Binding navigateToLogin}">
+                <TextBlock Foreground="#16503f" Text="Log ind" Visibility="{Binding hideLogin}"/>
             </HyperlinkButton>
-            <HyperlinkButton Foreground="#16503f" HorizontalAlignment="Center" FontSize="24" VerticalAlignment="Top" Command="{Binding navigatetoAdmin}" Visibility="{Binding hideAdminPanel}">
-                <TextBlock Text="Admin panel" Margin="0,0,0,0" VerticalAlignment="Top"  HorizontalAlignment="Center "/>
+            <HyperlinkButton HorizontalAlignment="Center" FontSize="24" VerticalAlignment="Top" Command="{Binding navigatetoAdmin}" Visibility="{Binding hideAdminPanel}">
+                <TextBlock Foreground="#16503f" Text="Admin panel" Margin="0,0,0,0" VerticalAlignment="Top"  HorizontalAlignment="Center "/>
             </HyperlinkButton>
         </StackPanel>
 
