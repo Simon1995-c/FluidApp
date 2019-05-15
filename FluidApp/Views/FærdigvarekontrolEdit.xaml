@@ -72,8 +72,8 @@
             </Grid.RowDefinitions>
             <Grid Row="0">
                 <StackPanel Margin="0,10,10,41">
-                    <ListView Background="#dfdfdf" Width="1300" SelectionMode="None" Padding="0 10 0 0" BorderBrush="#ccc" BorderThickness="1"  Margin="0 20 0 0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <Grid Margin="0 0 0 30" VerticalAlignment="Top" Width="1250" HorizontalAlignment="Center">
+                    <ListView Background="#dfdfdf" Width="1320" SelectionMode="None" Padding="10" BorderBrush="#ccc" BorderThickness="1"  Margin="0 20 0 0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Grid Margin="0 0 0 30" VerticalAlignment="Top" Width="1280" HorizontalAlignment="Center">
                             <TextBlock Foreground="#212121" FontSize="24" HorizontalAlignment="Center" FontWeight="Bold" Text="Tidligere indtastet data" Margin="0 0 0 10"></TextBlock>
                             <Button HorizontalAlignment="Right" Background="Transparent" Padding="-2" Command="{Binding FortrydCommand}" Margin="0 -5 0 0" >
                                 <ToolTipService.ToolTip>
@@ -87,7 +87,7 @@
                                 </ToolTipService.ToolTip>
                                 <Image Width="24" Source="https://visualpharm.com/assets/858/Refresh-595b40b75ba036ed117d7173.svg"></Image>
                             </Button>
-                            <Button Background="Transparent" Command="{Binding UdvidCommand}" Padding="0 0 -5 -5" Margin="10 -5 0 0">
+                            <Button Background="Transparent" Command="{Binding UdvidCommand}">
                                 <ToolTipService.ToolTip>
                                     <ToolTip Content="{Binding ToolTipUdvid}"></ToolTip>
                                 </ToolTipService.ToolTip>
