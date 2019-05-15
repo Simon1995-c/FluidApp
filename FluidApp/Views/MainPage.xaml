@@ -14,15 +14,18 @@
     <Grid>
         <StackPanel Width="500" Margin="0 150 0 0">
             <TextBlock TextAlignment="Center" FontWeight="Bold" FontSize="36">Vælg en kolonne</TextBlock>
-            <GridView Margin="0 50 0 0" HorizontalAlignment="Center" SelectionMode="None">
-                <Button Margin="0 0 5 5" Command="{Binding navigateToKolonne2}" Foreground="#212121" Background="#dddddd" Padding="35">
+            <GridView Margin="0 50 0 0" FontSize="16" HorizontalAlignment="Center" SelectionMode="None">
+                <Button Margin="0 0 5 5" Command="{Binding navigateToKolonne2}" Foreground="#212121" Background="#dddddd" Padding="35" Width="150" Height="120">
                     <TextBlock>Kolonne 2</TextBlock>
                 </Button>
-                <Button Margin="0 0 5 5"  IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Content="Kolonne 3"></Button>
-                <Button Margin="0 0 5 5"  IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Content="Kolonne 4"></Button>
-                <Button Margin="0 0 5 5"  IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Content="Kolonne 5"></Button>
-                <Button Margin="0 0 5 5"  IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Content="Kolonne 6"></Button>
-                <Button Margin="0 0 5 5"  IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Content="Kolonne 7"></Button>
+                <Button Margin="0 0 5 5" IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Content="Kolonne 3" Width="150" Height="120"></Button>
+                <Button Margin="0 0 5 5" IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Content="Kolonne 4" Width="150" Height="120"></Button>
+                <Button Margin="0 0 5 5" IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Content="Kolonne 5" Width="150" Height="120"></Button>
+                <Button Margin="0 0 5 5" IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Content="Kolonne 6" Width="150" Height="120"></Button>
+                <Button Margin="0 0 5 5" IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Content="Kolonne 7" Width="150" Height="120"></Button>
+                <Button Margin="0 0 5 5" IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Content="Kolonne 8" Width="150" Height="120"></Button>
+                <Button Margin="0 0 5 5" IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Content="Kolonne 11" Width="150" Height="120"></Button>
+                <Button Margin="0 0 5 5" IsEnabled="False" Foreground="#212121" Background="#dddddd" Padding="35" Content="Kolonne 12" Width="150" Height="120"></Button>
             </GridView>
             <HyperlinkButton HorizontalAlignment="Center" FontSize="24" Margin="0 50 0 0" VerticalAlignment="Top" Command="{Binding navigateToLogin}">
                 <TextBlock Foreground="#16503f" Text="Log ind" Visibility="{Binding hideLogin}"/>
