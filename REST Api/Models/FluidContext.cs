@@ -1,10 +1,7 @@
-﻿namespace REST_Api
-{
-    using System;
-    using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
+﻿using System.Data.Entity;
 
+namespace REST_Api.Models
+{
     public partial class FluidContext : DbContext
     {
         public FluidContext()

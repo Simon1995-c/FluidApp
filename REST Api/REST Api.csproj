@@ -130,7 +130,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Administrator.cs" />
+    <Compile Include="Models\Administrator.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -174,20 +174,20 @@
     <Compile Include="Controllers\ProduktionsfølgeseddelController.cs" />
     <Compile Include="Controllers\RengøringsKolonneController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="FluidContext.cs" />
-    <Compile Include="Forside.cs" />
-    <Compile Include="Færdigvarekontrol.cs" />
+    <Compile Include="Models\FluidContext.cs" />
+    <Compile Include="Models\Forside.cs" />
+    <Compile Include="Models\Færdigvarekontrol.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="IPrange.cs" />
-    <Compile Include="Kolonne2.cs" />
-    <Compile Include="Kolonner.cs" />
-    <Compile Include="KontrolRegistrering.cs" />
-    <Compile Include="KontrolSkema.cs" />
-    <Compile Include="Produktionsfølgeseddel.cs" />
+    <Compile Include="Models\IPrange.cs" />
+    <Compile Include="Models\Kolonne2.cs" />
+    <Compile Include="Models\Kolonner.cs" />
+    <Compile Include="Models\KontrolRegistrering.cs" />
+    <Compile Include="Models\KontrolSkema.cs" />
+    <Compile Include="Models\Produktionsfølgeseddel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RengøringsKolonne.cs" />
+    <Compile Include="Models\RengøringsKolonne.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -242,7 +242,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

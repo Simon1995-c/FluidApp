@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using REST_Api;
+using REST_Api.Models;
 
 namespace REST_Api.Controllers
 {
