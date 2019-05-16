@@ -13,7 +13,7 @@
         <viewModels:KontrolregistreringEditViewModel/>
     </Page.DataContext>
 
-    <Grid>
+    <Grid RenderTransformOrigin="0.513,0.498">
         <Grid VerticalAlignment="Top" Background="#16503f" Padding="15 25">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="6*"/>
@@ -72,20 +72,20 @@
             </Grid.RowDefinitions>
             <Grid Row="0">
                 <StackPanel>
-                    <TextBlock FontSize="18" FontWeight="Bold" Text="Tidligere indtastet data" Margin="0 0 0 10"></TextBlock>
-                    <ListView Background="LightGray" SelectionMode="None" Padding="0 10 0 0" BorderBrush="Black" BorderThickness="1">
-                        <StackPanel Orientation="Horizontal" Margin="1210 -30 0 0">
-                            <Button Background="LightGray" Padding="-2" Command="{Binding FortrydCommand}" Margin="0 -5 0 0" >
-                                <Image Source="https://visualpharm.com/assets/156/Plus-595b40b75ba036ed117d713d.svg" Height="30" Width="30"></Image>
+                    <ListView Width="1380" Background="#dfdfdf" SelectionMode="None" Padding="10" Margin="0 20 0 0" BorderBrush="#ccc" BorderThickness="1">
+                        <Grid Margin="0 0 0 30" VerticalAlignment="Top" Width="1330" HorizontalAlignment="Center">
+                            <TextBlock Foreground="#212121" FontSize="24" HorizontalAlignment="Center" FontWeight="Bold" Text="Tidligere indtastet data" Margin="0 0 0 10"></TextBlock>
+                            <Button Background="Transparent" Padding="-2" Command="{Binding FortrydCommand}" HorizontalAlignment="Right">
+                                <Image Source="https://visualpharm.com/assets/156/Plus-595b40b75ba036ed117d713d.svg" Width="24"></Image>
                             </Button>
-                            <Button Background="LightGray" Command="{Binding RefreshCommand}" Padding="-2" Margin="10 -5 0 0">
-                                <Image Height="30" Width="30" Source="https://visualpharm.com/assets/858/Refresh-595b40b75ba036ed117d7173.svg"></Image>
+                            <Button Background="Transparent"  Command="{Binding RefreshCommand}" Padding="0" Margin="0 0 35 0" HorizontalAlignment="Right" Width="28">
+                                <Image Width="24" Source="https://visualpharm.com/assets/858/Refresh-595b40b75ba036ed117d7173.svg"></Image>
                             </Button>
-                            <Button Background="LightGray" Command="{Binding UdvidCommand}" Padding="0 0 -5 -5" Margin="10 -5 0 0">
-                                <Image Height="30" Width="30" Source="{Binding UdvidIkon}"></Image>
+                            <Button Background="Transparent" Command="{Binding UdvidCommand}">
+                                <Image Width="24" Source="{Binding UdvidIkon}"></Image>
                             </Button>
-                        </StackPanel>
-                        <Grid Margin="0 -30 0 0">
+                        </Grid>
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="125"></ColumnDefinition>
                                 <ColumnDefinition Width="125"></ColumnDefinition>
@@ -99,60 +99,60 @@
                                 <ColumnDefinition Width="110"></ColumnDefinition>
                                 <ColumnDefinition Width="110"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Grid Column="0" BorderBrush="Black" BorderThickness="1 1 0 1" Padding="5 0 0 0">
+                            <Grid Column="0" BorderBrush="#ccc" BorderThickness="1 1 0 1" Padding="5 0 0 0">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                     <TextBlock Text="Klokkeslæt" ></TextBlock>
                                 </StackPanel>
                             </Grid>
-                            <Grid Column="1" BorderBrush="Black" BorderThickness="1 1 0 1">
+                            <Grid Column="1" BorderBrush="#ccc" BorderThickness="1 1 0 1">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" Padding="5 0 0 0">
                                     <TextBlock Text="Holdbarhedsdato" ></TextBlock>
                                 </StackPanel>
                             </Grid>
-                            <Grid Column="2" BorderBrush="Black" BorderThickness="1 1 0 1" Padding="5 0 0 0">
+                            <Grid Column="2" BorderBrush="#ccc" BorderThickness="1 1 0 1" Padding="5 0 0 0">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                     <TextBlock Text="Produktionsdato" ></TextBlock>
                                 </StackPanel>
                             </Grid>
-                            <Grid Column="3" BorderBrush="Black" BorderThickness="1 1 0 1" Padding="5 0 0 0">
+                            <Grid Column="3" BorderBrush="#ccc" BorderThickness="1 1 0 1" Padding="5 0 0 0">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                     <TextBlock Text="Færdigvare"></TextBlock>
                                     <TextBlock Text="Nummer"></TextBlock>
                                 </StackPanel>
                             </Grid>
-                            <Grid Column="4" BorderBrush="Black" BorderThickness="1 1 0 1" Padding="5 0 0 0">
+                            <Grid Column="4" BorderBrush="#ccc" BorderThickness="1 1 0 1" Padding="5 0 0 0">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                     <TextBlock Text="Kommentar"></TextBlock>
                                 </StackPanel>
                             </Grid>
-                            <Grid Column="5" BorderBrush="Black" BorderThickness="1 1 0 1" Padding="5 0 0 0">
+                            <Grid Column="5" BorderBrush="#ccc" BorderThickness="1 1 0 1" Padding="5 0 0 0">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                     <TextBlock Text="Spritkontrol"></TextBlock>
                                 </StackPanel>
                             </Grid>
-                            <Grid Column="6" BorderBrush="Black" BorderThickness="1 1 0 1" Padding="5 0 0 0">
+                            <Grid Column="6" BorderBrush="#ccc" BorderThickness="1 1 0 1" Padding="5 0 0 0">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                     <TextBlock Text="Hætte"></TextBlock>
                                     <TextBlock Text="Nummer" ></TextBlock>
                                 </StackPanel>
                             </Grid>
-                            <Grid Column="7" BorderBrush="Black" BorderThickness="1 1 0 1" Padding="5 0 0 0">
+                            <Grid Column="7" BorderBrush="#ccc" BorderThickness="1 1 0 1" Padding="5 0 0 0">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                     <TextBlock Text="Etikete"></TextBlock>
                                     <TextBlock Text="Nummer" ></TextBlock>
                                 </StackPanel>
                             </Grid>
-                            <Grid Column="8" BorderBrush="Black" BorderThickness="1 1 0 1" Padding="5 0 0 0">
+                            <Grid Column="8" BorderBrush="#ccc" BorderThickness="1 1 0 1" Padding="5 0 0 0">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                     <TextBlock Text="Fustage" ></TextBlock>
                                 </StackPanel>
                             </Grid>
-                            <Grid Column="9" BorderBrush="Black" BorderThickness="1" Padding="5 0 0 0">
+                            <Grid Column="9" BorderBrush="#ccc" BorderThickness="1" Padding="5 0 0 0">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                     <TextBlock Text="Signatur" ></TextBlock>
                                 </StackPanel>
                             </Grid>
-                            <Grid Column="10" BorderBrush="Black" BorderThickness="1" Padding="5 0 0 0">
+                            <Grid Column="10" BorderBrush="#ccc" BorderThickness="1" Padding="5 0 0 0">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                     <TextBlock Text="Handling" ></TextBlock>
                                 </StackPanel>
@@ -160,6 +160,13 @@
                         </Grid>
                         <ScrollViewer Height="{Binding Udvidelse}" VerticalScrollBarVisibility="Visible" Width="1333">
                             <ListView TabNavigation="Cycle" ItemsSource="{Binding RegUdsnit}" Width="1330" SelectedItem="{Binding TestSkema1, Mode=TwoWay}">
+                                <!--For at få borders imellem listviewitems-->
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="BorderBrush" Value="#ccc"></Setter>
+                                        <Setter Property="BorderThickness" Value="0 0 0 1"></Setter>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
@@ -190,34 +197,34 @@
                 <StackPanel Width="1030">
                     <TextBlock FontSize="22" FontWeight="Bold" Text="{Binding Title}" Margin="0 0 0 10"></TextBlock>
                     <GridView SelectionMode="None">
-                        <StackPanel Orientation="Vertical" Width="190" Height="85" Margin="5">
+                        <StackPanel Orientation="Vertical" Width="190" Margin="5" Height="85">
                             <TextBlock Text="Klokkeslæt"></TextBlock>
-                            <TextBox Text="{Binding Klokkeslæt , Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0">
+                            <TextBox Text="{Binding Klokkeslæt , Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 5 0 0">
                                 <ToolTipService.ToolTip>
                                     <ToolTip Content="Tip her"></ToolTip>
                                 </ToolTipService.ToolTip>
                             </TextBox>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" Width="190" Height="85" Margin="5">
+                        <StackPanel Orientation="Vertical" Width="190" Margin="5" Height="85">
                             <TextBlock Text="Holdbarhedsdato"></TextBlock>
-                            <TextBox Text="{Binding Holdbarhedsdato , Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0">
+                            <TextBox Text="{Binding Holdbarhedsdato , Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 5 0 0">
                                 <ToolTipService.ToolTip>
                                     <ToolTip Content="Tip her"></ToolTip>
                                 </ToolTipService.ToolTip>
                             </TextBox>
                         </StackPanel>
 
-                        <StackPanel Orientation="Vertical" Width="190">
+                        <StackPanel Orientation="Vertical" Width="190" Margin="5" Height="85">
                             <TextBlock Text="Produktionsdato" ></TextBlock>
-                            <TextBox Text="{Binding Produktionsdato, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0">
+                            <TextBox Text="{Binding Produktionsdato, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 5 0 0">
                                 <ToolTipService.ToolTip>
                                     <ToolTip Content="Tip her"></ToolTip>
                                 </ToolTipService.ToolTip>
                             </TextBox>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" Width="190">
+                        <StackPanel Orientation="Vertical" Width="190" Margin="5" Height="85">
                             <TextBlock Text="Færdigvare Nummer" ></TextBlock>
-                            <TextBox Text="{Binding FærdigvareNr, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0">
+                            <TextBox Text="{Binding FærdigvareNr, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 5 0 0">
                                 <ToolTipService.ToolTip>
                                     <ToolTip>
                                         <StackPanel Orientation="Vertical">
@@ -227,9 +234,9 @@
                                 </ToolTipService.ToolTip>
                             </TextBox>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" Width="190">
+                        <StackPanel Orientation="Vertical" Width="190" Margin="5" Height="85">
                             <TextBlock Text="Kommentar" ></TextBlock>
-                            <TextBox Text="{Binding Kommentar, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0">
+                            <TextBox Text="{Binding Kommentar, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 5 0 0">
                                 <ToolTipService.ToolTip>
                                     <ToolTip>
                                         <StackPanel Orientation="Vertical">
@@ -240,14 +247,13 @@
                             </TextBox>
                         </StackPanel>
 
-                        <StackPanel Orientation="Vertical" Width="190">
+                        <StackPanel Orientation="Vertical" Width="190" Margin="5" Height="85">
                             <TextBlock Text="Spritkontrol" ></TextBlock>
-                            <TextBlock Text="OK/IKKE OK" FontSize="12"></TextBlock>
-                            <ComboBox ItemsSource="{Binding VælgMuligheder}" SelectedItem="{Binding Spritkontrol, Mode=TwoWay}" PlaceholderText="Vælg" Margin="0 17 0 0" Width="190"></ComboBox>
+                            <ComboBox ItemsSource="{Binding VælgMuligheder}" SelectedItem="{Binding Spritkontrol, Mode=TwoWay}" PlaceholderText="Vælg" Margin="0 5 0 0" Width="190"></ComboBox>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" Width="190">
+                        <StackPanel Orientation="Vertical" Width="190" Margin="5" Height="85">
                             <TextBlock Text="Hætte Nummer" ></TextBlock>
-                            <TextBox Text="{Binding HætteNr, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0">
+                            <TextBox Text="{Binding HætteNr, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 5 0 0">
                                 <ToolTipService.ToolTip>
                                     <ToolTip>
                                         <StackPanel Orientation="Vertical">
@@ -257,9 +263,9 @@
                                 </ToolTipService.ToolTip>
                             </TextBox>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" Width="190">
+                        <StackPanel Orientation="Vertical" Width="190" Margin="5" Height="85">
                             <TextBlock Text="Etiket Nummer" ></TextBlock>
-                            <TextBox Text="{Binding EtiketNr, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0">
+                            <TextBox Text="{Binding EtiketNr, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 5 0 0">
                                 <ToolTipService.ToolTip>
                                     <ToolTip>
                                         <StackPanel Orientation="Vertical">
@@ -269,13 +275,13 @@
                                 </ToolTipService.ToolTip>
                             </TextBox>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" Width="190">
+                        <StackPanel Orientation="Vertical" Width="190" Margin="5" Height="85">
                             <TextBlock Text="Fustage" ></TextBlock>
-                            <TextBox Text="{Binding Fustage, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0"></TextBox>
+                            <TextBox Text="{Binding Fustage, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 5 0 0"></TextBox>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" Width="190">
+                        <StackPanel Orientation="Vertical" Width="190" Margin="5" Height="85">
                             <TextBlock Text="Signatur" ></TextBlock>
-                            <TextBox Text="{Binding Signatur, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 33 0 0">
+                            <TextBox Text="{Binding Signatur, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 5 0 0">
                                 <ToolTipService.ToolTip>
                                     <ToolTip>
                                         <StackPanel Orientation="Vertical">
@@ -299,17 +305,17 @@
         <Grid VerticalAlignment="Bottom">
             <Grid VerticalAlignment="Bottom">
                 <StackPanel Orientation="Horizontal">
-                    <HyperlinkButton Padding="15" Background="#16503f" Foreground="White" FontWeight="Black" BorderBrush="Black" BorderThickness="1">
-                        <TextBlock Text="Kontrolskema"></TextBlock>
+                    <HyperlinkButton Command="{Binding NavSkemaCommand}" Padding="15" VerticalAlignment="Bottom" Background="#16503f" Foreground="White"  BorderBrush="Black" BorderThickness="1">
+                        <TextBlock Foreground="White" Text="Kontrolskema"></TextBlock>
                     </HyperlinkButton>
-                    <HyperlinkButton FontSize="15" Command="{Binding NavRegCommand}" Padding="15" Background="#16503f" Foreground="White" BorderBrush="Black" BorderThickness="1">
-                        <TextBlock Text="Kontrolregistrering"></TextBlock>
+                    <HyperlinkButton FontWeight="Medium" VerticalAlignment="Bottom" FontSize="15" Padding="15 20 15 15" Background="#16503f" Foreground="White" BorderBrush="Black" BorderThickness="1">
+                        <TextBlock Foreground="White" Text="Kontrolregistrering"></TextBlock>
                     </HyperlinkButton>
-                    <HyperlinkButton FontSize="15" Command="{Binding NavProdCommand}" Padding="15" Background="#16503f" Foreground="White" BorderBrush="Black" BorderThickness="1">
-                        <TextBlock Text="Produktionsfølgeseddel"></TextBlock>
+                    <HyperlinkButton VerticalAlignment="Bottom" FontSize="15" Command="{Binding NavProdCommand}" Padding="15" Background="#16503f" Foreground="White" BorderBrush="Black" BorderThickness="1">
+                        <TextBlock Foreground="White" Text="Produktionsfølgeseddel"></TextBlock>
                     </HyperlinkButton>
-                    <HyperlinkButton  FontSize="15" Command="{Binding NavFærdigCommand}" Padding="15" Background="#16503f" Foreground="White" BorderBrush="Black" BorderThickness="1">
-                        <TextBlock Text="Færdigvarekontrol"></TextBlock>
+                    <HyperlinkButton VerticalAlignment="Bottom"  FontSize="15" Command="{Binding NavFærdigCommand}" Padding="15" Background="#16503f" Foreground="White" BorderBrush="Black" BorderThickness="1">
+                        <TextBlock Foreground="White" Text="Færdigvarekontrol"></TextBlock>
                     </HyperlinkButton>
                 </StackPanel>
             </Grid>
