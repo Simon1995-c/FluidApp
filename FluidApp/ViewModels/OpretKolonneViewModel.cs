@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using FluidApp.Annotations;
@@ -17,18 +18,80 @@ namespace FluidApp.ViewModels
         public int ProcessordreNr { get; set; }
         public string Færdigvarenavn { get; set; }
         public string Produktionsinitialer { get; set; }
+        public string Title { get; set; }
+
+        public Forside currentForside { get; set; }
 
         public RelayCommand Tilbage { get; set; }
         public RelayCommand Opret { get; set; }
+        public RelayCommand OpdaterRelayCommand { get; set; }
 
         public Visibility ErrorVisibility { get; set; }
+        public Visibility EditModeVisibility { get; set; }
+        public Visibility OpdaterVisibility { get; set; }
+
+        
 
         public OpretKolonneViewModel()
         {
             Tilbage = new RelayCommand(TilbageFunc);
             Opret = new RelayCommand(OpretFunc);
+            OpdaterRelayCommand = new RelayCommand(Opdater);
 
             ErrorVisibility = Visibility.Collapsed;
+            OpdaterVisibility = Visibility.Collapsed;
+
+            Title = "Opret Skema";
+
+            if (Application.Current.Resources.ContainsKey("editForside"))
+            {
+                Title = "Rediger Skema";
+                Forside f = (Forside)Application.Current.Resources["editForside"];
+                currentForside = new Forside();
+                currentForside.ID = f.ID;
+                currentForside.Dato = f.Dato;
+                currentForside.FK_Kolonne = f.FK_Kolonne;
+                FærdigvareNr = f.FærdigvareNr;
+                ProcessordreNr = f.ProcessordreNr;
+                Færdigvarenavn = f.FærdigvareNavn;
+                Produktionsinitialer = f.Produktionsinitialer;
+
+                EditModeVisibility = Visibility.Collapsed;
+                OpdaterVisibility = Visibility.Visible;
+
+                Application.Current.Resources.Remove("editForside");
+            }
+        }
+
+        private async void Opdater()
+        {
+            Forside f = new Forside();
+
+            f.Put(currentForside.ID, new Forside()
+            {
+                ID = currentForside.ID,
+                FK_Kolonne = currentForside.FK_Kolonne,
+                FærdigvareNr = FærdigvareNr,
+                ProcessordreNr = ProcessordreNr,
+                FærdigvareNavn = Færdigvarenavn,
+                Produktionsinitialer = Produktionsinitialer,
+                Dato = currentForside.Dato
+                
+            });
+
+            ContentDialog deleteDialog = new ContentDialog
+            {
+                Title = "Du har opdateret skemaet.",
+                Content = "",
+                CloseButtonText = "Luk",
+                PrimaryButtonText = "Gå til alle skemaer",
+            };
+
+            ContentDialogResult result = await deleteDialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                TilbageFunc();
+            }
         }
 
         private void TilbageFunc()

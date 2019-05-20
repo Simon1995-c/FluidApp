@@ -73,6 +73,7 @@
                                             </StackPanel>
                                             <StackPanel Height="60" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 20 0 0" Orientation="Horizontal">
                                                 <Button Visibility="{Binding ElementName=thisPage, Path=DataContext.OpretSkemaVisibility}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Foreground="White" Background="OrangeRed" Command="{Binding ElementName=thisPage, Path=DataContext.SletSkemaRelayCommand}" CommandParameter="{Binding FK_Kolonne}">Slet</Button>
+                                                <Button Margin="5 0 0 0" Visibility="{Binding ElementName=thisPage, Path=DataContext.OpretSkemaVisibility}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Command="{Binding ElementName=thisPage, Path=DataContext.RedigerSkemaRelayCommand}" CommandParameter="{Binding ID}">Rediger</Button>
                                                 <Button 
                                                     Margin="5 0 0 0" VerticalAlignment="Bottom"
                                                     HorizontalAlignment="Right" Content="Se mere"

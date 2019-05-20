@@ -21,6 +21,7 @@ namespace FluidApp.ViewModels
         public RelayCommand GenindlæsCommand { get; set; }
         public RelayCommand<int> SeMere { get; set; }
         public RelayCommand<int> SletSkemaRelayCommand { get; set; }
+        public RelayCommand<int> RedigerSkemaRelayCommand { get; set; }
 
 
         public Visibility OpretSkemaVisibility { get; set; }
@@ -95,6 +96,7 @@ namespace FluidApp.ViewModels
             SeMere = new RelayCommand<int>(SeMereFunc);
 
             SletSkemaRelayCommand = new RelayCommand<int>(SletSkema);
+            RedigerSkemaRelayCommand = new RelayCommand<int>(RedigerSkema);
 
             ipHandler h = new ipHandler();
 
@@ -139,6 +141,15 @@ namespace FluidApp.ViewModels
             SorteringsMuligheder.Add("365 dage");
         }
 
+        private void RedigerSkema(int id)
+        {
+            Forside f = new Forside();
+            Application.Current.Resources["editForside"] = f.GetOne(id);
+
+            var frame = new Frame();
+            frame.Navigate(typeof(OpretKolonne), null);
+            Window.Current.Content = frame;
+        }
 
         private async void SletSkema(int id)
         {
