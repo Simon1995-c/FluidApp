@@ -148,7 +148,7 @@
                     <TextBlock>Brugernavn</TextBlock>
                     <TextBox Text="{Binding CurrentAdmin.Brugernavn, Mode=TwoWay}"></TextBox>
                     <TextBlock>Rolle</TextBlock>
-                    <TextBox Text="{Binding CurrentAdmin.Rolle, Mode=TwoWay}"></TextBox>
+                    <ComboBox ItemsSource="{Binding Roller}" SelectedItem="{Binding UpdateAdminRolle, Mode=TwoWay}" PlaceholderText="Vælg rolle"></ComboBox>
                     <TextBlock>Kodeord</TextBlock>
                     <PasswordBox Password="{Binding CurrentAdmin.Kodeord, Mode=TwoWay}"></PasswordBox>
                     <TextBlock>Kodeord Igen</TextBlock>
@@ -165,7 +165,7 @@
                     <TextBlock>Brugernavn</TextBlock>
                     <TextBox Text="{Binding OpretAdminBrugernavn, Mode=TwoWay}"></TextBox>
                     <TextBlock>Rolle</TextBlock>
-                    <TextBox Text="{Binding OpretAdminRolle, Mode=TwoWay}"></TextBox>
+                    <ComboBox ItemsSource="{Binding Roller}" SelectedItem="{Binding OpretAdminRolle, Mode=TwoWay}" PlaceholderText="Vælg rolle" FontStyle="Italic"></ComboBox>
                     <TextBlock>Kodeord</TextBlock>
                     <PasswordBox Password="{Binding OpretAdminKodeord, Mode=TwoWay}"></PasswordBox>
                     <TextBlock>Kodeord igen</TextBlock>

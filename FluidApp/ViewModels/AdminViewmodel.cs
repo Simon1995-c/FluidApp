@@ -39,6 +39,7 @@ namespace FluidApp.ViewModels
         public List<IPrange> IpRange { get; set; }
         public List<Administrator> Administratorer { get; set; }
         public List<string> SorteringsMuligheder { get; set; }
+        public List<string> Roller { get; set; }
 
         //Grafer
         private List<Record> _graf;
@@ -67,8 +68,9 @@ namespace FluidApp.ViewModels
         public string OpretIP { get; set; }
         public string KodeordIgen { get; set; }
         public string OpretAdminBrugernavn { get; set; }
-        public int OpretAdminRolle { get; set; }
+        public string OpretAdminRolle { get; set; }
         public string OpretAdminKodeord { get; set; }
+        public string UpdateAdminRolle { get; set; }
 
         public string GraphHolder { get; set; }
 
@@ -229,6 +231,11 @@ namespace FluidApp.ViewModels
             SorteringsMuligheder.Add("14 dage");
             SorteringsMuligheder.Add("30 dage");
             SorteringsMuligheder.Add("365 dage");
+
+            Roller = new List<string>();
+
+            Roller.Add("Administrator");
+            Roller.Add("Produktionsleder");
         }
 
         private void NavigateMs()
@@ -279,14 +286,23 @@ namespace FluidApp.ViewModels
         private void OpretAdmin()
         {
             Administrator a = new Administrator();
-
+           
             if (OpretAdminKodeord == KodeordIgen && OpretAdminBrugernavn != "" && OpretAdminKodeord != "")
             {
+
+                if (OpretAdminRolle == "Administrator")
+                {
+                    OpretAdminRolle = 2.ToString();
+                }
+                else
+                {
+                    OpretAdminRolle = 1.ToString();
+                }
                 a.Post(new Administrator()
                 {
                     Brugernavn = OpretAdminBrugernavn,
                     Kodeord = OpretAdminKodeord,
-                    Rolle = OpretAdminRolle
+                    Rolle = Convert.ToInt32(OpretAdminRolle),
                 });
 
                 ResetAdminViewFunc();
@@ -305,6 +321,14 @@ namespace FluidApp.ViewModels
             {
                 Administrator a = new Administrator();
 
+                if (UpdateAdminRolle == "Administrator")
+                {
+                    CurrentAdmin.Rolle = 2;
+                }
+                else
+                {
+                    CurrentAdmin.Rolle = 1;
+                }
                 a.Put(CurrentAdmin.ID, new Administrator() { ID = CurrentAdmin.ID, Brugernavn = CurrentAdmin.Brugernavn, Kodeord = CurrentAdmin.Kodeord, Rolle = CurrentAdmin.Rolle });
                 ResetAdminViewFunc();
             }

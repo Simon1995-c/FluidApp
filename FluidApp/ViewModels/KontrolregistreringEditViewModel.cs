@@ -43,12 +43,15 @@ namespace FluidApp.ViewModels
 
         public List<string> VælgMuligheder { get; set; }
 
+        
+
         public Kontrolregistrering testSkema1;
         public Kontrolregistrering Registrering { get; set; }
         public ObservableCollection<Kontrolregistrering> RegUdsnit { get; set; }
 
         public Forside Info { get; set; }
 
+        private List<string> _fustageList;
         private string _klokkeslæt;
         private string _holdbarhedsdato;
         private string _produktionsdato;
@@ -287,6 +290,16 @@ namespace FluidApp.ViewModels
             }
         }
 
+        public List<string> FustageList
+        {
+            get { return _fustageList; }
+            set
+            {
+                _fustageList = value;
+                OnPropertyChanged();
+            }
+        }
+
         public KontrolregistreringEditViewModel()
         {
             TilbageCommand = new RelayCommand(Tilbage);
@@ -309,6 +322,11 @@ namespace FluidApp.ViewModels
             VælgMuligheder.Add("OK");
             VælgMuligheder.Add("IKKE OK");
             VælgMuligheder.Add("(Blank)");
+
+
+            FustageList = new List<string>();
+            FustageList.Add("30L");
+            FustageList.Add("25L");
 
 
             TestSkema1 = new Kontrolregistrering();
