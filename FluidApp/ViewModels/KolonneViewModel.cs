@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -86,6 +87,8 @@ namespace FluidApp.ViewModels
                     KolonneListe.Add(forside);
                 }
             }
+
+            KolonneListe = new ObservableCollection<Forside>(KolonneListe.OrderByDescending(e => e.Dato));
         }
 
         public KolonneViewModel()
@@ -210,6 +213,9 @@ namespace FluidApp.ViewModels
             {
                 data.Add(att);
             }
+
+            data = new ObservableCollection<Forside>(data.OrderByDescending(e => e.Dato));
+
             return data;
         }
 
