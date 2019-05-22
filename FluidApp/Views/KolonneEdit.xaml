@@ -280,7 +280,7 @@
             <Grid Row="2" Visibility="{Binding NyDataVis}" Width="1250">
                 <Button Command="{Binding GemCommand}" Visibility="{Binding GemVis}" HorizontalAlignment="Right" Content="Gem"></Button>
                 <Button Command="{Binding FortrydCommand}" Visibility="{Binding UpdateVis}" HorizontalAlignment="Right" Content="Fortryd"></Button>
-                <Button Command="{Binding OpdaterCommand}" Visibility="{Binding UpdateVis}" HorizontalAlignment="Right" Content="Opdater"></Button>
+                <Button Command="{Binding OpdaterCommand}" Visibility="{Binding UpdateVis}" Margin="1100 0 0 0" Content="Opdater"></Button>
             </Grid>
         </Grid>
 
