@@ -115,7 +115,7 @@
 
                             <Grid Column="1" BorderBrush="#ccc" BorderThickness="1 1 0 1">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" Padding="5 0 0 0">
-                                    <TextBlock Text="DåseNr"></TextBlock>
+                                    <TextBlock Text="Dåse Nr"></TextBlock>
                                 </StackPanel>
                             </Grid>
                             <Grid Column="2" BorderBrush="#ccc" BorderThickness="1 1 0 1" Padding="5 0 0 0">
@@ -161,12 +161,12 @@
                             </Grid>
                             <Grid Column="11" BorderBrush="#ccc" BorderThickness="1" Padding="5 0 0 0">
                                 <StackPanel>
-                                    <TextBlock Text="FolieNr"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="103" Margin="0 15 0 0 "/>
+                                    <TextBlock Text="Folie Nr"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="103" Margin="0 15 0 0 "/>
                                 </StackPanel>
                             </Grid>
                             <Grid Column="12" BorderBrush="#ccc" BorderThickness="1" Padding="5 0 0 0">
                                 <StackPanel>
-                                    <TextBlock Text="KartonNr"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="103" Margin="0 15 0 0"/>
+                                    <TextBlock Text="Karton Nr"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="103" Margin="0 15 0 0"/>
                                 </StackPanel>
                             </Grid>
                             <Grid Column="13" BorderBrush="#ccc" BorderThickness="1" Padding="5 0 0 0">
