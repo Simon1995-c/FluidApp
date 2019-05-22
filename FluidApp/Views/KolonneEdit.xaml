@@ -167,9 +167,9 @@
                                             <TextBlock Text="{Binding Vægt}" Width="125" Margin="0 3 0 0"></TextBlock>
                                             <TextBlock Text="{Binding Kvittering}" Width="125" Margin="0 3 0 0"></TextBlock>
                                             <TextBlock Text="{Binding Fustage}" Width="125" Margin="0 3 0 0"></TextBlock>
-                                            <TextBlock Text="{Binding Ludkoncentration}" Width="125"></TextBlock>
+                                            <TextBlock Text="{Binding Ludkoncentration}" Width="125" Foreground="{Binding LudColor}"></TextBlock>
                                             <TextBlock Text="{Binding FormattedLudkontrol}" Width="125" Margin="0 3 0 0"></TextBlock>
-                                            <TextBlock Text="{Binding MS}" Width="125" Margin="0 3 0 0"></TextBlock>
+                                            <TextBlock Text="{Binding MS}" Width="125" Foreground="{Binding MsColor}" Margin="0 3 0 0"></TextBlock>
                                             <TextBlock Text="{Binding FormattedmSkontrol}" Width="125" Margin="0 3 0 0"></TextBlock>
                                             <TextBlock Text="{Binding Signatur}" Width="100" Margin="0 3 0 0"></TextBlock>
                                             <Button Content="Rediger" FontSize="12" Command="{Binding ElementName=kolonneEdit, Path=DataContext.RedigerCommand}" CommandParameter="{Binding ID}"></Button>

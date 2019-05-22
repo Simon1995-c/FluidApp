@@ -16,10 +16,10 @@ namespace Models
         public int ID { get; set; }
         public int FK_Kolonne { get; set; }
         private DateTime _klokkeslæt;
-        public double? Ludkoncentration { get; set; }
+        private double? _ludkoncentration;
         public string Fustage { get; set; }
         public int? Kvittering { get; set; }
-        public double? MS { get; set; }
+        private double? _mS;
         private bool? _ludKontrol;
         public string Signatur { get; set; }
         private bool? _mSKontrol;
@@ -27,6 +27,8 @@ namespace Models
         public string FormattedTime { get; set; }
         public string FormattedLudkontrol { get; set; }
         public string FormattedmSkontrol { get; set; }
+        public string LudColor { get; set; }
+        public string MsColor { get; set; }
 
         public DateTime Klokkeslæt
         {
@@ -59,6 +61,28 @@ namespace Models
                 if (_mSKontrol == true) FormattedmSkontrol = "OK";
                 else if (_mSKontrol == false) FormattedmSkontrol = "IKKE OK";
                 else FormattedmSkontrol = "";
+            }
+        }
+
+        public double? MS
+        {
+            get { return _mS; }
+            set
+            {
+                _mS = value;
+                if (_mS < 24 || _mS > 26.5) MsColor = "Red";
+                else MsColor = "Black";
+            }
+        }
+
+        public double? Ludkoncentration
+        {
+            get { return _ludkoncentration; }
+            set
+            {
+                _ludkoncentration = value;
+                if (_ludkoncentration < 1 || _ludkoncentration > 2) LudColor = "Red";
+                else LudColor = "Black";
             }
         }
 
