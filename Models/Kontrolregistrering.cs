@@ -15,11 +15,11 @@ namespace Models
         private DateTime _klokkeslæt { get; set; }
         private DateTime _holdbarhedsdato { get; set; }
         public DateTime _produktionsdato { get; set; }
-        public int FærdigvareNr { get; set; }
+        public int? FærdigvareNr { get; set; }
         public string Kommentar { get; set; }
         public bool? _spritkontrol { get; set; }
-        public int HætteNr { get; set; }
-        public int EtiketNr { get; set; }
+        public int? HætteNr { get; set; }
+        public int? EtiketNr { get; set; }
         public string Fustage { get; set; }
         public string Signatur { get; set; }
 

@@ -358,7 +358,7 @@ namespace FluidApp.ViewModels
              Produktionsdato = "";
              FærdigvareNr = "";
              Kommentar = "";
-             Spritkontrol = "";
+             Spritkontrol = "(Blank)";
              HætteNr = "";
              EtiketNr = "";
              Fustage = "";
@@ -453,8 +453,8 @@ namespace FluidApp.ViewModels
             Registrering = Registrering.GetOne(id);
 
             Klokkeslæt = Registrering.Klokkeslæt.TimeOfDay.ToString("hh\\:mm");
-            Holdbarhedsdato = Registrering.Holdbarhedsdato.Date.ToString("dd\\-MM\\-yyyy");
-            Produktionsdato = Registrering.Produktionsdato.Date.ToString("dd\\-MM\\-yyyy");
+            Holdbarhedsdato = Registrering.Holdbarhedsdato.Date.ToString("dd-MM-yyyy");
+            Produktionsdato = Registrering.Produktionsdato.Date.ToString("dd-MM-yyyy");
             FærdigvareNr = Registrering.FærdigvareNr.ToString();
             Kommentar = Registrering.Kommentar;
             Spritkontrol = ToString(Registrering.Spritkontrol);
@@ -498,7 +498,7 @@ namespace FluidApp.ViewModels
             }
 
             //Errorhandling til Holdbarhed så det altid er rigtig format
-            if (DateTime.TryParse(Holdbarhedsdato, out DateTime bDate) == false)
+            if (DateTime.TryParseExact(Holdbarhedsdato, "dd-MM-yyyy", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime bDate) == false)
             {
                 var dialog = new Windows.UI.Popups.MessageDialog("Fejl. Du har indtastet Holdbarhedsdato forkert");
                 dialog.ShowAsync();
@@ -506,7 +506,8 @@ namespace FluidApp.ViewModels
             }
 
             //Errorhandling til klokkeslæt så det altid er rigtig format
-            if (DateTime.TryParse(Produktionsdato, out DateTime cDate) == false)
+            
+            if (DateTime.TryParseExact(Produktionsdato, "dd-MM-yyyy", new CultureInfo("en-US"), DateTimeStyles.None,out DateTime cDate) == false)
             {
                 var dialog = new Windows.UI.Popups.MessageDialog("Fejl. Du har indtastet Produktionsdato forkert");
                 dialog.ShowAsync();
@@ -518,23 +519,18 @@ namespace FluidApp.ViewModels
             //if (Ludkoncetration != "") NytSkema.Ludkoncentration = double.Parse(Ludkoncetration);
             // else NytSkema.Ludkoncentration = null;
             if (FærdigvareNr!= "") Registrering.FærdigvareNr = int.Parse(FærdigvareNr);
-            else Registrering.FærdigvareNr = 0;
+            else Registrering.FærdigvareNr = null;
 
             if (HætteNr != "") Registrering.HætteNr = int.Parse(HætteNr);
-            else Registrering.HætteNr = 0;
+            else Registrering.HætteNr = null;
 
             if (EtiketNr != "") Registrering.EtiketNr = int.Parse(EtiketNr);
-            else Registrering.EtiketNr = 0;
-
-            
-
-
-
+            else Registrering.EtiketNr = null;
 
             //datetime skal også parses men med specifikt format
             Registrering.Klokkeslæt = DateTime.Parse(Klokkeslæt, new DateTimeFormatInfo());
-            Registrering.Holdbarhedsdato = Convert.ToDateTime(Holdbarhedsdato);
-            Registrering.Produktionsdato = Convert.ToDateTime(Produktionsdato);
+            Registrering.Holdbarhedsdato = DateTime.ParseExact(Holdbarhedsdato, "dd-MM-yyyy", new CultureInfo("en-US"));
+            Registrering.Produktionsdato = DateTime.ParseExact(Produktionsdato, "dd-MM-yyyy", new CultureInfo("en-US"));
 
             //strings er guds gave til dovenskab
             Registrering.Kommentar = Kommentar;
@@ -607,12 +603,7 @@ namespace FluidApp.ViewModels
             }
 
             udsnit = new ObservableCollection<Kontrolregistrering>(udsnit.OrderByDescending(e => e.ID));
-            int udsnitSize = udsnit.Count;
 
-            for (int i = 0; i < udsnitSize; i++)
-            {
-                if (i > 2) udsnit.RemoveAt(3);
-            }
             return udsnit;
         }
 
