@@ -14,7 +14,7 @@ namespace FluidUnitTest
         public void TestGetOne()
         {
             Administrator a = new Administrator();
-            Assert.AreEqual(1, a.GetOne(1).ID);
+            Assert.AreEqual(23, a.GetOne(23).ID);
 
             Færdigvarekontrol f = new Færdigvarekontrol();
             Assert.AreEqual(6, f.GetOne(6).ProcessordreNr);
@@ -29,13 +29,13 @@ namespace FluidUnitTest
             Assert.AreEqual(8, k2.GetOne(8).ID);
 
             Kontrolregistrering kr = new Kontrolregistrering();
-            Assert.AreEqual(1, kr.GetOne(1).ID);
+            Assert.AreEqual(33, kr.GetOne(33).ID);
 
             KontrolSkema ks = new KontrolSkema();
-            Assert.AreEqual(12, ks.GetOne(12).ID);
+            Assert.AreEqual(48, ks.GetOne(48).ID);
 
             Produktionsfølgeseddel pf = new Produktionsfølgeseddel();
-            Assert.AreEqual(1, pf.GetOne(1).ID);
+            Assert.AreEqual(9, pf.GetOne(9).ID);
 
             RengøringsKolonne rk = new RengøringsKolonne();
             Assert.AreEqual(1, rk.GetOne(1).ID);
