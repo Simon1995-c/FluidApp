@@ -42,10 +42,13 @@ namespace FluidApp.ViewModels
         public RelayCommand RefreshCommand { get; set; }
 
         public List<string> VælgMuligheder { get; set; }
+        public ObservableCollection<string> FærdivareNrList { get; set; }
+        public ObservableCollection<string> ProdDatoList { get; set; }
+        public ObservableCollection<string> HoldDatoList { get; set; }
+        public ObservableCollection<string> HætteNrList { get; set; }
+        public ObservableCollection<string> EtiketNrList { get; set; }
 
-        
-
-        public Kontrolregistrering testSkema1;
+        public Kontrolregistrering testSkema1;  
         public Kontrolregistrering Registrering { get; set; }
         public ObservableCollection<Kontrolregistrering> RegUdsnit { get; set; }
 
@@ -322,11 +325,16 @@ namespace FluidApp.ViewModels
             VælgMuligheder.Add("OK");
             VælgMuligheder.Add("IKKE OK");
             VælgMuligheder.Add("(Blank)");
-
-
+            
             FustageList = new List<string>();
             FustageList.Add("30L");
             FustageList.Add("25L");
+
+            FærdivareNrList = new ObservableCollection<string>();
+            ProdDatoList = new ObservableCollection<string>();
+            HoldDatoList = new ObservableCollection<string>();
+            HætteNrList = new ObservableCollection<string>();
+            EtiketNrList = new ObservableCollection<string>();
 
 
             TestSkema1 = new Kontrolregistrering();
@@ -438,6 +446,7 @@ namespace FluidApp.ViewModels
             SetValues();
 
             Registrering.Put(Registrering.ID, Registrering);
+            UpdateSuggestions();
             Registrering = new Kontrolregistrering();
             RegUdsnit = GetRegUdsnit();
             OnPropertyChanged(nameof(RegUdsnit));
@@ -474,16 +483,16 @@ namespace FluidApp.ViewModels
         public void GemData()
         {
             if (SetValues())
-                {
+            {
+                Registrering.Post(Registrering);
+                UpdateSuggestions();
+                Registrering = new Kontrolregistrering();
+                OnPropertyChanged(nameof(Registrering));
 
-                    Registrering.Post(Registrering);
-                    Registrering = new Kontrolregistrering();
-                    OnPropertyChanged(nameof(Registrering));
-
-                    RegUdsnit = GetRegUdsnit();
-                    OnPropertyChanged(nameof(RegUdsnit));
-                    ResetValues();
-                }
+                RegUdsnit = GetRegUdsnit();
+                OnPropertyChanged(nameof(RegUdsnit));
+                ResetValues();
+            }
             
         }
 
@@ -589,6 +598,30 @@ namespace FluidApp.ViewModels
                     RegVis = false;
                     SeddelVis = false;
                     return;
+            }
+        }
+
+        public void UpdateSuggestions()
+        {
+            if (Registrering.FærdigvareNr != null && !FærdivareNrList.Contains(Registrering.FærdigvareNr.ToString()))
+            {
+                FærdivareNrList.Add(Registrering.FærdigvareNr.ToString());
+            }
+            if (!ProdDatoList.Contains(Registrering.FormattedPro))
+            {
+                ProdDatoList.Add(Registrering.FormattedPro);
+            }
+            if (!HoldDatoList.Contains(Registrering.FormattedHo))
+            {
+                HoldDatoList.Add(Registrering.FormattedHo);
+            }
+            if (Registrering.HætteNr != null && !HætteNrList.Contains(Registrering.HætteNr.ToString()))
+            {
+                HætteNrList.Add(Registrering.HætteNr.ToString());
+            }
+            if (Registrering.EtiketNr != null && !EtiketNrList.Contains(Registrering.EtiketNr.ToString()))
+            {
+                EtiketNrList.Add(Registrering.EtiketNr.ToString());
             }
         }
 

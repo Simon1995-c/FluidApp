@@ -208,7 +208,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Width="190" Margin="5" Height="85">
                             <TextBlock Text="Færdigvare Nummer" ></TextBlock>
-                            <TextBox Text="{Binding FærdigvareNr, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 5 0 0">
+                            <AutoSuggestBox ItemsSource="{Binding FærdivareNrList}" Text="{Binding FærdigvareNr, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 5 0 0">
                                 <ToolTipService.ToolTip>
                                     <ToolTip>
                                         <StackPanel Orientation="Vertical">
@@ -216,23 +216,23 @@
                                         </StackPanel>
                                     </ToolTip>
                                 </ToolTipService.ToolTip>
-                            </TextBox>
+                            </AutoSuggestBox>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Width="190" Margin="5" Height="85">
                             <TextBlock Text="Produktionsdato" ></TextBlock>
-                            <TextBox Text="{Binding Produktionsdato, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 5 0 0">
+                            <AutoSuggestBox ItemsSource="{Binding ProdDatoList}" Text="{Binding Produktionsdato, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 5 0 0">
                                 <ToolTipService.ToolTip>
                                     <ToolTip Content="Skriv produktionsdato"></ToolTip>
                                 </ToolTipService.ToolTip>
-                            </TextBox>
+                            </AutoSuggestBox>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Width="190" Margin="5" Height="85">
                             <TextBlock Text="Holdbarhedsdato"></TextBlock>
-                            <TextBox Text="{Binding Holdbarhedsdato , Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 5 0 0">
+                            <AutoSuggestBox ItemsSource="{Binding HoldDatoList}" Text="{Binding Holdbarhedsdato , Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 5 0 0">
                                 <ToolTipService.ToolTip>
                                     <ToolTip Content="Skriv holdbarhedsdato"></ToolTip>
                                 </ToolTipService.ToolTip>
-                            </TextBox>
+                            </AutoSuggestBox>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Width="190" Margin="5" Height="85">
                             <TextBlock Text="Kommentar" ></TextBlock>
@@ -254,7 +254,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Width="190" Margin="5" Height="85">
                             <TextBlock Text="Hætte Nummer" ></TextBlock>
-                            <TextBox Text="{Binding HætteNr, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 5 0 0">
+                            <AutoSuggestBox ItemsSource="{Binding HætteNrList}" Text="{Binding HætteNr, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 5 0 0">
                                 <ToolTipService.ToolTip>
                                     <ToolTip>
                                         <StackPanel Orientation="Vertical">
@@ -262,11 +262,11 @@
                                         </StackPanel>
                                     </ToolTip>
                                 </ToolTipService.ToolTip>
-                            </TextBox>
+                            </AutoSuggestBox>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Width="190" Margin="5" Height="85">
                             <TextBlock Text="Etiket Nummer" ></TextBlock>
-                            <TextBox Text="{Binding EtiketNr, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 5 0 0">
+                            <AutoSuggestBox ItemsSource="{Binding EtiketNrList}" Text="{Binding EtiketNr, Mode=TwoWay}" PlaceholderText="Indsæt her" Margin="0 5 0 0">
                                 <ToolTipService.ToolTip>
                                     <ToolTip>
                                         <StackPanel Orientation="Vertical">
@@ -275,7 +275,7 @@
                                         </StackPanel>
                                     </ToolTip>
                                 </ToolTipService.ToolTip>
-                            </TextBox>
+                            </AutoSuggestBox>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Width="190" Margin="5" Height="85">
                             <TextBlock Text="Fustage" ></TextBlock>
