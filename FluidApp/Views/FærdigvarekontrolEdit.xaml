@@ -75,19 +75,19 @@
                     <ListView Background="#dfdfdf" Width="1320" SelectionMode="None" Padding="10" BorderBrush="#ccc" BorderThickness="1"  Margin="0 20 0 0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <Grid Margin="0 0 0 30" VerticalAlignment="Top" Width="1280" HorizontalAlignment="Center">
                             <TextBlock Foreground="#212121" FontSize="24" HorizontalAlignment="Center" FontWeight="Bold" Text="Tidligere indtastet data" Margin="0 0 0 10"></TextBlock>
-                            <Button HorizontalAlignment="Right" Background="Transparent" Padding="-2" Command="{Binding FortrydCommand}" Margin="0 -5 0 0" >
+                            <Button HorizontalAlignment="Right" Background="Transparent" Padding="-2" Command="{Binding FortrydCommand}" Margin="0 -5 5 0" >
                                 <ToolTipService.ToolTip>
                                     <ToolTip Content="{Binding TipFortryd}"></ToolTip>
                                 </ToolTipService.ToolTip>
                                 <Image Source="https://visualpharm.com/assets/156/Plus-595b40b75ba036ed117d713d.svg" Width="24"></Image>
                             </Button>
-                            <Button HorizontalAlignment="Right" Background="Transparent" Command="{Binding RefreshCommand}" Padding="-2" Margin="0 0 35 0">
+                            <Button HorizontalAlignment="Right" Background="Transparent" Command="{Binding RefreshCommand}" Padding="-2" Margin="0 -5 35 0">
                                 <ToolTipService.ToolTip>
                                     <ToolTip Content="{Binding ToolTipOpdater}"></ToolTip>
                                 </ToolTipService.ToolTip>
                                 <Image Width="24" Source="https://visualpharm.com/assets/858/Refresh-595b40b75ba036ed117d7173.svg"></Image>
                             </Button>
-                            <Button Background="Transparent" Command="{Binding UdvidCommand}">
+                            <Button Background="Transparent" Command="{Binding UdvidCommand}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center">
                                 <ToolTipService.ToolTip>
                                     <ToolTip Content="{Binding ToolTipUdvid}"></ToolTip>
                                 </ToolTipService.ToolTip>
