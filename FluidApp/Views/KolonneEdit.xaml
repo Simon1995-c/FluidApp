@@ -287,16 +287,16 @@
         <Grid VerticalAlignment="Bottom">
             <Grid VerticalAlignment="Bottom">
                 <StackPanel Orientation="Horizontal">
-                    <HyperlinkButton Padding="15 20 15 15" VerticalAlignment="Bottom" Background="#16503f" Foreground="White" FontWeight="Medium" BorderBrush="Black" BorderThickness="1">
+                    <HyperlinkButton Style="{StaticResource HyperlinkButtonStyle}" Padding="15 20 15 15" VerticalAlignment="Bottom" Background="#16503f" Foreground="White" FontWeight="Medium" BorderBrush="Black" BorderThickness="1">
                         <TextBlock Foreground="White" Text="Kontrolskema"></TextBlock>
                     </HyperlinkButton>
-                    <HyperlinkButton VerticalAlignment="Bottom" FontSize="15" Command="{Binding NavRegCommand}" Padding="15" Background="#16503f" Foreground="White" BorderBrush="Black" BorderThickness="1">
+                    <HyperlinkButton Style="{StaticResource HyperlinkButtonStyle}" VerticalAlignment="Bottom" FontSize="15" Command="{Binding NavRegCommand}" Padding="15" Background="#16503f" Foreground="White" BorderBrush="Black" BorderThickness="1">
                         <TextBlock Foreground="White" Text="Kontrolregistrering"></TextBlock>
                     </HyperlinkButton>
-                    <HyperlinkButton VerticalAlignment="Bottom" FontSize="15" Command="{Binding NavProdCommand}" Padding="15" Background="#16503f" Foreground="White" BorderBrush="Black" BorderThickness="1">
+                    <HyperlinkButton Style="{StaticResource HyperlinkButtonStyle}" VerticalAlignment="Bottom" FontSize="15" Command="{Binding NavProdCommand}" Padding="15" Background="#16503f" Foreground="White" BorderBrush="Black" BorderThickness="1">
                         <TextBlock Foreground="White" Text="Produktionsfølgeseddel"></TextBlock>
                     </HyperlinkButton>
-                    <HyperlinkButton  VerticalAlignment="Bottom" FontSize="15" Command="{Binding NavFærdigCommand}" Padding="15" Background="#16503f" Foreground="White" BorderBrush="Black" BorderThickness="1">
+                    <HyperlinkButton Style="{StaticResource HyperlinkButtonStyle}" VerticalAlignment="Bottom" FontSize="15" Command="{Binding NavFærdigCommand}" Padding="15" Background="#16503f" Foreground="White" BorderBrush="Black" BorderThickness="1">
                         <TextBlock Foreground="White" Text="Færdigvarekontrol"></TextBlock>
                     </HyperlinkButton>
                 </StackPanel>

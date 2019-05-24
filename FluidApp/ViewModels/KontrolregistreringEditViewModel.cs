@@ -336,6 +336,12 @@ namespace FluidApp.ViewModels
             HætteNrList = new ObservableCollection<string>();
             EtiketNrList = new ObservableCollection<string>();
 
+            //Udfyld sidste indtastede data til suggestions
+            FærdivareNrList.Add(RegUdsnit[RegUdsnit.Count - RegUdsnit.Count].FærdigvareNr.ToString());
+            ProdDatoList.Add(RegUdsnit[RegUdsnit.Count - RegUdsnit.Count].FormattedPro);
+            HoldDatoList.Add(RegUdsnit[RegUdsnit.Count - RegUdsnit.Count].FormattedHo);
+            HætteNrList.Add(RegUdsnit[RegUdsnit.Count - RegUdsnit.Count].HætteNr.ToString());
+            EtiketNrList.Add(RegUdsnit[RegUdsnit.Count - RegUdsnit.Count].EtiketNr.ToString());
 
             TestSkema1 = new Kontrolregistrering();
             GemVis = true;
