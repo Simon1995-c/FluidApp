@@ -20,7 +20,7 @@ namespace FluidUnitTest
             Assert.AreEqual(6, f.GetOne(6).ProcessordreNr);
 
             Forside fo = new Forside();
-            Assert.AreEqual("test", fo.GetOne(12).FærdigvareNavn);
+            Assert.AreEqual("EGEKILDE 0.5 L", fo.GetOne(12).FærdigvareNavn);
 
             IPrange ip = new IPrange();
             Assert.AreEqual(1, ip.GetOne(1).ID);
@@ -121,13 +121,13 @@ namespace FluidUnitTest
             //Get all & Post
             Forside a = new Forside();
 
-            List<Forside> all = a.GetAll();
+            List<Forside> all = a.GetAll().Result;
 
             int orgNum = all.Count;
 
             a.Post(new Forside() { FK_Kolonne = 8, FærdigvareNr = 1, FærdigvareNavn = "test", ProcessordreNr = 1, Produktionsinitialer = "Test", Dato = DateTime.Now });
 
-            List<Forside> allPlusOne = a.GetAll();
+            List<Forside> allPlusOne = a.GetAll().Result;
 
             int newNum = allPlusOne.Count;
 
@@ -139,7 +139,7 @@ namespace FluidUnitTest
 
             a.Put(lastItem.ID, new Forside() { ID = lastItem.ID, FK_Kolonne = 8, FærdigvareNr = 1, FærdigvareNavn = "Opdateret", ProcessordreNr = 1, Produktionsinitialer = "Test", Dato = DateTime.Now });
 
-            List<Forside> allAFterEdit = a.GetAll();
+            List<Forside> allAFterEdit = a.GetAll().Result;
 
             Assert.AreEqual(allAFterEdit[allAFterEdit.Count - 1].FærdigvareNavn, "Opdateret");
 
@@ -147,7 +147,7 @@ namespace FluidUnitTest
             //Delete
             a.Delete(lastItem.ID);
 
-            int newNumOfAdminsAfterDelete = a.GetAll().Count;
+            int newNumOfAdminsAfterDelete = a.GetAll().Result.Count;
 
             Assert.AreEqual(newNumOfAdminsAfterDelete, orgNum);
         }

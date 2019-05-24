@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -30,6 +31,7 @@ namespace FluidApp.ViewModels
         public string _sorteringsValg;
         public Visibility PageContentVisibility { get; set; }
         public Visibility ErrorVisibility { get; set; }
+        private bool _loadingVisibility;
 
         public ObservableCollection<Forside> _kolonneListe;
         public ObservableCollection<Forside> KolonneListe
@@ -73,6 +75,16 @@ namespace FluidApp.ViewModels
             }
         }
 
+        public bool LoadingVisibility
+        {
+            get { return _loadingVisibility; }
+            set
+            {
+                _loadingVisibility = value; 
+                OnPropertyChanged();
+            }
+        }
+
         public void SorterForsider(int dage)
         {
             UpdateList();
@@ -101,24 +113,9 @@ namespace FluidApp.ViewModels
             SletSkemaRelayCommand = new RelayCommand<int>(SletSkema);
             RedigerSkemaRelayCommand = new RelayCommand<int>(RedigerSkema);
 
-            ipHandler h = new ipHandler();
-
             ErrorVisibility = Visibility.Collapsed;
 
-            //If the IP isn't allowed -> send them to an error page
-            if (!Application.Current.Resources.ContainsKey("allowedIP"))
-            {
-                if (!h.isAllowedIp().Result)
-                {
-                    PageContentVisibility = Visibility.Collapsed;
-                    ErrorVisibility = Visibility.Visible;
-                }
-                else
-                {
-                    Application.Current.Resources["allowedIP"] = true;
-                }
-            }
-
+            CheckIp();
             UpdateList();
 
             OpretSkemaVisibility = Visibility.Collapsed;
@@ -142,6 +139,28 @@ namespace FluidApp.ViewModels
             SorteringsMuligheder.Add("14 dage");
             SorteringsMuligheder.Add("30 dage");
             SorteringsMuligheder.Add("365 dage");
+        }
+
+        private async void CheckIp()
+        {
+            LoadingVisibility = true;
+            ipHandler h = new ipHandler();
+            //If the IP isn't allowed -> send them to an error page
+            if (!Application.Current.Resources.ContainsKey("allowedIP"))
+            {
+                bool check = await h.isAllowedIp();
+                if (!check)
+                {
+                    PageContentVisibility = Visibility.Collapsed;
+                    ErrorVisibility = Visibility.Visible;
+                }
+                else
+                {
+                    Application.Current.Resources["allowedIP"] = true;
+                }
+            }
+
+            LoadingVisibility = false;
         }
 
         private void RedigerSkema(int id)
@@ -204,12 +223,12 @@ namespace FluidApp.ViewModels
             Window.Current.Content = frame;
         }
 
-        public ObservableCollection<Forside> GetDatasets()
+        public async Task<ObservableCollection<Forside>> GetDatasets()
         {
             Forside tempForside = new Forside();
             ObservableCollection<Forside> data = new ObservableCollection<Forside>();
 
-            foreach (var att in tempForside.GetAll())
+            foreach (var att in await tempForside.GetAll())
             {
                 data.Add(att);
             }
@@ -219,9 +238,11 @@ namespace FluidApp.ViewModels
             return data;
         }
 
-        public void UpdateList()
+        public async void UpdateList()
         {
-            KolonneListe = GetDatasets();
+            LoadingVisibility = true;
+            KolonneListe = await GetDatasets();
+            LoadingVisibility = false;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
