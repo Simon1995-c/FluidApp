@@ -34,6 +34,7 @@ namespace FluidApp.ViewModels
         public RelayCommand NavigateGraferRelayCommand { get; set; }
         public RelayCommand NavigateVægtGrafRelayCommand { get; set; }
         public RelayCommand NavigateMsRelayCommand { get; set; }
+        public RelayCommand NavigatePauserRelayCommand { get; set; }
 
         //Lister
         public List<IPrange> IpRange { get; set; }
@@ -59,6 +60,7 @@ namespace FluidApp.ViewModels
         public Visibility LudkoncentrationVisibility { get; set; }
         public Visibility VægtVisibility { get; set; }
         public Visibility MsVisiblity { get; set; }
+        public Visibility PauserVisibility { get; set; }
 
         //Holders
         public IPrange CurrentIp { get; set; } //Holder den IP der er i gang med at blive redigeret
@@ -98,6 +100,10 @@ namespace FluidApp.ViewModels
                         {
                             Graf = g.DrawMs(2);
                         }
+                        if (GraphHolder == "P")
+                        {
+                            Graf = g.DrawPauser(2);
+                        }
                         break;
                     case "7 dage":
                         if (GraphHolder == "LK")
@@ -111,6 +117,10 @@ namespace FluidApp.ViewModels
                         if (GraphHolder == "MS")
                         {
                             Graf = g.DrawMs(7);
+                        }
+                        if (GraphHolder == "P")
+                        {
+                            Graf = g.DrawPauser(8);
                         }
                         break;
                     case "14 dage":
@@ -126,6 +136,10 @@ namespace FluidApp.ViewModels
                         {
                             Graf = g.DrawMs(14);
                         }
+                        if (GraphHolder == "P")
+                        {
+                            Graf = g.DrawPauser(14);
+                        }
                         break;
                     case "30 dage":
                         if (GraphHolder == "LK")
@@ -139,6 +153,10 @@ namespace FluidApp.ViewModels
                         if (GraphHolder == "MS")
                         {
                             Graf = g.DrawMs(30);
+                        }
+                        if (GraphHolder == "P")
+                        {
+                            Graf = g.DrawPauser(30);
                         }
                         break;
                     case "365 dage":
@@ -154,6 +172,10 @@ namespace FluidApp.ViewModels
                         {
                             Graf = g.DrawMs(365);
                         }
+                        if (GraphHolder == "P")
+                        {
+                            Graf = g.DrawPauser(365);
+                        }
                         break;
                     default:
                         if (GraphHolder == "VA")
@@ -167,6 +189,10 @@ namespace FluidApp.ViewModels
                         if (GraphHolder == "MS")
                         {
                             Graf = g.DrawMs(0);
+                        }
+                        if (GraphHolder == "P")
+                        {
+                            Graf = g.DrawPauser(0);
                         }
                         break;
                 }
@@ -204,6 +230,7 @@ namespace FluidApp.ViewModels
             NavigateGraferRelayCommand = new RelayCommand(NavigateLudkoncentration);
             NavigateVægtGrafRelayCommand = new RelayCommand(NavigateVægt);
             NavigateMsRelayCommand = new RelayCommand(NavigateMs);
+            NavigatePauserRelayCommand = new RelayCommand(NavigatePauser);
             
             //Udfyld lister
             IpRange = UpdateIPrange();
@@ -223,6 +250,7 @@ namespace FluidApp.ViewModels
             LudkoncentrationVisibility = Visibility.Collapsed;
             VægtVisibility = Visibility.Collapsed;
             MsVisiblity = Visibility.Collapsed;
+            PauserVisibility = Visibility.Collapsed;
 
             SorteringsMuligheder = new List<string>();
             SorteringsMuligheder.Add("Alle");
@@ -236,6 +264,21 @@ namespace FluidApp.ViewModels
 
             Roller.Add("Administrator");
             Roller.Add("Produktionsleder");
+        }
+
+        private void NavigatePauser()
+        {
+            ResetMange();
+
+            PauserVisibility = Visibility.Visible;
+            OnPropertyChanged(nameof(PauserVisibility));
+
+            GraphHandler g = new GraphHandler();
+            Graf = g.DrawPauser(0);
+
+            GraphHolder = "P";
+
+            SorteringsValg = "Alle";
         }
 
         private void NavigateMs()
@@ -395,11 +438,13 @@ namespace FluidApp.ViewModels
             LudkoncentrationVisibility = Visibility.Collapsed;
             VægtVisibility = Visibility.Collapsed;
             MsVisiblity = Visibility.Collapsed;
+            PauserVisibility = Visibility.Collapsed;
             OnPropertyChanged(nameof(IpRangeContainerVisiblity));
             OnPropertyChanged(nameof(AdminsContainerVisiblity));
             OnPropertyChanged(nameof(LudkoncentrationVisibility));
             OnPropertyChanged(nameof(VægtVisibility));
             OnPropertyChanged(nameof(MsVisiblity));
+            OnPropertyChanged(nameof(PauserVisibility));
         }
 
         private void NavigateOpretIp()

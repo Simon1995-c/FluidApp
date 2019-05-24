@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using Models;
 
 namespace FluidApp.Handlers
@@ -10,7 +12,7 @@ namespace FluidApp.Handlers
         {
             List<Record> LudKoncnetrationGraf = new List<Record>();
             KontrolSkema k = new KontrolSkema();
-            
+
             int i = 0;
 
             foreach (var x in k.GetAll())
@@ -91,6 +93,50 @@ namespace FluidApp.Handlers
             }
 
             return LudKoncnetrationGraf;
+        }
+
+        public List<Record> DrawPauser(int d)
+        {
+            List<Record> L = new List<Record>();
+            Produktionsfølgeseddel p = new Produktionsfølgeseddel();
+
+            int i = 0;
+
+            foreach (var x in p.GetAll())
+            {
+                Record r = new Record();
+                r.Name = x.Start.ToString("dd-MM-yyyy");
+                r.Amount = x.Pauser;
+                if (d == 0)
+                {
+                    if (!L.Exists(y => y.Name == r.Name))
+                    {
+
+                        L.Add(r);
+                    }
+                    else
+                    {
+                        var index = L.FindIndex(c => c.Name == r.Name);
+                        L[index].Amount += x.Pauser;
+                    }
+                    continue;
+                }
+
+                if (x.Start > DateTime.Now.Subtract(TimeSpan.FromDays(d)))
+                {
+                    if (!L.Exists(y => y.Name == r.Name))
+                    {
+
+                        L.Add(r);
+                    }
+                    else
+                    {
+                        var index = L.FindIndex(c => c.Name == r.Name);
+                        L[index].Amount += x.Pauser;
+                    }
+                }
+            }
+            return L;
         }
     }
 }

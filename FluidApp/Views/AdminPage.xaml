@@ -41,10 +41,27 @@
                 <Button Foreground="White" Background="#0f3a2e" Margin="0 3 0 0" Width="250" HorizontalAlignment="Stretch" Command="{Binding NavigateGraferRelayCommand}">Ludkoncentration</Button>
                 <Button Foreground="White" Background="#0f3a2e" Margin="0 3 0 0" Width="250" HorizontalAlignment="Stretch" Command="{Binding NavigateVægtGrafRelayCommand}">Vægt</Button>
                 <Button Foreground="White" Background="#0f3a2e" Margin="0 3 0 0" Width="250" HorizontalAlignment="Stretch" Command="{Binding NavigateMsRelayCommand}">Mip MA</Button>
+                <Button Foreground="White" Background="#0f3a2e" Margin="0 3 0 0" Width="250" HorizontalAlignment="Stretch" Command="{Binding NavigatePauserRelayCommand}">Pauser</Button>
             </StackPanel>
         </StackPanel>
         <StackPanel Margin="290 120 0 0" Width="1200" HorizontalAlignment="Left">
             <!-- Grafer -->
+
+            <!-- Pauser -->
+            <StackPanel Visibility="{Binding PauserVisibility}">
+                <TextBlock FontSize="24" FontWeight="Bold" Margin="0 0 0 35">Pauser</TextBlock>
+                <ComboBox PlaceholderText="Sortér efter dage" SelectedItem="{Binding SorteringsValg, Mode=TwoWay}" ItemsSource="{Binding SorteringsMuligheder}"></ComboBox>
+                <StackPanel>
+                    <Charting:Chart Width="1100" Height="500" VerticalAlignment="Top">
+                        <Charting:PieSeries ItemsSource="{Binding Graf}"
+                                             Title="Ludkoncentration"
+                                             IndependentValuePath="Name"
+                                             DependentValuePath="Amount"
+                                             Margin="0"
+                                             IsSelectionEnabled="True"/>
+                    </Charting:Chart>
+                </StackPanel>
+            </StackPanel>
 
             <!-- Lud koncentration -->
 

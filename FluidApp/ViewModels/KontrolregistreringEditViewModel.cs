@@ -348,6 +348,8 @@ namespace FluidApp.ViewModels
             NyDataVis = true;
             ResetValues();
 
+            Title = "Indsæt ny data";
+
             if (Application.Current.Resources.ContainsKey("forside"))
             {
                 Forside f = (Forside)Application.Current.Resources["forside"];
@@ -393,6 +395,7 @@ namespace FluidApp.ViewModels
             ResetValues();
             GemVis = true;
             UpdateVis = false;
+            Title = "Indsæt ny data";
         }
 
         public void UdvidUdsnit()
