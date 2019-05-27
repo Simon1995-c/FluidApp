@@ -98,7 +98,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 <ColumnDefinition Width="100"></ColumnDefinition>
-                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 <ColumnDefinition Width="100"></ColumnDefinition>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -111,6 +111,7 @@
                                 <ColumnDefinition Width="110"></ColumnDefinition>
                                 <ColumnDefinition Width="110"></ColumnDefinition>
                                 <ColumnDefinition Width="120"></ColumnDefinition>
+                                <ColumnDefinition Width="110"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
 
                             <Grid Column="1" BorderBrush="#ccc" BorderThickness="1 1 0 1">
@@ -118,11 +119,7 @@
                                     <TextBlock Text="Dåse Nr"></TextBlock>
                                 </StackPanel>
                             </Grid>
-                            <Grid Column="2" BorderBrush="#ccc" BorderThickness="1 1 0 1" Padding="5 0 0 0">
-                                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                    <TextBlock Text="Initialer" ></TextBlock>
-                                </StackPanel>
-                            </Grid>
+                            
 
                             <Grid Column="4" BorderBrush="#ccc" BorderThickness="1 1 0 1" Padding="5 0 0 0">
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
@@ -174,7 +171,12 @@
                                     <TextBlock Text="Palle Nr"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="103" Margin="0 15 0 0 "/>
                                 </StackPanel>
                             </Grid>
-                            <Grid Column="14" BorderBrush="#ccc" BorderThickness="1" Padding="5 0 0 0">
+                            <Grid Column="14" BorderBrush="#ccc" BorderThickness="1 1 0 1" Padding="5 0 0 0">
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                    <TextBlock Text="Initialer" ></TextBlock>
+                                </StackPanel>
+                            </Grid>
+                            <Grid Column="15" BorderBrush="#ccc" BorderThickness="1" Padding="5 0 0 0">
                                 <StackPanel>
                                     <TextBlock Text="Handling"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="103" Margin="0 15 0 0 "/>
                                 </StackPanel>
@@ -193,7 +195,6 @@
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="{Binding DåseNr}" Width="100" Margin="0 3 0 0"></TextBlock>
-                                            <TextBlock Text="{Binding Initialer}" Width="100" Margin="0 3 0 0"></TextBlock>
                                             <TextBlock Text="{Binding LågNr}" Width="100" Margin="0 3 0 0"></TextBlock>
                                             <TextBlock Text="{Binding LågFarve}" Width="100" Margin="0 3 0 0" ></TextBlock>
                                             <TextBlock Text="{Binding RingFarve}" Width="90" Margin="0 3 0 0"></TextBlock>
@@ -203,6 +204,8 @@
                                             <TextBlock Text="{Binding FolieNr}" Width="110" Margin="0 3 0 0"></TextBlock>
                                             <TextBlock Text="{Binding KartonNr}" Width="110" Margin="0 3 0 0"></TextBlock>
                                             <TextBlock Text="{Binding PalleNr}" Width="110" Margin="0 3 0 0"></TextBlock>
+                                            <TextBlock Text="{Binding Initialer}" Width="100" Margin="0 3 0 0"></TextBlock>
+
 
                                             <Button Content="Rediger" FontSize="12" Command="{Binding ElementName=færdigvarekontrolEdit, Path=DataContext.RedigerCommand}" CommandParameter="{Binding ProcessordreNr}"></Button>
                                             <Button Command="{Binding ElementName=færdigvarekontrolEdit, Path=DataContext.SletCommand}" CommandParameter="{Binding ProcessordreNr}" Background="Red">
@@ -243,7 +246,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Width="190" Height="85">
                             <TextBlock Text="Parametre" ></TextBlock>
-                            <TextBox Text="{Binding Parametre, Mode=TwoWay}" PlaceholderText="Vælg" Margin="0 5 0 0" Width="190"></TextBox>
+                            <TextBox Text="{Binding Parametre, Mode=TwoWay}" PlaceholderText="Indsæt Her" Margin="0 5 0 0" Width="190"></TextBox>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" Width="190" Height="85">
                             <TextBlock Text="Multipack" ></TextBlock>
