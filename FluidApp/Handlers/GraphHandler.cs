@@ -17,18 +17,22 @@ namespace FluidApp.Handlers
             {
                 Record r = new Record();
 
-                if (d == 0)
+                if (x.Ludkoncentration != null)
                 {
-                    r.Name = x.Klokkeslæt;
-                    r.Amount = x.Ludkoncentration;
-                    LudKoncnetrationGraf.Add(r);
-                    continue;
-                }
-                if (x.Klokkeslæt > DateTime.Now.Subtract(TimeSpan.FromDays(d)))
-                {
-                    r.Name = x.Klokkeslæt;
-                    r.Amount = x.Ludkoncentration;
-                    LudKoncnetrationGraf.Add(r);
+                    if (d == 0)
+                    {
+                        r.Name = x.Klokkeslæt;
+                        r.Amount = x.Ludkoncentration;
+                        LudKoncnetrationGraf.Add(r);
+                        continue;
+                    }
+
+                    if (x.Klokkeslæt > DateTime.Now.Subtract(TimeSpan.FromDays(d)))
+                    {
+                        r.Name = x.Klokkeslæt;
+                        r.Amount = x.Ludkoncentration;
+                        LudKoncnetrationGraf.Add(r);
+                    }
                 }
             }
 
@@ -44,18 +48,22 @@ namespace FluidApp.Handlers
             {
                 Record r = new Record();
 
-                if (d == 0)
+                if (x.Vægt != null)
                 {
-                    r.Name = x.Klokkeslæt;
-                    r.Amount = x.Vægt;
-                    LudKoncnetrationGraf.Add(r);
-                    continue;
-                }
-                if (x.Klokkeslæt > DateTime.Now.Subtract(TimeSpan.FromDays(d)))
-                {
-                    r.Name = x.Klokkeslæt;
-                    r.Amount = x.Vægt;
-                    LudKoncnetrationGraf.Add(r);
+                    if (d == 0)
+                    {
+                        r.Name = x.Klokkeslæt;
+                        r.Amount = x.Vægt;
+                        LudKoncnetrationGraf.Add(r);
+                        continue;
+                    }
+
+                    if (x.Klokkeslæt > DateTime.Now.Subtract(TimeSpan.FromDays(d)))
+                    {
+                        r.Name = x.Klokkeslæt;
+                        r.Amount = x.Vægt;
+                        LudKoncnetrationGraf.Add(r);
+                    }
                 }
             }
 
@@ -71,18 +79,22 @@ namespace FluidApp.Handlers
             {
                 Record r = new Record();
 
-                if (d == 0)
+                if (x.MS != null)
                 {
-                    r.Name = x.Klokkeslæt;
-                    r.Amount = x.MS;
-                    LudKoncnetrationGraf.Add(r);
-                    continue;
-                }
-                if (x.Klokkeslæt > DateTime.Now.Subtract(TimeSpan.FromDays(d)))
-                {
-                    r.Name = x.Klokkeslæt;
-                    r.Amount = x.MS;
-                    LudKoncnetrationGraf.Add(r);
+                    if (d == 0)
+                    {
+                        r.Name = x.Klokkeslæt;
+                        r.Amount = x.MS;
+                        LudKoncnetrationGraf.Add(r);
+                        continue;
+                    }
+
+                    if (x.Klokkeslæt > DateTime.Now.Subtract(TimeSpan.FromDays(d)))
+                    {
+                        r.Name = x.Klokkeslæt;
+                        r.Amount = x.MS;
+                        LudKoncnetrationGraf.Add(r);
+                    }
                 }
             }
 
