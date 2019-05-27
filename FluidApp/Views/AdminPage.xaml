@@ -49,7 +49,7 @@
 
             <!-- Pauser -->
             <StackPanel Visibility="{Binding PauserVisibility}">
-                <TextBlock FontSize="24" FontWeight="Bold" Margin="0 0 0 35">Pauser</TextBlock>
+                <TextBlock FontSize="24" FontWeight="Bold" Margin="0 0 0 35">Pauser i minutter</TextBlock>
                 <ComboBox PlaceholderText="Sortér efter dage" SelectedItem="{Binding SorteringsValg, Mode=TwoWay}" ItemsSource="{Binding SorteringsMuligheder}"></ComboBox>
                 <StackPanel>
                     <Charting:Chart Width="1100" Height="500" VerticalAlignment="Top">
