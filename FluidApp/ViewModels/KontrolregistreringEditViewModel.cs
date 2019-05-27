@@ -319,13 +319,20 @@ namespace FluidApp.ViewModels
             SletCommand = new RelayCommand<int>(Slet);
             RefreshCommand = new RelayCommand(Indlæs);
 
-            RegUdsnit = GetRegUdsnit();
             Info = new Forside();
+            if (Application.Current.Resources.ContainsKey("forside"))
+            {
+                Forside f = (Forside) Application.Current.Resources["forside"];
+                Info = f;
+            }
+
+            RegUdsnit = GetRegUdsnit();
+
             VælgMuligheder = new List<string>();
             VælgMuligheder.Add("OK");
             VælgMuligheder.Add("IKKE OK");
             VælgMuligheder.Add("(Blank)");
-            
+
             FustageList = new List<string>();
             FustageList.Add("30L");
             FustageList.Add("25L");
@@ -337,24 +344,22 @@ namespace FluidApp.ViewModels
             EtiketNrList = new ObservableCollection<string>();
 
             //Udfyld sidste indtastede data til suggestions
-            FærdivareNrList.Add(RegUdsnit[RegUdsnit.Count - RegUdsnit.Count].FærdigvareNr.ToString());
-            ProdDatoList.Add(RegUdsnit[RegUdsnit.Count - RegUdsnit.Count].FormattedPro);
-            HoldDatoList.Add(RegUdsnit[RegUdsnit.Count - RegUdsnit.Count].FormattedHo);
-            HætteNrList.Add(RegUdsnit[RegUdsnit.Count - RegUdsnit.Count].HætteNr.ToString());
-            EtiketNrList.Add(RegUdsnit[RegUdsnit.Count - RegUdsnit.Count].EtiketNr.ToString());
+            if (RegUdsnit.Count > 0)
+            {
+                if (RegUdsnit[0].FærdigvareNr != null) FærdivareNrList.Add(RegUdsnit[0].FærdigvareNr.ToString());
+                ProdDatoList.Add(RegUdsnit[RegUdsnit.Count - RegUdsnit.Count].FormattedPro);
+                HoldDatoList.Add(RegUdsnit[RegUdsnit.Count - RegUdsnit.Count].FormattedHo);
+                if (RegUdsnit[0].HætteNr != null) HætteNrList.Add(RegUdsnit[0].HætteNr.ToString());
+                if (RegUdsnit[0].EtiketNr != null) EtiketNrList.Add(RegUdsnit[0].EtiketNr.ToString());
 
-            TestSkema1 = new Kontrolregistrering();
+            }
+
+        TestSkema1 = new Kontrolregistrering();
             GemVis = true;
             NyDataVis = true;
             ResetValues();
 
             Title = "Indsæt ny data";
-
-            if (Application.Current.Resources.ContainsKey("forside"))
-            {
-                Forside f = (Forside)Application.Current.Resources["forside"];
-                Info = f;
-            }
             SletIkon = "https://visualpharm.com/assets/591/Delete-595b40b75ba036ed117d7c27.svg";
             UdvidIkon = "https://visualpharm.com/assets/833/Expand-595b40b75ba036ed117d6f8f.svg";
             Udvidelse = "170";
@@ -641,7 +646,7 @@ namespace FluidApp.ViewModels
 
             foreach (var skema in tempData.GetAll())
             {
-                udsnit.Add(skema);
+                if (skema.FK_Kolonne == Info.FK_Kolonne) udsnit.Add(skema);
             }
 
             udsnit = new ObservableCollection<Kontrolregistrering>(udsnit.OrderByDescending(e => e.ID));
