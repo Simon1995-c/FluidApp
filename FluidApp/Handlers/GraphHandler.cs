@@ -13,22 +13,20 @@ namespace FluidApp.Handlers
             List<Record> LudKoncnetrationGraf = new List<Record>();
             KontrolSkema k = new KontrolSkema();
 
-            int i = 0;
-
             foreach (var x in k.GetAll())
             {
                 Record r = new Record();
 
                 if (d == 0)
                 {
-                    r.Name = i++.ToString();
+                    r.Name = x.Klokkeslæt;
                     r.Amount = x.Ludkoncentration;
                     LudKoncnetrationGraf.Add(r);
                     continue;
                 }
                 if (x.Klokkeslæt > DateTime.Now.Subtract(TimeSpan.FromDays(d)))
                 {
-                    r.Name = i++.ToString();
+                    r.Name = x.Klokkeslæt;
                     r.Amount = x.Ludkoncentration;
                     LudKoncnetrationGraf.Add(r);
                 }
@@ -42,22 +40,20 @@ namespace FluidApp.Handlers
             List<Record> LudKoncnetrationGraf = new List<Record>();
             KontrolSkema k = new KontrolSkema();
 
-            int i = 0;
-
             foreach (var x in k.GetAll())
             {
                 Record r = new Record();
 
                 if (d == 0)
                 {
-                    r.Name = i++.ToString();
+                    r.Name = x.Klokkeslæt;
                     r.Amount = x.Vægt;
                     LudKoncnetrationGraf.Add(r);
                     continue;
                 }
                 if (x.Klokkeslæt > DateTime.Now.Subtract(TimeSpan.FromDays(d)))
                 {
-                    r.Name = i++.ToString();
+                    r.Name = x.Klokkeslæt;
                     r.Amount = x.Vægt;
                     LudKoncnetrationGraf.Add(r);
                 }
@@ -71,22 +67,20 @@ namespace FluidApp.Handlers
             List<Record> LudKoncnetrationGraf = new List<Record>();
             KontrolSkema k = new KontrolSkema();
 
-            int i = 0;
-
             foreach (var x in k.GetAll())
             {
                 Record r = new Record();
 
                 if (d == 0)
                 {
-                    r.Name = i++.ToString();
+                    r.Name = x.Klokkeslæt;
                     r.Amount = x.MS;
                     LudKoncnetrationGraf.Add(r);
                     continue;
                 }
                 if (x.Klokkeslæt > DateTime.Now.Subtract(TimeSpan.FromDays(d)))
                 {
-                    r.Name = i++.ToString();
+                    r.Name = x.Klokkeslæt;
                     r.Amount = x.MS;
                     LudKoncnetrationGraf.Add(r);
                 }
@@ -100,23 +94,21 @@ namespace FluidApp.Handlers
             List<Record> L = new List<Record>();
             Produktionsfølgeseddel p = new Produktionsfølgeseddel();
 
-            int i = 0;
-
             foreach (var x in p.GetAll())
             {
                 Record r = new Record();
-                r.Name = x.Start.ToString("dd-MM-yyyy");
+                r.NameString = x.Start.ToString("dd-MM-yyyy");
                 r.Amount = x.Pauser;
                 if (d == 0)
                 {
-                    if (!L.Exists(y => y.Name == r.Name))
+                    if (!L.Exists(y => y.NameString == r.NameString))
                     {
 
                         L.Add(r);
                     }
                     else
                     {
-                        var index = L.FindIndex(c => c.Name == r.Name);
+                        var index = L.FindIndex(c => c.NameString == r.NameString);
                         L[index].Amount += x.Pauser;
                     }
                     continue;
@@ -124,14 +116,14 @@ namespace FluidApp.Handlers
 
                 if (x.Start > DateTime.Now.Subtract(TimeSpan.FromDays(d)))
                 {
-                    if (!L.Exists(y => y.Name == r.Name))
+                    if (!L.Exists(y => y.NameString == r.NameString))
                     {
 
                         L.Add(r);
                     }
                     else
                     {
-                        var index = L.FindIndex(c => c.Name == r.Name);
+                        var index = L.FindIndex(c => c.NameString == r.NameString);
                         L[index].Amount += x.Pauser;
                     }
                 }

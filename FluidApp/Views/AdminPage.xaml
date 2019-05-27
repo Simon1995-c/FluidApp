@@ -55,10 +55,12 @@
                     <Charting:Chart Width="1100" Height="500" VerticalAlignment="Top">
                         <Charting:PieSeries ItemsSource="{Binding Graf}"
                                              Title="Ludkoncentration"
-                                             IndependentValuePath="Name"
+                                             IndependentValuePath="NameString"
                                              DependentValuePath="Amount"
                                              Margin="0"
-                                             IsSelectionEnabled="True"/>
+                                             IsSelectionEnabled="True">
+
+                        </Charting:PieSeries>
                     </Charting:Chart>
                 </StackPanel>
             </StackPanel>
@@ -68,7 +70,7 @@
             <StackPanel Visibility="{Binding LudkoncentrationVisibility}">
                 <TextBlock FontSize="24" FontWeight="Bold" Margin="0 0 0 35">Lud koncentration</TextBlock>
                 <ComboBox PlaceholderText="Sortér efter dage" SelectedItem="{Binding SorteringsValg, Mode=TwoWay}" ItemsSource="{Binding SorteringsMuligheder}"></ComboBox>
-                <StackPanel Height="460">
+                <StackPanel>
                     <Charting:Chart Width="1100" Height="500" VerticalAlignment="Top">
                         <Charting:LineSeries ItemsSource="{Binding Graf}"
                                              Title="Ludkoncentration"
@@ -76,6 +78,15 @@
                                              DependentValuePath="Amount"
                                              Margin="0"
                                              IsSelectionEnabled="True"/>
+                        <Charting:Chart.Axes>
+                            <Charting:DateTimeAxis Orientation="X" ShowGridLines="True">
+                                  <Charting:DateTimeAxis.AxisLabelStyle>
+                                      <Style TargetType="Charting:DateTimeAxisLabel">
+                                          <Setter Property="StringFormat" Value="{}{0:dd-MM}"></Setter>
+                                      </Style>
+                                  </Charting:DateTimeAxis.AxisLabelStyle>
+                            </Charting:DateTimeAxis>
+                        </Charting:Chart.Axes>
                     </Charting:Chart>
                 </StackPanel>
             </StackPanel>
@@ -85,9 +96,18 @@
                 <TextBlock FontSize="24" FontWeight="Bold" Margin="0 0 0 35">Vægt</TextBlock>
                 <ComboBox PlaceholderText="Sortér efter dage" SelectedItem="{Binding SorteringsValg, Mode=TwoWay}" ItemsSource="{Binding SorteringsMuligheder}"></ComboBox>
 
-                <StackPanel Height="460">
+                <StackPanel>
                     <Charting:Chart Width="1100" Height="500" VerticalAlignment="Top">
                         <Charting:LineSeries ItemsSource="{Binding Graf}" Title="Vægt" IndependentValuePath="Name" DependentValuePath="Amount" Margin="0" IsSelectionEnabled="True"/>
+                        <Charting:Chart.Axes>
+                            <Charting:DateTimeAxis Orientation="X" ShowGridLines="True">
+                                <Charting:DateTimeAxis.AxisLabelStyle>
+                                    <Style TargetType="Charting:DateTimeAxisLabel">
+                                        <Setter Property="StringFormat" Value="{}{0:dd-MM}"></Setter>
+                                    </Style>
+                                </Charting:DateTimeAxis.AxisLabelStyle>
+                            </Charting:DateTimeAxis>
+                        </Charting:Chart.Axes>
                     </Charting:Chart>
                 </StackPanel>
             </StackPanel>
@@ -97,9 +117,18 @@
                 <TextBlock FontSize="24" FontWeight="Bold" Margin="0 0 0 35">Mip MA</TextBlock>
                 <ComboBox PlaceholderText="Sortér efter dage" SelectedItem="{Binding SorteringsValg, Mode=TwoWay}" ItemsSource="{Binding SorteringsMuligheder}"></ComboBox>
 
-                <StackPanel Height="460">
+                <StackPanel>
                     <Charting:Chart Width="1100" Height="500" VerticalAlignment="Top">
                         <Charting:LineSeries ItemsSource="{Binding Graf}" Title="Mip MA" IndependentValuePath="Name" DependentValuePath="Amount" Margin="0" IsSelectionEnabled="True"/>
+                        <Charting:Chart.Axes>
+                            <Charting:DateTimeAxis Orientation="X" ShowGridLines="True">
+                                <Charting:DateTimeAxis.AxisLabelStyle>
+                                    <Style TargetType="Charting:DateTimeAxisLabel">
+                                        <Setter Property="StringFormat" Value="{}{0:dd-MM}"></Setter>
+                                    </Style>
+                                </Charting:DateTimeAxis.AxisLabelStyle>
+                            </Charting:DateTimeAxis>
+                        </Charting:Chart.Axes>
                     </Charting:Chart>
                 </StackPanel>
             </StackPanel>
