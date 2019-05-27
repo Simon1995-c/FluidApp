@@ -20,13 +20,13 @@ namespace FluidUnitTest
             Assert.AreEqual(6, f.GetOne(6).ProcessordreNr);
 
             Forside fo = new Forside();
-            Assert.AreEqual("test", fo.GetOne(12).FærdigvareNavn);
+            Assert.AreEqual("MOUNTAIN DEW 1.5 L", fo.GetOne(17).FærdigvareNavn);
 
             IPrange ip = new IPrange();
             Assert.AreEqual(1, ip.GetOne(1).ID);
 
             Kolonne2 k2 = new Kolonne2();
-            Assert.AreEqual(8, k2.GetOne(8).ID);
+            Assert.AreEqual(9, k2.GetOne(9).ID);
 
             Kontrolregistrering kr = new Kontrolregistrering();
             Assert.AreEqual(33, kr.GetOne(33).ID);
@@ -35,7 +35,7 @@ namespace FluidUnitTest
             Assert.AreEqual(48, ks.GetOne(48).ID);
 
             Produktionsfølgeseddel pf = new Produktionsfølgeseddel();
-            Assert.AreEqual(9, pf.GetOne(9).ID);
+            Assert.AreEqual(29, pf.GetOne(29).ID);
 
             RengøringsKolonne rk = new RengøringsKolonne();
             Assert.AreEqual(1, rk.GetOne(1).ID);
@@ -88,7 +88,7 @@ namespace FluidUnitTest
 
             int orgNum = all.Count;
 
-            a.Post(new Færdigvarekontrol() { FK_Kolonne = 8, DåseNr = 1, Initialer = "Test", LågNr = 1, DatoMærkning = DateTime.Now, LågFarve = "Rød", RingFarve = "Grøn", Enheder = 1, Parametre = "Test", Multipack = 1, FolieNr = 1, KartonNr = 1, PalleNr = 1 });
+            a.Post(new Færdigvarekontrol() { FK_Kolonne = 9, DåseNr = 1, Initialer = "Test", LågNr = 1, DatoMærkning = DateTime.Now, LågFarve = "Rød", RingFarve = "Grøn", Enheder = 1, Parametre = "Test", Multipack = 1, FolieNr = 1, KartonNr = 1, PalleNr = 1 });
 
             List<Færdigvarekontrol> allPlusOne = a.GetAll();
 
@@ -100,7 +100,7 @@ namespace FluidUnitTest
             //Update
             Færdigvarekontrol lastItem = allPlusOne[allPlusOne.Count - 1];
 
-            a.Put(lastItem.ProcessordreNr, new Færdigvarekontrol() { ProcessordreNr = lastItem.ProcessordreNr, FK_Kolonne = 8, DåseNr = 1, Initialer = "Opdateret", LågNr = 1, DatoMærkning = DateTime.Now, LågFarve = "Rød", RingFarve = "Grøn", Enheder = 1, Parametre = "Test", Multipack = 1, FolieNr = 1, KartonNr = 1, PalleNr = 1 });
+            a.Put(lastItem.ProcessordreNr, new Færdigvarekontrol() { ProcessordreNr = lastItem.ProcessordreNr, FK_Kolonne = 9, DåseNr = 1, Initialer = "Opdateret", LågNr = 1, DatoMærkning = DateTime.Now, LågFarve = "Rød", RingFarve = "Grøn", Enheder = 1, Parametre = "Test", Multipack = 1, FolieNr = 1, KartonNr = 1, PalleNr = 1 });
 
             List<Færdigvarekontrol> allAFterEdit = a.GetAll();
 
@@ -125,7 +125,7 @@ namespace FluidUnitTest
 
             int orgNum = all.Count;
 
-            a.Post(new Forside() { FK_Kolonne = 8, FærdigvareNr = 1, FærdigvareNavn = "test", ProcessordreNr = 1, Produktionsinitialer = "Test", Dato = DateTime.Now });
+            a.Post(new Forside() { FK_Kolonne = 9, FærdigvareNr = 1, FærdigvareNavn = "test", ProcessordreNr = 1, Produktionsinitialer = "Test", Dato = DateTime.Now });
 
             List<Forside> allPlusOne = a.GetAll();
 
@@ -137,7 +137,7 @@ namespace FluidUnitTest
             //Update
             Forside lastItem = allPlusOne[allPlusOne.Count - 1];
 
-            a.Put(lastItem.ID, new Forside() { ID = lastItem.ID, FK_Kolonne = 8, FærdigvareNr = 1, FærdigvareNavn = "Opdateret", ProcessordreNr = 1, Produktionsinitialer = "Test", Dato = DateTime.Now });
+            a.Put(lastItem.ID, new Forside() { ID = lastItem.ID, FK_Kolonne = 9, FærdigvareNr = 1, FærdigvareNavn = "Opdateret", ProcessordreNr = 1, Produktionsinitialer = "Test", Dato = DateTime.Now });
 
             List<Forside> allAFterEdit = a.GetAll();
 
@@ -199,7 +199,7 @@ namespace FluidUnitTest
 
             int orgNum = all.Count;
 
-            a.Post(new Kontrolregistrering() { FK_Kolonne = 8, Klokkeslæt = DateTime.Now, Holdbarhedsdato = DateTime.Now, Produktionsdato = DateTime.Now, FærdigvareNr = 1, Kommentar = "Test", Spritkontrol = true, HætteNr = 1, EtiketNr = 1, Fustage = "Test", Signatur = "Test" });
+            a.Post(new Kontrolregistrering() { FK_Kolonne = 9, Klokkeslæt = DateTime.Now, Holdbarhedsdato = DateTime.Now, Produktionsdato = DateTime.Now, FærdigvareNr = 1, Kommentar = "Test", Spritkontrol = true, HætteNr = 1, EtiketNr = 1, Fustage = "Test", Signatur = "Test" });
 
             List<Kontrolregistrering> allPlusOne = a.GetAll();
 
@@ -211,7 +211,7 @@ namespace FluidUnitTest
             //Update
             Kontrolregistrering lastItem = allPlusOne[allPlusOne.Count - 1];
 
-            a.Put(lastItem.ID, new Kontrolregistrering() { ID = lastItem.ID, FK_Kolonne = 8, Klokkeslæt = DateTime.Now, Holdbarhedsdato = DateTime.Now, Produktionsdato = DateTime.Now, FærdigvareNr = 1, Kommentar = "Opdateret", Spritkontrol = true, HætteNr = 1, EtiketNr = 1, Fustage = "Test", Signatur = "Test" });
+            a.Put(lastItem.ID, new Kontrolregistrering() { ID = lastItem.ID, FK_Kolonne = 9, Klokkeslæt = DateTime.Now, Holdbarhedsdato = DateTime.Now, Produktionsdato = DateTime.Now, FærdigvareNr = 1, Kommentar = "Opdateret", Spritkontrol = true, HætteNr = 1, EtiketNr = 1, Fustage = "Test", Signatur = "Test" });
 
             List<Kontrolregistrering> allAFterEdit = a.GetAll();
 
@@ -237,7 +237,7 @@ namespace FluidUnitTest
             int orgNum = all.Count;
             KontrolSkema test = new KontrolSkema()
             {
-                FK_Kolonne = 8,
+                FK_Kolonne = 9,
                 Klokkeslæt = DateTime.Now,
                 Ludkoncentration = 1.5,
                 Fustage = "Test",
@@ -264,7 +264,7 @@ namespace FluidUnitTest
             a.Put(lastItem.ID, new KontrolSkema()
             {
                 ID = lastItem.ID,
-                FK_Kolonne = 8,
+                FK_Kolonne = 9,
                 Klokkeslæt = DateTime.Now,
                 Ludkoncentration = 1.5,
                 Fustage = "Opdateret",
@@ -301,7 +301,7 @@ namespace FluidUnitTest
 
             Produktionsfølgeseddel test = new Produktionsfølgeseddel()
             {
-                FK_Kolonne = 8,
+                FK_Kolonne = 9,
                 Slut = DateTime.Now,
                 Start = DateTime.Now,
                 Bemanding = 5,
@@ -325,7 +325,7 @@ namespace FluidUnitTest
             a.Put(lastItem.ID, new Produktionsfølgeseddel()
             {
                 ID = lastItem.ID,
-                FK_Kolonne = 8,
+                FK_Kolonne = 9,
                 Slut = DateTime.Now,
                 Start = DateTime.Now,
                 Bemanding = 5,
