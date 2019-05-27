@@ -90,9 +90,5 @@
                 </Grid>
             </StackPanel>
         </Grid>
-        <StackPanel Visibility="{Binding LoadingVisibility}" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Vertical" Background="#13605f" Padding="20 10">
-            <ProgressRing IsActive="True" Foreground="White"></ProgressRing>
-            <Image Source="../Assets/fluid-hvid.png" Height="40" Width="40" ></Image>
-        </StackPanel>
     </Grid>
 </Page>

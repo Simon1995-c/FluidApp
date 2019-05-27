@@ -31,14 +31,14 @@ namespace Models
 
         public const string URI = "https://restapi20190501124159.azurewebsites.net/api/Forsides";
 
-        public async Task<List<Forside>> GetAll()
+        public List<Forside> GetAll()
         {
             List<Forside> returnList = new List<Forside>();
 
             using (HttpClient client = new HttpClient())
             {
                 Task<string> resTask = client.GetStringAsync(URI);
-                string jsonStr = await resTask;
+                string jsonStr = resTask.Result;
 
                 returnList = JsonConvert.DeserializeObject<List<Forside>>(jsonStr);
             }
