@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -44,6 +45,7 @@ namespace FluidApp.ViewModels
 
         //Grafer
         private List<Record> _graf;
+        private List<Record> _grafTwo;
 
         //Visiblities
         public Visibility IpRangeContainerVisiblity { get; set; }
@@ -94,7 +96,8 @@ namespace FluidApp.ViewModels
                         }
                         if (GraphHolder == "VA")
                         {
-                            Graf = g.DrawVægt(2);
+                            Graf = g.DrawVægt(2, "30L");
+                            GrafTwo = g.DrawVægt(2, "25L");
                         }
                         if (GraphHolder == "MS")
                         {
@@ -112,7 +115,8 @@ namespace FluidApp.ViewModels
                         }
                         if (GraphHolder == "VA")
                         {
-                            Graf = g.DrawVægt(7);
+                            Graf = g.DrawVægt(7, "30L");
+                            GrafTwo = g.DrawVægt(7, "25L");
                         }
                         if (GraphHolder == "MS")
                         {
@@ -130,7 +134,8 @@ namespace FluidApp.ViewModels
                         }
                         if (GraphHolder == "VA")
                         {
-                            Graf = g.DrawVægt(14);
+                            Graf = g.DrawVægt(14, "30L");
+                            GrafTwo = g.DrawVægt(14, "25L");
                         }
                         if (GraphHolder == "MS")
                         {
@@ -148,7 +153,8 @@ namespace FluidApp.ViewModels
                         }
                         if (GraphHolder == "VA")
                         {
-                            Graf = g.DrawVægt(30);
+                            Graf = g.DrawVægt(30, "30L");
+                            GrafTwo = g.DrawVægt(30, "25L");
                         }
                         if (GraphHolder == "MS")
                         {
@@ -166,7 +172,8 @@ namespace FluidApp.ViewModels
                         }
                         if (GraphHolder == "VA")
                         {
-                            Graf = g.DrawVægt(365);
+                            Graf = g.DrawVægt(365, "30L");
+                            GrafTwo = g.DrawVægt(365, "25L");
                         }
                         if (GraphHolder == "MS")
                         {
@@ -180,7 +187,8 @@ namespace FluidApp.ViewModels
                     default:
                         if (GraphHolder == "VA")
                         {
-                            Graf = g.DrawVægt(0);
+                            Graf = g.DrawVægt(0, "30L");
+                            GrafTwo = g.DrawVægt(0, "25L");
                         }
                         if (GraphHolder == "LK")
                         {
@@ -205,6 +213,16 @@ namespace FluidApp.ViewModels
             set
             {
                 _graf = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public List<Record> GrafTwo
+        {
+            get { return _grafTwo; }
+            set
+            {
+                _grafTwo = value; 
                 OnPropertyChanged();
             }
         }
@@ -275,6 +293,7 @@ namespace FluidApp.ViewModels
 
             GraphHandler g = new GraphHandler();
             Graf = g.DrawPauser(0);
+            GrafTwo = null;
 
             GraphHolder = "P";
 
@@ -290,6 +309,7 @@ namespace FluidApp.ViewModels
 
             GraphHandler g = new GraphHandler();
             Graf = g.DrawMs(0);
+            GrafTwo = null;
 
             GraphHolder = "MS";
 
@@ -304,8 +324,9 @@ namespace FluidApp.ViewModels
             OnPropertyChanged(nameof(VægtVisibility));
 
             GraphHandler g = new GraphHandler();
-            Graf = g.DrawVægt(0);
-
+            Graf = g.DrawVægt(0, "30L");
+            GrafTwo = g.DrawVægt(0, "25L");
+            
             GraphHolder = "VA";
 
             SorteringsValg = "Alle";
@@ -320,6 +341,7 @@ namespace FluidApp.ViewModels
             
             GraphHandler g = new GraphHandler();
             Graf = g.DrawLudKoncentration(0);
+            GrafTwo = null;
 
             GraphHolder = "LK";
 

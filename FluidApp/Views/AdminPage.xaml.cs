@@ -13,30 +13,6 @@ namespace FluidApp.Views
         public AdminPage()
         {
             this.InitializeComponent();
-
-            ((LineSeries) LudChart.Series[0]).DependentRangeAxis = new LinearAxis()
-            {
-                Orientation = AxisOrientation.Y,
-                Maximum = 3,
-                Minimum = 0,
-                ShowGridLines = true
-            };
-
-            ((LineSeries) VægtChart.Series[0]).DependentRangeAxis = new LinearAxis()
-            {
-                Orientation = AxisOrientation.Y,
-                Maximum = 50,
-                Minimum = 30,
-                ShowGridLines = true
-            };
-
-            ((LineSeries)MsChart.Series[0]).DependentRangeAxis = new LinearAxis()
-            {
-                Orientation = AxisOrientation.Y,
-                Maximum = 28,
-                Minimum = 22,
-                ShowGridLines = true
-            };
         }
     }
 }

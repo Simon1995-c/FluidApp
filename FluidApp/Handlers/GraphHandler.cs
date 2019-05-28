@@ -19,6 +19,8 @@ namespace FluidApp.Handlers
 
                 if (x.Ludkoncentration != null)
                 {
+                    r.Max = 2;
+                    r.Min = 1;
                     if (d == 0)
                     {
                         r.Name = x.Klokkeslæt;
@@ -39,16 +41,21 @@ namespace FluidApp.Handlers
             return LudKoncnetrationGraf;
         }
 
-        public List<Record> DrawVægt(int d)
+        public List<Record> DrawVægt(int d, string size)
         {
             List<Record> LudKoncnetrationGraf = new List<Record>();
             KontrolSkema k = new KontrolSkema();
+            
+            Kontrolregistrering kr = new Kontrolregistrering();
+            List<Kontrolregistrering> listKr = kr.GetAll();
+            List<Kontrolregistrering> confirmed;
 
             foreach (var x in k.GetAll())
             {
                 Record r = new Record();
-
-                if (x.Vægt != null)
+                confirmed = new List<Kontrolregistrering>(listKr.Where(e => e.FK_Kolonne == x.FK_Kolonne));
+                
+                if (confirmed.Count > 0 && x.Vægt != null && confirmed[0].Fustage == size)
                 {
                     if (d == 0)
                     {
@@ -74,13 +81,15 @@ namespace FluidApp.Handlers
         {
             List<Record> LudKoncnetrationGraf = new List<Record>();
             KontrolSkema k = new KontrolSkema();
-
+            
             foreach (var x in k.GetAll())
             {
                 Record r = new Record();
 
                 if (x.MS != null)
                 {
+                    r.Max = 24;
+                    r.Min = 26.5;
                     if (d == 0)
                     {
                         r.Name = x.Klokkeslæt;

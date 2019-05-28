@@ -65,7 +65,7 @@
                 </StackPanel>
             </StackPanel>
 
-            <!-- Lud koncentration -->
+            <!-- Ludkoncentration -->
 
             <StackPanel Visibility="{Binding LudkoncentrationVisibility}">
                 <TextBlock FontSize="24" FontWeight="Bold" Margin="0 0 0 35">Lud koncentration</TextBlock>
@@ -73,12 +73,75 @@
                 <StackPanel>
                     <Charting:Chart Name="LudChart" Width="1100" Height="500" VerticalAlignment="Top">
                         <Charting:LineSeries ItemsSource="{Binding Graf}"
+                                             Title="Max/Min"
+                                             IndependentValuePath="Name"
+                                             DependentValuePath="Max"
+                                             Margin="0"
+                                             IsSelectionEnabled="False">
+                            <Charting:LineSeries.DataPointStyle>
+                                <Style TargetType="Charting:LineDataPoint">
+                                    <Setter Property="Background" Value="Black"></Setter>
+                                    <Setter Property="BorderThickness" Value="0" />
+                                    <Setter Property="IsTabStop" Value="False" />
+                                    <Setter Property="Width" Value="0" />
+                                    <Setter Property="Height" Value="0" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Charting:LineDataPoint">
+                                                <Grid x:Name="Root" Opacity="0" />
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Charting:LineSeries.DataPointStyle>
+                        </Charting:LineSeries>
+                        <Charting:LineSeries ItemsSource="{Binding Graf}"
+                                             Title="Max/Min"
+                                             IndependentValuePath="Name"
+                                             DependentValuePath="Min"
+                                             Margin="0"
+                                             IsSelectionEnabled="False">
+                            <Charting:LineSeries.DataPointStyle>
+                                <Style TargetType="Charting:LineDataPoint">
+                                    <Setter Property="Background" Value="Black"></Setter>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Setter Property="IsTabStop" Value="False" />
+                                    <Setter Property="Width" Value="0" />
+                                    <Setter Property="Height" Value="0" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Charting:LineDataPoint">
+                                                <Grid x:Name="Root" Opacity="0"/>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Charting:LineSeries.DataPointStyle>
+                            <Charting:LineSeries.LegendItemStyle>
+                                <Style TargetType="Charting:LegendItem">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Charting:LegendItem">
+                                                <Grid x:Name="Root" Opacity="0"></Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Charting:LineSeries.LegendItemStyle>
+                        </Charting:LineSeries>
+                        <Charting:LineSeries ItemsSource="{Binding Graf}"
                                              Title="Ludkoncentration"
                                              IndependentValuePath="Name"
                                              DependentValuePath="Amount"
                                              Margin="0"
-                                             IsSelectionEnabled="True"/>
-                        <Charting:Chart.Axes>
+                                             IsSelectionEnabled="True">
+                            <Charting:LineSeries.DataPointStyle>
+                                <Style TargetType="Charting:LineDataPoint">
+                                    <Setter Property="Background" Value="CornflowerBlue"></Setter>
+                                </Style>
+                            </Charting:LineSeries.DataPointStyle>
+                        </Charting:LineSeries>
+                            <Charting:Chart.Axes>
                             <Charting:DateTimeAxis Orientation="X" ShowGridLines="True">
                                   <Charting:DateTimeAxis.AxisLabelStyle>
                                       <Style TargetType="Charting:DateTimeAxisLabel">
@@ -98,7 +161,8 @@
 
                 <StackPanel>
                     <Charting:Chart Name="VægtChart" Width="1100" Height="500" VerticalAlignment="Top">
-                        <Charting:LineSeries ItemsSource="{Binding Graf}" Title="Vægt" IndependentValuePath="Name" DependentValuePath="Amount" Margin="0" IsSelectionEnabled="True"/>
+                        <Charting:LineSeries ItemsSource="{Binding Graf}" Title="Vægt 30L" IndependentValuePath="Name" DependentValuePath="Amount" Margin="0" IsSelectionEnabled="True"/>
+                        <Charting:LineSeries ItemsSource="{Binding GrafTwo}" Title="Vægt 25L" IndependentValuePath="Name" DependentValuePath="Amount" Margin="0" IsSelectionEnabled="True"/>
                         <Charting:Chart.Axes>
                             <Charting:DateTimeAxis Orientation="X" ShowGridLines="True">
                                 <Charting:DateTimeAxis.AxisLabelStyle>
@@ -120,6 +184,63 @@
                 <StackPanel>
                     <Charting:Chart Name="MsChart" Width="1100" Height="500" VerticalAlignment="Top">
                         <Charting:LineSeries ItemsSource="{Binding Graf}" Title="Mip MA" IndependentValuePath="Name" DependentValuePath="Amount" Margin="0" IsSelectionEnabled="True"/>
+                        <Charting:LineSeries ItemsSource="{Binding Graf}"
+                                             Title="Max/Min"
+                                             IndependentValuePath="Name"
+                                             DependentValuePath="Max"
+                                             Margin="0"
+                                             IsSelectionEnabled="False">
+                            <Charting:LineSeries.DataPointStyle>
+                                <Style TargetType="Charting:LineDataPoint">
+                                    <Setter Property="Background" Value="Black"></Setter>
+                                    <Setter Property="BorderThickness" Value="0" />
+                                    <Setter Property="IsTabStop" Value="False" />
+                                    <Setter Property="Width" Value="0" />
+                                    <Setter Property="Height" Value="0" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Charting:LineDataPoint">
+                                                <Grid x:Name="Root" Opacity="0" />
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Charting:LineSeries.DataPointStyle>
+                        </Charting:LineSeries>
+                        <Charting:LineSeries ItemsSource="{Binding Graf}"
+                                             Title="Max/Min"
+                                             IndependentValuePath="Name"
+                                             DependentValuePath="Min"
+                                             Margin="0"
+                                             IsSelectionEnabled="False">
+                            <Charting:LineSeries.DataPointStyle>
+                                <Style TargetType="Charting:LineDataPoint">
+                                    <Setter Property="Background" Value="Black"></Setter>
+                                    <Setter Property="BorderThickness" Value="0"/>
+                                    <Setter Property="IsTabStop" Value="False" />
+                                    <Setter Property="Width" Value="0" />
+                                    <Setter Property="Height" Value="0" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Charting:LineDataPoint">
+                                                <Grid x:Name="Root" Opacity="0"/>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Charting:LineSeries.DataPointStyle>
+                            <Charting:LineSeries.LegendItemStyle>
+                                <Style TargetType="Charting:LegendItem">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Charting:LegendItem">
+                                                <Grid x:Name="Root" Opacity="0"></Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Charting:LineSeries.LegendItemStyle>
+                        </Charting:LineSeries>
                         <Charting:Chart.Axes>
                             <Charting:DateTimeAxis Orientation="X" ShowGridLines="True">
                                 <Charting:DateTimeAxis.AxisLabelStyle>
