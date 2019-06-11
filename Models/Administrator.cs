@@ -15,7 +15,7 @@ namespace Models
         public string Kodeord { get; set; }
         public int Rolle { get; set; }
 
-        public const string URI = "https://restapi20190501124159.azurewebsites.net/api/Administrators";
+        public const string URI = "https://restapi20190611111326.azurewebsites.net/api/Administrators";
 
         public List<Administrator> GetAll()
         {

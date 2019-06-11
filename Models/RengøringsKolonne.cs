@@ -25,7 +25,7 @@ namespace Models
 
 
 
-        public const string URI = "https://restapi20190501124159.azurewebsites.net/api/RengøringsKolonne";
+        public const string URI = "https://restapi20190611111326.azurewebsites.net/api/RengøringsKolonne";
 
 
 

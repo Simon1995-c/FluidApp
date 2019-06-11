@@ -11,7 +11,7 @@ namespace Models
     {
         public int ID { get; set; }
 
-        public const string URI = "https://restapi20190501124159.azurewebsites.net/api/Kolonne2";
+        public const string URI = "https://restapi20190611111326.azurewebsites.net/api/Kolonne2";
 
         public List<Kolonne2> GetAll()
         {

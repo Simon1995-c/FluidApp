@@ -15,7 +15,7 @@ namespace Models
         public string IP { get; set; }
         
 
-        public const string URI = "https://restapi20190501124159.azurewebsites.net/api/IPranges";
+        public const string URI = "https://restapi20190611111326.azurewebsites.net/api/IPranges";
 
         public List<IPrange> GetAll()
         {

@@ -25,7 +25,7 @@ namespace Models
         public int KartonNr { get; set; }
         public int PalleNr { get; set; }
 
-        public const string URI = "https://restapi20190501124159.azurewebsites.net/api/Færdigvarekontrol";
+        public const string URI = "https://restapi20190611111326.azurewebsites.net/api/Færdigvarekontrol";
 
         public List<Færdigvarekontrol> GetAll()
         {
